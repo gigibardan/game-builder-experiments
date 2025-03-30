@@ -470,7 +470,7 @@ const Session2 = () => {
                                 <span>Sesiunea 1: Joc Clicker</span>
                               </Link>
                             </Button>
-                            <Button asChild className="bg-course-purple hover:bg-course-blue" disabled>
+                            <Button asChild className="bg-course-purple hover:bg-course-blue">
                               <Link to="/appinventor/session3" className="flex items-center">
                                 <span>Sesiunea 3: Jocul Prinde Obiectul</span>
                                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -795,7 +795,7 @@ add items to list listaRaspunsuriCorecte
                           <div>
                             <h3 className="text-xl font-bold mb-4">Împărtășește Realizările Tale</h3>
                             <p className="mb-4">
-                              După ce ai finalizat proiectul și ai implementat unele dintre provocări, împărtășește-l cu colegii și profesorii tăi. Poți exporta proiectul ca fișier .aia din App Inventor (Projects > Export selected project (.aia) to my computer).
+                              După ce ai finalizat proiectul și ai implementat unele dintre provocări, împărtășește-l cu colegii și profesorii tăi. Poți exporta proiectul ca fișier .aia din App Inventor (Projects {'>'}  Export selected project (.aia) to my computer).
                             </p>
                             <p>
                               Fii deschis la feedback și idei pentru îmbunătățiri ulterioare. Învățarea prin colaborare și schimbul de idei este o parte importantă a dezvoltării abilităților de programare!
@@ -930,3 +930,4 @@ add items to list listaRaspunsuriCorecte
 };
 
 export default Session2;
+
