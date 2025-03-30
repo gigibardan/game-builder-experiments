@@ -22,6 +22,7 @@ import Godot from "./pages/courses/Godot";
 import FrontendDev from "./pages/courses/FrontendDev";
 import Session2 from "./pages/appinventor/Session2";
 import Session3 from "./pages/appinventor/Session3";
+import Session4 from "./pages/appinventor/Session4";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/appinventor/session1" element={<Session1 />} />
           <Route path="/appinventor/session2" element={<Session2 />} />
           <Route path="/appinventor/session3" element={<Session3 />} />
+          <Route path="/appinventor/session4" element={<Session4 />} />
           
           {/* Alte cursuri */}
           <Route path="/scratch" element={<Scratch />} />

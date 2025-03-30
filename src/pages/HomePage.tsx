@@ -169,8 +169,8 @@ const HomePage = () => {
       <Header />
       
       <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-24 overflow-hidden relative">
+        {/* Hero Section - More compact */}
+        <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16 overflow-hidden relative">
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -right-10 -top-10 w-72 h-72 bg-white/10 rounded-full blur-xl"></div>
             <div className="absolute -left-20 bottom-0 w-96 h-96 bg-white/5 rounded-full blur-xl"></div>
@@ -182,12 +182,12 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="container mx-auto px-4 relative z-10">
             <div className="flex flex-col lg:flex-row items-center">
-              <div className="lg:w-1/2 mb-10 lg:mb-0">
+              <div className="lg:w-1/2 mb-8 lg:mb-0">
                 <motion.h1 
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.2 }}
-                  className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                  className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
                   TechMinds Academy
                   <span className="block text-yellow-300">Programare pentru Copii</span>
                 </motion.h1>
@@ -195,21 +195,17 @@ const HomePage = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.4 }}
-                  className="text-xl mb-8 text-white/90 max-w-xl">
-                  Descoperă lumea fascinantă a programării prin jocuri și proiecte creative. 
-                  Cursuri interactive pentru copii și tineri între 8 și 18 ani.
+                  className="text-lg mb-6 text-white/90 max-w-xl">
+                  Transformăm tinerii din consumatori pasivi de tehnologie în creatori inovativi prin metode educaționale interactive și proiecte practice captivante.
                 </motion.p>
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                   className="flex flex-wrap gap-4">
-                  <Link to="/appinventor" className="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-bold px-8 py-3 rounded-lg transition-all transform hover:scale-105 shadow-lg flex items-center">
+                  <a href="#courses" className="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-bold px-8 py-3 rounded-lg transition-all transform hover:scale-105 shadow-lg flex items-center">
                     <Rocket className="mr-2 h-5 w-5" />
-                    <span>Începe cu App Inventor</span>
-                  </Link>
-                  <a href="#courses" className="bg-transparent border-2 border-white hover:bg-white/10 text-white px-6 py-3 rounded-lg transition-all">
-                    Descoperă toate cursurile
+                    <span>Descoperă cursurile noastre</span>
                   </a>
                 </motion.div>
               </div>
@@ -222,9 +218,9 @@ const HomePage = () => {
                   <div className="rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-1">
                     <div className="bg-white rounded-xl overflow-hidden">
                       <img 
-                        src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?auto=format&fit=crop&q=80" 
-                        alt="Copii învățând programare" 
-                        className="w-full object-cover h-80 lg:h-96"
+                        src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80" 
+                        alt="Dezvoltare de software și programare" 
+                        className="w-full object-cover h-64 lg:h-80"
                       />
                       <div className="p-6 bg-white">
                         <div className="flex items-center justify-between">
@@ -252,7 +248,7 @@ const HomePage = () => {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 text-gray-800">De ce să alegi TechMinds Academy?</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Ajutăm copiii să treacă de la consumatori la creatori de tehnologie prin metode de învățare practice și interactive.
+                De la gândire creativă la rezolvarea problemelor - echipăm tinerii cu competențele digitale esențiale pentru viitorul lor.
               </p>
             </div>
             
@@ -372,10 +368,10 @@ const HomePage = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <Link to="/appinventor" className="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-bold px-8 py-4 rounded-lg text-lg transition-all transform hover:scale-105 inline-flex items-center">
+              <a href="#courses" className="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-bold px-8 py-4 rounded-lg text-lg transition-all transform hover:scale-105 inline-flex items-center">
                 <Rocket className="mr-2 h-5 w-5" />
-                <span>Începe cu App Inventor</span>
-              </Link>
+                <span>Explorează toate cursurile</span>
+              </a>
             </motion.div>
           </div>
         </section>
