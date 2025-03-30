@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -811,7 +812,7 @@ add items to list listaRaspunsuriCorecte
                           <span>Sesiunea anterioară</span>
                         </Link>
                       </Button>
-                      <Button asChild variant="outline" className="flex items-center" disabled>
+                      <Button asChild variant="outline" className="flex items-center">
                         <Link to="/appinventor/session3">
                           <span>Următoarea sesiune</span>
                           <ArrowRight className="ml-2 h-4 w-4" />
