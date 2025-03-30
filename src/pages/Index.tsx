@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Gamepad2, Laptop, Trophy } from 'lucide-react';
+import { Gamepad, Laptop, Trophy } from 'lucide-react';
 import CourseCard from '@/components/CourseCard';
 
 const Index = () => {
@@ -11,7 +11,7 @@ const Index = () => {
           title="Jocuri Interactive" 
           subtitle="Dezvoltare de jocuri"
           description="Creează jocuri captivante precum Clicker, Quiz, Catch the Object și multe altele!"
-          icon={<Gamepad2 className="h-6 w-6" />}
+          icon={<Gamepad className="h-6 w-6" />}
           color="border-course-purple"
           bgcolor="bg-course-purple"
           link="/curriculum"

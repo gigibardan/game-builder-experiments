@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -486,56 +487,54 @@ const Session2 = () => {
                             <p className="mb-4">
                               Aceste blocuri trebuie adăugate în secțiunea de blocuri pentru a crea și inițializa listele și variabilele necesare.
                             </p>
-                            <CodeBlock
-                              title="Inițializarea Variabilelor"
-                              language="javascript">
-                              // Creăm variabilele globale
-                              initialize global scor to 0
-                              initialize global intrebareCurenta to 1
+                            <CodeBlock title="Inițializarea Variabilelor">
+                              {`// Creăm variabilele globale
+initialize global scor to 0
+initialize global intrebareCurenta to 1
 
-                              // Creăm listele pentru întrebări și răspunsuri
-                              initialize global listaIntrebari to create empty list
-                              initialize global listaRaspunsuriA to create empty list
-                              initialize global listaRaspunsuriB to create empty list
-                              initialize global listaRaspunsuriC to create empty list
-                              initialize global listaRaspunsuriD to create empty list
-                              initialize global listaRaspunsuriCorecte to create empty list
+// Creăm listele pentru întrebări și răspunsuri
+initialize global listaIntrebari to create empty list
+initialize global listaRaspunsuriA to create empty list
+initialize global listaRaspunsuriB to create empty list
+initialize global listaRaspunsuriC to create empty list
+initialize global listaRaspunsuriD to create empty list
+initialize global listaRaspunsuriCorecte to create empty list
 
-                              // Adăugăm întrebările (se pot adăuga mai multe)
-                              add items to list listaIntrebari
-                                • "Care este capitala României?"
-                                • "Câte planete sunt în sistemul solar?"
-                                • "Cine a scris 'Romeo și Julieta'?"
+// Adăugăm întrebările (se pot adăuga mai multe)
+add items to list listaIntrebari
+  • "Care este capitala României?"
+  • "Câte planete sunt în sistemul solar?"
+  • "Cine a scris 'Romeo și Julieta'?"
 
-                              // Adăugăm variantele de răspuns A
-                              add items to list listaRaspunsuriA
-                                • "București"
-                                • "7"
-                                • "Charles Dickens"
+// Adăugăm variantele de răspuns A
+add items to list listaRaspunsuriA
+  • "București"
+  • "7"
+  • "Charles Dickens"
 
-                              // Adăugăm variantele de răspuns B
-                              add items to list listaRaspunsuriB
-                                • "Paris"
-                                • "8"
-                                • "Mark Twain"
+// Adăugăm variantele de răspuns B
+add items to list listaRaspunsuriB
+  • "Paris"
+  • "8"
+  • "Mark Twain"
 
-                              // Adăugăm variantele de răspuns C
-                              add items to list listaRaspunsuriC
-                                • "Londra"
-                                • "9"
-                                • "William Shakespeare"
+// Adăugăm variantele de răspuns C
+add items to list listaRaspunsuriC
+  • "Londra"
+  • "9"
+  • "William Shakespeare"
 
-                              // Adăugăm variantele de răspuns D
-                              add items to list listaRaspunsuriD
-                                • "Berlin"
-                                • "10"
-                                • "Jules Verne"
+// Adăugăm variantele de răspuns D
+add items to list listaRaspunsuriD
+  • "Berlin"
+  • "10"
+  • "Jules Verne"
 
-                              // Adăugăm răspunsurile corecte (1=A, 2=B, 3=C, 4=D)
-                              add items to list listaRaspunsuriCorecte
-                                • 1
-                                • 2
-                                • 3
+// Adăugăm răspunsurile corecte (1=A, 2=B, 3=C, 4=D)
+add items to list listaRaspunsuriCorecte
+  • 1
+  • 2
+  • 3`}
                             </CodeBlock>
                           </div>
                           
@@ -544,25 +543,25 @@ const Session2 = () => {
                             <p className="mb-4">
                               Această procedură se ocupă de afișarea întrebării curente și a variantelor de răspuns.
                             </p>
-                            <CodeBlock title="Procedura AfiseazaIntrebare" language="javascript">
-                              to procedure AfiseazaIntrebare
-                                // Afișăm întrebarea curentă
-                                set LabelIntrebare.Text to select item intrebareCurenta from list listaIntrebari
+                            <CodeBlock title="Procedura AfiseazaIntrebare">
+                              {`to procedure AfiseazaIntrebare
+  // Afișăm întrebarea curentă
+  set LabelIntrebare.Text to select item intrebareCurenta from list listaIntrebari
 
-                                // Afișăm variantele de răspuns
-                                set ButonRaspuns1.Text to select item intrebareCurenta from list listaRaspunsuriA
-                                set ButonRaspuns2.Text to select item intrebareCurenta from list listaRaspunsuriB
-                                set ButonRaspuns3.Text to select item intrebareCurenta from list listaRaspunsuriC
-                                set ButonRaspuns4.Text to select item intrebareCurenta from list listaRaspunsuriD
+  // Afișăm variantele de răspuns
+  set ButonRaspuns1.Text to select item intrebareCurenta from list listaRaspunsuriA
+  set ButonRaspuns2.Text to select item intrebareCurenta from list listaRaspunsuriB
+  set ButonRaspuns3.Text to select item intrebareCurenta from list listaRaspunsuriC
+  set ButonRaspuns4.Text to select item intrebareCurenta from list listaRaspunsuriD
 
-                                // Facem butoanele vizibile
-                                set ButonRaspuns1.Visible to true
-                                set ButonRaspuns2.Visible to true
-                                set ButonRaspuns3.Visible to true
-                                set ButonRaspuns4.Visible to true
+  // Facem butoanele vizibile
+  set ButonRaspuns1.Visible to true
+  set ButonRaspuns2.Visible to true
+  set ButonRaspuns3.Visible to true
+  set ButonRaspuns4.Visible to true
 
-                                // Ascundem feedback-ul anterior
-                                set LabelFeedback.Visible to false
+  // Ascundem feedback-ul anterior
+  set LabelFeedback.Visible to false`}
                             </CodeBlock>
                           </div>
                           
@@ -571,20 +570,20 @@ const Session2 = () => {
                             <p className="mb-4">
                               Aceste blocuri definesc comportamentul butonului START când este apăsat.
                             </p>
-                            <CodeBlock title="Evenimentul ButonStart.Click" language="javascript">
-                              when ButonStart.Click do
-                                // Resetăm variabilele
-                                set global scor to 0
-                                set global intrebareCurenta to 1
+                            <CodeBlock title="Evenimentul ButonStart.Click">
+                              {`when ButonStart.Click do
+  // Resetăm variabilele
+  set global scor to 0
+  set global intrebareCurenta to 1
 
-                                // Actualizăm afișarea scorului
-                                set LabelScor.Text to 0
+  // Actualizăm afișarea scorului
+  set LabelScor.Text to 0
 
-                                // Ascundem butonul de start
-                                set ButonStart.Visible to false
+  // Ascundem butonul de start
+  set ButonStart.Visible to false
 
-                                // Afișăm prima întrebare
-                                call AfiseazaIntrebare
+  // Afișăm prima întrebare
+  call AfiseazaIntrebare`}
                             </CodeBlock>
                           </div>
                           
@@ -593,37 +592,191 @@ const Session2 = () => {
                             <p className="mb-4">
                               Aceste blocuri definesc comportamentul butonului de răspuns 1 când este apăsat. Logica similară trebuie implementată pentru celelalte butoane de răspuns.
                             </p>
-                            <CodeBlock title="Evenimentul ButonRaspuns1.Click" language="javascript">
-                              when ButonRaspuns1.Click do
-                                // Verificăm dacă răspunsul este corect
-                                if select item intrebareCurenta from list listaRaspunsuriCorecte = 1 then
-                                  // Răspuns corect
-                                  set global scor to global scor + 1
-                                  set LabelScor.Text to global scor
-                                  set LabelFeedback.Text to "Corect!"
-                                  set LabelFeedback.TextColor to "green"
-                                else
-                                  // Răspuns greșit
-                                  set LabelFeedback.Text to "Greșit! Răspunsul corect era: " & 
-                                    (if select item intrebareCurenta from list listaRaspunsuriCorecte = 1 then
-                                      select item intrebareCurenta from list listaRaspunsuriA
-                                    else if select item intrebareCurenta from list listaRaspunsuriCorecte = 2 then
-                                      select item intrebareCurenta from list listaRaspunsuriB
-                                    else if select item intrebareCurenta from list listaRaspunsuriCorecte = 3 then
-                                      select item intrebareCurenta from list listaRaspunsuriC
-                                    else
-                                      select item intrebareCurenta from list listaRaspunsuriD)
-                                  set LabelFeedback.TextColor to "red"
-                                end if
+                            <CodeBlock title="Evenimentul ButonRaspuns1.Click">
+                              {`when ButonRaspuns1.Click do
+  // Verificăm dacă răspunsul este corect
+  if (select item intrebareCurenta from list listaRaspunsuriCorecte) = 1 then
+    // Răspuns corect
+    set global scor to global scor + 1
+    set LabelScor.Text to global scor
+    set LabelFeedback.Text to "Corect!"
+    set LabelFeedback.TextColor to "green"
+  else
+    // Răspuns greșit
+    set LabelFeedback.Text to "Greșit! Răspunsul corect era: " & 
+      (if (select item intrebareCurenta from list listaRaspunsuriCorecte) = 1 then
+        select item intrebareCurenta from list listaRaspunsuriA
+      else if (select item intrebareCurenta from list listaRaspunsuriCorecte) = 2 then
+        select item intrebareCurenta from list listaRaspunsuriB
+      else if (select item intrebareCurenta from list listaRaspunsuriCorecte) = 3 then
+        select item intrebareCurenta from list listaRaspunsuriC
+      else
+        select item intrebareCurenta from list listaRaspunsuriD)
+    set LabelFeedback.TextColor to "red"
+  end if
 
-                                // Facem feedback-ul vizibil
-                                set LabelFeedback.Visible to true
+  // Facem feedback-ul vizibil
+  set LabelFeedback.Visible to true
 
-                                // Ascundem butoanele de răspuns
-                                set ButonRaspuns1.Visible to false
-                                set ButonRaspuns2.Visible to false
-                                set ButonRaspuns3.Visible to false
-                                set ButonRaspuns4.Visible to false
+  // Ascundem butoanele de răspuns
+  set ButonRaspuns1.Visible to false
+  set ButonRaspuns2.Visible to false
+  set ButonRaspuns3.Visible to false
+  set ButonRaspuns4.Visible to false
 
-                                // Trecem la următoarea întrebare
-                                set global intrebareCurenta to global intrebareCurenta +
+  // Trecem la următoarea întrebare
+  set global intrebareCurenta to global intrebareCurenta + 1`}
+                            </CodeBlock>
+                          </div>
+                        </section>
+                      </TabsContent>
+                      
+                      <TabsContent value="challenges">
+                        <section className="space-y-6">
+                          <h2 className="text-xl font-bold">Provocări pentru îmbunătățirea jocului de quiz</h2>
+                          
+                          <div className="bg-orange-50 border-l-4 border-orange-500 p-4 my-4">
+                            <h3 className="font-semibold text-orange-800 mb-2">Provocare #1: Cronometru</h3>
+                            <p className="mb-2">
+                              Adaugă un cronometru pentru fiecare întrebare, astfel încât jucătorul să aibă un timp limitat pentru a răspunde.
+                            </p>
+                            <ul className="list-disc list-inside space-y-1">
+                              <li>Folosește componenta Timer pentru a crea un cronometru</li>
+                              <li>Afișează timpul rămas pentru fiecare întrebare</li>
+                              <li>Dacă timpul expiră înainte ca jucătorul să răspundă, consideră răspunsul ca fiind greșit și treci la următoarea întrebare</li>
+                            </ul>
+                          </div>
+                          
+                          <div className="bg-blue-50 border-l-4 border-blue-500 p-4 my-4">
+                            <h3 className="font-semibold text-blue-800 mb-2">Provocare #2: Categorii de întrebări</h3>
+                            <p className="mb-2">
+                              Creează categorii diferite de întrebări și permite jucătorului să aleagă categoria dorită.
+                            </p>
+                            <ul className="list-disc list-inside space-y-1">
+                              <li>Creează liste separate pentru fiecare categorie de întrebări</li>
+                              <li>Adaugă un ecran de selecție a categoriei înainte de începerea jocului</li>
+                              <li>Adaptează logica jocului pentru a încărca întrebările din categoria selectată</li>
+                            </ul>
+                          </div>
+                          
+                          <div className="bg-purple-50 border-l-4 border-purple-500 p-4 my-4">
+                            <h3 className="font-semibold text-purple-800 mb-2">Provocare #3: Efecte sonore</h3>
+                            <p className="mb-2">
+                              Adaugă efecte sonore pentru a face jocul mai interactiv și atractiv.
+                            </p>
+                            <ul className="list-disc list-inside space-y-1">
+                              <li>Adaugă sunete pentru răspunsuri corecte și greșite</li>
+                              <li>Adaugă un sunet pentru finalizarea jocului</li>
+                              <li>Adaugă muzică de fundal în timpul jocului</li>
+                              <li>Oferă opțiunea de a activa/dezactiva sunetele</li>
+                            </ul>
+                          </div>
+                          
+                          <div className="bg-green-50 border-l-4 border-green-500 p-4 my-4">
+                            <h3 className="font-semibold text-green-800 mb-2">Provocare #4: Sistem de scor complex</h3>
+                            <p className="mb-2">
+                              Îmbunătățește sistemul de scor pentru a lua în considerare și alți factori decât răspunsurile corecte.
+                            </p>
+                            <ul className="list-disc list-inside space-y-1">
+                              <li>Acordă mai multe puncte pentru răspunsurile rapide</li>
+                              <li>Adaugă un multiplicator de scor pentru răspunsuri consecutive corecte</li>
+                              <li>Implementează un sistem de "vieți" pentru a permite un număr limitat de greșeli</li>
+                              <li>Salvează scorurile maxime utilizând componenta TinyDB</li>
+                            </ul>
+                          </div>
+                          
+                          <div className="mt-6 p-4 border rounded-lg bg-gray-50">
+                            <h3 className="font-bold text-lg mb-2">Resurse suplimentare</h3>
+                            <p>Pentru mai multe informații despre cum să implementezi aceste provocări, consultă următoarele resurse:</p>
+                            <ul className="list-disc list-inside space-y-1 mt-2">
+                              <li><a href="#" className="text-blue-600 hover:underline">Documentația oficială App Inventor</a></li>
+                              <li><a href="#" className="text-blue-600 hover:underline">Tutoriale video pentru jocuri în App Inventor</a></li>
+                              <li><a href="#" className="text-blue-600 hover:underline">Comunitatea App Inventor pentru întrebări și sfaturi</a></li>
+                            </ul>
+                          </div>
+                        </section>
+                      </TabsContent>
+                    </Tabs>
+                  </CardContent>
+                </Card>
+              </div>
+              
+              {/* Sidebar */}
+              <div className="lg:w-1/4">
+                <div className="bg-gray-50 p-6 rounded-lg border sticky top-6">
+                  <h3 className="font-bold text-lg mb-4">Cuprins</h3>
+                  <ul className="space-y-2">
+                    <li>
+                      <a href="#introducere" className="flex items-center hover:text-course-purple transition-colors">
+                        <ChevronRight className="h-4 w-4 mr-1" />
+                        <span>Introducere</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#pasul1" className="flex items-center hover:text-course-purple transition-colors">
+                        <ChevronRight className="h-4 w-4 mr-1" />
+                        <span>Configurarea Proiectului</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#pasul2" className="flex items-center hover:text-course-purple transition-colors">
+                        <ChevronRight className="h-4 w-4 mr-1" />
+                        <span>Crearea Interfeței</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#pasul3" className="flex items-center hover:text-course-purple transition-colors">
+                        <ChevronRight className="h-4 w-4 mr-1" />
+                        <span>Liste de Întrebări</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#pasul4" className="flex items-center hover:text-course-purple transition-colors">
+                        <ChevronRight className="h-4 w-4 mr-1" />
+                        <span>Programarea Jocului</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#pasul5" className="flex items-center hover:text-course-purple transition-colors">
+                        <ChevronRight className="h-4 w-4 mr-1" />
+                        <span>Testare și Îmbunătățiri</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#recapitulare" className="flex items-center hover:text-course-purple transition-colors">
+                        <ChevronRight className="h-4 w-4 mr-1" />
+                        <span>Recapitulare</span>
+                      </a>
+                    </li>
+                  </ul>
+                  
+                  <div className="border-t mt-6 pt-6">
+                    <h3 className="font-bold text-lg mb-2">Resurse utile</h3>
+                    <ul className="space-y-2">
+                      <li>
+                        <a href="#" className="text-sm text-blue-600 hover:underline flex items-center">
+                          <BookOpen className="h-4 w-4 mr-2" />
+                          <span>Documentație App Inventor</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" className="text-sm text-blue-600 hover:underline flex items-center">
+                          <Code className="h-4 w-4 mr-2" />
+                          <span>Exemple de cod</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Session2;
