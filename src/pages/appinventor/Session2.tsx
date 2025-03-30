@@ -544,9 +544,7 @@ const Session2 = () => {
                             <p className="mb-4">
                               Această procedură se ocupă de afișarea întrebării curente și a variantelor de răspuns.
                             </p>
-                            <CodeBlock
-                              title="Procedura AfiseazaIntrebare"
-                              language="javascript">
+                            <CodeBlock title="Procedura AfiseazaIntrebare" language="javascript">
                               to procedure AfiseazaIntrebare
                                 // Afișăm întrebarea curentă
                                 set LabelIntrebare.Text to select item intrebareCurenta from list listaIntrebari
@@ -573,9 +571,7 @@ const Session2 = () => {
                             <p className="mb-4">
                               Aceste blocuri definesc comportamentul butonului START când este apăsat.
                             </p>
-                            <CodeBlock
-                              title="Evenimentul ButonStart.Click"
-                              language="javascript">
+                            <CodeBlock title="Evenimentul ButonStart.Click" language="javascript">
                               when ButonStart.Click do
                                 // Resetăm variabilele
                                 set global scor to 0
@@ -597,9 +593,7 @@ const Session2 = () => {
                             <p className="mb-4">
                               Aceste blocuri definesc comportamentul butonului de răspuns 1 când este apăsat. Logica similară trebuie implementată pentru celelalte butoane de răspuns.
                             </p>
-                            <CodeBlock
-                              title="Evenimentul ButonRaspuns1.Click"
-                              language="javascript">
+                            <CodeBlock title="Evenimentul ButonRaspuns1.Click" language="javascript">
                               when ButonRaspuns1.Click do
                                 // Verificăm dacă răspunsul este corect
                                 if select item intrebareCurenta from list listaRaspunsuriCorecte = 1 then
@@ -611,15 +605,14 @@ const Session2 = () => {
                                 else
                                   // Răspuns greșit
                                   set LabelFeedback.Text to "Greșit! Răspunsul corect era: " & 
-                                    select item intrebareCurenta from list
-                                      if select item intrebareCurenta from list listaRaspunsuriCorecte = 1 then
-                                        listaRaspunsuriA
-                                      else if select item intrebareCurenta from list listaRaspunsuriCorecte = 2 then
-                                        listaRaspunsuriB
-                                      else if select item intrebareCurenta from list listaRaspunsuriCorecte = 3 then
-                                        listaRaspunsuriC
-                                      else
-                                        listaRaspunsuriD
+                                    (if select item intrebareCurenta from list listaRaspunsuriCorecte = 1 then
+                                      select item intrebareCurenta from list listaRaspunsuriA
+                                    else if select item intrebareCurenta from list listaRaspunsuriCorecte = 2 then
+                                      select item intrebareCurenta from list listaRaspunsuriB
+                                    else if select item intrebareCurenta from list listaRaspunsuriCorecte = 3 then
+                                      select item intrebareCurenta from list listaRaspunsuriC
+                                    else
+                                      select item intrebareCurenta from list listaRaspunsuriD)
                                   set LabelFeedback.TextColor to "red"
                                 end if
 
@@ -633,299 +626,4 @@ const Session2 = () => {
                                 set ButonRaspuns4.Visible to false
 
                                 // Trecem la următoarea întrebare
-                                set global intrebareCurenta to global intrebareCurenta + 1
-
-                                // Verificăm dacă mai sunt întrebări
-                                if global intrebareCurenta <= length of list listaIntrebari then
-                                  // Mai sunt întrebări, așteaptă o secundă și afișează următoarea
-                                  call AfiseazaIntrebare
-                                else
-                                  // Nu mai sunt întrebări, afișăm rezultatul final
-                                  set LabelIntrebare.Text to "Quiz terminat! Scorul tău final: " & global scor & " din " & length of list listaIntrebari
-                                  set ButonStart.Text to "JOC NOU"
-                                  set ButonStart.Visible to true
-                                end if
-                            </CodeBlock>
-                          </div>
-                        </section>
-                      </TabsContent>
-                      
-                      <TabsContent value="challenges">
-                        <section className="space-y-8">
-                          <div>
-                            <h2 className="text-2xl font-bold mb-4">Provocări Suplimentare</h2>
-                            <p className="mb-6">
-                              Acum că ai creat jocul de quiz de bază, iată câteva provocări pentru a-l îmbunătăți și a-ți dezvolta abilitățile de programare:
-                            </p>
-                            
-                            <div className="space-y-6">
-                              <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
-                                <h3 className="font-bold flex items-center">
-                                  <Star className="h-5 w-5 text-course-purple mr-2" />
-                                  Provocare 1: Adaugă un Cronometru
-                                </h3>
-                                <p className="mt-2">
-                                  Adaugă un cronometru care limitează timpul disponibil pentru a răspunde la fiecare întrebare. Dacă timpul expiră înainte ca utilizatorul să răspundă, consideră întrebarea ca fiind greșită și treci la următoarea.
-                                </p>
-                                <div className="mt-3">
-                                  <h4 className="font-semibold mb-1">Indicii:</h4>
-                                  <ul className="list-disc list-inside space-y-1">
-                                    <li>Folosește componenta "Clock" din categoria "Sensors"</li>
-                                    <li>Setează un interval pentru cronometru (ex: 10 secunde)</li>
-                                    <li>Adaugă o variabilă pentru a urmări timpul rămas</li>
-                                    <li>Afișează timpul rămas pe ecran</li>
-                                  </ul>
-                                </div>
-                              </div>
-                              
-                              <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
-                                <h3 className="font-bold flex items-center">
-                                  <Star className="h-5 w-5 text-course-purple mr-2" />
-                                  Provocare 2: Categorii de Întrebări
-                                </h3>
-                                <p className="mt-2">
-                                  Extinde quiz-ul pentru a include mai multe categorii de întrebări (ex: Știință, Istorie, Geografie, Sport, etc.). Permite utilizatorului să aleagă categoria înainte de a începe jocul.
-                                </p>
-                                <div className="mt-3">
-                                  <h4 className="font-semibold mb-1">Indicii:</h4>
-                                  <ul className="list-disc list-inside space-y-1">
-                                    <li>Creează liste separate pentru fiecare categorie</li>
-                                    <li>Adaugă butoane sau un ListPicker pentru selectarea categoriei</li>
-                                    <li>Modifică logica jocului pentru a utiliza listele corespunzătoare categoriei selectate</li>
-                                  </ul>
-                                </div>
-                              </div>
-                              
-                              <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
-                                <h3 className="font-bold flex items-center">
-                                  <Star className="h-5 w-5 text-course-purple mr-2" />
-                                  Provocare 3: Salvarea Scorurilor
-                                </h3>
-                                <p className="mt-2">
-                                  Implementează un sistem care salvează cele mai bune scoruri obținute de utilizator. Afișează un clasament al celor mai bune scoruri la sfârșitul fiecărui joc.
-                                </p>
-                                <div className="mt-3">
-                                  <h4 className="font-semibold mb-1">Indicii:</h4>
-                                  <ul className="list-disc list-inside space-y-1">
-                                    <li>Folosește componenta "TinyDB" din categoria "Storage" pentru a salva scorurile</li>
-                                    <li>Creează o listă pentru a stoca scorurile</li>
-                                    <li>Sortează scorurile pentru a afișa clasamentul</li>
-                                    <li>Verifică dacă scorul curent se califică pentru clasament</li>
-                                  </ul>
-                                </div>
-                              </div>
-                              
-                              <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
-                                <h3 className="font-bold flex items-center">
-                                  <Star className="h-5 w-5 text-course-purple mr-2" />
-                                  Provocare 4: Niveluri de Dificultate
-                                </h3>
-                                <p className="mt-2">
-                                  Adaugă multiple niveluri de dificultate (Ușor, Mediu, Dificil) cu întrebări diferite și, eventual, timpuri diferite pentru răspuns.
-                                </p>
-                                <div className="mt-3">
-                                  <h4 className="font-semibold mb-1">Indicii:</h4>
-                                  <ul className="list-disc list-inside space-y-1">
-                                    <li>Creează liste separate pentru fiecare nivel de dificultate</li>
-                                    <li>Ajustează punctajul în funcție de dificultate (ex: întrebările dificile valorează mai multe puncte)</li>
-                                    <li>Modifică timpul disponibil pentru răspuns în funcție de dificultate</li>
-                                  </ul>
-                                </div>
-                              </div>
-                              
-                              <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
-                                <h3 className="font-bold flex items-center">
-                                  <Star className="h-5 w-5 text-course-purple mr-2" />
-                                  Provocare 5: Aspectul Vizual și Sunetele
-                                </h3>
-                                <p className="mt-2">
-                                  Îmbunătățește aspectul vizual al jocului cu imagini, culori atractive și adaugă efecte sonore pentru răspunsurile corecte/incorecte.
-                                </p>
-                                <div className="mt-3">
-                                  <h4 className="font-semibold mb-1">Indicii:</h4>
-                                  <ul className="list-disc list-inside space-y-1">
-                                    <li>Utilizează componenta "Player" pentru a reda sunete</li>
-                                    <li>Adaugă imagini și fundal personalizat</li>
-                                    <li>Folosește culori diferite pentru a indica răspunsurile corecte/incorecte</li>
-                                    <li>Adaugă animații pentru tranziția între întrebări</li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          
-                          <div>
-                            <h3 className="text-xl font-bold mb-4">Ce ai învățat din Provocări</h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                              <div className="p-4 bg-gray-50 rounded-md flex items-start">
-                                <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
-                                <div>
-                                  <h4 className="font-medium">Gestionarea Timpului</h4>
-                                  <p className="text-sm text-gray-600">Utilizarea componentei Clock pentru a crea timere interactive în aplicații</p>
-                                </div>
-                              </div>
-                              
-                              <div className="p-4 bg-gray-50 rounded-md flex items-start">
-                                <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
-                                <div>
-                                  <h4 className="font-medium">Structuri de Date Complexe</h4>
-                                  <p className="text-sm text-gray-600">Organizarea și gestionarea datelor folosind multiple liste și variabile</p>
-                                </div>
-                              </div>
-                              
-                              <div className="p-4 bg-gray-50 rounded-md flex items-start">
-                                <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
-                                <div>
-                                  <h4 className="font-medium">Stocarea Datelor</h4>
-                                  <p className="text-sm text-gray-600">Salvarea și recuperarea informațiilor între sesiunile de joc</p>
-                                </div>
-                              </div>
-                              
-                              <div className="p-4 bg-gray-50 rounded-md flex items-start">
-                                <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
-                                <div>
-                                  <h4 className="font-medium">Experiența de Utilizare</h4>
-                                  <p className="text-sm text-gray-600">Îmbunătățirea experienței utilizatorului cu efecte vizuale și sonore</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          
-                          <div>
-                            <h3 className="text-xl font-bold mb-4">Împărtășește Realizările Tale</h3>
-                            <p className="mb-4">
-                              După ce ai finalizat proiectul și ai implementat unele dintre provocări, împărtășește-l cu colegii și profesorii tăi. Poți exporta proiectul ca fișier .aia din App Inventor (Projects {'>'}  Export selected project (.aia) to my computer).
-                            </p>
-                            <p>
-                              Fii deschis la feedback și idei pentru îmbunătățiri ulterioare. Învățarea prin colaborare și schimbul de idei este o parte importantă a dezvoltării abilităților de programare!
-                            </p>
-                          </div>
-                        </section>
-                      </TabsContent>
-                    </Tabs>
-
-                    <div className="flex justify-between mt-12 border-t pt-6">
-                      <Button asChild variant="outline" className="flex items-center">
-                        <Link to="/appinventor/session1">
-                          <ArrowLeft className="mr-2 h-4 w-4" />
-                          <span>Sesiunea anterioară</span>
-                        </Link>
-                      </Button>
-                      <Button asChild variant="outline" className="flex items-center">
-                        <Link to="/appinventor/session3">
-                          <span>Următoarea sesiune</span>
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-              
-              {/* Sidebar */}
-              <div className="lg:w-1/4">
-                <div className="sticky top-4 space-y-6">
-                  <Card>
-                    <CardContent className="p-4">
-                      <h3 className="text-lg font-bold mb-3">Conținut</h3>
-                      <nav>
-                        <ul className="space-y-2">
-                          <li>
-                            <a href="#introducere" className="text-course-purple hover:text-course-blue flex items-center">
-                              <div className="h-2 w-2 bg-course-purple rounded-full mr-2"></div>
-                              Introducere
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#pasul1" className="text-gray-700 hover:text-course-blue flex items-center">
-                              <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
-                              Pasul 1: Configurare
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#pasul2" className="text-gray-700 hover:text-course-blue flex items-center">
-                              <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
-                              Pasul 2: Interfața Quiz-ului
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#pasul3" className="text-gray-700 hover:text-course-blue flex items-center">
-                              <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
-                              Pasul 3: Liste de Întrebări
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#pasul4" className="text-gray-700 hover:text-course-blue flex items-center">
-                              <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
-                              Pasul 4: Programare
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#pasul5" className="text-gray-700 hover:text-course-blue flex items-center">
-                              <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
-                              Pasul 5: Testare
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#recapitulare" className="text-gray-700 hover:text-course-blue flex items-center">
-                              <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
-                              Recapitulare
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card>
-                    <CardContent className="p-4">
-                      <h3 className="text-lg font-bold mb-3">Resurse</h3>
-                      <ul className="space-y-2">
-                        <li>
-                          <a href="https://appinventor.mit.edu/explore/ai2/tutorials" target="_blank" rel="noopener noreferrer" className="text-course-blue hover:underline flex items-center">
-                            <ChevronRight className="h-4 w-4 mr-1" />
-                            Tutoriale MIT App Inventor
-                          </a>
-                        </li>
-                        <li>
-                          <a href="https://appinventor.mit.edu/explore/library" target="_blank" rel="noopener noreferrer" className="text-course-blue hover:underline flex items-center">
-                            <ChevronRight className="h-4 w-4 mr-1" />
-                            Biblioteca de componente
-                          </a>
-                        </li>
-                        <li>
-                          <a href="https://appinventor.mit.edu/explore/resources/beginner" target="_blank" rel="noopener noreferrer" className="text-course-blue hover:underline flex items-center">
-                            <ChevronRight className="h-4 w-4 mr-1" />
-                            Resurse pentru începători
-                          </a>
-                        </li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card>
-                    <CardContent className="p-4 bg-gradient-to-br from-course-purple/10 to-blue-100">
-                      <h3 className="text-lg font-bold mb-2">Ai nevoie de ajutor?</h3>
-                      <p className="text-gray-700 text-sm mb-4">
-                        Dacă întâmpini dificultăți sau ai întrebări despre acest tutorial, nu ezita să contactezi instructorul.
-                      </p>
-                      <Button asChild className="w-full bg-course-purple hover:bg-course-blue">
-                        <a href="mailto:contact@techmindsa.ro">
-                          Contactează instructorul
-                        </a>
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-      
-      <Footer />
-    </div>
-  );
-};
-
-export default Session2;
+                                set global intrebareCurenta to global intrebareCurenta +
