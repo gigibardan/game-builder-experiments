@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { PuzzlePiece, ArrowRight } from 'lucide-react';
+import { Puzzle, ArrowRight } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
@@ -62,7 +62,7 @@ const Scratch = () => {
                     className="rounded-lg shadow-xl max-w-md w-full"
                   />
                   <div className="absolute -bottom-5 -right-5 bg-amber-400 rounded-full p-4 shadow-lg animate-bounce-slow">
-                    <PuzzlePiece className="h-8 w-8 text-amber-900" />
+                    <Puzzle className="h-8 w-8 text-amber-900" />
                   </div>
                 </motion.div>
               </div>
@@ -83,7 +83,7 @@ const Scratch = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div className="bg-gradient-to-br from-yellow-50 to-amber-50 p-6 rounded-xl shadow-md">
                 <div className="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                  <PuzzlePiece className="h-8 w-8 text-yellow-600" />
+                  <Puzzle className="h-8 w-8 text-yellow-600" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Programare Vizuală</h3>
                 <p className="text-gray-600">

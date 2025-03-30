@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -785,7 +784,7 @@ add items to list listaRaspunsuriCorecte
                               <div className="p-4 bg-gray-50 rounded-md flex items-start">
                                 <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
                                 <div>
-                                  <h4 className="font-medium">Experiență de Utilizare</h4>
+                                  <h4 className="font-medium">Experiența de Utilizare</h4>
                                   <p className="text-sm text-gray-600">Îmbunătățirea experienței utilizatorului cu efecte vizuale și sonore</p>
                                 </div>
                               </div>

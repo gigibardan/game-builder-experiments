@@ -1,9 +1,8 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Code, Gamepad, Laptop, Rocket, Layout, Brush, Blocks, 
-  Box, PuzzlePiece, Binary, Coffee, Globe, BadgeCheck 
+  Box, Puzzle, Binary, Coffee, Globe, BadgeCheck 
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -35,7 +34,7 @@ const HomePage = () => {
       title: "Laboratorul de Jocuri",
       subtitle: "Scratch",
       description: "Descoperă programarea prin joc și creează primele tale proiecte interactive.",
-      icon: <PuzzlePiece className="h-10 w-10" />,
+      icon: <Puzzle className="h-10 w-10" />,
       color: "border-yellow-400",
       bgcolor: "bg-yellow-400",
       link: "/scratch",
