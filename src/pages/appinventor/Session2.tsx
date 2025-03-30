@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -489,55 +488,55 @@ const Session2 = () => {
                             </p>
                             <CodeBlock
                               title="Inițializarea Variabilelor"
-                              code={`// Creăm variabilele globale
-initialize global scor to 0
-initialize global intrebareCurenta to 1
+                              language="javascript">
+                              // Creăm variabilele globale
+                              initialize global scor to 0
+                              initialize global intrebareCurenta to 1
 
-// Creăm listele pentru întrebări și răspunsuri
-initialize global listaIntrebari to create empty list
-initialize global listaRaspunsuriA to create empty list
-initialize global listaRaspunsuriB to create empty list
-initialize global listaRaspunsuriC to create empty list
-initialize global listaRaspunsuriD to create empty list
-initialize global listaRaspunsuriCorecte to create empty list
+                              // Creăm listele pentru întrebări și răspunsuri
+                              initialize global listaIntrebari to create empty list
+                              initialize global listaRaspunsuriA to create empty list
+                              initialize global listaRaspunsuriB to create empty list
+                              initialize global listaRaspunsuriC to create empty list
+                              initialize global listaRaspunsuriD to create empty list
+                              initialize global listaRaspunsuriCorecte to create empty list
 
-// Adăugăm întrebările (se pot adăuga mai multe)
-add items to list listaIntrebari
-  • "Care este capitala României?"
-  • "Câte planete sunt în sistemul solar?"
-  • "Cine a scris 'Romeo și Julieta'?"
+                              // Adăugăm întrebările (se pot adăuga mai multe)
+                              add items to list listaIntrebari
+                                • "Care este capitala României?"
+                                • "Câte planete sunt în sistemul solar?"
+                                • "Cine a scris 'Romeo și Julieta'?"
 
-// Adăugăm variantele de răspuns A
-add items to list listaRaspunsuriA
-  • "București"
-  • "7"
-  • "Charles Dickens"
+                              // Adăugăm variantele de răspuns A
+                              add items to list listaRaspunsuriA
+                                • "București"
+                                • "7"
+                                • "Charles Dickens"
 
-// Adăugăm variantele de răspuns B
-add items to list listaRaspunsuriB
-  • "Paris"
-  • "8"
-  • "Mark Twain"
+                              // Adăugăm variantele de răspuns B
+                              add items to list listaRaspunsuriB
+                                • "Paris"
+                                • "8"
+                                • "Mark Twain"
 
-// Adăugăm variantele de răspuns C
-add items to list listaRaspunsuriC
-  • "Londra"
-  • "9"
-  • "William Shakespeare"
+                              // Adăugăm variantele de răspuns C
+                              add items to list listaRaspunsuriC
+                                • "Londra"
+                                • "9"
+                                • "William Shakespeare"
 
-// Adăugăm variantele de răspuns D
-add items to list listaRaspunsuriD
-  • "Berlin"
-  • "10"
-  • "Jules Verne"
+                              // Adăugăm variantele de răspuns D
+                              add items to list listaRaspunsuriD
+                                • "Berlin"
+                                • "10"
+                                • "Jules Verne"
 
-// Adăugăm răspunsurile corecte (1=A, 2=B, 3=C, 4=D)
-add items to list listaRaspunsuriCorecte
-  • 1
-  • 2
-  • 3`}
-                              language="plaintext"
-                            />
+                              // Adăugăm răspunsurile corecte (1=A, 2=B, 3=C, 4=D)
+                              add items to list listaRaspunsuriCorecte
+                                • 1
+                                • 2
+                                • 3
+                            </CodeBlock>
                           </div>
                           
                           <div>
@@ -547,26 +546,26 @@ add items to list listaRaspunsuriCorecte
                             </p>
                             <CodeBlock
                               title="Procedura AfiseazaIntrebare"
-                              code={`to procedure AfiseazaIntrebare
-  // Afișăm întrebarea curentă
-  set LabelIntrebare.Text to select item intrebareCurenta from list listaIntrebari
-  
-  // Afișăm variantele de răspuns
-  set ButonRaspuns1.Text to select item intrebareCurenta from list listaRaspunsuriA
-  set ButonRaspuns2.Text to select item intrebareCurenta from list listaRaspunsuriB
-  set ButonRaspuns3.Text to select item intrebareCurenta from list listaRaspunsuriC
-  set ButonRaspuns4.Text to select item intrebareCurenta from list listaRaspunsuriD
-  
-  // Facem butoanele vizibile
-  set ButonRaspuns1.Visible to true
-  set ButonRaspuns2.Visible to true
-  set ButonRaspuns3.Visible to true
-  set ButonRaspuns4.Visible to true
-  
-  // Ascundem feedback-ul anterior
-  set LabelFeedback.Visible to false`}
-                              language="plaintext"
-                            />
+                              language="javascript">
+                              to procedure AfiseazaIntrebare
+                                // Afișăm întrebarea curentă
+                                set LabelIntrebare.Text to select item intrebareCurenta from list listaIntrebari
+
+                                // Afișăm variantele de răspuns
+                                set ButonRaspuns1.Text to select item intrebareCurenta from list listaRaspunsuriA
+                                set ButonRaspuns2.Text to select item intrebareCurenta from list listaRaspunsuriB
+                                set ButonRaspuns3.Text to select item intrebareCurenta from list listaRaspunsuriC
+                                set ButonRaspuns4.Text to select item intrebareCurenta from list listaRaspunsuriD
+
+                                // Facem butoanele vizibile
+                                set ButonRaspuns1.Visible to true
+                                set ButonRaspuns2.Visible to true
+                                set ButonRaspuns3.Visible to true
+                                set ButonRaspuns4.Visible to true
+
+                                // Ascundem feedback-ul anterior
+                                set LabelFeedback.Visible to false
+                            </CodeBlock>
                           </div>
                           
                           <div>
@@ -576,21 +575,21 @@ add items to list listaRaspunsuriCorecte
                             </p>
                             <CodeBlock
                               title="Evenimentul ButonStart.Click"
-                              code={`when ButonStart.Click do
-  // Resetăm variabilele
-  set global scor to 0
-  set global intrebareCurenta to 1
-  
-  // Actualizăm afișarea scorului
-  set LabelScor.Text to 0
-  
-  // Ascundem butonul de start
-  set ButonStart.Visible to false
-  
-  // Afișăm prima întrebare
-  call AfiseazaIntrebare`}
-                              language="plaintext"
-                            />
+                              language="javascript">
+                              when ButonStart.Click do
+                                // Resetăm variabilele
+                                set global scor to 0
+                                set global intrebareCurenta to 1
+
+                                // Actualizăm afișarea scorului
+                                set LabelScor.Text to 0
+
+                                // Ascundem butonul de start
+                                set ButonStart.Visible to false
+
+                                // Afișăm prima întrebare
+                                call AfiseazaIntrebare
+                            </CodeBlock>
                           </div>
                           
                           <div>
@@ -600,53 +599,53 @@ add items to list listaRaspunsuriCorecte
                             </p>
                             <CodeBlock
                               title="Evenimentul ButonRaspuns1.Click"
-                              code={`when ButonRaspuns1.Click do
-  // Verificăm dacă răspunsul este corect
-  if select item intrebareCurenta from list listaRaspunsuriCorecte = 1 then
-    // Răspuns corect
-    set global scor to global scor + 1
-    set LabelScor.Text to global scor
-    set LabelFeedback.Text to "Corect!"
-    set LabelFeedback.TextColor to "green"
-  else
-    // Răspuns greșit
-    set LabelFeedback.Text to "Greșit! Răspunsul corect era: " & 
-      select item intrebareCurenta from list
-        if select item intrebareCurenta from list listaRaspunsuriCorecte = 1 then
-          listaRaspunsuriA
-        else if select item intrebareCurenta from list listaRaspunsuriCorecte = 2 then
-          listaRaspunsuriB
-        else if select item intrebareCurenta from list listaRaspunsuriCorecte = 3 then
-          listaRaspunsuriC
-        else
-          listaRaspunsuriD
-    set LabelFeedback.TextColor to "red"
-  end if
-  
-  // Facem feedback-ul vizibil
-  set LabelFeedback.Visible to true
-  
-  // Ascundem butoanele de răspuns
-  set ButonRaspuns1.Visible to false
-  set ButonRaspuns2.Visible to false
-  set ButonRaspuns3.Visible to false
-  set ButonRaspuns4.Visible to false
-  
-  // Trecem la următoarea întrebare
-  set global intrebareCurenta to global intrebareCurenta + 1
-  
-  // Verificăm dacă mai sunt întrebări
-  if global intrebareCurenta <= length of list listaIntrebari then
-    // Mai sunt întrebări, așteaptă o secundă și afișează următoarea
-    call AfiseazaIntrebare
-  else
-    // Nu mai sunt întrebări, afișăm rezultatul final
-    set LabelIntrebare.Text to "Quiz terminat! Scorul tău final: " & global scor & " din " & length of list listaIntrebari
-    set ButonStart.Text to "JOC NOU"
-    set ButonStart.Visible to true
-  end if`}
-                              language="plaintext"
-                            />
+                              language="javascript">
+                              when ButonRaspuns1.Click do
+                                // Verificăm dacă răspunsul este corect
+                                if select item intrebareCurenta from list listaRaspunsuriCorecte = 1 then
+                                  // Răspuns corect
+                                  set global scor to global scor + 1
+                                  set LabelScor.Text to global scor
+                                  set LabelFeedback.Text to "Corect!"
+                                  set LabelFeedback.TextColor to "green"
+                                else
+                                  // Răspuns greșit
+                                  set LabelFeedback.Text to "Greșit! Răspunsul corect era: " & 
+                                    select item intrebareCurenta from list
+                                      if select item intrebareCurenta from list listaRaspunsuriCorecte = 1 then
+                                        listaRaspunsuriA
+                                      else if select item intrebareCurenta from list listaRaspunsuriCorecte = 2 then
+                                        listaRaspunsuriB
+                                      else if select item intrebareCurenta from list listaRaspunsuriCorecte = 3 then
+                                        listaRaspunsuriC
+                                      else
+                                        listaRaspunsuriD
+                                  set LabelFeedback.TextColor to "red"
+                                end if
+
+                                // Facem feedback-ul vizibil
+                                set LabelFeedback.Visible to true
+
+                                // Ascundem butoanele de răspuns
+                                set ButonRaspuns1.Visible to false
+                                set ButonRaspuns2.Visible to false
+                                set ButonRaspuns3.Visible to false
+                                set ButonRaspuns4.Visible to false
+
+                                // Trecem la următoarea întrebare
+                                set global intrebareCurenta to global intrebareCurenta + 1
+
+                                // Verificăm dacă mai sunt întrebări
+                                if global intrebareCurenta <= length of list listaIntrebari then
+                                  // Mai sunt întrebări, așteaptă o secundă și afișează următoarea
+                                  call AfiseazaIntrebare
+                                else
+                                  // Nu mai sunt întrebări, afișăm rezultatul final
+                                  set LabelIntrebare.Text to "Quiz terminat! Scorul tău final: " & global scor & " din " & length of list listaIntrebari
+                                  set ButonStart.Text to "JOC NOU"
+                                  set ButonStart.Visible to true
+                                end if
+                            </CodeBlock>
                           </div>
                         </section>
                       </TabsContent>
@@ -930,4 +929,3 @@ add items to list listaRaspunsuriCorecte
 };
 
 export default Session2;
-
