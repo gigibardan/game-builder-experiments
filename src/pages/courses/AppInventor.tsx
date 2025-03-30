@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { 
-  ArrowRight, Laptop, Smartphone, Rocket, GameController, 
+  ArrowRight, Laptop, Smartphone, Rocket, Gamepad2, 
   MessageSquare, PaintBucket, Compass, Zap, Database,
   Bolt, Sparkles, Code
 } from 'lucide-react';
