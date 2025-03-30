@@ -8,7 +8,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   ArrowRight, ArrowLeft, Lightbulb, 
   Code, Terminal, Trophy, Check, Info, Download, FileCode, 
-  GameController, Rocket, Share2, PlusCircle, Sparkles
+  Rocket, Share2, PlusCircle, Sparkles, 
+  Gamepad2 as GameController, Smartphone, Laptop
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -331,7 +332,7 @@ const Session3 = () => {
                           Mai întâi, vom defini câteva variabile globale pentru a ține evidența scorului, vieților și stării jocului:
                         </p>
                         
-                        <CodeBlock language="text" className="mb-4">
+                        <CodeBlock language="text">
 {`Când Screen1.Initialize
    set global scor to 0
    set global vieti to 3
@@ -351,7 +352,7 @@ const Session3 = () => {
                           De asemenea, trebuie să creăm o procedură pentru resetarea poziției obiectului:
                         </p>
                         
-                        <CodeBlock language="text" className="mb-4">
+                        <CodeBlock language="text">
 {`to resetObject
    set ObiectSprite.X to random integer from 10 to (Canvas1.Width - ObiectSprite.Width - 10)
    set ObiectSprite.Y to 0
@@ -377,7 +378,7 @@ const Session3 = () => {
                           Vom utiliza senzorul de orientare pentru a mișca coșul stânga-dreapta, în funcție de înclinarea dispozitivului:
                         </p>
                         
-                        <CodeBlock language="text" className="mb-4">
+                        <CodeBlock language="text">
 {`Când OrientationSensor1.OrientationChanged
    set move to OrientationSensor1.Pitch / 10
    set newX to CosSprite.X + move
@@ -417,7 +418,7 @@ const Session3 = () => {
                           Pentru a face obiectul să cadă, vom utiliza Clock1.Timer și vom actualiza poziția Y a obiectului:
                         </p>
                         
-                        <CodeBlock language="text" className="mb-4">
+                        <CodeBlock language="text">
 {`Când Clock1.Timer
    set ObiectSprite.Y to ObiectSprite.Y + dropSpeed
    
@@ -462,7 +463,7 @@ const Session3 = () => {
                           Când obiectul care cade lovește coșul, trebuie să actualizăm scorul și să resetăm poziția obiectului:
                         </p>
                         
-                        <CodeBlock language="text" className="mb-4">
+                        <CodeBlock language="text">
 {`Când ObiectSprite.CollidedWith CosSprite
    // Obiectul a fost prins
    set global scor to global scor + 1
@@ -487,7 +488,7 @@ const Session3 = () => {
                           În final, trebuie să adăugăm o procedură pentru terminarea jocului:
                         </p>
                         
-                        <CodeBlock language="text" className="mb-4">
+                        <CodeBlock language="text">
 {`to GameOver
    set notificare to " Jocul s-a terminat! Scor final: " 
    set notificare to join notificare global scor
@@ -611,7 +612,7 @@ const Session3 = () => {
                           <p className="text-gray-600 text-sm">
                             Creează mai multe nivele cu dificultate progresivă, fiecare cu obiective diferite sau viteze diferite de cădere.
                           </p>
-                          <CodeBlock language="text" className="mt-2" style={{ maxHeight: "100px" }}>
+                          <CodeBlock language="text" style={{ maxHeight: "100px" }}>
 {`set global level to 1
 if global scor > 10 then
    set global level to 2
@@ -628,7 +629,7 @@ end if`}
                           <p className="text-gray-600 text-sm">
                             Introdu obstacole care se mișcă pe ecran și pe care jucătorul trebuie să le evite în timp ce încearcă să prindă obiectele.
                           </p>
-                          <CodeBlock language="text" className="mt-2" style={{ maxHeight: "100px" }}>
+                          <CodeBlock language="text" style={{ maxHeight: "100px" }}>
 {`Când ObstacolSprite.CollidedWith CosSprite
    set global vieti to global vieti - 1
    // Actualizare afișaj vieți`}
@@ -643,7 +644,7 @@ end if`}
                           <p className="text-gray-600 text-sm">
                             Adaugă obiecte speciale care oferă bonusuri (ex: vieți suplimentare, scor dublu, încetinirea timpului).
                           </p>
-                          <CodeBlock language="text" className="mt-2" style={{ maxHeight: "100px" }}>
+                          <CodeBlock language="text" style={{ maxHeight: "100px" }}>
 {`if global itemType = "viataExtra" then
    set global vieti to global vieti + 1
    // Actualizare afișaj vieți
@@ -659,7 +660,7 @@ end if`}
                           <p className="text-gray-600 text-sm">
                             Adaugă o funcționalitate pentru a împărtăși scorul pe rețelele sociale sau pentru a salva recordurile locale.
                           </p>
-                          <CodeBlock language="text" className="mt-2" style={{ maxHeight: "100px" }}>
+                          <CodeBlock language="text" style={{ maxHeight: "100px" }}>
 {`Când ShareButton.Click
    set message to join "Am obținut " global scor " puncte în jocul Prinde Obiectul!"
    call Sharing1.ShareMessage message`}
