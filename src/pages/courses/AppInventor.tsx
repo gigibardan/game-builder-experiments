@@ -176,6 +176,16 @@ const AppInventor = () => {
                 </Link>
               </CardContent>
             </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold mb-3">Lecția 9: Aplicație de Notițe</h3>
+                <p className="text-gray-600 mb-4">Dezvoltă o aplicație completă de notițe cu funcționalități CRUD și personalizare.</p>
+                <Link to="/appinventor/session9">
+                  <Button className="w-full">Accesează lecția</Button>
+                </Link>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </main>

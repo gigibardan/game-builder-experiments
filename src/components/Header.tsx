@@ -110,7 +110,10 @@ const Header = () => {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <Link to="/">
-                  <Button variant={isActive('/') ? "default" : "ghost"} className="text-sm text-white hover:bg-white/10 hover:text-white">
+                  <Button variant="ghost" className={cn(
+                    "text-sm text-white hover:bg-white/10 hover:text-white",
+                    isActive('/') ? "bg-white/20" : ""
+                  )}>
                     <Home className="mr-1 h-4 w-4" />
                     <span>Acasă</span>
                   </Button>
@@ -118,7 +121,7 @@ const Header = () => {
               </NavigationMenuItem>
               
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-sm text-white hover:bg-white/10 hover:text-white">
+                <NavigationMenuTrigger className="text-sm text-white hover:bg-white/10 hover:text-white bg-transparent">
                   <Book className="mr-1 h-4 w-4" />
                   <span>Cursuri</span>
                 </NavigationMenuTrigger>

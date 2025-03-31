@@ -9,7 +9,7 @@ const ReadingProgressBar = () => {
   useEffect(() => {
     const handleScroll = () => {
       // Show when scrolled a bit
-      if (window.scrollY > 200) {
+      if (window.scrollY > 100) {
         setVisible(true);
       } else {
         setVisible(false);
@@ -29,7 +29,7 @@ const ReadingProgressBar = () => {
 
   return (
     <div
-      className={`fixed top-16 left-0 right-0 z-40 transition-opacity duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-opacity duration-300 ${
         visible ? 'opacity-100' : 'opacity-0'
       }`}
     >

@@ -1,7 +1,6 @@
 
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
@@ -25,48 +24,52 @@ import Session3 from "./pages/appinventor/Session3";
 import Session4 from "./pages/appinventor/Session4";
 import Session5 from "./pages/appinventor/Session5";
 import Session6 from "./pages/appinventor/Session6";
+import Session7 from "./pages/appinventor/Session7";
+import Session8 from "./pages/appinventor/Session8";
+import Session9 from "./pages/appinventor/Session9";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
+    <BrowserRouter>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          
-          {/* App Inventor Routes */}
-          <Route path="/appinventor" element={<AppInventor />} />
-          <Route path="/appinventor/session1" element={<Session1 />} />
-          <Route path="/appinventor/session2" element={<Session2 />} />
-          <Route path="/appinventor/session3" element={<Session3 />} />
-          <Route path="/appinventor/session4" element={<Session4 />} />
-          <Route path="/appinventor/session5" element={<Session5 />} />
-          <Route path="/appinventor/session6" element={<Session6 />} />
-          
-          {/* Alte cursuri */}
-          <Route path="/scratch" element={<Scratch />} />
-          <Route path="/construct3" element={<Construct3 />} />
-          <Route path="/gdevelop" element={<GDevelop />} />
-          <Route path="/alice3" element={<Alice3 />} />
-          <Route path="/microbit-arcade" element={<MicrobitArcade />} />
-          <Route path="/minecraft-modding" element={<MinecraftModding />} />
-          <Route path="/roblox-lua" element={<RobloxLua />} />
-          <Route path="/python" element={<Python />} />
-          <Route path="/greenfoot" element={<Greenfoot />} />
-          <Route path="/godot" element={<Godot />} />
-          <Route path="/frontend-dev" element={<FrontendDev />} />
-          
-          {/* Rute vechi păstrate pentru compatibilitate */}
-          <Route path="/curriculum" element={<Curriculum />} />
-          
-          {/* Ruta pentru pagini inexistente */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        
+        {/* App Inventor Routes */}
+        <Route path="/courses/appinventor" element={<AppInventor />} />
+        <Route path="/appinventor/session1" element={<Session1 />} />
+        <Route path="/appinventor/session2" element={<Session2 />} />
+        <Route path="/appinventor/session3" element={<Session3 />} />
+        <Route path="/appinventor/session4" element={<Session4 />} />
+        <Route path="/appinventor/session5" element={<Session5 />} />
+        <Route path="/appinventor/session6" element={<Session6 />} />
+        <Route path="/appinventor/session7" element={<Session7 />} />
+        <Route path="/appinventor/session8" element={<Session8 />} />
+        <Route path="/appinventor/session9" element={<Session9 />} />
+        
+        {/* Alte cursuri */}
+        <Route path="/courses/scratch" element={<Scratch />} />
+        <Route path="/courses/construct3" element={<Construct3 />} />
+        <Route path="/courses/gdevelop" element={<GDevelop />} />
+        <Route path="/courses/alice3" element={<Alice3 />} />
+        <Route path="/courses/microbitarcade" element={<MicrobitArcade />} />
+        <Route path="/courses/minecraftmodding" element={<MinecraftModding />} />
+        <Route path="/courses/robloxlua" element={<RobloxLua />} />
+        <Route path="/courses/python" element={<Python />} />
+        <Route path="/courses/greenfoot" element={<Greenfoot />} />
+        <Route path="/courses/godot" element={<Godot />} />
+        <Route path="/courses/frontenddev" element={<FrontendDev />} />
+        
+        {/* Rute vechi păstrate pentru compatibilitate */}
+        <Route path="/curriculum" element={<Curriculum />} />
+        
+        {/* Ruta pentru pagini inexistente */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   </QueryClientProvider>
 );
 
