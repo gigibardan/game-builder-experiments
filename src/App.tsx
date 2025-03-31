@@ -40,6 +40,7 @@ const App = () => (
         
         {/* App Inventor Routes */}
         <Route path="/courses/appinventor" element={<AppInventor />} />
+        <Route path="/appinventor" element={<AppInventor />} /> {/* Added route for /appinventor */}
         <Route path="/appinventor/session1" element={<Session1 />} />
         <Route path="/appinventor/session2" element={<Session2 />} />
         <Route path="/appinventor/session3" element={<Session3 />} />

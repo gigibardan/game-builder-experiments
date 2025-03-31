@@ -62,7 +62,7 @@ const Header = () => {
       category: "Începători (8-12 ani)",
       items: [
         { title: "Scratch", path: "/courses/scratch", icon: <PenTool className="h-4 w-4 mr-2" />, description: "Laboratorul de Jocuri pentru începători" },
-        { title: "App Inventor", path: "/courses/appinventor", icon: <Laptop className="h-4 w-4 mr-2" />, description: "Atelierul de Aplicații Mobile" },
+        { title: "App Inventor", path: "/appinventor", icon: <Laptop className="h-4 w-4 mr-2" />, description: "Atelierul de Aplicații Mobile" },
       ]
     },
     {
