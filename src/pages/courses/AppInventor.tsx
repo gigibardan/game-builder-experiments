@@ -49,6 +49,7 @@ const AppInventor = () => {
                   <li>Drawing App - aplicație de desen</li>
                   <li>Weather App - aplicație meteo</li>
                   <li>Game - joc simplu cu obiecte în mișcare</li>
+                  <li>Chat App - aplicație de mesagerie</li>
                 </ul>
               </div>
             </div>
@@ -92,6 +93,26 @@ const AppInventor = () => {
                 <h3 className="text-xl font-semibold mb-3">Lecția 4: Weather App</h3>
                 <p className="text-gray-600 mb-4">Dezvoltă o aplicație meteo care utilizează date din API-uri externe.</p>
                 <Link to="/appinventor/session4">
+                  <Button className="w-full">Accesează lecția</Button>
+                </Link>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold mb-3">Lecția 5: Joc Arcade</h3>
+                <p className="text-gray-600 mb-4">Creează un joc arcade simplu cu obiecte în mișcare și coliziuni.</p>
+                <Link to="/appinventor/session5">
+                  <Button className="w-full">Accesează lecția</Button>
+                </Link>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold mb-3">Lecția 6: Aplicație de Chat</h3>
+                <p className="text-gray-600 mb-4">Construiește o aplicație de mesagerie instant cu comunicare în timp real.</p>
+                <Link to="/appinventor/session6">
                   <Button className="w-full">Accesează lecția</Button>
                 </Link>
               </CardContent>

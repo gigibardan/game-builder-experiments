@@ -2,7 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Laptop, Book, Home, Menu, X, ChevronDown, Gamepad, Code, Rocket, Box } from 'lucide-react';
+import { 
+  Laptop, 
+  Book, 
+  Home, 
+  Menu, 
+  X, 
+  ChevronDown, 
+  Gamepad, 
+  Code, 
+  Rocket 
+} from 'lucide-react';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -46,7 +56,7 @@ const Header = () => {
     {
       category: "Începători (8-12 ani)",
       items: [
-        { title: "Scratch", path: "/scratch", icon: <Puzzle className="h-4 w-4 mr-2" />, description: "Laboratorul de Jocuri pentru începători" },
+        { title: "Scratch", path: "/scratch", icon: <Gamepad className="h-4 w-4 mr-2" />, description: "Laboratorul de Jocuri pentru începători" },
         { title: "App Inventor", path: "/appinventor", icon: <Laptop className="h-4 w-4 mr-2" />, description: "Atelierul de Aplicații Mobile" },
       ]
     },
@@ -55,17 +65,17 @@ const Header = () => {
       items: [
         { title: "Construct 3", path: "/construct3", icon: <Gamepad className="h-4 w-4 mr-2" />, description: "Dezvoltare de Jocuri 2D" },
         { title: "GDevelop", path: "/gdevelop", icon: <Rocket className="h-4 w-4 mr-2" />, description: "Fabrica de Jocuri" },
-        { title: "Alice 3", path: "/alice3", icon: <Box className="h-4 w-4 mr-2" />, description: "Povești 3D Interactive" },
-        { title: "micro:bit Arcade", path: "/microbit-arcade", icon: <Blocks className="h-4 w-4 mr-2" />, description: "Jocuri și Electronice" },
+        { title: "Alice 3", path: "/alice3", icon: <Code className="h-4 w-4 mr-2" />, description: "Povești 3D Interactive" },
+        { title: "micro:bit Arcade", path: "/microbit-arcade", icon: <Gamepad className="h-4 w-4 mr-2" />, description: "Jocuri și Electronice" },
       ]
     },
     {
       category: "Avansați (12-18 ani)",
       items: [
-        { title: "Minecraft Modding", path: "/minecraft-modding", icon: <Brush className="h-4 w-4 mr-2" />, description: "De la jucător la creator" },
-        { title: "Roblox Lua", path: "/roblox-lua", icon: <Layout className="h-4 w-4 mr-2" />, description: "Universul Dezvoltării de Jocuri" },
+        { title: "Minecraft Modding", path: "/minecraft-modding", icon: <Code className="h-4 w-4 mr-2" />, description: "De la jucător la creator" },
+        { title: "Roblox Lua", path: "/roblox-lua", icon: <Code className="h-4 w-4 mr-2" />, description: "Universul Dezvoltării de Jocuri" },
         { title: "Python", path: "/python", icon: <Code className="h-4 w-4 mr-2" />, description: "De la Cod la Aplicații" },
-        { title: "Frontend Development", path: "/frontend-dev", icon: <Globe className="h-4 w-4 mr-2" />, description: "Construiește Web-ul Viitorului" },
+        { title: "Frontend Development", path: "/frontend-dev", icon: <Code className="h-4 w-4 mr-2" />, description: "Construiește Web-ul Viitorului" },
       ]
     }
   ];
