@@ -3,12 +3,12 @@ import React from 'react';
 import { Card } from '@/components/ui/card';
 
 interface CodeBlockProps {
-  children: React.ReactNode;
+  children?: React.ReactNode; // Made optional with the ? mark
   language?: string;
   title?: string;
   className?: string;
   style?: React.CSSProperties;
-  code?: string; // Added this property to fix build errors
+  code?: string;
 }
 
 const CodeBlock = ({ children, language = 'javascript', title, className, style, code }: CodeBlockProps) => {
