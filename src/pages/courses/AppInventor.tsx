@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Gamepad } from 'lucide-react';
+import { Gamepad, Smartphone, Star } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
@@ -12,8 +12,47 @@ const AppInventor = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
       
-      <main className="flex-grow container mx-auto py-8 px-4">
-        <div className="mb-8">
+      <main className="flex-grow container mx-auto">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-r from-course-purple to-course-blue text-white py-12 px-4 rounded-lg mt-8 mb-12">
+          <div className="container mx-auto">
+            <div className="flex flex-col md:flex-row items-center justify-between">
+              <div className="md:w-1/2 mb-8 md:mb-0">
+                <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+                  App Inventor
+                  <span className="block text-yellow-300">Atelierul de Aplicații Mobile</span>
+                </h1>
+                <p className="text-lg mb-6 text-white/90 max-w-xl">
+                  Învață să creezi aplicații și jocuri pentru dispozitive mobile folosind o platformă vizuală de programare dezvoltată de MIT.
+                </p>
+                <div className="flex items-center space-x-4">
+                  <div className="bg-white/20 px-4 py-2 rounded-full flex items-center">
+                    <Star className="h-4 w-4 text-yellow-300 mr-1" />
+                    <span className="text-sm font-medium">Nivel: Începător-Intermediar</span>
+                  </div>
+                  <div className="bg-white/20 px-4 py-2 rounded-full flex items-center">
+                    <Smartphone className="h-4 w-4 text-yellow-300 mr-1" />
+                    <span className="text-sm font-medium">Vârsta: 10-14 ani</span>
+                  </div>
+                </div>
+              </div>
+              <div className="md:w-1/2 flex justify-center">
+                <div className="bg-white rounded-lg overflow-hidden shadow-xl w-72 h-80 relative">
+                  <img 
+                    src="https://appinventor.mit.edu/explore/sites/explore.appinventor.mit.edu/files/ai-bee-logo.png" 
+                    alt="MIT App Inventor Logo" 
+                    className="object-contain h-full w-full p-4"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-course-purple/90 text-white text-center py-3 px-4">
+                    <p className="font-medium">Platform: Web & Android</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <div className="mb-8 px-4">
           <h1 className="text-3xl font-bold mb-4">App Inventor - Atelierul de Aplicații Mobile</h1>
           <p className="text-lg text-gray-700 mb-6">
             Învață să creezi aplicații și jocuri pentru dispozitive mobile folosind o platformă vizuală de programare.

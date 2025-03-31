@@ -11,7 +11,13 @@ import {
   ChevronDown, 
   Gamepad, 
   Code, 
-  Rocket 
+  Rocket,
+  PenTool,
+  LayoutGrid,
+  Globe,
+  Box,
+  Boxes,
+  Paintbrush
 } from 'lucide-react';
 import {
   NavigationMenu,
@@ -56,7 +62,7 @@ const Header = () => {
     {
       category: "Începători (8-12 ani)",
       items: [
-        { title: "Scratch", path: "/scratch", icon: <Gamepad className="h-4 w-4 mr-2" />, description: "Laboratorul de Jocuri pentru începători" },
+        { title: "Scratch", path: "/scratch", icon: <PenTool className="h-4 w-4 mr-2" />, description: "Laboratorul de Jocuri pentru începători" },
         { title: "App Inventor", path: "/appinventor", icon: <Laptop className="h-4 w-4 mr-2" />, description: "Atelierul de Aplicații Mobile" },
       ]
     },
@@ -66,16 +72,18 @@ const Header = () => {
         { title: "Construct 3", path: "/construct3", icon: <Gamepad className="h-4 w-4 mr-2" />, description: "Dezvoltare de Jocuri 2D" },
         { title: "GDevelop", path: "/gdevelop", icon: <Rocket className="h-4 w-4 mr-2" />, description: "Fabrica de Jocuri" },
         { title: "Alice 3", path: "/alice3", icon: <Code className="h-4 w-4 mr-2" />, description: "Povești 3D Interactive" },
-        { title: "micro:bit Arcade", path: "/microbit-arcade", icon: <Gamepad className="h-4 w-4 mr-2" />, description: "Jocuri și Electronice" },
+        { title: "micro:bit Arcade", path: "/microbit-arcade", icon: <LayoutGrid className="h-4 w-4 mr-2" />, description: "Jocuri și Electronice" },
       ]
     },
     {
       category: "Avansați (12-18 ani)",
       items: [
-        { title: "Minecraft Modding", path: "/minecraft-modding", icon: <Code className="h-4 w-4 mr-2" />, description: "De la jucător la creator" },
+        { title: "Minecraft Modding", path: "/minecraft-modding", icon: <Boxes className="h-4 w-4 mr-2" />, description: "De la jucător la creator" },
         { title: "Roblox Lua", path: "/roblox-lua", icon: <Code className="h-4 w-4 mr-2" />, description: "Universul Dezvoltării de Jocuri" },
         { title: "Python", path: "/python", icon: <Code className="h-4 w-4 mr-2" />, description: "De la Cod la Aplicații" },
-        { title: "Frontend Development", path: "/frontend-dev", icon: <Code className="h-4 w-4 mr-2" />, description: "Construiește Web-ul Viitorului" },
+        { title: "Frontend Development", path: "/frontend-dev", icon: <Globe className="h-4 w-4 mr-2" />, description: "Construiește Web-ul Viitorului" },
+        { title: "Greenfoot", path: "/greenfoot", icon: <Paintbrush className="h-4 w-4 mr-2" />, description: "Java prin Jocuri" },
+        { title: "Godot", path: "/godot", icon: <Gamepad className="h-4 w-4 mr-2" />, description: "Game Development Pro" },
       ]
     }
   ];
@@ -85,7 +93,11 @@ const Header = () => {
       <div className="container mx-auto py-2 px-4 flex flex-col sm:flex-row justify-between items-center">
         <div className="flex items-center justify-between w-full sm:w-auto">
           <Link to="/" className="flex items-center space-x-2 text-gray-800" onClick={closeMenu}>
-            <Laptop size={32} className={`transition-colors ${isScrolled || location.pathname === '/' ? 'text-course-purple' : 'text-white'}`} />
+            <img 
+              src="https://techminds-academy.ro/assets/images/logo-techminds-sigla.png" 
+              alt="TechMinds Academy Logo" 
+              className="h-10 w-auto" 
+            />
             <span className={`text-xl font-bold transition-colors ${isScrolled || location.pathname === '/' ? 'text-gray-800' : 'text-white'}`}>
               TechMinds Academy
             </span>
@@ -115,11 +127,11 @@ const Header = () => {
                   <span>Cursuri</span>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="w-[850px] p-4 md:grid-cols-3 lg:w-[850px]">
+                  <div className="grid grid-cols-3 p-4 w-[850px]">
                     {courses.map((category, idx) => (
-                      <div key={idx} className="mb-4">
+                      <div key={idx} className="mb-4 mx-2">
                         <h3 className="text-sm font-medium mb-2 text-gray-500 border-b pb-1">{category.category}</h3>
-                        <div className="grid grid-cols-2 gap-2 mb-2">
+                        <div className="grid grid-cols-1 gap-2 mb-2">
                           {category.items.map((item, i) => (
                             <NavigationMenuLink asChild key={i}>
                               <Link
@@ -140,7 +152,7 @@ const Header = () => {
                         </div>
                       </div>
                     ))}
-                    <div className="text-center mt-4 pt-2 border-t">
+                    <div className="text-center col-span-3 mt-4 pt-2 border-t">
                       <NavigationMenuLink asChild>
                         <Link
                           to="/#courses"

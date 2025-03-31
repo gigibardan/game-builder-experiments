@@ -5,9 +5,9 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, ChevronRight, Star, MessageSquare, Send } from 'lucide-react';
+import { ArrowLeft, ChevronRight, Star, Terminal, MessageCircle } from 'lucide-react';
 import CodeBlock from '@/components/CodeBlock';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Session6 = () => {
   return (
@@ -27,14 +27,14 @@ const Session6 = () => {
                   <h1 className="text-2xl md:text-3xl font-bold">Sesiunea 6: Aplicație de Chat</h1>
                 </div>
                 <p className="text-white/90">
-                  Construiește o aplicație de mesagerie instant cu comunicare în timp real!
+                  Construiește o aplicație de mesagerie instant cu comunicare în timp real
                 </p>
               </div>
               <div className="mt-4 md:mt-0">
-                <Button asChild variant="outline" className="border-white text-white hover:bg-white/20">
+                <Button asChild variant="secondary" className="border-white text-gray-800 hover:bg-white/90">
                   <Link to="/appinventor" className="flex items-center">
                     <ArrowLeft className="mr-2 h-4 w-4" />
-                    <span>Înapoi la curriculum</span>
+                    <span>Înapoi la curs</span>
                   </Link>
                 </Button>
               </div>
@@ -50,320 +50,423 @@ const Session6 = () => {
               <div className="lg:w-3/4">
                 <Card className="mb-8">
                   <CardContent className="p-6">
-                    <Tabs defaultValue="tutorial">
-                      <TabsList className="grid w-full grid-cols-2 mb-6">
-                        <TabsTrigger value="tutorial">Tutorial</TabsTrigger>
-                        <TabsTrigger value="code">Codul complet</TabsTrigger>
+                    <h2 className="text-2xl font-bold mb-4">Aplicație de Chat: ConnectMe</h2>
+                    <p className="mb-4">
+                      În această sesiune vom crea o aplicație de mesagerie instant numită "ConnectMe". Vom învăța cum să folosim serviciile cloud pentru a stoca și sincroniza mesajele între utilizatori în timp real.
+                    </p>
+                    
+                    <div className="bg-blue-50 border-l-4 border-course-blue p-4 my-6">
+                      <h3 className="text-lg font-semibold text-course-blue mb-2">Ce vei învăța</h3>
+                      <ul className="list-disc list-inside space-y-1">
+                        <li>Cum să folosești componenta Firebase pentru stocarea datelor în cloud</li>
+                        <li>Cum să implementezi un sistem de autentificare simplu</li>
+                        <li>Cum să trimiți și să primești mesaje în timp real</li>
+                        <li>Cum să gestionezi și să afișezi liste de mesaje</li>
+                        <li>Concepte de bază despre securitatea datelor</li>
+                      </ul>
+                    </div>
+
+                    <Tabs defaultValue="setup" className="w-full">
+                      <TabsList className="grid w-full grid-cols-3">
+                        <TabsTrigger value="setup">Configurare Firebase</TabsTrigger>
+                        <TabsTrigger value="implementation">Interfață & Implementare</TabsTrigger>
+                        <TabsTrigger value="extensions">Extinderi</TabsTrigger>
                       </TabsList>
-
-                      <TabsContent value="tutorial">
-                        <h2 className="text-2xl font-bold mb-4">Introducere în aplicația de chat</h2>
-                        <p className="mb-4">
-                          În această lecție, vom construi o aplicație de chat simplu care permite utilizatorilor să 
-                          trimită și să primească mesaje în timp real. Vom folosi serviciul Firebase pentru a stoca și 
-                          sincroniza mesajele între dispozitive.
-                        </p>
-                        
-                        <div className="bg-blue-50 border-l-4 border-course-blue p-4 my-6">
-                          <h3 className="text-lg font-semibold text-course-blue mb-2">Ce vei învăța</h3>
-                          <ul className="list-disc list-inside space-y-1">
-                            <li>Cum să folosești Firebase pentru a stoca date în cloud</li>
-                            <li>Cum să sincronizezi date între dispozitive în timp real</li>
-                            <li>Cum să creezi o interfață de chat</li>
-                            <li>Cum să gestionezi autentificarea utilizatorilor</li>
-                          </ul>
-                        </div>
-
-                        <h2 className="text-2xl font-bold mb-4 mt-8">Pasul 1: Configurarea Firebase</h2>
-                        <p className="mb-4">
-                          Înainte de a începe dezvoltarea aplicației, trebuie să configurăm Firebase pentru a stoca mesajele:
-                        </p>
-
-                        <ol className="list-decimal list-inside space-y-4 mb-6">
-                          <li className="p-4 border rounded-md bg-gray-50">
-                            <strong>Creează un cont Firebase</strong> dacă nu ai deja unul, la:
-                            <a href="https://firebase.google.com/" target="_blank" rel="noopener noreferrer" className="text-course-blue hover:underline ml-1">
-                              https://firebase.google.com/
-                            </a>
-                          </li>
-                          <li className="p-4 border rounded-md bg-gray-50">
-                            <strong>Creează un proiect nou</strong> în consola Firebase
-                          </li>
-                          <li className="p-4 border rounded-md bg-gray-50">
-                            <strong>Activează Realtime Database</strong> din meniul din stânga
-                            <ul className="list-disc list-inside mt-2 ml-4">
-                              <li>Alege "Start in test mode" pentru regulile de securitate</li>
-                            </ul>
-                          </li>
-                          <li className="p-4 border rounded-md bg-gray-50">
-                            <strong>Notează URL-ul Firebase</strong> - vei avea nevoie de el în App Inventor
-                          </li>
-                        </ol>
-
-                        <h2 className="text-2xl font-bold mb-4">Pasul 2: Crearea interfeței de utilizator</h2>
-                        
-                        <p className="mb-4">
-                          Acum vom crea interfața aplicației de chat:
-                        </p>
-
-                        <ol className="list-decimal list-inside space-y-4 mb-6">
-                          <li className="p-4 border rounded-md bg-gray-50">
-                            <strong>Creează un nou proiect</strong> în MIT App Inventor numit "ChatApp"
-                          </li>
-                          <li className="p-4 border rounded-md bg-gray-50">
-                            <strong>Adaugă un TextBox</strong> pentru numele utilizatorului
-                            <ul className="list-disc list-inside mt-2 ml-4">
-                              <li>Schimbă Hint la "Introdu numele tău"</li>
-                              <li>Setează Width la Fill parent</li>
-                            </ul>
-                          </li>
-                          <li className="p-4 border rounded-md bg-gray-50">
-                            <strong>Adaugă un aranjament HorizontalArrangement</strong> pentru autentificare
-                            <ul className="list-disc list-inside mt-2 ml-4">
-                              <li>Adaugă un buton în acest aranjament cu textul "Conectează-te"</li>
-                              <li>Adaugă o etichetă status lângă buton</li>
-                            </ul>
-                          </li>
-                          <li className="p-4 border rounded-md bg-gray-50">
-                            <strong>Adaugă un ListView</strong> pentru afișarea mesajelor
-                            <ul className="list-disc list-inside mt-2 ml-4">
-                              <li>Setează Height la 60% of screen</li>
-                              <li>Setează Width la Fill parent</li>
-                            </ul>
-                          </li>
-                          <li className="p-4 border rounded-md bg-gray-50">
-                            <strong>Adaugă un aranjament HorizontalArrangement</strong> în partea de jos
-                            <ul className="list-disc list-inside mt-2 ml-4">
-                              <li>Adaugă un TextBox pentru mesajul cu Width la 70%</li>
-                              <li>Adaugă un buton "Trimite" cu Width la 30%</li>
-                            </ul>
-                          </li>
-                          <li className="p-4 border rounded-md bg-gray-50">
-                            <strong>Adaugă componenta FirebaseDB</strong> din secțiunea Extension
-                            <ul className="list-disc list-inside mt-2 ml-4">
-                              <li>Setează FirebaseURL la URL-ul pe care l-ai notat anterior</li>
-                              <li>Setează ProjectBucket la "chat"</li>
-                            </ul>
-                          </li>
-                          <li className="p-4 border rounded-md bg-gray-50">
-                            <strong>Adaugă componenta Clock</strong> pentru actualizări periodice
-                            <ul className="list-disc list-inside mt-2 ml-4">
-                              <li>Setează TimerInterval la 1000 (1 secundă)</li>
-                              <li>Activează TimerEnabled</li>
-                            </ul>
-                          </li>
-                        </ol>
-
-                        <div className="my-8 border p-4 rounded-md text-center">
-                          <p className="text-gray-600 mb-2">
-                            Interfața aplicației tale de chat ar trebui să arate astfel:
+                      
+                      <TabsContent value="setup">
+                        <div className="space-y-4 mt-4">
+                          <h3 className="text-xl font-semibold">Pasul 1: Configurarea Firebase</h3>
+                          <p className="mb-2">
+                            Înainte de a începe să construim aplicația, trebuie să configurăm o bază de date Firebase care va stoca mesajele noastre. Firebase este o platformă dezvoltată de Google care oferă diverse servicii pentru dezvoltarea aplicațiilor mobile.
                           </p>
-                          <div className="bg-white border-2 border-gray-300 rounded-xl p-4 mx-auto">
-                            <div className="border-b pb-2 mb-2">
-                              <div className="bg-gray-100 p-2 rounded mb-2">Introdu numele tău</div>
-                              <div className="flex justify-between">
-                                <button className="bg-blue-500 text-white px-3 py-1 rounded">Conectează-te</button>
-                                <div className="text-gray-500">Status: Deconectat</div>
-                              </div>
-                            </div>
-                            <div className="bg-gray-100 h-60 mb-2 rounded overflow-y-auto p-2">
-                              <div className="bg-blue-100 p-2 rounded mb-1 text-left">Ana: Salut tuturor!</div>
-                              <div className="bg-green-100 p-2 rounded mb-1 text-left">Mihai: Bună Ana!</div>
-                            </div>
-                            <div className="flex">
-                              <div className="bg-gray-100 p-2 rounded flex-grow mr-2">Scrie un mesaj</div>
-                              <button className="bg-blue-500 text-white px-3 py-1 rounded">Trimite</button>
-                            </div>
-                          </div>
-                        </div>
-
-                        <h2 className="text-2xl font-bold mb-4">Pasul 3: Programarea funcționalității</h2>
-
-                        <p className="mb-4">
-                          Acum vom adăuga blocurile de cod pentru a face aplicația să funcționeze:
-                        </p>
-
-                        <h3 className="text-xl font-bold mb-3">3.1. Autentificarea utilizatorului</h3>
-                        <p className="mb-4">
-                          Primul pas este să permitem utilizatorului să se conecteze cu un nume:
-                        </p>
-
-                        <h3 className="text-xl font-bold mb-3">3.2. Trimiterea mesajelor</h3>
-                        <p className="mb-4">
-                          Acum vom implementa funcționalitatea de a trimite mesaje:
-                        </p>
-
-                        <h3 className="text-xl font-bold mb-3">3.3. Primirea și afișarea mesajelor</h3>
-                        <p className="mb-4">
-                          În final, vom implementa primirea și afișarea mesajelor de la alți utilizatori:
-                        </p>
-
-                        <div className="bg-green-50 border-l-4 border-green-500 p-4 my-6">
-                          <h3 className="text-lg font-semibold text-green-700 mb-2">Ce ai învățat</h3>
-                          <ul className="list-disc list-inside space-y-1">
-                            <li>Cum să folosești Firebase pentru a stoca date în cloud</li>
-                            <li>Cum să creezi o aplicație de chat funcțională</li>
-                            <li>Cum să sincronizezi date între dispozitive</li>
-                            <li>Cum să gestionezi autentificarea utilizatorilor simplu</li>
-                          </ul>
-                        </div>
-
-                        <h2 className="text-2xl font-bold mb-4 mt-8">Provocări suplimentare</h2>
-                        <div className="space-y-4 mb-8">
-                          <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
-                            <h3 className="font-bold flex items-center">
-                              <Star className="h-5 w-5 text-course-purple mr-2" />
-                              Provocare 1: Adaugă ora mesajului
-                            </h3>
-                            <p className="mt-2">
-                              Afișează ora la care a fost trimis fiecare mesaj lângă numele utilizatorului.
+                          
+                          <ol className="list-decimal list-inside space-y-4 pl-4 mt-4">
+                            <li className="p-4 border rounded-md bg-gray-50">
+                              Accesează <a href="https://firebase.google.com/" target="_blank" rel="noopener noreferrer" className="text-course-blue hover:underline">Firebase</a> și conectează-te cu contul tău Google.
+                            </li>
+                            <li className="p-4 border rounded-md bg-gray-50">
+                              Apasă pe "Go to console" și apoi pe "Add project".
+                            </li>
+                            <li className="p-4 border rounded-md bg-gray-50">
+                              Numește proiectul tău (ex. "ConnectMe") și urmează pașii pentru a crea proiectul.
+                            </li>
+                            <li className="p-4 border rounded-md bg-gray-50">
+                              După ce proiectul a fost creat, din panoul de navigare din stânga, selectează "Realtime Database".
+                            </li>
+                            <li className="p-4 border rounded-md bg-gray-50">
+                              Apasă "Create Database" și alege "Start in test mode" pentru moment. Acest mod ne va permite să citim și să scriem date fără restricții de securitate pentru început.
+                            </li>
+                            <li className="p-4 border rounded-md bg-gray-50">
+                              Notează URL-ul bazei de date Realtime (va arăta aproximativ așa: <code>https://[numele-proiectului].firebaseio.com</code>). Vom avea nevoie de acesta pentru App Inventor.
+                            </li>
+                          </ol>
+                          
+                          <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 my-6">
+                            <h4 className="font-semibold text-yellow-700 mb-1">Important!</h4>
+                            <p className="text-yellow-800">
+                              În mediul de producție, nu ar trebui niciodată să folosiți modul de test pentru Firebase. Pentru simplicitate în acest exercițiu folosim acest mod, dar pentru o aplicație reală trebuie să implementați reguli de securitate corespunzătoare.
                             </p>
                           </div>
                           
-                          <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
-                            <h3 className="font-bold flex items-center">
-                              <Star className="h-5 w-5 text-course-purple mr-2" />
-                              Provocare 2: Chat-uri private
-                            </h3>
-                            <p className="mt-2">
-                              Implementează opțiunea de a trimite mesaje private către un utilizator specific.
-                            </p>
-                          </div>
+                          <h3 className="text-xl font-semibold mt-6">Pasul 2: Configurarea App Inventor pentru Firebase</h3>
+                          <p>
+                            Acum trebuie să adăugăm extensia Firebase în proiectul nostru App Inventor.
+                          </p>
                           
-                          <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
-                            <h3 className="font-bold flex items-center">
-                              <Star className="h-5 w-5 text-course-purple mr-2" />
-                              Provocare 3: Trimitere de imagini
-                            </h3>
-                            <p className="mt-2">
-                              Adaugă funcționalitatea de a trimite imagini în conversație.
+                          <ol className="list-decimal list-inside space-y-4 pl-4 mt-4">
+                            <li className="p-4 border rounded-md bg-gray-50">
+                              Accesează <a href="https://appinventor.mit.edu/" target="_blank" rel="noopener noreferrer" className="text-course-blue hover:underline">MIT App Inventor</a> și autentifică-te.
+                            </li>
+                            <li className="p-4 border rounded-md bg-gray-50">
+                              Creează un nou proiect și numește-l "ConnectMe".
+                            </li>
+                            <li className="p-4 border rounded-md bg-gray-50">
+                              În Palette, caută secțiunea "Extensions" și apasă pe "Import extension".
+                            </li>
+                            <li className="p-4 border rounded-md bg-gray-50">
+                              Alege "Import extension" și apoi "Import URL", introducând URL-ul extensiei Firebase pentru App Inventor:
+                              <CodeBlock>
+                                {`http://community.appinventor.mit.edu/appinventor/extensions/com.google.firebase.community.FirebaseDB.aix`}
+                              </CodeBlock>
+                              După import, ar trebui să ai un nou component disponibil numit "FirebaseDB".
+                            </li>
+                            <li className="p-4 border rounded-md bg-gray-50">
+                              Adaugă un component FirebaseDB în ecranul tău. În proprietățile componentului:
+                              <ul className="list-disc list-inside mt-2 ml-4">
+                                <li>Setează "FirebaseURL" la URL-ul bazei tale de date Realtime notat anterior</li>
+                                <li>Setează "ProjectBucket" la "chat"</li>
+                              </ul>
+                            </li>
+                          </ol>
+                          
+                          <div className="mt-6 text-center">
+                            <p className="text-gray-600 mb-2">
+                              Cu Firebase configurat, acum suntem pregătiți să construim interfața aplicației noastre de chat.
                             </p>
                           </div>
                         </div>
                       </TabsContent>
-
-                      <TabsContent value="code">
-                        <section>
-                          <h2 className="text-2xl font-bold mb-4">Codul complet pentru aplicația de Chat</h2>
-
-                          <div className="mb-6">
-                            <h3 className="text-xl font-semibold mb-3">Variabile globale</h3>
-                            <CodeBlock
-                              language="blocks"
-                              code={`
+                      
+                      <TabsContent value="implementation">
+                        <div className="space-y-4 mt-4">
+                          <h3 className="text-xl font-semibold">Pasul 3: Crearea interfeței aplicației</h3>
+                          <p className="mb-2">
+                            Vom construi o interfață simplă pentru aplicația noastră de chat.
+                          </p>
+                          
+                          <ol className="list-decimal list-inside space-y-4 pl-4 mt-4">
+                            <li className="p-4 border rounded-md bg-gray-50">
+                              Din secțiunea "Layout", adaugă un "VerticalArrangement" care va conține toate elementele ecranului nostru.
+                            </li>
+                            <li className="p-4 border rounded-md bg-gray-50">
+                              Adaugă o zonă de autentificare:
+                              <ul className="list-disc list-inside mt-2 ml-4">
+                                <li>Adaugă un "Label" cu textul "ConnectMe Chat"</li>
+                                <li>Adaugă un "HorizontalArrangement" care conține:</li>
+                                <ul className="list-disc list-inside ml-4">
+                                  <li>Un "TextBox" cu hint "Nume utilizator" (denumit "UsernameTextBox")</li>
+                                  <li>Un "Button" cu textul "Conectare" (denumit "LoginButton")</li>
+                                </ul>
+                              </ul>
+                            </li>
+                            <li className="p-4 border rounded-md bg-gray-50">
+                              Adaugă zona de afișare a mesajelor:
+                              <ul className="list-disc list-inside mt-2 ml-4">
+                                <li>Un "ListView" care va afișa mesajele (denumit "MessagesListView")</li>
+                                <li>Setează Height la 60% din înălțimea ecranului</li>
+                                <li>Setează Background la o culoare deschisă</li>
+                              </ul>
+                            </li>
+                            <li className="p-4 border rounded-md bg-gray-50">
+                              Adaugă zona de compunere a mesajelor:
+                              <ul className="list-disc list-inside mt-2 ml-4">
+                                <li>Un "HorizontalArrangement" care conține:</li>
+                                <ul className="list-disc list-inside ml-4">
+                                  <li>Un "TextBox" cu hint "Scrie un mesaj" (denumit "MessageTextBox")</li>
+                                  <li>Un "Button" cu textul "Trimite" (denumit "SendButton")</li>
+                                </ul>
+                              </ul>
+                            </li>
+                            <li className="p-4 border rounded-md bg-gray-50">
+                              Din secțiunea "Sensors", adaugă un component "Clock" (denumit "RefreshClock") pentru a actualiza periodic lista de mesaje.
+                            </li>
+                          </ol>
+                          
+                          <div className="mt-6 border p-4 rounded-md text-center">
+                            <p className="text-gray-600 mb-2">
+                              Interfața ta ar trebui să arate aproximativ așa:
+                            </p>
+                            <div className="bg-white border-2 border-gray-300 rounded-xl p-4 max-w-md mx-auto">
+                              <div className="text-center p-2 mb-4 font-bold bg-course-purple text-white rounded">
+                                ConnectMe Chat
+                              </div>
+                              <div className="flex justify-between p-2 mb-4">
+                                <div className="w-3/4 px-2 py-1 border rounded">Nume utilizator</div>
+                                <div className="w-1/4 px-2 py-1 bg-blue-500 text-white text-center rounded">Conectare</div>
+                              </div>
+                              <div className="h-40 mb-4 bg-gray-100 border rounded p-2 overflow-y-auto">
+                                <div className="text-left mb-2 bg-blue-100 rounded p-2">Ana: Salut tuturor!</div>
+                                <div className="text-left mb-2 bg-green-100 rounded p-2">Mihai: Bună ziua!</div>
+                                <div className="text-left mb-2 bg-blue-100 rounded p-2">Ana: Ce mai faceți?</div>
+                              </div>
+                              <div className="flex justify-between p-2">
+                                <div className="w-3/4 px-2 py-1 border rounded">Scrie un mesaj</div>
+                                <div className="w-1/4 px-2 py-1 bg-blue-500 text-white text-center rounded">Trimite</div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <h3 className="text-xl font-semibold mt-6">Pasul 4: Implementarea logicii aplicației</h3>
+                          <p className="mb-2">
+                            Acum vom programa logica aplicației folosind blocurile din App Inventor.
+                          </p>
+                          
+                          <h4 className="text-lg font-medium mt-4">Variabile globale</h4>
+                          <CodeBlock>
+{`// Variabilă pentru numele utilizatorului
 initialize global username to ""
-initialize global isConnected to false
-`}
-                            />
-                          </div>
 
-                          <div className="mb-6">
-                            <h3 className="text-xl font-semibold mb-3">Autentificare utilizator</h3>
-                            <CodeBlock
-                              language="blocks"
-                              code={`
-when ButtonConnect.Click
+// Variabilă pentru a stoca lista de mesaje
+initialize global messagesList to create empty list
+
+// Variabilă pentru a stoca timestamp-ul ultimului mesaj
+initialize global lastMessageTime to 0`}
+                          </CodeBlock>
+                          
+                          <h4 className="text-lg font-medium mt-6">Autentificarea utilizatorului</h4>
+                          <CodeBlock>
+{`when LoginButton.Click
   do
-    if TextBoxUsername.Text = "" then
-      call Notifier1.ShowAlert
-        notice "Te rugăm să introduci un nume"
+    // Verifică dacă utilizatorul a introdus un nume
+    if UsernameTextBox.Text = "" then
+      // Afișează un mesaj de eroare
+      call Notifier1.ShowAlert("Vă rugăm să introduceți un nume de utilizator!")
     else
-      set global username to TextBoxUsername.Text
-      set global isConnected to true
-      set LabelStatus.Text to join "Status: Conectat ca " global username
-      set ButtonConnect.Enabled to false
-      set TextBoxUsername.Enabled to false
-    end if
-`}
-                            />
-                          </div>
-
-                          <div className="mb-6">
-                            <h3 className="text-xl font-semibold mb-3">Trimiterea mesajelor</h3>
-                            <CodeBlock
-                              language="blocks"
-                              code={`
-when ButtonSend.Click
+      // Salvează numele utilizatorului
+      set global username to UsernameTextBox.Text
+      
+      // Dezactivează zona de autentificare
+      set UsernameTextBox.Enabled to false
+      set LoginButton.Enabled to false
+      
+      // Activează zona de chat
+      set MessageTextBox.Enabled to true
+      set SendButton.Enabled to true
+      
+      // Pornește actualizarea periodică a mesajelor
+      set RefreshClock.TimerEnabled to true
+      
+      // Trimite un mesaj de sistem că utilizatorul s-a conectat
+      call FirebaseDB1.AppendValue("messages", create dictionary with pairs ((timestamp, clock), (sender, "system"), (message, join global username " s-a conectat")))
+      
+      // Actualizează lista de mesaje
+      refreshMessages
+    end if`}
+                          </CodeBlock>
+                          
+                          <h4 className="text-lg font-medium mt-6">Trimiterea mesajelor</h4>
+                          <CodeBlock>
+{`when SendButton.Click
   do
-    if global isConnected then
-      if TextBoxMessage.Text <> "" then
-        set messageToSend to create dictionary
-          with key "sender" as global username
-          with key "message" as TextBoxMessage.Text
-          with key "timestamp" as call Clock1.Now
-        call FirebaseDB1.StoreValue
-          tag join "message_" call Clock1.Now
-          valueToStore messageToSend
-        set TextBoxMessage.Text to ""
-      end if
+    // Verifică dacă mesajul nu este gol
+    if MessageTextBox.Text = "" then
+      // Afișează un mesaj de eroare
+      call Notifier1.ShowAlert("Vă rugăm să introduceți un mesaj!")
     else
-      call Notifier1.ShowAlert
-        notice "Trebuie să te conectezi mai întâi!"
-    end if
-`}
-                            />
-                          </div>
-
-                          <div className="mb-6">
-                            <h3 className="text-xl font-semibold mb-3">Primirea mesajelor</h3>
-                            <CodeBlock
-                              language="blocks"
-                              code={`
-when FirebaseDB1.DataChanged
+      // Creează un nou mesaj cu datele necesare
+      set newMessage to create dictionary with pairs 
+        ((timestamp, clock), (sender, global username), (message, MessageTextBox.Text))
+      
+      // Adaugă mesajul în Firebase
+      call FirebaseDB1.AppendValue("messages", newMessage)
+      
+      // Golește caseta de mesaj
+      set MessageTextBox.Text to ""
+      
+      // Actualizează lista de mesaje
+      refreshMessages
+    end if`}
+                          </CodeBlock>
+                          
+                          <h4 className="text-lg font-medium mt-6">Actualizarea periodică a mesajelor</h4>
+                          <CodeBlock>
+{`when RefreshClock.Timer
   do
-    set tag to call FirebaseDB1.GetTagList
-    call updateMessageList
-      tagList tag
-
-to updateMessageList
-  with tagList
+    // Actualizează lista de mesaje
+    refreshMessages`}
+                          </CodeBlock>
+                          
+                          <h4 className="text-lg font-medium mt-6">Procedura pentru actualizarea mesajelor</h4>
+                          <CodeBlock>
+{`to refreshMessages
+  // Obține toate mesajele din Firebase
+  call FirebaseDB1.GetValue("messages", "")`}
+                          </CodeBlock>
+                          
+                          <h4 className="text-lg font-medium mt-6">Gestionarea datelor primite de la Firebase</h4>
+                          <CodeBlock>
+{`when FirebaseDB1.GotValue
   do
-    set messageList to create empty list
-    for each item tag in tagList
-      do
-        if starts tag with "message_" then
-          set message to call FirebaseDB1.GetValue
-            tag tag
-            valueIfTagNotThere ""
-          if message <> "" then
-            set messageText to join get dictionary value message "sender" ": " get dictionary value message "message"
-            call add items to list messageList messageText
+    // Verifică dacă tag-ul este gol (ceea ce înseamnă că am cerut toate mesajele)
+    if tag = "" then
+      // Verifică dacă am primit date valide
+      if not (value = "null") then
+        // Convertește valoarea JSON primită într-o listă
+        set global messagesList to value
+        
+        // Golește ListView-ul
+        call MessagesListView.Elements.Clear
+        
+        // Adaugă fiecare mesaj în ListView
+        for each item msgKey msgData in value
+          // Obține detaliile mesajului
+          set sender to select list item at (select list item at msgData "sender") 1
+          set messageText to select list item at (select list item at msgData "message") 1
+          set timestamp to select list item at (select list item at msgData "timestamp") 1
+          
+          // Formatează mesajul pentru afișare
+          if sender = "system" then
+            // Mesaje de sistem (conectări, etc)
+            set displayText to messageText
+          else
+            // Mesaje normale de la utilizatori
+            set displayText to join sender ": " messageText
           end if
-        end if
-    end for
-    call ListViewMessages.Elements
-      elements messageList
-`}
-                            />
+          
+          // Adaugă mesajul formatat în ListView
+          call MessagesListView.Elements.Add(displayText)
+        end for
+        
+        // Derulează automat la ultimul mesaj
+        set MessagesListView.Selection to (MessagesListView.Elements.Count - 1)
+      end if
+    end if`}
+                          </CodeBlock>
+                        </div>
+                      </TabsContent>
+                      
+                      <TabsContent value="extensions">
+                        <div className="space-y-4 mt-4">
+                          <h3 className="text-xl font-semibold">Extinderea aplicației de chat</h3>
+                          <p className="mb-2">
+                            Acum că ai implementat funcționalitatea de bază a aplicației de chat, poți explora următoarele funcții suplimentare:
+                          </p>
+                          
+                          <div className="space-y-4">
+                            <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
+                              <h4 className="font-bold flex items-center">
+                                <Star className="h-5 w-5 text-course-purple mr-2" />
+                                Implementează camere de chat multiple
+                              </h4>
+                              <p className="mt-2">
+                                Permite utilizatorilor să se alăture diferitelor camere de chat sau să creeze propriile lor camere.
+                              </p>
+                              <ul className="list-disc list-inside mt-2 text-gray-700">
+                                <li>Adaugă o listă derulantă pentru a selecta o cameră de chat existentă</li>
+                                <li>Adaugă un buton pentru a crea o nouă cameră</li>
+                                <li>Modifică structura bazei de date pentru a stoca mesajele pe camere</li>
+                              </ul>
+                            </div>
+                            
+                            <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
+                              <h4 className="font-bold flex items-center">
+                                <Star className="h-5 w-5 text-course-purple mr-2" />
+                                Adaugă funcția de mesaje private
+                              </h4>
+                              <p className="mt-2">
+                                Implementează posibilitatea de a trimite mesaje private între utilizatori.
+                              </p>
+                              <ul className="list-disc list-inside mt-2 text-gray-700">
+                                <li>Adaugă o listă cu utilizatorii conectați</li>
+                                <li>Permite selectarea unui utilizator pentru a-i trimite un mesaj privat</li>
+                                <li>Modifică structura bazei de date pentru a stoca mesajele private</li>
+                              </ul>
+                            </div>
+                            
+                            <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
+                              <h4 className="font-bold flex items-center">
+                                <Star className="h-5 w-5 text-course-purple mr-2" />
+                                Adaugă suport pentru imagini și emoticoane
+                              </h4>
+                              <p className="mt-2">
+                                Extinde aplicația pentru a permite trimiterea de imagini și emoticoane.
+                              </p>
+                              <ul className="list-disc list-inside mt-2 text-gray-700">
+                                <li>Adaugă un buton pentru a selecta și încărca imagini</li>
+                                <li>Implementează o selecție de emoticoane comune</li>
+                                <li>Modifică afișarea mesajelor pentru a include imagini</li>
+                              </ul>
+                            </div>
+                            
+                            <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
+                              <h4 className="font-bold flex items-center">
+                                <Star className="h-5 w-5 text-course-purple mr-2" />
+                                Implementează autentificarea securizată
+                              </h4>
+                              <p className="mt-2">
+                                Adaugă un sistem de autentificare cu parole pentru a securiza aplicația de chat.
+                              </p>
+                              <ul className="list-disc list-inside mt-2 text-gray-700">
+                                <li>Adaugă câmpuri pentru nume de utilizator și parolă</li>
+                                <li>Implementează stocarea securizată a informațiilor de autentificare</li>
+                                <li>Adaugă funcționalitatea de înregistrare pentru utilizatori noi</li>
+                              </ul>
+                            </div>
+                            
+                            <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
+                              <h4 className="font-bold flex items-center">
+                                <Star className="h-5 w-5 text-course-purple mr-2" />
+                                Adaugă stare online/offline și notificări
+                              </h4>
+                              <p className="mt-2">
+                                Implementează un sistem care să arate când utilizatorii sunt online/offline și trimite notificări pentru mesaje noi.
+                              </p>
+                              <ul className="list-disc list-inside mt-2 text-gray-700">
+                                <li>Adaugă un indicator de stare pentru fiecare utilizator</li>
+                                <li>Implementează actualizări periodice ale stării</li>
+                                <li>Adaugă notificări push pentru mesaje noi când aplicația rulează în fundal</li>
+                              </ul>
+                            </div>
                           </div>
-
-                          <div className="mb-6">
-                            <h3 className="text-xl font-semibold mb-3">Actualizarea periodică</h3>
-                            <CodeBlock
-                              language="blocks"
-                              code={`
-when Clock1.Timer
-  do
-    if global isConnected then
-      call FirebaseDB1.GetTagList
-    end if
-`}
-                            />
+                          
+                          <div className="bg-green-50 border-l-4 border-green-500 p-4 my-6">
+                            <h3 className="text-lg font-semibold text-green-700 mb-2">Ce ai învățat</h3>
+                            <ul className="list-disc list-inside space-y-1">
+                              <li>Cum să folosești Firebase Realtime Database pentru stocare de date în cloud</li>
+                              <li>Cum să implementezi comunicare în timp real între utilizatori</li>
+                              <li>Cum să structurezi o aplicație de chat</li>
+                              <li>Cum să gestionezi liste de mesaje și să le afișezi utilizatorului</li>
+                              <li>Concepte de bază despre stocarea și securitatea datelor</li>
+                            </ul>
                           </div>
-                        </section>
+                          
+                          <h3 className="text-xl font-semibold mt-6">Securitate și bune practici</h3>
+                          <p className="mb-2">
+                            Dacă ai dori să dezvolți această aplicație pentru utilizare reală, ar trebui să iei în considerare următoarele aspecte de securitate:
+                          </p>
+                          
+                          <ul className="list-disc list-inside space-y-2 pl-4">
+                            <li>Configurează reguli de securitate pentru Firebase pentru a controla accesul la date</li>
+                            <li>Implementează autentificare adecvată (poate prin Firebase Authentication)</li>
+                            <li>Limitează frecvența cu care utilizatorii pot trimite mesaje (pentru a preveni spam-ul)</li>
+                            <li>Implementează o modalitate de a raporta și modera conținutul neadecvat</li>
+                            <li>Asigură-te că datele personale sunt protejate conform reglementărilor de confidențialitate</li>
+                          </ul>
+                        </div>
                       </TabsContent>
                     </Tabs>
 
                     <div className="flex justify-between mt-8">
-                      <Button asChild className="bg-gray-500 hover:bg-gray-600">
-                        <Link to="/appinventor/session5" className="flex items-center">
+                      <Button className="bg-gray-500 hover:bg-gray-600" asChild>
+                        <Link to="/appinventor/session5">
                           <ArrowLeft className="mr-2 h-5 w-5" />
-                          <span>Lecția anterioară</span>
+                          <span>Sesiunea anterioară</span>
                         </Link>
                       </Button>
-                      <Button disabled className="bg-gray-300">
-                        <span>Lecția următoare</span>
-                        <ChevronRight className="ml-2 h-5 w-5" />
+                      
+                      <Button className="bg-course-purple hover:bg-course-blue" disabled>
+                        <span>Toate lecțiile complete!</span>
+                        <MessageCircle className="ml-2 h-5 w-5" />
                       </Button>
                     </div>
                   </CardContent>
@@ -380,31 +483,25 @@ when Clock1.Timer
                         <li>
                           <a href="#" className="text-course-purple hover:text-course-blue flex items-center">
                             <div className="h-2 w-2 bg-course-purple rounded-full mr-2"></div>
-                            Introducere
+                            Configurare Firebase
                           </a>
                         </li>
                         <li>
                           <a href="#" className="text-gray-700 hover:text-course-blue flex items-center">
                             <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
-                            Pasul 1: Firebase
+                            Interfața aplicației
                           </a>
                         </li>
                         <li>
                           <a href="#" className="text-gray-700 hover:text-course-blue flex items-center">
                             <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
-                            Pasul 2: Interfața
+                            Trimiterea mesajelor
                           </a>
                         </li>
                         <li>
                           <a href="#" className="text-gray-700 hover:text-course-blue flex items-center">
                             <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
-                            Pasul 3: Funcționalitatea
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className="text-gray-700 hover:text-course-blue flex items-center">
-                            <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
-                            Provocări
+                            Extinderi
                           </a>
                         </li>
                       </ul>
@@ -416,15 +513,21 @@ when Clock1.Timer
                       <h3 className="text-lg font-bold mb-2">Resurse</h3>
                       <ul className="space-y-2">
                         <li>
-                          <a href="https://firebase.google.com/docs" target="_blank" rel="noopener noreferrer" className="text-course-blue hover:underline flex items-center">
-                            <ChevronRight className="h-4 w-4 mr-1" />
+                          <a href="https://firebase.google.com/docs/database" target="_blank" rel="noopener noreferrer" className="text-course-blue hover:underline flex items-center">
+                            <Terminal className="h-4 w-4 mr-1" />
                             Documentație Firebase
                           </a>
                         </li>
                         <li>
                           <a href="https://appinventor.mit.edu/explore/ai2/firebase" target="_blank" rel="noopener noreferrer" className="text-course-blue hover:underline flex items-center">
-                            <ChevronRight className="h-4 w-4 mr-1" />
-                            Tutorial Firebase în App Inventor
+                            <Terminal className="h-4 w-4 mr-1" />
+                            Tutoriale Firebase pentru App Inventor
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://community.appinventor.mit.edu/t/using-the-firebase-db-extension/12289" target="_blank" rel="noopener noreferrer" className="text-course-blue hover:underline flex items-center">
+                            <Terminal className="h-4 w-4 mr-1" />
+                            Comunitatea App Inventor - Firebase
                           </a>
                         </li>
                       </ul>
