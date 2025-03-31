@@ -14,7 +14,7 @@ const AppInventor = () => {
       
       <main className="flex-grow container mx-auto">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-course-purple to-course-blue text-white py-12 px-4 rounded-lg mt-8 mb-12">
+        <section className="bg-gradient-to-r from-course-purple to-course-blue text-white py-10 px-4 rounded-lg mt-8 mb-12">
           <div className="container mx-auto">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="md:w-1/2 mb-8 md:mb-0">
@@ -152,6 +152,26 @@ const AppInventor = () => {
                 <h3 className="text-xl font-semibold mb-3">Lecția 6: Aplicație de Chat</h3>
                 <p className="text-gray-600 mb-4">Construiește o aplicație de mesagerie instant cu comunicare în timp real.</p>
                 <Link to="/appinventor/session6">
+                  <Button className="w-full">Accesează lecția</Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold mb-3">Lecția 7: Aplicația Meteo cu API</h3>
+                <p className="text-gray-600 mb-4">Învață să comunici cu servicii web și să afișezi date meteo în timp real.</p>
+                <Link to="/appinventor/session7">
+                  <Button className="w-full">Accesează lecția</Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold mb-3">Lecția 8: Salvarea Datelor cu TinyDB</h3>
+                <p className="text-gray-600 mb-4">Învață să stochezi și să recuperezi date locale pentru a crea aplicații cu memorie.</p>
+                <Link to="/appinventor/session8">
                   <Button className="w-full">Accesează lecția</Button>
                 </Link>
               </CardContent>

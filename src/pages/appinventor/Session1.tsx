@@ -1,16 +1,33 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, ArrowRight, ChevronRight, Star } from 'lucide-react';
+import { ArrowLeft, ChevronRight, Star } from 'lucide-react';
 import CodeBlock from '@/components/CodeBlock';
+import ReadingProgressBar from '@/components/ReadingProgressBar';
 
 const Session1 = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Handle anchor scrolling when URL contains hash
+    if (location.hash) {
+      const id = location.hash.substring(1);
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
+      <ReadingProgressBar />
       
       <main className="flex-grow">
         {/* Hero Section */}
@@ -29,8 +46,8 @@ const Session1 = () => {
                 </p>
               </div>
               <div className="mt-4 md:mt-0">
-                <Button asChild variant="outline" className="border-white text-white hover:bg-white/20">
-                  <Link to="/appinventor" className="flex items-center">
+                <Button asChild variant="outline" className="border-white text-white hover:bg-white/20 hover:text-white">
+                  <Link to="/courses/appinventor" className="flex items-center">
                     <ArrowLeft className="mr-2 h-4 w-4" />
                     <span>Înapoi la curriculum</span>
                   </Link>
@@ -48,7 +65,7 @@ const Session1 = () => {
               <div className="lg:w-3/4">
                 <Card className="mb-8">
                   <CardContent className="p-6">
-                    <h2 className="text-2xl font-bold mb-4">Introducere</h2>
+                    <h2 className="text-2xl font-bold mb-4" id="introducere">Introducere</h2>
                     <p className="mb-4">
                       Bine ai venit la prima noastră sesiune! Astăzi vom face cunoștință cu MIT App Inventor și vom crea primul nostru joc: un joc clicker simplu. Acest tip de joc este foarte popular și ușor de realizat - perfect pentru a învăța elementele de bază ale dezvoltării de aplicații.
                     </p>
@@ -66,7 +83,7 @@ const Session1 = () => {
                       </ul>
                     </div>
 
-                    <h2 className="text-2xl font-bold mb-4 mt-8">Pasul 1: Configurarea MIT App Inventor</h2>
+                    <h2 className="text-2xl font-bold mb-4 mt-8" id="configurare">Pasul 1: Configurarea MIT App Inventor</h2>
                     <p className="mb-4">
                       Înainte de a începe să construim jocul, trebuie să ne asigurăm că avem acces la MIT App Inventor. Urmează acești pași:
                     </p>
@@ -100,7 +117,7 @@ const Session1 = () => {
                       </p>
                     </div>
 
-                    <h2 className="text-2xl font-bold mb-4">Pasul 2: Crearea unui proiect nou</h2>
+                    <h2 className="text-2xl font-bold mb-4" id="proiect-nou">Pasul 2: Crearea unui proiect nou</h2>
                     <p className="mb-4">
                       Acum că suntem conectați la MIT App Inventor, să creăm un proiect nou pentru jocul nostru clicker:
                     </p>
@@ -131,7 +148,7 @@ const Session1 = () => {
                       </p>
                     </div>
 
-                    <h2 className="text-2xl font-bold mb-4">Pasul 3: Crearea interfeței jocului</h2>
+                    <h2 className="text-2xl font-bold mb-4" id="interfata">Pasul 3: Crearea interfeței jocului</h2>
                     <p className="mb-6">
                       Acum vom adăuga elementele necesare pentru jocul nostru clicker. Vom avea nevoie de:
                     </p>
@@ -193,7 +210,7 @@ const Session1 = () => {
                       </div>
                     </div>
 
-                    <h2 className="text-2xl font-bold mb-4">Pasul 4: Programarea comportamentului</h2>
+                    <h2 className="text-2xl font-bold mb-4" id="programare">Pasul 4: Programarea comportamentului</h2>
                     <p className="mb-4">
                       Acum că am creat interfața, trebuie să adăugăm codul care va face jocul să funcționeze. Pentru aceasta, vom folosi Blocks Editor.
                     </p>
@@ -233,7 +250,7 @@ const Session1 = () => {
                       </li>
                     </ol>
 
-                    <h2 className="text-2xl font-bold mb-4">Pasul 5: Testarea jocului</h2>
+                    <h2 className="text-2xl font-bold mb-4" id="testare">Pasul 5: Testarea jocului</h2>
                     <p className="mb-4">
                       Acum că am creat și programat jocul, este timpul să-l testăm!
                     </p>
@@ -258,7 +275,7 @@ const Session1 = () => {
                       </li>
                     </ol>
 
-                    <h2 className="text-2xl font-bold mb-4">Provocări suplimentare</h2>
+                    <h2 className="text-2xl font-bold mb-4" id="provocari">Provocări suplimentare</h2>
                     <p className="mb-4">
                       Felicitări! Ai creat primul tău joc clicker. Dacă vrei să-l îmbunătățești, încearcă aceste provocări:
                     </p>
@@ -306,9 +323,11 @@ const Session1 = () => {
                     </div>
 
                     <div className="flex justify-end mt-8">
-                      <Button className="bg-course-purple hover:bg-course-blue" disabled>
-                        <span>Sesiunea 2: Joc Quiz</span>
-                        <ChevronRight className="ml-2 h-5 w-5" />
+                      <Button asChild className="bg-course-purple hover:bg-course-blue">
+                        <Link to="/appinventor/session2">
+                          <span>Sesiunea 2: Joc Quiz</span>
+                          <ChevronRight className="ml-2 h-5 w-5" />
+                        </Link>
                       </Button>
                     </div>
                   </CardContent>
@@ -317,49 +336,49 @@ const Session1 = () => {
               
               {/* Sidebar */}
               <div className="lg:w-1/4">
-                <div className="sticky top-4">
+                <div className="sticky top-24">
                   <Card className="mb-6">
                     <CardContent className="p-4">
                       <h3 className="text-lg font-bold mb-2">Conținut</h3>
                       <ul className="space-y-2">
                         <li>
-                          <a href="#" className="text-course-purple hover:text-course-blue flex items-center">
+                          <a href="#introducere" className="text-course-purple hover:text-course-blue flex items-center">
                             <div className="h-2 w-2 bg-course-purple rounded-full mr-2"></div>
                             Introducere
                           </a>
                         </li>
                         <li>
-                          <a href="#" className="text-gray-700 hover:text-course-blue flex items-center">
+                          <a href="#configurare" className="text-gray-700 hover:text-course-blue flex items-center">
                             <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
                             Pasul 1: Configurare
                           </a>
                         </li>
                         <li>
-                          <a href="#" className="text-gray-700 hover:text-course-blue flex items-center">
+                          <a href="#proiect-nou" className="text-gray-700 hover:text-course-blue flex items-center">
                             <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
                             Pasul 2: Proiect nou
                           </a>
                         </li>
                         <li>
-                          <a href="#" className="text-gray-700 hover:text-course-blue flex items-center">
+                          <a href="#interfata" className="text-gray-700 hover:text-course-blue flex items-center">
                             <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
                             Pasul 3: Interfața
                           </a>
                         </li>
                         <li>
-                          <a href="#" className="text-gray-700 hover:text-course-blue flex items-center">
+                          <a href="#programare" className="text-gray-700 hover:text-course-blue flex items-center">
                             <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
                             Pasul 4: Programare
                           </a>
                         </li>
                         <li>
-                          <a href="#" className="text-gray-700 hover:text-course-blue flex items-center">
+                          <a href="#testare" className="text-gray-700 hover:text-course-blue flex items-center">
                             <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
                             Pasul 5: Testare
                           </a>
                         </li>
                         <li>
-                          <a href="#" className="text-gray-700 hover:text-course-blue flex items-center">
+                          <a href="#provocari" className="text-gray-700 hover:text-course-blue flex items-center">
                             <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
                             Provocări
                           </a>

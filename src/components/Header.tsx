@@ -8,16 +8,15 @@ import {
   Home, 
   Menu, 
   X, 
-  ChevronDown, 
-  Gamepad, 
   Code, 
   Rocket,
-  PenTool,
   LayoutGrid,
-  Globe,
   Box,
-  Boxes,
-  Paintbrush
+  PenTool,
+  Gamepad,
+  Globe,
+  Paintbrush,
+  Boxes
 } from 'lucide-react';
 import {
   NavigationMenu,
@@ -62,48 +61,45 @@ const Header = () => {
     {
       category: "Începători (8-12 ani)",
       items: [
-        { title: "Scratch", path: "/scratch", icon: <PenTool className="h-4 w-4 mr-2" />, description: "Laboratorul de Jocuri pentru începători" },
-        { title: "App Inventor", path: "/appinventor", icon: <Laptop className="h-4 w-4 mr-2" />, description: "Atelierul de Aplicații Mobile" },
+        { title: "Scratch", path: "/courses/scratch", icon: <PenTool className="h-4 w-4 mr-2" />, description: "Laboratorul de Jocuri pentru începători" },
+        { title: "App Inventor", path: "/courses/appinventor", icon: <Laptop className="h-4 w-4 mr-2" />, description: "Atelierul de Aplicații Mobile" },
       ]
     },
     {
       category: "Intermediari (10-15 ani)",
       items: [
-        { title: "Construct 3", path: "/construct3", icon: <Gamepad className="h-4 w-4 mr-2" />, description: "Dezvoltare de Jocuri 2D" },
-        { title: "GDevelop", path: "/gdevelop", icon: <Rocket className="h-4 w-4 mr-2" />, description: "Fabrica de Jocuri" },
-        { title: "Alice 3", path: "/alice3", icon: <Code className="h-4 w-4 mr-2" />, description: "Povești 3D Interactive" },
-        { title: "micro:bit Arcade", path: "/microbit-arcade", icon: <LayoutGrid className="h-4 w-4 mr-2" />, description: "Jocuri și Electronice" },
+        { title: "Construct 3", path: "/courses/construct3", icon: <Gamepad className="h-4 w-4 mr-2" />, description: "Dezvoltare de Jocuri 2D" },
+        { title: "GDevelop", path: "/courses/gdevelop", icon: <Rocket className="h-4 w-4 mr-2" />, description: "Fabrica de Jocuri" },
+        { title: "Alice 3", path: "/courses/alice3", icon: <Code className="h-4 w-4 mr-2" />, description: "Povești 3D Interactive" },
+        { title: "micro:bit Arcade", path: "/courses/microbitarcade", icon: <LayoutGrid className="h-4 w-4 mr-2" />, description: "Jocuri și Electronice" },
       ]
     },
     {
       category: "Avansați (12-18 ani)",
       items: [
-        { title: "Minecraft Modding", path: "/minecraft-modding", icon: <Boxes className="h-4 w-4 mr-2" />, description: "De la jucător la creator" },
-        { title: "Roblox Lua", path: "/roblox-lua", icon: <Code className="h-4 w-4 mr-2" />, description: "Universul Dezvoltării de Jocuri" },
-        { title: "Python", path: "/python", icon: <Code className="h-4 w-4 mr-2" />, description: "De la Cod la Aplicații" },
-        { title: "Frontend Development", path: "/frontend-dev", icon: <Globe className="h-4 w-4 mr-2" />, description: "Construiește Web-ul Viitorului" },
-        { title: "Greenfoot", path: "/greenfoot", icon: <Paintbrush className="h-4 w-4 mr-2" />, description: "Java prin Jocuri" },
-        { title: "Godot", path: "/godot", icon: <Gamepad className="h-4 w-4 mr-2" />, description: "Game Development Pro" },
+        { title: "Minecraft Modding", path: "/courses/minecraftmodding", icon: <Boxes className="h-4 w-4 mr-2" />, description: "De la jucător la creator" },
+        { title: "Roblox Lua", path: "/courses/robloxlua", icon: <Code className="h-4 w-4 mr-2" />, description: "Universul Dezvoltării de Jocuri" },
+        { title: "Python", path: "/courses/python", icon: <Code className="h-4 w-4 mr-2" />, description: "De la Cod la Aplicații" },
+        { title: "Frontend Development", path: "/courses/frontenddev", icon: <Globe className="h-4 w-4 mr-2" />, description: "Construiește Web-ul Viitorului" },
+        { title: "Greenfoot", path: "/courses/greenfoot", icon: <Paintbrush className="h-4 w-4 mr-2" />, description: "Java prin Jocuri" },
+        { title: "Godot", path: "/courses/godot", icon: <Gamepad className="h-4 w-4 mr-2" />, description: "Game Development Pro" },
       ]
     }
   ];
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-course-blue shadow-md py-2' : 'bg-course-blue py-4'}`}>
       <div className="container mx-auto py-2 px-4 flex flex-col sm:flex-row justify-between items-center">
         <div className="flex items-center justify-between w-full sm:w-auto">
-          <Link to="/" className="flex items-center space-x-2 text-gray-800" onClick={closeMenu}>
+          <Link to="/" className="flex items-center space-x-2" onClick={closeMenu}>
             <img 
               src="https://techminds-academy.ro/assets/images/logo-techminds-sigla.png" 
               alt="TechMinds Academy Logo" 
               className="h-10 w-auto" 
             />
-            <span className={`text-xl font-bold transition-colors ${isScrolled || location.pathname === '/' ? 'text-gray-800' : 'text-white'}`}>
-              TechMinds Academy
-            </span>
           </Link>
           
-          <button onClick={toggleMenu} className="sm:hidden text-gray-700">
+          <button onClick={toggleMenu} className="sm:hidden text-white">
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -114,7 +110,7 @@ const Header = () => {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <Link to="/">
-                  <Button variant={isActive('/') ? "default" : "ghost"} className="text-sm">
+                  <Button variant={isActive('/') ? "default" : "ghost"} className="text-sm text-white hover:bg-white/10 hover:text-white">
                     <Home className="mr-1 h-4 w-4" />
                     <span>Acasă</span>
                   </Button>
@@ -122,12 +118,12 @@ const Header = () => {
               </NavigationMenuItem>
               
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-sm">
+                <NavigationMenuTrigger className="text-sm text-white hover:bg-white/10 hover:text-white">
                   <Book className="mr-1 h-4 w-4" />
                   <span>Cursuri</span>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="grid grid-cols-3 p-4 w-[850px]">
+                  <div className="grid grid-cols-3 p-4 w-[850px] bg-white text-gray-800">
                     {courses.map((category, idx) => (
                       <div key={idx} className="mb-4 mx-2">
                         <h3 className="text-sm font-medium mb-2 text-gray-500 border-b pb-1">{category.category}</h3>
