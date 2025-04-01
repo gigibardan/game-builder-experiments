@@ -55,6 +55,7 @@ const Scratch = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.7, delay: 0.2 }}
+                  className="relative"
                 >
                   <img 
                     src="https://scratch.mit.edu/images/scratch-og.png" 
@@ -140,7 +141,7 @@ const Scratch = () => {
               </p>
               
               <div className="flex justify-center">
-                <Button asChild className="bg-yellow-500 hover:bg-yellow-600">
+                <Button asChild className="bg-yellow-500 hover:bg-yellow-600 text-white">
                   <Link to="/" className="flex items-center">
                     <span>Înapoi la pagina principală</span>
                     <ArrowRight className="ml-2 h-5 w-5" />

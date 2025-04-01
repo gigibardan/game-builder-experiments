@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -27,6 +26,7 @@ import Session6 from "./pages/appinventor/Session6";
 import Session7 from "./pages/appinventor/Session7";
 import Session8 from "./pages/appinventor/Session8";
 import Session9 from "./pages/appinventor/Session9";
+import ScratchSession1 from "./pages/scratch/Session1";
 
 const queryClient = new QueryClient();
 
@@ -40,7 +40,7 @@ const App = () => (
         
         {/* App Inventor Routes */}
         <Route path="/courses/appinventor" element={<AppInventor />} />
-        <Route path="/appinventor" element={<AppInventor />} /> {/* Added route for /appinventor */}
+        <Route path="/appinventor" element={<AppInventor />} />
         <Route path="/appinventor/session1" element={<Session1 />} />
         <Route path="/appinventor/session2" element={<Session2 />} />
         <Route path="/appinventor/session3" element={<Session3 />} />
@@ -51,18 +51,41 @@ const App = () => (
         <Route path="/appinventor/session8" element={<Session8 />} />
         <Route path="/appinventor/session9" element={<Session9 />} />
         
-        {/* Alte cursuri */}
+        {/* Scratch Routes */}
         <Route path="/courses/scratch" element={<Scratch />} />
+        <Route path="/scratch" element={<Scratch />} />
+        <Route path="/scratch/session1" element={<ScratchSession1 />} />
+        
+        {/* Other Courses - Both /courses/X and /X routes for consistency */}
         <Route path="/courses/construct3" element={<Construct3 />} />
+        <Route path="/construct3" element={<Construct3 />} />
+        
         <Route path="/courses/gdevelop" element={<GDevelop />} />
+        <Route path="/gdevelop" element={<GDevelop />} />
+        
         <Route path="/courses/alice3" element={<Alice3 />} />
+        <Route path="/alice3" element={<Alice3 />} />
+        
         <Route path="/courses/microbitarcade" element={<MicrobitArcade />} />
+        <Route path="/microbitarcade" element={<MicrobitArcade />} />
+        
         <Route path="/courses/minecraftmodding" element={<MinecraftModding />} />
+        <Route path="/minecraftmodding" element={<MinecraftModding />} />
+        
         <Route path="/courses/robloxlua" element={<RobloxLua />} />
+        <Route path="/robloxlua" element={<RobloxLua />} />
+        
         <Route path="/courses/python" element={<Python />} />
+        <Route path="/python" element={<Python />} />
+        
         <Route path="/courses/greenfoot" element={<Greenfoot />} />
+        <Route path="/greenfoot" element={<Greenfoot />} />
+        
         <Route path="/courses/godot" element={<Godot />} />
+        <Route path="/godot" element={<Godot />} />
+        
         <Route path="/courses/frontenddev" element={<FrontendDev />} />
+        <Route path="/frontenddev" element={<FrontendDev />} />
         
         {/* Rute vechi păstrate pentru compatibilitate */}
         <Route path="/curriculum" element={<Curriculum />} />
