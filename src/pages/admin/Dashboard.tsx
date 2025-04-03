@@ -1,296 +1,383 @@
 
 import React, { useState } from 'react';
-import { useAuth } from '@/contexts/AuthContext';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Input } from '@/components/ui/input';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { User, UserRole } from '@/types/auth';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { User, UserCourseAccess } from '@/contexts/AuthContext';
-import { toast } from 'sonner';
 
-// Mock data - would be fetched from a backend in a real app
-const COURSES = [
-  { id: 'appinventor', name: 'App Inventor', sessions: ['session1', 'session2', 'session3', 'session4', 'session5', 'session6', 'session7', 'session8', 'session9'] },
-  { id: 'scratch', name: 'Scratch', sessions: ['session1', 'session2'] },
-  { id: 'construct3', name: 'Construct 3', sessions: ['session1'] },
-  { id: 'gdevelop', name: 'GDevelop', sessions: ['session1'] },
-  { id: 'alice3', name: 'Alice 3', sessions: ['session1'] },
-  { id: 'microbitarcade', name: 'micro:bit Arcade', sessions: ['session1'] },
-  { id: 'minecraftmodding', name: 'Minecraft Modding', sessions: ['session1'] },
-  { id: 'robloxlua', name: 'Roblox Lua', sessions: ['session1'] },
-  { id: 'python', name: 'Python', sessions: ['session1'] },
-  { id: 'greenfoot', name: 'Greenfoot', sessions: ['session1'] },
-  { id: 'godot', name: 'Godot', sessions: ['session1'] },
-  { id: 'frontenddev', name: 'Frontend Development', sessions: ['session1'] }
-];
+const Dashboard: React.FC = () => {
+  // Mock users data
+  const [users, setUsers] = useState<User[]>([
+    {
+      id: '1',
+      username: 'john_doe',
+      email: 'john@example.com',
+      role: UserRole.USER,
+      courseAccess: [
+        { courseId: 'scratch', sessions: ['1', '2'] },
+        { courseId: 'appinventor', sessions: ['1'] }
+      ]
+    },
+    {
+      id: '2',
+      username: 'jane_smith',
+      email: 'jane@example.com',
+      role: UserRole.USER,
+      courseAccess: [
+        { courseId: 'scratch', sessions: ['1'] }
+      ]
+    },
+    {
+      id: '3',
+      username: 'admin_user',
+      email: 'admin@example.com',
+      role: UserRole.ADMIN,
+      courseAccess: []
+    }
+  ]);
 
-const USERS = [
-  { id: '2', username: 'student1', email: 'student1@example.com', role: 'student', courseAccess: [
-    { courseId: 'appinventor', sessions: ['session1', 'session2'] },
-    { courseId: 'scratch', sessions: ['session1'] }
-  ] },
-  { id: '3', username: 'student2', email: 'student2@example.com', role: 'student', courseAccess: [
-    { courseId: 'python', sessions: ['all'] }
-  ] },
-];
+  // Mock courses data
+  const courses = [
+    { id: 'scratch', name: 'Scratch' },
+    { id: 'appinventor', name: 'App Inventor' },
+    { id: 'python', name: 'Python' },
+    { id: 'alice3', name: 'Alice 3' },
+  ];
 
-const Dashboard = () => {
-  const { user, isAdmin } = useAuth();
-  const [users, setUsers] = useState<User[]>(USERS);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
-  const [userCourseAccess, setUserCourseAccess] = useState<UserCourseAccess[]>([]);
+  const [selectedCourse, setSelectedCourse] = useState<string>('');
+  const [newUsername, setNewUsername] = useState<string>('');
+  const [newEmail, setNewEmail] = useState<string>('');
+  const [newPassword, setNewPassword] = useState<string>('');
+  const [newRole, setNewRole] = useState<UserRole>(UserRole.USER);
 
-  if (!isAdmin) {
-    return null;
-  }
+  const handleAddUser = () => {
+    if (newUsername && newEmail && newPassword) {
+      const newUser: User = {
+        id: (users.length + 1).toString(),
+        username: newUsername,
+        email: newEmail,
+        role: newRole,
+        courseAccess: []
+      };
 
-  const handleSelectUser = (user: User) => {
-    setSelectedUser(user);
-    setUserCourseAccess([...user.courseAccess]);
+      setUsers([...users, newUser]);
+      setNewUsername('');
+      setNewEmail('');
+      setNewPassword('');
+    }
+  };
+
+  const handleDeleteUser = (userId: string) => {
+    setUsers(users.filter(user => user.id !== userId));
+    if (selectedUser && selectedUser.id === userId) {
+      setSelectedUser(null);
+    }
   };
 
   const handleToggleCourseAccess = (courseId: string) => {
-    const updatedAccess = [...userCourseAccess];
-    const existingIndex = updatedAccess.findIndex(access => access.courseId === courseId);
+    if (!selectedUser) return;
 
-    if (existingIndex !== -1) {
-      // Remove course access
-      updatedAccess.splice(existingIndex, 1);
-    } else {
-      // Add course access with no sessions
-      updatedAccess.push({ courseId, sessions: [] });
-    }
+    const updatedUsers = users.map(user => {
+      if (user.id === selectedUser.id) {
+        const hasCourse = user.courseAccess.some(ca => ca.courseId === courseId);
+        
+        let newCourseAccess;
+        if (hasCourse) {
+          // Remove course access
+          newCourseAccess = user.courseAccess.filter(ca => ca.courseId !== courseId);
+        } else {
+          // Add course access
+          newCourseAccess = [...user.courseAccess, { courseId, sessions: [] }];
+        }
 
-    setUserCourseAccess(updatedAccess);
+        const updatedUser = { ...user, courseAccess: newCourseAccess };
+        setSelectedUser(updatedUser);
+        return updatedUser;
+      }
+      return user;
+    });
+
+    setUsers(updatedUsers);
   };
 
   const handleToggleSessionAccess = (courseId: string, sessionId: string) => {
-    const updatedAccess = [...userCourseAccess];
-    const courseAccessIndex = updatedAccess.findIndex(access => access.courseId === courseId);
-
-    if (courseAccessIndex === -1) {
-      // Course access doesn't exist yet, create it with this session
-      updatedAccess.push({ courseId, sessions: [sessionId] });
-    } else {
-      const courseAccess = updatedAccess[courseAccessIndex];
-      
-      if (sessionId === 'all') {
-        // Handle "All Sessions" toggle
-        if (courseAccess.sessions.includes('all')) {
-          // Remove "all" access
-          courseAccess.sessions = [];
-        } else {
-          // Grant access to all sessions
-          courseAccess.sessions = ['all'];
-        }
-      } else {
-        // Handle individual session toggle
-        if (courseAccess.sessions.includes(sessionId)) {
-          // Remove session
-          courseAccess.sessions = courseAccess.sessions.filter(id => id !== sessionId);
-        } else {
-          // If "all" is already set, don't add individual sessions
-          if (!courseAccess.sessions.includes('all')) {
-            // Add session
-            courseAccess.sessions.push(sessionId);
-          }
-        }
-      }
-      
-      updatedAccess[courseAccessIndex] = courseAccess;
-    }
-
-    setUserCourseAccess(updatedAccess);
-  };
-
-  const saveUserAccess = () => {
     if (!selectedUser) return;
-    
-    // Update local state (in a real app, this would be an API call)
-    const updatedUsers = users.map(u => {
-      if (u.id === selectedUser.id) {
-        return { ...u, courseAccess: userCourseAccess };
+
+    const updatedUsers = users.map(user => {
+      if (user.id === selectedUser.id) {
+        const updatedCourseAccess = user.courseAccess.map(ca => {
+          if (ca.courseId === courseId) {
+            const hasSession = ca.sessions.includes(sessionId);
+            
+            if (hasSession) {
+              // Remove session access
+              return {
+                ...ca,
+                sessions: ca.sessions.filter(s => s !== sessionId)
+              };
+            } else {
+              // Add session access
+              return {
+                ...ca,
+                sessions: [...ca.sessions, sessionId]
+              };
+            }
+          }
+          return ca;
+        });
+
+        const updatedUser = { ...user, courseAccess: updatedCourseAccess };
+        setSelectedUser(updatedUser);
+        return updatedUser;
       }
-      return u;
+      return user;
     });
-    
+
     setUsers(updatedUsers);
-    setSelectedUser(null);
-    toast.success("Accesul utilizatorului a fost actualizat cu succes!");
   };
 
-  const hasCourseAccess = (courseId: string) => {
-    return userCourseAccess.some(access => access.courseId === courseId);
+  // Check if a user has access to a course
+  const hasAccessToCourse = (userId: string, courseId: string): boolean => {
+    const user = users.find(u => u.id === userId);
+    return user?.courseAccess.some(ca => ca.courseId === courseId) || false;
   };
 
-  const hasSessionAccess = (courseId: string, sessionId: string) => {
-    const courseAccess = userCourseAccess.find(access => access.courseId === courseId);
-    if (!courseAccess) return false;
-    return courseAccess.sessions.includes('all') || courseAccess.sessions.includes(sessionId);
+  // Check if a user has access to a session
+  const hasAccessToSession = (userId: string, courseId: string, sessionId: string): boolean => {
+    const user = users.find(u => u.id === userId);
+    const courseAccess = user?.courseAccess.find(ca => ca.courseId === courseId);
+    return courseAccess?.sessions.includes(sessionId) || false;
   };
 
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-
-      <main className="flex-grow py-8">
+      
+      <main className="flex-grow py-6">
         <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold mb-8">Dashboard Administrator</h1>
-
+          <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
+          
           <Tabs defaultValue="users">
-            <TabsList className="mb-6">
+            <TabsList className="mb-4">
               <TabsTrigger value="users">Gestionare Utilizatori</TabsTrigger>
-              <TabsTrigger value="courses">Gestionare Cursuri</TabsTrigger>
+              <TabsTrigger value="courses">Gestionare Acces Cursuri</TabsTrigger>
             </TabsList>
-
-            <TabsContent value="users" className="space-y-6">
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-xl font-bold mb-4">Utilizatori</h2>
-                
-                {selectedUser ? (
-                  <div>
-                    <div className="flex justify-between items-center mb-6">
-                      <h3 className="text-lg font-medium">
-                        Editare acces pentru: <span className="text-course-blue">{selectedUser.username}</span>
-                      </h3>
-                      <div className="space-x-3">
-                        <Button onClick={saveUserAccess} className="bg-course-blue hover:bg-course-blue/90">
-                          Salvează modificările
-                        </Button>
-                        <Button variant="outline" onClick={() => setSelectedUser(null)}>
-                          Anulează
-                        </Button>
-                      </div>
-                    </div>
-
-                    <div className="space-y-8">
-                      {COURSES.map(course => (
-                        <div key={course.id} className="border rounded-md p-4">
-                          <div className="flex items-center mb-3">
-                            <input
-                              type="checkbox"
-                              id={`course-${course.id}`}
-                              checked={hasCourseAccess(course.id)}
-                              onChange={() => handleToggleCourseAccess(course.id)}
-                              className="mr-2 h-4 w-4"
-                            />
-                            <label htmlFor={`course-${course.id}`} className="font-medium">
-                              {course.name}
-                            </label>
-                          </div>
-
-                          {hasCourseAccess(course.id) && (
-                            <div className="ml-6 space-y-2">
-                              <div className="flex items-center">
-                                <input
-                                  type="checkbox"
-                                  id={`${course.id}-all`}
-                                  checked={hasSessionAccess(course.id, 'all')}
-                                  onChange={() => handleToggleSessionAccess(course.id, 'all')}
-                                  className="mr-2 h-4 w-4"
-                                />
-                                <label htmlFor={`${course.id}-all`} className="text-sm font-medium">
-                                  Acces la toate lecțiile
-                                </label>
+            
+            <TabsContent value="users">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* User List */}
+                <Card className="md:col-span-2">
+                  <CardHeader>
+                    <CardTitle>Utilizatori</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Utilizator</TableHead>
+                          <TableHead>Email</TableHead>
+                          <TableHead>Rol</TableHead>
+                          <TableHead>Acțiuni</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {users.map((user) => (
+                          <TableRow key={user.id}>
+                            <TableCell>{user.username}</TableCell>
+                            <TableCell>{user.email}</TableCell>
+                            <TableCell>{user.role}</TableCell>
+                            <TableCell>
+                              <div className="flex gap-2">
+                                <Button 
+                                  variant="outline" 
+                                  size="sm" 
+                                  onClick={() => setSelectedUser(user)}
+                                >
+                                  Select
+                                </Button>
+                                <Button 
+                                  variant="destructive" 
+                                  size="sm" 
+                                  onClick={() => handleDeleteUser(user.id)}
+                                >
+                                  Șterge
+                                </Button>
                               </div>
-
-                              {!hasSessionAccess(course.id, 'all') && (
-                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mt-2">
-                                  {course.sessions.map(sessionId => (
-                                    <div key={`${course.id}-${sessionId}`} className="flex items-center">
-                                      <input
-                                        type="checkbox"
-                                        id={`${course.id}-${sessionId}`}
-                                        checked={hasSessionAccess(course.id, sessionId)}
-                                        onChange={() => handleToggleSessionAccess(course.id, sessionId)}
-                                        className="mr-2 h-4 w-4"
-                                      />
-                                      <label htmlFor={`${course.id}-${sessionId}`} className="text-sm">
-                                        Lecția {sessionId.replace('session', '')}
-                                      </label>
-                                    </div>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="overflow-x-auto">
-                    <table className="w-full table-auto">
-                      <thead>
-                        <tr className="bg-gray-50 border-b">
-                          <th className="px-4 py-2 text-left">Utilizator</th>
-                          <th className="px-4 py-2 text-left">Email</th>
-                          <th className="px-4 py-2 text-left">Rol</th>
-                          <th className="px-4 py-2 text-left">Cursuri</th>
-                          <th className="px-4 py-2 text-right">Acțiuni</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {users.map(user => (
-                          <tr key={user.id} className="border-b hover:bg-gray-50">
-                            <td className="px-4 py-3">{user.username}</td>
-                            <td className="px-4 py-3">{user.email}</td>
-                            <td className="px-4 py-3">
-                              <span className="px-2 py-1 rounded-full text-xs bg-blue-100 text-blue-800">
-                                {user.role === 'admin' ? 'Administrator' : 'Student'}
-                              </span>
-                            </td>
-                            <td className="px-4 py-3">
-                              {user.courseAccess.length} cursuri
-                            </td>
-                            <td className="px-4 py-3 text-right">
-                              <Button 
-                                variant="outline"
-                                size="sm"
-                                onClick={() => handleSelectUser(user)}
-                              >
-                                Editează acces
-                              </Button>
-                            </td>
-                          </tr>
+                            </TableCell>
+                          </TableRow>
                         ))}
-                      </tbody>
-                    </table>
-                  </div>
-                )}
+                      </TableBody>
+                    </Table>
+                  </CardContent>
+                </Card>
+              
+                {/* Add User */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Adaugă Utilizator Nou</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div>
+                        <label className="block text-sm font-medium mb-1">Nume utilizator</label>
+                        <Input 
+                          value={newUsername} 
+                          onChange={(e) => setNewUsername(e.target.value)} 
+                          placeholder="Nume utilizator"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium mb-1">Email</label>
+                        <Input 
+                          value={newEmail} 
+                          onChange={(e) => setNewEmail(e.target.value)} 
+                          placeholder="Email"
+                          type="email"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium mb-1">Parolă</label>
+                        <Input 
+                          value={newPassword} 
+                          onChange={(e) => setNewPassword(e.target.value)} 
+                          placeholder="Parolă"
+                          type="password"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium mb-1">Rol</label>
+                        <Select 
+                          value={newRole} 
+                          onValueChange={(value) => setNewRole(value as UserRole)}
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Selectează rol" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value={UserRole.USER}>User</SelectItem>
+                            <SelectItem value={UserRole.ADMIN}>Admin</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <Button 
+                        className="w-full"
+                        onClick={handleAddUser}
+                      >
+                        Adaugă Utilizator
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </TabsContent>
-
-            <TabsContent value="courses" className="space-y-6">
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-xl font-bold mb-4">Cursuri disponibile</h2>
-                
-                <div className="overflow-x-auto">
-                  <table className="w-full table-auto">
-                    <thead>
-                      <tr className="bg-gray-50 border-b">
-                        <th className="px-4 py-2 text-left">Curs</th>
-                        <th className="px-4 py-2 text-left">ID</th>
-                        <th className="px-4 py-2 text-left">Nr. lecții</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {COURSES.map(course => (
-                        <tr key={course.id} className="border-b hover:bg-gray-50">
-                          <td className="px-4 py-3 font-medium">{course.name}</td>
-                          <td className="px-4 py-3">{course.id}</td>
-                          <td className="px-4 py-3">{course.sessions.length}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+            
+            <TabsContent value="courses">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* User Selection */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Selectează Utilizator</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <Select 
+                      value={selectedUser?.id || ''} 
+                      onValueChange={(value) => {
+                        const user = users.find(u => u.id === value);
+                        setSelectedUser(user || null);
+                      }}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Selectează utilizator" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {users.map((user) => (
+                          <SelectItem key={user.id} value={user.id}>
+                            {user.username}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    
+                    {selectedUser && (
+                      <div className="mt-4">
+                        <h3 className="font-medium">Detalii utilizator:</h3>
+                        <p>Username: {selectedUser.username}</p>
+                        <p>Email: {selectedUser.email}</p>
+                        <p>Rol: {selectedUser.role}</p>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              
+                {/* Course Access Management */}
+                <Card className="md:col-span-2">
+                  <CardHeader>
+                    <CardTitle>Management Acces Cursuri</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    {selectedUser ? (
+                      <div>
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead>Curs</TableHead>
+                              <TableHead>Acces</TableHead>
+                              <TableHead>Sesiuni</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {courses.map((course) => (
+                              <TableRow key={course.id}>
+                                <TableCell>{course.name}</TableCell>
+                                <TableCell>
+                                  <Checkbox 
+                                    checked={hasAccessToCourse(selectedUser.id, course.id)}
+                                    onCheckedChange={() => handleToggleCourseAccess(course.id)}
+                                  />
+                                </TableCell>
+                                <TableCell>
+                                  {hasAccessToCourse(selectedUser.id, course.id) && (
+                                    <div className="flex flex-wrap gap-2">
+                                      {[1, 2, 3, 4, 5].map((sessionId) => (
+                                        <div key={sessionId} className="flex items-center gap-2">
+                                          <Checkbox 
+                                            id={`session-${course.id}-${sessionId}`}
+                                            checked={hasAccessToSession(selectedUser.id, course.id, sessionId.toString())}
+                                            onCheckedChange={() => handleToggleSessionAccess(course.id, sessionId.toString())}
+                                          />
+                                          <label htmlFor={`session-${course.id}-${sessionId}`} className="text-sm">
+                                            Sesiunea {sessionId}
+                                          </label>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  )}
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </div>
+                    ) : (
+                      <div className="text-center py-8 text-gray-500">
+                        Selectează un utilizator pentru a gestiona accesul la cursuri
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
               </div>
             </TabsContent>
           </Tabs>
         </div>
       </main>
-
+      
       <Footer />
     </div>
   );
