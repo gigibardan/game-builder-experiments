@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { 
   Laptop, 
@@ -16,7 +16,10 @@ import {
   Gamepad,
   Globe,
   Paintbrush,
-  Boxes
+  Boxes,
+  User,
+  LogOut,
+  ShieldCheck
 } from 'lucide-react';
 import {
   NavigationMenu,
@@ -27,11 +30,22 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 import { cn } from '@/lib/utils';
+import { useAuth } from '@/contexts/AuthContext';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, isAuthenticated, logout, isAdmin } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,6 +64,11 @@ const Header = () => {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  const handleLogout = () => {
+    logout();
+    closeMenu();
   };
 
   const isActive = (path) => {
@@ -120,53 +139,93 @@ const Header = () => {
                 </Link>
               </NavigationMenuItem>
               
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-sm text-white hover:bg-white/10 hover:text-white bg-transparent">
-                  <Book className="mr-1 h-4 w-4" />
-                  <span>Cursuri</span>
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="grid grid-cols-3 p-4 w-[850px] bg-white text-gray-800">
-                    {courses.map((category, idx) => (
-                      <div key={idx} className="mb-4 mx-2">
-                        <h3 className="text-sm font-medium mb-2 text-gray-500 border-b pb-1">{category.category}</h3>
-                        <div className="grid grid-cols-1 gap-2 mb-2">
-                          {category.items.map((item, i) => (
-                            <NavigationMenuLink asChild key={i}>
-                              <Link
-                                to={item.path}
-                                onClick={closeMenu}
-                                className="block select-none space-y-1 rounded-md p-3 no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                              >
-                                <div className="flex items-center">
-                                  {item.icon}
-                                  <span className="text-sm font-medium">{item.title}</span>
-                                </div>
-                                <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-                                  {item.description}
-                                </p>
-                              </Link>
-                            </NavigationMenuLink>
-                          ))}
+              {isAuthenticated && (
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-sm text-white hover:bg-white/10 hover:text-white bg-transparent">
+                    <Book className="mr-1 h-4 w-4" />
+                    <span>Cursuri</span>
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="grid grid-cols-3 p-4 w-[850px] bg-white text-gray-800">
+                      {courses.map((category, idx) => (
+                        <div key={idx} className="mb-4 mx-2">
+                          <h3 className="text-sm font-medium mb-2 text-gray-500 border-b pb-1">{category.category}</h3>
+                          <div className="grid grid-cols-1 gap-2 mb-2">
+                            {category.items.map((item, i) => (
+                              <NavigationMenuLink asChild key={i}>
+                                <Link
+                                  to={item.path}
+                                  onClick={closeMenu}
+                                  className="block select-none space-y-1 rounded-md p-3 no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                >
+                                  <div className="flex items-center">
+                                    {item.icon}
+                                    <span className="text-sm font-medium">{item.title}</span>
+                                  </div>
+                                  <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
+                                    {item.description}
+                                  </p>
+                                </Link>
+                              </NavigationMenuLink>
+                            ))}
+                          </div>
                         </div>
+                      ))}
+                      <div className="text-center col-span-3 mt-4 pt-2 border-t">
+                        <NavigationMenuLink asChild>
+                          <Link
+                            to="/#courses"
+                            onClick={closeMenu}
+                            className="text-sm font-medium text-course-purple hover:text-course-purple/80"
+                          >
+                            Vezi toate cursurile
+                          </Link>
+                        </NavigationMenuLink>
                       </div>
-                    ))}
-                    <div className="text-center col-span-3 mt-4 pt-2 border-t">
-                      <NavigationMenuLink asChild>
-                        <Link
-                          to="/#courses"
-                          onClick={closeMenu}
-                          className="text-sm font-medium text-course-purple hover:text-course-purple/80"
-                        >
-                          Vezi toate cursurile
-                        </Link>
-                      </NavigationMenuLink>
                     </div>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              )}
+              
+              {isAdmin && (
+                <NavigationMenuItem>
+                  <Link to="/admin">
+                    <Button variant="ghost" className={cn(
+                      "text-sm text-white hover:bg-white/10 hover:text-white",
+                      isActive('/admin') ? "bg-white/20" : ""
+                    )}>
+                      <ShieldCheck className="mr-1 h-4 w-4" />
+                      <span>Admin</span>
+                    </Button>
+                  </Link>
+                </NavigationMenuItem>
+              )}
             </NavigationMenuList>
           </NavigationMenu>
+
+          {/* User menu */}
+          {isAuthenticated ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="text-white hover:bg-white/10">
+                  <User className="mr-1 h-4 w-4" />
+                  <span className="text-sm">{user?.username}</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>Cont utilizator</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={handleLogout}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Deconectare</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Button asChild className="bg-white text-course-blue hover:bg-white/90">
+              <Link to="/login">Autentificare</Link>
+            </Button>
+          )}
         </nav>
         
         {/* Mobile Navigation */}
@@ -178,40 +237,85 @@ const Header = () => {
                 <X size={24} />
               </button>
             </div>
-            <ul className="space-y-6">
-              <li>
-                <Link to="/" className="text-gray-800 hover:text-course-purple flex items-center" onClick={closeMenu}>
-                  <Home className="mr-2 h-5 w-5" />
-                  <span>Acasă</span>
-                </Link>
-              </li>
-              
-              {courses.map((category, idx) => (
-                <li key={idx} className="space-y-2">
-                  <div className="font-medium text-gray-500 border-b pb-1">{category.category}</div>
-                  <ul className="pl-2 space-y-3 mt-2">
-                    {category.items.map((item, i) => (
-                      <li key={i}>
-                        <Link 
-                          to={item.path} 
-                          className="text-gray-800 hover:text-course-purple flex items-center py-1" 
-                          onClick={closeMenu}
-                        >
-                          {item.icon}
-                          <span>{item.title}</span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-              
-              <li>
-                <Link to="/#courses" className="text-course-purple font-medium block" onClick={closeMenu}>
-                  Vezi toate cursurile
-                </Link>
-              </li>
-            </ul>
+            
+            {isAuthenticated ? (
+              <>
+                <div className="flex items-center mb-6 pb-4 border-b">
+                  <div className="rounded-full bg-gray-200 p-2 mr-3">
+                    <User className="h-6 w-6 text-gray-600" />
+                  </div>
+                  <div>
+                    <p className="font-medium">{user?.username}</p>
+                    <p className="text-sm text-gray-500">{user?.email}</p>
+                  </div>
+                </div>
+                
+                <ul className="space-y-6">
+                  <li>
+                    <Link to="/" className="text-gray-800 hover:text-course-purple flex items-center" onClick={closeMenu}>
+                      <Home className="mr-2 h-5 w-5" />
+                      <span>Acasă</span>
+                    </Link>
+                  </li>
+                  
+                  {isAdmin && (
+                    <li>
+                      <Link to="/admin" className="text-gray-800 hover:text-course-purple flex items-center" onClick={closeMenu}>
+                        <ShieldCheck className="mr-2 h-5 w-5" />
+                        <span>Admin</span>
+                      </Link>
+                    </li>
+                  )}
+                  
+                  {courses.map((category, idx) => (
+                    <li key={idx} className="space-y-2">
+                      <div className="font-medium text-gray-500 border-b pb-1">{category.category}</div>
+                      <ul className="pl-2 space-y-3 mt-2">
+                        {category.items.map((item, i) => (
+                          <li key={i}>
+                            <Link 
+                              to={item.path} 
+                              className="text-gray-800 hover:text-course-purple flex items-center py-1" 
+                              onClick={closeMenu}
+                            >
+                              {item.icon}
+                              <span>{item.title}</span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  ))}
+                  
+                  <li>
+                    <Link to="/#courses" className="text-course-purple font-medium block" onClick={closeMenu}>
+                      Vezi toate cursurile
+                    </Link>
+                  </li>
+                  
+                  <li className="pt-4 border-t">
+                    <button 
+                      onClick={handleLogout}
+                      className="text-red-600 hover:text-red-800 flex items-center"
+                    >
+                      <LogOut className="mr-2 h-5 w-5" />
+                      <span>Deconectare</span>
+                    </button>
+                  </li>
+                </ul>
+              </>
+            ) : (
+              <div className="text-center mt-8">
+                <p className="text-gray-600 mb-4">Autentifică-te pentru a accesa cursurile</p>
+                <Button 
+                  asChild 
+                  className="w-full bg-course-blue hover:bg-course-blue/90 mb-3"
+                  onClick={closeMenu}
+                >
+                  <Link to="/login">Autentificare</Link>
+                </Button>
+              </div>
+            )}
           </div>
         </nav>
         
