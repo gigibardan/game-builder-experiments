@@ -8,7 +8,12 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ReadingProgressBar from '@/components/ReadingProgressBar';
 import { motion } from 'framer-motion';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { 
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger 
+} from '@/components/ui/accordion';
 import { cn } from '@/lib/utils';
 
 export interface LessonSidebarItem {
@@ -20,6 +25,12 @@ export interface LessonSidebarItem {
 export interface LessonResource {
   title: string;
   url: string;
+}
+
+export interface LessonSection {
+  id: string;
+  title: string;
+  content: React.ReactNode;
 }
 
 export interface LessonProps {
@@ -38,12 +49,8 @@ export interface LessonProps {
   };
   sidebarItems: LessonSidebarItem[];
   resources: LessonResource[];
-  children: React.ReactNode;
-  tabs?: {
-    id: string;
-    label: string;
-    content: React.ReactNode;
-  }[];
+  children?: React.ReactNode;
+  sections?: LessonSection[];
 }
 
 const LessonLayout: React.FC<LessonProps> = ({
@@ -57,7 +64,7 @@ const LessonLayout: React.FC<LessonProps> = ({
   sidebarItems,
   resources,
   children,
-  tabs
+  sections
 }) => {
   const location = useLocation();
 
@@ -121,19 +128,24 @@ const LessonLayout: React.FC<LessonProps> = ({
               <div className="lg:w-3/4">
                 <Card className="mb-8">
                   <CardContent className="p-6">
-                    {tabs ? (
-                      <Tabs defaultValue={tabs[0].id} className="mb-8">
-                        <TabsList className="mb-4">
-                          {tabs.map((tab) => (
-                            <TabsTrigger key={tab.id} value={tab.id}>{tab.label}</TabsTrigger>
+                    {sections ? (
+                      <>
+                        {/* Display content as expandable sections instead of tabs */}
+                        <Accordion type="single" collapsible className="mb-8">
+                          {sections.map((section, index) => (
+                            <AccordionItem key={section.id} value={section.id}>
+                              <AccordionTrigger className="text-xl font-semibold">
+                                {section.title}
+                              </AccordionTrigger>
+                              <AccordionContent>
+                                <div id={section.id} className="pt-2">
+                                  {section.content}
+                                </div>
+                              </AccordionContent>
+                            </AccordionItem>
                           ))}
-                        </TabsList>
-                        {tabs.map((tab) => (
-                          <TabsContent key={tab.id} value={tab.id}>
-                            {tab.content}
-                          </TabsContent>
-                        ))}
-                      </Tabs>
+                        </Accordion>
+                      </>
                     ) : (
                       children
                     )}
@@ -163,10 +175,10 @@ const LessonLayout: React.FC<LessonProps> = ({
                 </Card>
               </div>
               
-              {/* Sidebar */}
+              {/* Sidebar with rounded top corners */}
               <div className="lg:w-1/4">
                 <div className="sticky top-24">
-                  <Card className="mb-6">
+                  <Card className="mb-6 overflow-hidden rounded-t-lg">
                     <CardContent className="p-4">
                       <h3 className="text-lg font-bold mb-2">Conținut</h3>
                       <ul className="space-y-2">
@@ -192,7 +204,7 @@ const LessonLayout: React.FC<LessonProps> = ({
                   </Card>
                   
                   {resources.length > 0 && (
-                    <Card>
+                    <Card className="overflow-hidden rounded-t-lg">
                       <CardContent className="p-4">
                         <h3 className="text-lg font-bold mb-2">Resurse</h3>
                         <ul className="space-y-2">
