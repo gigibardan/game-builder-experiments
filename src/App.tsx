@@ -14,6 +14,7 @@ import AppInventor from '@/pages/courses/AppInventor';
 import Python from '@/pages/courses/Python';
 import Alice3 from '@/pages/courses/Alice3';
 import FrontendDev from '@/pages/courses/FrontendDev';
+import Godot from '@/pages/courses/Godot';
 import Unauthorized from '@/pages/auth/Unauthorized';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Dashboard from '@/pages/admin/Dashboard';
@@ -29,6 +30,9 @@ import AppInventorSession5 from '@/pages/appinventor/Session5';
 import PythonSession1 from '@/pages/python/Session1';
 import Alice3Session1 from '@/pages/alice3/Session1';
 import FrontendDevSession1 from '@/pages/frontenddev/Session1';
+import GodotSession1 from '@/pages/godot/Session1';
+import GodotSession2 from '@/pages/godot/Session2';
+import GodotSession3 from '@/pages/godot/Session3';
 import LessonTemplate from '@/pages/LessonTemplate';
 
 function App() {
@@ -49,6 +53,7 @@ function App() {
       <Route path="/courses/python" element={<Python />} />
       <Route path="/courses/alice3" element={<Alice3 />} />
       <Route path="/courses/frontenddev" element={<FrontendDev />} />
+      <Route path="/courses/godot" element={<Godot />} />
       
       <Route 
         path="/admin/dashboard" 
@@ -163,6 +168,33 @@ function App() {
         element={
           <ProtectedRoute courseId="frontenddev" sessionId="1">
             <FrontendDevSession1 />
+          </ProtectedRoute>
+        } 
+      />
+      
+      <Route 
+        path="/godot/session1" 
+        element={
+          <ProtectedRoute courseId="godot" sessionId="1">
+            <GodotSession1 />
+          </ProtectedRoute>
+        } 
+      />
+      
+      <Route 
+        path="/godot/session2" 
+        element={
+          <ProtectedRoute courseId="godot" sessionId="2">
+            <GodotSession2 />
+          </ProtectedRoute>
+        } 
+      />
+      
+      <Route 
+        path="/godot/session3" 
+        element={
+          <ProtectedRoute courseId="godot" sessionId="3">
+            <GodotSession3 />
           </ProtectedRoute>
         } 
       />
