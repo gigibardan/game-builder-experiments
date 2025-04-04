@@ -3,17 +3,11 @@ import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronRight, BookOpen } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ReadingProgressBar from '@/components/ReadingProgressBar';
 import { motion } from 'framer-motion';
-import { 
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger 
-} from '@/components/ui/accordion';
 import { cn } from '@/lib/utils';
 
 export interface LessonSidebarItem {
@@ -86,151 +80,170 @@ const LessonLayout: React.FC<LessonProps> = ({
       <Header />
       <ReadingProgressBar />
       
-      <main className="flex-grow">
-        {/* Hero Section with Dynamic Color */}
-        <section className={`${heroColor} text-white py-8`}>
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <div className="flex items-center mb-2">
-                    <span className="bg-white text-opacity-90 text-course-purple rounded-full h-8 w-8 flex items-center justify-center mr-2">
-                      {sessionId}
-                    </span>
-                    <h1 className="text-2xl md:text-3xl font-bold">{title}</h1>
-                  </div>
-                  <p className="text-white/90 max-w-2xl">
-                    {subtitle}
-                  </p>
-                </motion.div>
+      {/* Hero Section with Dynamic Color */}
+      <section className={`${heroColor} text-white py-10 md:py-12 px-4 md:px-0`}>
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col md:flex-row items-center justify-between"
+          >
+            <div className="text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start mb-2">
+                <span className="bg-white text-opacity-90 text-course-purple font-bold rounded-full h-10 w-10 flex items-center justify-center mr-3 shadow-lg">
+                  {sessionId}
+                </span>
+                <h1 className="text-3xl md:text-4xl font-bold">{title}</h1>
               </div>
-              <div className="mt-4 md:mt-0">
-                <Button asChild variant="outline" className="border-white text-white hover:bg-white/20 hover:text-white">
-                  <Link to={`/courses/${courseId}`} className="flex items-center">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    <span>Înapoi la curriculum</span>
-                  </Link>
-                </Button>
-              </div>
+              <p className="text-white/90 text-lg max-w-2xl mt-2">
+                {subtitle}
+              </p>
             </div>
-          </div>
-        </section>
+            <div className="mt-6 md:mt-0">
+              <Button asChild variant="outline" className="border-white text-white hover:bg-white/20 hover:text-white shadow-md">
+                <Link to={`/courses/${courseId}`} className="flex items-center">
+                  <ArrowLeft className="mr-2 h-5 w-5" />
+                  <span>Înapoi la curs</span>
+                </Link>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Content Section */}
-        <section className="py-8">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col lg:flex-row gap-8">
-              {/* Main Content */}
-              <div className="lg:w-3/4">
-                <Card className="mb-8">
-                  <CardContent className="p-6">
-                    {sections ? (
-                      <>
-                        {/* Display content as expandable sections instead of tabs */}
-                        <Accordion type="single" collapsible className="mb-8">
-                          {sections.map((section, index) => (
-                            <AccordionItem key={section.id} value={section.id}>
-                              <AccordionTrigger className="text-xl font-semibold">
-                                {section.title}
-                              </AccordionTrigger>
-                              <AccordionContent>
-                                <div id={section.id} className="pt-2">
-                                  {section.content}
-                                </div>
-                              </AccordionContent>
-                            </AccordionItem>
-                          ))}
-                        </Accordion>
-                      </>
-                    ) : (
-                      children
-                    )}
-
-                    <div className="flex justify-between mt-12">
-                      {previousLesson ? (
-                        <Button asChild className="bg-gray-500 hover:bg-gray-600">
-                          <Link to={previousLesson.path}>
-                            <ArrowLeft className="mr-2 h-5 w-5" />
-                            <span>{previousLesson.title}</span>
-                          </Link>
-                        </Button>
-                      ) : (
-                        <div></div>
-                      )}
-                      
-                      {nextLesson && (
-                        <Button asChild className="bg-course-purple hover:bg-course-blue">
-                          <Link to={nextLesson.path}>
-                            <span>{nextLesson.title}</span>
-                            <ChevronRight className="ml-2 h-5 w-5" />
-                          </Link>
-                        </Button>
-                      )}
+      {/* Content Section */}
+      <section className="py-8 px-4 md:px-0 bg-gray-50">
+        <div className="container mx-auto">
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Main Content */}
+            <div className="lg:w-3/4">
+              <Card className="mb-8 rounded-xl shadow-lg overflow-hidden border-0">
+                <div className="bg-gradient-to-r from-gray-50 to-gray-100 py-4 px-6 border-b border-gray-100">
+                  <div className="flex items-center">
+                    <BookOpen className="h-5 w-5 text-gray-500 mr-2" />
+                    <h2 className="text-xl font-semibold text-gray-800">Conținutul lecției</h2>
+                  </div>
+                </div>
+                
+                <CardContent className="p-6 md:p-8">
+                  {sections ? (
+                    <div className="space-y-12">
+                      {sections.map((section, index) => (
+                        <div 
+                          key={section.id} 
+                          id={section.id}
+                          className="scroll-mt-24"
+                        >
+                          <div className="flex items-center mb-4">
+                            <div className="bg-gradient-to-r from-purple-100 to-indigo-100 w-10 h-10 rounded-full flex items-center justify-center shadow-sm mr-3">
+                              <span className="text-indigo-700 font-bold">{index + 1}</span>
+                            </div>
+                            <h2 className="text-2xl font-bold text-gray-800">{section.title}</h2>
+                          </div>
+                          <div className="pl-0 md:pl-14 prose prose-headings:text-indigo-700 prose-a:text-blue-600 max-w-none">
+                            {section.content}
+                          </div>
+                          {index < sections.length - 1 && (
+                            <div className="w-full border-b border-gray-100 mt-12"></div>
+                          )}
+                        </div>
+                      ))}
                     </div>
+                  ) : (
+                    children
+                  )}
+
+                  <div className="flex justify-between mt-12 pt-6 border-t border-gray-100">
+                    {previousLesson ? (
+                      <Button asChild variant="outline" className="shadow-sm hover:shadow transition-all duration-200">
+                        <Link to={previousLesson.path} className="flex items-center">
+                          <ArrowLeft className="mr-2 h-5 w-5" />
+                          <span>{previousLesson.title}</span>
+                        </Link>
+                      </Button>
+                    ) : (
+                      <div></div>
+                    )}
+                    
+                    {nextLesson && (
+                      <Button asChild className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-md hover:shadow-lg transition-all duration-200">
+                        <Link to={nextLesson.path} className="flex items-center">
+                          <span>{nextLesson.title}</span>
+                          <ArrowRight className="ml-2 h-5 w-5" />
+                        </Link>
+                      </Button>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+            
+            {/* Sidebar */}
+            <div className="lg:w-1/4">
+              <div className="sticky top-24 space-y-6">
+                <Card className="overflow-hidden border-0 shadow-lg rounded-xl bg-white">
+                  <div className="bg-gradient-to-r from-indigo-600 to-purple-600 py-4 px-5 text-white">
+                    <h3 className="text-lg font-bold">Cuprins</h3>
+                  </div>
+                  <CardContent className="p-4">
+                    <ul className="space-y-3">
+                      {sidebarItems.map((item, index) => (
+                        <li key={item.id} className="group">
+                          <a 
+                            href={`#${item.id}`} 
+                            className={cn(
+                              "flex items-center py-2 px-3 rounded-lg transition-all duration-200",
+                              item.isActive 
+                                ? "bg-indigo-50 text-indigo-700 font-medium" 
+                                : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+                            )}
+                          >
+                            <div className={cn(
+                              "flex h-6 w-6 shrink-0 items-center justify-center rounded-full mr-2 transition-colors",
+                              item.isActive 
+                                ? "bg-indigo-100 text-indigo-600" 
+                                : "bg-gray-100 text-gray-500 group-hover:bg-indigo-100 group-hover:text-indigo-600"
+                            )}>
+                              <span className="text-xs font-medium">{index + 1}</span>
+                            </div>
+                            <span className="text-sm">{item.title}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
                   </CardContent>
                 </Card>
-              </div>
-              
-              {/* Sidebar with rounded top corners */}
-              <div className="lg:w-1/4">
-                <div className="sticky top-24">
-                  <Card className="mb-6 overflow-hidden rounded-t-lg">
+                
+                {resources.length > 0 && (
+                  <Card className="overflow-hidden border-0 shadow-lg rounded-xl bg-white">
+                    <div className="bg-gradient-to-r from-purple-600 to-indigo-600 py-4 px-5 text-white">
+                      <h3 className="text-lg font-bold">Resurse utile</h3>
+                    </div>
                     <CardContent className="p-4">
-                      <h3 className="text-lg font-bold mb-2">Conținut</h3>
                       <ul className="space-y-2">
-                        {sidebarItems.map((item) => (
-                          <li key={item.id}>
+                        {resources.map((resource, index) => (
+                          <li key={index} className="group">
                             <a 
-                              href={`#${item.id}`} 
-                              className={cn(
-                                "flex items-center",
-                                item.isActive ? "text-course-purple" : "text-gray-700 hover:text-course-blue"
-                              )}
+                              href={resource.url} 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="flex items-center py-2 px-3 text-gray-700 hover:text-indigo-600 rounded-lg hover:bg-gray-50 transition-all duration-200"
                             >
-                              <div className={cn(
-                                "h-2 w-2 rounded-full mr-2",
-                                item.isActive ? "bg-course-purple" : "bg-gray-300"
-                              )}></div>
-                              {item.title}
+                              <ChevronRight className="h-4 w-4 mr-2 text-indigo-400 group-hover:text-indigo-600" />
+                              <span className="text-sm">{resource.title}</span>
                             </a>
                           </li>
                         ))}
                       </ul>
                     </CardContent>
                   </Card>
-                  
-                  {resources.length > 0 && (
-                    <Card className="overflow-hidden rounded-t-lg">
-                      <CardContent className="p-4">
-                        <h3 className="text-lg font-bold mb-2">Resurse</h3>
-                        <ul className="space-y-2">
-                          {resources.map((resource, index) => (
-                            <li key={index}>
-                              <a 
-                                href={resource.url} 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                className="text-course-blue hover:underline flex items-center"
-                              >
-                                <ChevronRight className="h-4 w-4 mr-1" />
-                                {resource.title}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                    </Card>
-                  )}
-                </div>
+                )}
               </div>
             </div>
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
       
       <Footer />
     </div>

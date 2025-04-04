@@ -51,17 +51,76 @@ const Session3 = () => {
             folosind degetul sau un stylus. Aplicația include următoarele funcționalități:
           </p>
 
-          <ul className="list-disc pl-5 space-y-2 mb-6">
-            <li>Desenare pe ecran folosind gesturi tactile</li>
-            <li>Selectarea culorii pentru desen</li>
-            <li>Ajustarea grosimii liniei</li>
-            <li>Ștergerea întregului desen</li>
-            <li>Salvarea desenului în galeria dispozitivului</li>
-          </ul>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-4 rounded-xl shadow-sm">
+              <div className="flex items-center mb-2">
+                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-2">
+                  <span className="text-purple-600 font-bold">1</span>
+                </div>
+                <h3 className="font-semibold text-purple-700">Desenare Tactilă</h3>
+              </div>
+              <p className="text-gray-700 pl-10">Desenare pe ecran folosind gesturi tactile</p>
+            </div>
+            
+            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-4 rounded-xl shadow-sm">
+              <div className="flex items-center mb-2">
+                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-2">
+                  <span className="text-purple-600 font-bold">2</span>
+                </div>
+                <h3 className="font-semibold text-purple-700">Selecție Culori</h3>
+              </div>
+              <p className="text-gray-700 pl-10">Alegerea culorilor pentru desen</p>
+            </div>
+            
+            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-4 rounded-xl shadow-sm">
+              <div className="flex items-center mb-2">
+                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-2">
+                  <span className="text-purple-600 font-bold">3</span>
+                </div>
+                <h3 className="font-semibold text-purple-700">Grosime Linie</h3>
+              </div>
+              <p className="text-gray-700 pl-10">Ajustarea grosimii liniei de desen</p>
+            </div>
+            
+            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-4 rounded-xl shadow-sm">
+              <div className="flex items-center mb-2">
+                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-2">
+                  <span className="text-purple-600 font-bold">4</span>
+                </div>
+                <h3 className="font-semibold text-purple-700">Salvare și Ștergere</h3>
+              </div>
+              <p className="text-gray-700 pl-10">Salvarea desenului și ștergerea ecranului</p>
+            </div>
+          </div>
 
-          <div className="mb-8 rounded-lg overflow-hidden">
+          <div className="bg-gradient-to-r from-indigo-500 to-blue-600 p-6 rounded-xl text-white shadow-lg mb-6">
+            <h3 className="text-xl font-bold mb-3">Ce vei învăța să creezi</h3>
+            <p className="mb-4">
+              În această lecție vei crea o aplicație completă de desenat cu următoarele caracteristici:
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
+                <h4 className="font-bold mb-2">Interfața</h4>
+                <ul className="space-y-1 list-disc pl-5 text-white/90">
+                  <li>Canvas pentru desen</li>
+                  <li>Butoane pentru selectarea culorilor</li>
+                  <li>Slider pentru grosimea liniei</li>
+                </ul>
+              </div>
+              <div className="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
+                <h4 className="font-bold mb-2">Funcționalități</h4>
+                <ul className="space-y-1 list-disc pl-5 text-white/90">
+                  <li>Desenare linie continuă</li>
+                  <li>Schimbare culori</li>
+                  <li>Salvare și ștergere desen</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
             <img 
-              src="https://appinventor.mit.edu/explore/sites/all/files/ai2tutorials/paintPot2/figure1.png" 
+              src="https://appinventor.mit.edu/explore/sites/all/files/ai2tutorials/paintPot2/PaintPotStepDraw1.png" 
               alt="Drawing App Example" 
               className="w-full"
             />
@@ -90,6 +149,26 @@ const Session3 = () => {
             </ol>
           </InfoBox>
 
+          <div className="bg-gray-50 rounded-xl p-6 shadow-sm border border-gray-100 mt-6 mb-8">
+            <h3 className="text-xl font-bold mb-4 text-gray-800">Design-ul aplicației</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <p className="mb-3">Interfața trebuie să fie intuitivă și ușor de folosit. Toate controalele 
+                trebuie să fie ușor de accesat cu degetul mare în timp ce utilizatorul ține dispozitivul.</p>
+                <p>Vom folosi un VerticalArrangement pentru organizarea generală, cu Canvas-ul în partea de sus și 
+                controalele în partea de jos, grupate în HorizontalArrangements pentru o organizare mai bună.</p>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                <img 
+                  src="https://appinventor.mit.edu/explore/sites/all/files/ai2tutorials/paintPot2/PaintPotComponentVIewer.png" 
+                  alt="Drawing App Interface Components" 
+                  className="w-full rounded"
+                />
+                <p className="text-sm text-gray-600 mt-2 text-center">Organizarea componentelor în Designer</p>
+              </div>
+            </div>
+          </div>
+
           <StepItem number={1} title="Configurarea Designer-ului">
             <p>Pentru a crea interfața aplicației, vom folosi următoarea structură în Designer:</p>
             <ol className="list-decimal pl-5 space-y-2 mt-2">
@@ -113,15 +192,50 @@ const Session3 = () => {
           </p>
 
           <InfoBox title="Componente necesare" variant="secondary">
-            <ul className="list-disc pl-5 space-y-2 mt-2">
-              <li><strong>Canvas</strong> - suprafața pe care vom desena</li>
-              <li><strong>Button</strong> - butoane pentru selecția culorilor și alte funcții</li>
-              <li><strong>Slider</strong> - pentru a ajusta grosimea liniei</li>
-              <li><strong>Label</strong> - pentru a afișa grosimea curentă a liniei</li>
-              <li><strong>HorizontalArrangement</strong> și <strong>VerticalArrangement</strong> - pentru organizarea componentelor</li>
-              <li><strong>Canvas.DrawingCanvas</strong> - pentru a accesa evenimentele de desenare</li>
-            </ul>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+              <div>
+                <h4 className="font-bold mb-2">Componente vizibile:</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>Canvas</strong> - suprafața pe care vom desena</li>
+                  <li><strong>Button</strong> - butoane pentru selecția culorilor și alte funcții</li>
+                  <li><strong>Slider</strong> - pentru a ajusta grosimea liniei</li>
+                  <li><strong>Label</strong> - pentru a afișa grosimea curentă a liniei</li>
+                  <li><strong>HorizontalArrangement</strong> și <strong>VerticalArrangement</strong> - pentru organizarea componentelor</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold mb-2">Componente invizibile:</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>Clock</strong> - pentru a genera nume unice pentru desenele salvate</li>
+                  <li><strong>Canvas.DrawingCanvas</strong> - pentru a accesa evenimentele de desenare</li>
+                </ul>
+              </div>
+            </div>
           </InfoBox>
+
+          <div className="bg-indigo-50 rounded-xl p-6 border border-indigo-100 mt-6 mb-6">
+            <h3 className="text-xl font-bold mb-3 text-indigo-800">Proprietățile principale</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <h4 className="font-semibold text-indigo-700 mb-2">Canvas:</h4>
+                <ul className="space-y-1 text-gray-700">
+                  <li><span className="font-medium">Width:</span> Fill parent</li>
+                  <li><span className="font-medium">Height:</span> 300 pixeli</li>
+                  <li><span className="font-medium">BackgroundColor:</span> White</li>
+                  <li><span className="font-medium">PaintColor:</span> Black (inițial)</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold text-indigo-700 mb-2">Slider:</h4>
+                <ul className="space-y-1 text-gray-700">
+                  <li><span className="font-medium">MinValue:</span> 1</li>
+                  <li><span className="font-medium">MaxValue:</span> 20</li>
+                  <li><span className="font-medium">Width:</span> Fill parent</li>
+                  <li><span className="font-medium">ThumbPosition:</span> 2 (inițial)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
           <StepItem number={2} title="Adăugarea componentelor în interfață">
             <p>Vom adăuga componentele în interfață în ordinea următoare:</p>
@@ -135,6 +249,15 @@ const Session3 = () => {
               <li>Adaugă un ultim HorizontalArrangement pentru butoanele de control</li>
               <li>Adaugă butoane pentru ștergere și salvare în acest HorizontalArrangement</li>
             </ol>
+            
+            <div className="mt-6 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+              <img 
+                src="https://appinventor.mit.edu/explore/sites/all/files/ai2tutorials/paintPot2/PaintPotDesignerComplete.png" 
+                alt="Drawing App Designer View" 
+                className="w-full rounded"
+              />
+              <p className="text-sm text-gray-600 mt-2 text-center">Aspectul final al aplicației în Designer</p>
+            </div>
           </StepItem>
         </>
       )
@@ -147,6 +270,30 @@ const Session3 = () => {
           <p className="mb-6 text-gray-700">
             Acum vom implementa funcționalitățile aplicației noastre folosind blocurile din Blocks Editor.
           </p>
+
+          <div className="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl shadow-sm border border-purple-100 mb-8">
+            <h3 className="text-xl font-bold mb-4 text-purple-800">Cum funcționează Canvas</h3>
+            <p className="mb-4">Componenta Canvas din App Inventor este o zonă pe care utilizatorul poate desena folosind degetul. Aceasta oferă evenimente pentru:</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-white p-4 rounded-lg shadow-sm">
+                <h4 className="font-semibold text-purple-700 mb-2">Evenimente de atingere:</h4>
+                <ul className="space-y-1 text-gray-700 list-disc pl-5">
+                  <li><strong>TouchDown</strong> - când utilizatorul atinge ecranul</li>
+                  <li><strong>TouchUp</strong> - când utilizatorul ridică degetul</li>
+                  <li><strong>Dragged</strong> - când utilizatorul trage degetul pe ecran</li>
+                </ul>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow-sm">
+                <h4 className="font-semibold text-purple-700 mb-2">Metode de desenare:</h4>
+                <ul className="space-y-1 text-gray-700 list-disc pl-5">
+                  <li><strong>DrawLine</strong> - desenează o linie</li>
+                  <li><strong>DrawCircle</strong> - desenează un cerc</li>
+                  <li><strong>Clear</strong> - șterge tot conținutul</li>
+                  <li><strong>SaveAs</strong> - salvează imaginea</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
           <StepItem number={1} title="Inițializarea aplicației">
             <p>La inițializarea aplicației, trebuie să setăm valorile implicite:</p>
@@ -178,6 +325,15 @@ const Session3 = () => {
                 &nbsp;&nbsp;set global prevX to TouchedX<br/>
                 &nbsp;&nbsp;set global prevY to TouchedY<br/>
               </p>
+            </div>
+            
+            <div className="mt-4 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+              <img 
+                src="https://appinventor.mit.edu/explore/sites/all/files/ai2tutorials/paintPot2/DrawLineBlocks.png" 
+                alt="Drawing Implementation Blocks" 
+                className="w-full rounded"
+              />
+              <p className="text-sm text-gray-600 mt-2 text-center">Implementarea desenării cu blocuri</p>
             </div>
           </StepItem>
 
@@ -223,6 +379,15 @@ const Session3 = () => {
                 &nbsp;&nbsp;call Canvas1.SaveAs imageName<br/>
               </p>
             </div>
+            
+            <div className="mt-4 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+              <img 
+                src="https://appinventu.com/wp-content/uploads/2020/01/Screenshot-1103.png" 
+                alt="Save and Clear Implementation" 
+                className="w-full rounded"
+              />
+              <p className="text-sm text-gray-600 mt-2 text-center">Implementarea funcțiilor de salvare și ștergere</p>
+            </div>
           </StepItem>
 
           <InfoBox title="Sfat important" variant="warning">
@@ -241,15 +406,44 @@ const Session3 = () => {
             <p className="text-gray-700 mb-4">
               Extinde aplicația de desen creată în timpul lecției adăugând:
             </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li className="text-gray-700">Un buton pentru umplerea întregului Canvas cu o culoare selectată</li>
-              <li className="text-gray-700">Un buton pentru a desena forme predefinite (cerc, pătrat, linie dreaptă)</li>
-              <li className="text-gray-700">Implementarea unei funcții de "undo" (anulare) pentru ultima acțiune</li>
-              <li className="text-gray-700">Un buton pentru a schimba culoarea de fundal a Canvas-ului</li>
-              <li className="text-gray-700">Posibilitatea de a adăuga text pe desen</li>
-              <li className="text-gray-700">Un efect de "erase" (radieră) care desenează cu culoarea de fundal</li>
-            </ul>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                <h4 className="font-semibold text-gray-800 mb-2">Funcționalități noi:</h4>
+                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                  <li>Un buton pentru a umple întregul Canvas cu o culoare selectată</li>
+                  <li>Un buton pentru a desena forme predefinite (cerc, pătrat, linie dreaptă)</li>
+                  <li>Implementarea unei funcții de "undo" (anulare) pentru ultima acțiune</li>
+                </ul>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                <h4 className="font-semibold text-gray-800 mb-2">Funcționalități avansate:</h4>
+                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                  <li>Un buton pentru a schimba culoarea de fundal a Canvas-ului</li>
+                  <li>Posibilitatea de a adăuga text pe desen</li>
+                  <li>Un efect de "erase" (radieră) care desenează cu culoarea de fundal</li>
+                </ul>
+              </div>
+            </div>
           </Challenge>
+
+          <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-6 rounded-xl mt-6 text-white shadow-lg">
+            <h3 className="text-xl font-bold mb-3 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              Cum să îți prezinți proiectul
+            </h3>
+            <p className="mb-4">
+              După ce ai terminat aplicația, pregătește-te să o prezinți colegilor și profesorului tău:
+            </p>
+            <ul className="space-y-2 pl-6 list-disc">
+              <li>Arată funcționalitățile principale ale aplicației</li>
+              <li>Explică cum ai implementat desenarea și selectarea culorilor</li>
+              <li>Prezintă funcționalitățile suplimentare pe care le-ai adăugat</li>
+              <li>Împărtășește orice dificultate pe care ai întâmpinat-o și cum ai rezolvat-o</li>
+              <li>Primește feedback și sugestii pentru îmbunătățiri viitoare</li>
+            </ul>
+          </div>
 
           <InfoBox title="Nu uita!" variant="success">
             <p>Încarcă aplicația pe dispozitivul tău Android pentru a o testa. Împărtășește creația ta cu colegii și profesorul.</p>

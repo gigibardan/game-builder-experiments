@@ -34,15 +34,16 @@ import LessonTemplate from '@/pages/LessonTemplate';
 function App() {
   return (
     <Routes>
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/unauthorized" element={<Unauthorized />} />
-      <Route path="/" element={<Home />} />
       <Route path="/courses" element={<Courses />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/about" element={<About />} />
+      
       <Route path="/courses/scratch" element={<Scratch />} />
       <Route path="/courses/appinventor" element={<AppInventor />} />
       <Route path="/courses/python" element={<Python />} />
