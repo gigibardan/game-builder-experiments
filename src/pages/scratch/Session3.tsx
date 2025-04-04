@@ -156,10 +156,10 @@ const Session3 = () => {
                 &nbsp;&nbsp;dacă tasta săgeată stânga este apăsată atunci<br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;modifică x cu -10<br/>
                 &nbsp;&nbsp;end<br/>
-                &nbsp;&nbsp;dacă x > 230 atunci<br/>
+                &nbsp;&nbsp;dacă x &gt; 230 atunci<br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;setează x la 230<br/>
                 &nbsp;&nbsp;end<br/>
-                &nbsp;&nbsp;dacă x < -230 atunci<br/>
+                &nbsp;&nbsp;dacă x &lt; -230 atunci<br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;setează x la -230<br/>
                 &nbsp;&nbsp;end<br/>
                 end
@@ -182,7 +182,7 @@ const Session3 = () => {
                 setează scor la 0<br/>
                 pentru totdeauna<br/>
                 &nbsp;&nbsp;mergi la x: (număr aleatoriu între -230 și 230) y: 180<br/>
-                &nbsp;&nbsp;repetă până când (atinge jucătorul? sau y < -170)<br/>
+                &nbsp;&nbsp;repetă până când (atinge jucătorul? sau y &lt; -170)<br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;modifică y cu -5<br/>
                 &nbsp;&nbsp;end<br/>
                 &nbsp;&nbsp;dacă atinge jucătorul? atunci<br/>
