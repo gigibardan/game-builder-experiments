@@ -24,6 +24,8 @@ import ScratchSession4 from '@/pages/scratch/Session4';
 import AppInventorSession1 from '@/pages/appinventor/Session1';
 import AppInventorSession2 from '@/pages/appinventor/Session2';
 import AppInventorSession3 from '@/pages/appinventor/Session3';
+import AppInventorSession4 from '@/pages/appinventor/Session4';
+import AppInventorSession5 from '@/pages/appinventor/Session5';
 import PythonSession1 from '@/pages/python/Session1';
 import Alice3Session1 from '@/pages/alice3/Session1';
 import FrontendDevSession1 from '@/pages/frontenddev/Session1';
@@ -115,6 +117,24 @@ function App() {
         element={
           <ProtectedRoute courseId="appinventor" sessionId="3">
             <AppInventorSession3 />
+          </ProtectedRoute>
+        } 
+      />
+      
+      <Route 
+        path="/appinventor/session4" 
+        element={
+          <ProtectedRoute courseId="appinventor" sessionId="4">
+            <AppInventorSession4 />
+          </ProtectedRoute>
+        } 
+      />
+      
+      <Route 
+        path="/appinventor/session5" 
+        element={
+          <ProtectedRoute courseId="appinventor" sessionId="5">
+            <AppInventorSession5 />
           </ProtectedRoute>
         } 
       />

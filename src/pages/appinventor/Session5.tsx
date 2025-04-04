@@ -1,556 +1,386 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft, ChevronRight, Star, Terminal } from 'lucide-react';
-import CodeBlock from '@/components/CodeBlock';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import LessonLayout from '@/components/LessonLayout';
+import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
 
 const Session5 = () => {
+  const sidebarItems = [
+    { id: 'introducere', title: 'Introducere', isActive: true },
+    { id: 'joc-arcade', title: 'Joc Arcade' },
+    { id: 'interfata', title: 'Design-ul interfeței' },
+    { id: 'sprite-uri', title: 'Gestionarea sprite-urilor' },
+    { id: 'controlul-jocului', title: 'Controlul jocului' },
+    { id: 'coliziuni', title: 'Detectarea coliziunilor' },
+    { id: 'scor', title: 'Sistem de scor' },
+    { id: 'exercitiu', title: 'Exercițiu pentru acasă' },
+  ];
+
+  const resources = [
+    { title: 'Documentație App Inventor - Canvas', url: 'https://appinventor.mit.edu/explore/ai2/canvas' },
+    { title: 'Documentație App Inventor - Sprites', url: 'https://appinventor.mit.edu/explore/ai2/sprites' },
+    { title: 'Tutorial video - Game Development', url: 'https://www.youtube.com/watch?v=IA2qBajGjJ0' },
+  ];
+
+  const sections = [
+    {
+      id: 'introducere',
+      title: 'Introducere',
+      content: (
+        <>
+          <LearningOutcome items={[
+            "Înțelegerea conceptului de joc arcade și a elementelor principale",
+            "Utilizarea sprite-urilor și a canvas-ului pentru jocuri",
+            "Implementarea controalelor pentru jucător și a mișcării obiectelor",
+            "Detectarea coliziunilor și implementarea unui sistem de scor"
+          ]} />
+          
+          <p className="mt-4 text-gray-700">
+            În această lecție vom învăța să creăm un joc arcade simplu folosind App Inventor. Vom folosi componenta 
+            Canvas și sprite-uri pentru a crea un joc în care jucătorul trebuie să evite obstacolele și să colecteze 
+            obiecte pentru a obține puncte.
+          </p>
+        </>
+      )
+    },
+    {
+      id: 'joc-arcade',
+      title: 'Joc Arcade',
+      content: (
+        <>
+          <p className="mb-6 text-gray-700">
+            Jocul nostru arcade va fi un joc simplu în care jucătorul controlează un personaj care trebuie să 
+            evite obstacolele și să colecteze obiecte pentru a obține puncte. Jocul include următoarele elemente:
+          </p>
+
+          <ul className="list-disc pl-5 space-y-2 mb-6">
+            <li>Un personaj controlat de jucător</li>
+            <li>Obstacole care se deplasează pe ecran</li>
+            <li>Obiecte de colectat pentru a obține puncte</li>
+            <li>Un sistem de scor</li>
+            <li>Vieți pentru jucător</li>
+            <li>Un ecran de "Game Over" când jucătorul pierde toate viețile</li>
+          </ul>
+
+          <div className="mb-8 rounded-lg overflow-hidden">
+            <img 
+              src="https://appinventor.mit.edu/explore/sites/all/files/Tutorials/raindrop/figure3.png" 
+              alt="Game Example" 
+              className="w-full"
+            />
+          </div>
+        </>
+      )
+    },
+    {
+      id: 'interfata',
+      title: 'Design-ul interfeței',
+      content: (
+        <>
+          <p className="mb-6 text-gray-700">
+            Interfața jocului nostru va consta într-un Canvas pentru zona de joc și etichete pentru afișarea 
+            scorului și a numărului de vieți.
+          </p>
+
+          <InfoBox title="Structura interfeței" variant="primary">
+            <p>Interfața jocului va fi organizată astfel:</p>
+            <ol className="list-decimal pl-5 space-y-2 mt-2">
+              <li>Un VerticalArrangement pentru întregul ecran</li>
+              <li>Un HorizontalArrangement pentru afișarea scorului și a vieților</li>
+              <li>Un Canvas pentru zona de joc</li>
+              <li>Un buton pentru a începe jocul</li>
+              <li>Un buton pentru a reseta jocul</li>
+            </ol>
+          </InfoBox>
+
+          <StepItem number={1} title="Configurarea Designer-ului">
+            <p>Pentru a crea interfața jocului, vom folosi următoarea structură în Designer:</p>
+            <ol className="list-decimal pl-5 space-y-2 mt-2">
+              <li>Adaugă un VerticalArrangement care va ocupa întregul ecran</li>
+              <li>Adaugă un HorizontalArrangement în partea de sus pentru scor și vieți</li>
+              <li>Adaugă două etichete (Label) în HorizontalArrangement pentru a afișa scorul și viețile</li>
+              <li>Adaugă un Canvas sub HorizontalArrangement pentru zona de joc</li>
+              <li>Adaugă un alt HorizontalArrangement în partea de jos pentru butoane</li>
+              <li>Adaugă un buton "Start" și un buton "Reset" în acest HorizontalArrangement</li>
+            </ol>
+          </StepItem>
+        </>
+      )
+    },
+    {
+      id: 'sprite-uri',
+      title: 'Gestionarea sprite-urilor',
+      content: (
+        <>
+          <p className="mb-6 text-gray-700">
+            Sprite-urile sunt obiecte grafice care se pot deplasa pe Canvas. În jocul nostru, vom avea trei 
+            tipuri de sprite-uri: jucătorul, obstacolele și obiectele de colectat.
+          </p>
+
+          <InfoBox title="Tipuri de sprite-uri în App Inventor" variant="secondary">
+            <ul className="list-disc pl-5 space-y-2 mt-2">
+              <li><strong>ImageSprite</strong> - un sprite bazat pe o imagine</li>
+              <li><strong>Ball</strong> - un sprite circular care poate ricosa</li>
+              <li><strong>AnimatedSprite</strong> - un sprite cu animație (mai multe cadre)</li>
+            </ul>
+            <p className="mt-2">Pentru jocul nostru, vom folosi ImageSprite pentru toate elementele.</p>
+          </InfoBox>
+
+          <StepItem number={2} title="Adăugarea sprite-urilor în Canvas">
+            <p>Vom adăuga următoarele sprite-uri în Canvas:</p>
+            <ol className="list-decimal pl-5 space-y-2 mt-2">
+              <li>Din categoria "Drawing and Animation", adaugă un ImageSprite în Canvas pentru jucător</li>
+              <li>Adaugă încă două ImageSprite pentru un obstacol și un obiect de colectat</li>
+              <li>Pentru fiecare sprite, setează proprietățile Picture, Width, Height, X, Y și Interval</li>
+              <li>Setează poziția inițială a jucătorului în partea de jos a ecranului</li>
+              <li>Setează pozițiile inițiale ale obstacolelor și obiectelor de colectat în afara ecranului (vor fi generate dinamic)</li>
+            </ol>
+          </StepItem>
+        </>
+      )
+    },
+    {
+      id: 'controlul-jocului',
+      title: 'Controlul jocului',
+      content: (
+        <>
+          <p className="mb-6 text-gray-700">
+            Vom implementa controlul jocului folosind butoanele de start și reset, precum și accelerometrul 
+            pentru a mișca jucătorul.
+          </p>
+
+          <StepItem number={1} title="Inițializarea jocului">
+            <p>La inițializarea ecranului, trebuie să setăm valorile implicite:</p>
+            <div className="mt-3 p-3 bg-gray-100 rounded-md">
+              <p className="font-mono text-sm">
+                when Screen1.Initialize<br/>
+                &nbsp;&nbsp;set global score to 0<br/>
+                &nbsp;&nbsp;set global lives to 3<br/>
+                &nbsp;&nbsp;set ScoreLabel.Text to join "Score: " score<br/>
+                &nbsp;&nbsp;set LivesLabel.Text to join "Lives: " lives<br/>
+                &nbsp;&nbsp;set PlayerSprite.Visible to false<br/>
+                &nbsp;&nbsp;set ObstacleSprite.Visible to false<br/>
+                &nbsp;&nbsp;set CollectibleSprite.Visible to false<br/>
+                &nbsp;&nbsp;set Clock1.TimerEnabled to false<br/>
+              </p>
+            </div>
+          </StepItem>
+
+          <StepItem number={2} title="Implementarea butonului Start">
+            <p>Când utilizatorul apasă butonul Start, trebuie să inițiem jocul:</p>
+            <div className="mt-3 p-3 bg-gray-100 rounded-md">
+              <p className="font-mono text-sm">
+                when StartButton.Click<br/>
+                &nbsp;&nbsp;set PlayerSprite.Visible to true<br/>
+                &nbsp;&nbsp;set PlayerSprite.X to divide Canvas1.Width by 2<br/>
+                &nbsp;&nbsp;set PlayerSprite.Y to subtract Canvas1.Height by 50<br/>
+                &nbsp;&nbsp;call generateObstacle<br/>
+                &nbsp;&nbsp;call generateCollectible<br/>
+                &nbsp;&nbsp;set Clock1.TimerEnabled to true<br/>
+                &nbsp;&nbsp;set StartButton.Enabled to false<br/>
+              </p>
+            </div>
+          </StepItem>
+
+          <StepItem number={3} title="Implementarea butonului Reset">
+            <p>Când utilizatorul apasă butonul Reset, trebuie să reinițializăm jocul:</p>
+            <div className="mt-3 p-3 bg-gray-100 rounded-md">
+              <p className="font-mono text-sm">
+                when ResetButton.Click<br/>
+                &nbsp;&nbsp;set global score to 0<br/>
+                &nbsp;&nbsp;set global lives to 3<br/>
+                &nbsp;&nbsp;set ScoreLabel.Text to join "Score: " score<br/>
+                &nbsp;&nbsp;set LivesLabel.Text to join "Lives: " lives<br/>
+                &nbsp;&nbsp;set PlayerSprite.Visible to false<br/>
+                &nbsp;&nbsp;set ObstacleSprite.Visible to false<br/>
+                &nbsp;&nbsp;set CollectibleSprite.Visible to false<br/>
+                &nbsp;&nbsp;set Clock1.TimerEnabled to false<br/>
+                &nbsp;&nbsp;set StartButton.Enabled to true<br/>
+              </p>
+            </div>
+          </StepItem>
+
+          <StepItem number={4} title="Implementarea controlului jucătorului">
+            <p>Pentru a controla jucătorul, vom folosi accelerometrul:</p>
+            <div className="mt-3 p-3 bg-gray-100 rounded-md">
+              <p className="font-mono text-sm">
+                when AccelerometerSensor1.AccelerationChanged<br/>
+                &nbsp;&nbsp;if Clock1.TimerEnabled then<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;set PlayerSprite.X to add PlayerSprite.X multiply xAccel by -10<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;if PlayerSprite.X &lt; 0 then<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set PlayerSprite.X to 0<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;end if<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;if PlayerSprite.X &gt; subtract Canvas1.Width by PlayerSprite.Width then<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set PlayerSprite.X to subtract Canvas1.Width by PlayerSprite.Width<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;end if<br/>
+                &nbsp;&nbsp;end if<br/>
+              </p>
+            </div>
+          </StepItem>
+        </>
+      )
+    },
+    {
+      id: 'coliziuni',
+      title: 'Detectarea coliziunilor',
+      content: (
+        <>
+          <p className="mb-6 text-gray-700">
+            În jocul nostru, trebuie să detectăm coliziunile între jucător și alte sprite-uri (obstacole și 
+            obiecte de colectat) pentru a implementa logica jocului.
+          </p>
+
+          <StepItem number={1} title="Detectarea coliziunii cu obstacolele">
+            <p>Când jucătorul se ciocnește de un obstacol, acesta pierde o viață:</p>
+            <div className="mt-3 p-3 bg-gray-100 rounded-md">
+              <p className="font-mono text-sm">
+                when ObstacleSprite.CollidedWith<br/>
+                &nbsp;&nbsp;if other = PlayerSprite then<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;set global lives to subtract lives by 1<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;set LivesLabel.Text to join "Lives: " lives<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;call Sound1.Vibrate with millisecs 300<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;set ObstacleSprite.Visible to false<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;call generateObstacle<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;if lives = 0 then<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;call gameOver<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;end if<br/>
+                &nbsp;&nbsp;end if<br/>
+              </p>
+            </div>
+          </StepItem>
+
+          <StepItem number={2} title="Detectarea coliziunii cu obiectele de colectat">
+            <p>Când jucătorul colectează un obiect, acesta primește puncte:</p>
+            <div className="mt-3 p-3 bg-gray-100 rounded-md">
+              <p className="font-mono text-sm">
+                when CollectibleSprite.CollidedWith<br/>
+                &nbsp;&nbsp;if other = PlayerSprite then<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;set global score to add score by 10<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;set ScoreLabel.Text to join "Score: " score<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;set CollectibleSprite.Visible to false<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;call generateCollectible<br/>
+                &nbsp;&nbsp;end if<br/>
+              </p>
+            </div>
+          </StepItem>
+        </>
+      )
+    },
+    {
+      id: 'scor',
+      title: 'Sistem de scor',
+      content: (
+        <>
+          <p className="mb-6 text-gray-700">
+            Vom implementa un sistem de scor și vieți pentru a ține evidența progresului jucătorului. De asemenea, 
+            vom implementa logica pentru sfârșitul jocului.
+          </p>
+
+          <StepItem number={1} title="Generarea obstacolelor și a obiectelor de colectat">
+            <p>Vom crea două proceduri pentru a genera obstacole și obiecte de colectat:</p>
+            <div className="mt-3 p-3 bg-gray-100 rounded-md">
+              <p className="font-mono text-sm">
+                to generateObstacle<br/>
+                &nbsp;&nbsp;set ObstacleSprite.Visible to true<br/>
+                &nbsp;&nbsp;set ObstacleSprite.X to random integer from 0 to subtract Canvas1.Width by ObstacleSprite.Width<br/>
+                &nbsp;&nbsp;set ObstacleSprite.Y to 0<br/>
+                &nbsp;&nbsp;set ObstacleSprite.Speed to add 5 by divide score by 50<br/>
+                <br/>
+                to generateCollectible<br/>
+                &nbsp;&nbsp;set CollectibleSprite.Visible to true<br/>
+                &nbsp;&nbsp;set CollectibleSprite.X to random integer from 0 to subtract Canvas1.Width by CollectibleSprite.Width<br/>
+                &nbsp;&nbsp;set CollectibleSprite.Y to 0<br/>
+                &nbsp;&nbsp;set CollectibleSprite.Speed to add 3 by divide score by 100<br/>
+              </p>
+            </div>
+          </StepItem>
+
+          <StepItem number={2} title="Implementarea ceasului pentru mișcarea sprite-urilor">
+            <p>Vom folosi un Clock pentru a deplasa obstacolele și obiectele de colectat în jos:</p>
+            <div className="mt-3 p-3 bg-gray-100 rounded-md">
+              <p className="font-mono text-sm">
+                when Clock1.Timer<br/>
+                &nbsp;&nbsp;set ObstacleSprite.Y to add ObstacleSprite.Y by ObstacleSprite.Speed<br/>
+                &nbsp;&nbsp;set CollectibleSprite.Y to add CollectibleSprite.Y by CollectibleSprite.Speed<br/>
+                <br/>
+                &nbsp;&nbsp;if ObstacleSprite.Y &gt; Canvas1.Height then<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;call generateObstacle<br/>
+                &nbsp;&nbsp;end if<br/>
+                <br/>
+                &nbsp;&nbsp;if CollectibleSprite.Y &gt; Canvas1.Height then<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;call generateCollectible<br/>
+                &nbsp;&nbsp;end if<br/>
+              </p>
+            </div>
+          </StepItem>
+
+          <StepItem number={3} title="Implementarea sfârșitului jocului">
+            <p>Când jucătorul pierde toate viețile, jocul se termină:</p>
+            <div className="mt-3 p-3 bg-gray-100 rounded-md">
+              <p className="font-mono text-sm">
+                to gameOver<br/>
+                &nbsp;&nbsp;set Clock1.TimerEnabled to false<br/>
+                &nbsp;&nbsp;set PlayerSprite.Visible to false<br/>
+                &nbsp;&nbsp;set ObstacleSprite.Visible to false<br/>
+                &nbsp;&nbsp;set CollectibleSprite.Visible to false<br/>
+                &nbsp;&nbsp;call Notifier1.ShowAlert with message join "Game Over! Your score: " score<br/>
+                &nbsp;&nbsp;set StartButton.Enabled to true<br/>
+              </p>
+            </div>
+          </StepItem>
+
+          <InfoBox title="Sfat important" variant="warning">
+            <p>Nu uita să adaugi un ceas (Clock) din categoria "Sensors" pentru a controla mișcarea sprite-urilor.</p>
+            <p className="mt-2">De asemenea, adaugă un AccelerometerSensor pentru a controla jucătorul și un Sound pentru feedback.</p>
+          </InfoBox>
+        </>
+      )
+    },
+    {
+      id: 'exercitiu',
+      title: 'Exercițiu pentru acasă',
+      content: (
+        <>
+          <Challenge title="Extinde jocul arcade cu următoarele funcționalități" difficulty="medium">
+            <p className="text-gray-700 mb-4">
+              Extinde jocul arcade creat în timpul lecției adăugând:
+            </p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li className="text-gray-700">Adaugă mai multe tipuri de obstacole cu comportamente diferite</li>
+              <li className="text-gray-700">Implementează power-up-uri care oferă jucătorului abilități speciale (invincibilitate temporară, viteză mărită, etc.)</li>
+              <li className="text-gray-700">Adaugă un sistem de nivele cu dificultate crescătoare</li>
+              <li className="text-gray-700">Implementează efecte sonore pentru diferite acțiuni (colectare obiecte, coliziune cu obstacole, etc.)</li>
+              <li className="text-gray-700">Adaugă un sistem de high scores pentru a păstra evidența celor mai bune scoruri</li>
+              <li className="text-gray-700">Implementează controale alternative (touch sau butoane) pe lângă accelerometru</li>
+            </ul>
+          </Challenge>
+
+          <InfoBox title="Nu uita!" variant="success">
+            <p>Încarcă jocul pe dispozitivul tău Android pentru a-l testa. Verifică toate funcționalitățile și asigură-te că jocul este distractiv și provocator.</p>
+          </InfoBox>
+        </>
+      )
+    }
+  ];
+
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
-      <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-r from-course-purple to-course-blue text-white py-8">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div>
-                <div className="flex items-center mb-2">
-                  <span className="bg-white text-course-purple rounded-full h-8 w-8 flex items-center justify-center mr-2">
-                    5
-                  </span>
-                  <h1 className="text-2xl md:text-3xl font-bold">Sesiunea 5: Joc Arcade</h1>
-                </div>
-                <p className="text-white/90">
-                  Creează un joc arcade simplu cu obiecte în mișcare și coliziuni în App Inventor
-                </p>
-              </div>
-              <div className="mt-4 md:mt-0">
-                <Button asChild variant="secondary" className="border-white text-gray-800 hover:bg-white/90">
-                  <Link to="/appinventor" className="flex items-center">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    <span>Înapoi la curs</span>
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Content */}
-        <section className="py-8">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col lg:flex-row gap-8">
-              {/* Main Content */}
-              <div className="lg:w-3/4">
-                <Card className="mb-8">
-                  <CardContent className="p-6">
-                    <h2 className="text-2xl font-bold mb-4">Jocul Arcade: Space Defender</h2>
-                    <p className="mb-4">
-                      În această sesiune vom crea un joc arcade simplu de tip "Space Defender", unde jucătorul controlează o navă spațială și trebuie să evite sau să distrugă asteroizii care se apropie. Vom învăța despre animații, detecția coliziunilor și cum să implementăm un sistem de scor și vieți.
-                    </p>
-                    
-                    <div className="bg-blue-50 border-l-4 border-course-blue p-4 my-6">
-                      <h3 className="text-lg font-semibold text-course-blue mb-2">Ce vei învăța</h3>
-                      <ul className="list-disc list-inside space-y-1">
-                        <li>Cum să creezi obiecte care se mișcă pe ecran</li>
-                        <li>Cum să implementezi controlul prin atingere și senzorul de accelerometru</li>
-                        <li>Cum să detectezi coliziunile între obiecte</li>
-                        <li>Cum să implementezi un sistem de scor și vieți</li>
-                        <li>Cum să creezi efecte sonore și vizuale</li>
-                      </ul>
-                    </div>
-
-                    <Tabs defaultValue="setup" className="w-full">
-                      <TabsList className="grid w-full grid-cols-3">
-                        <TabsTrigger value="setup">Configurare</TabsTrigger>
-                        <TabsTrigger value="implementation">Implementare</TabsTrigger>
-                        <TabsTrigger value="challenges">Provocări</TabsTrigger>
-                      </TabsList>
-                      
-                      <TabsContent value="setup">
-                        <div className="space-y-4 mt-4">
-                          <h3 className="text-xl font-semibold">Pasul 1: Pregătirea mediului de lucru</h3>
-                          <p>
-                            Înainte de a începe, vom crea un nou proiect în MIT App Inventor și vom configura interfața pentru jocul nostru arcade.
-                          </p>
-                          
-                          <ol className="list-decimal list-inside space-y-4 pl-4 mt-4">
-                            <li className="p-4 border rounded-md bg-gray-50">
-                              Accesează <a href="https://appinventor.mit.edu/" target="_blank" rel="noopener noreferrer" className="text-course-blue hover:underline">MIT App Inventor</a> și autentifică-te.
-                            </li>
-                            <li className="p-4 border rounded-md bg-gray-50">
-                              Creează un nou proiect și numește-l "SpaceDefender".
-                            </li>
-                            <li className="p-4 border rounded-md bg-gray-50">
-                              În secțiunea Palette din stânga, caută și descarcă câteva imagini pentru proiectul tău:
-                              <ul className="list-disc list-inside mt-2 ml-4">
-                                <li>O imagine pentru nava spațială</li>
-                                <li>O imagine pentru asteroizi</li>
-                                <li>O imagine pentru fundal (opțională)</li>
-                                <li>O imagine pentru explozie (opțională)</li>
-                              </ul>
-                            </li>
-                          </ol>
-                          
-                          <h3 className="text-xl font-semibold mt-6">Pasul 2: Configurarea interfeței utilizator</h3>
-                          <p>
-                            Acum vom configura interfața utilizator pentru jocul nostru. Vom avea nevoie de un Canvas pentru zona de joc, etichete pentru scor și vieți și butoane pentru control.
-                          </p>
-                          
-                          <ol className="list-decimal list-inside space-y-4 pl-4 mt-4">
-                            <li className="p-4 border rounded-md bg-gray-50">
-                              Din secțiunea "Drawing and Animation", trage un component Canvas în ecran. Acesta va fi zona noastră principală de joc.
-                              <ul className="list-disc list-inside mt-2 ml-4">
-                                <li>Setează Width la Fill Parent</li>
-                                <li>Setează Height la 70% din înălțimea ecranului</li>
-                                <li>Dacă ai o imagine de fundal, setează BackgroundImage la imaginea respectivă</li>
-                              </ul>
-                            </li>
-                            <li className="p-4 border rounded-md bg-gray-50">
-                              Din secțiunea "User Interface", adaugă două etichete (Label) în partea de sus a ecranului:
-                              <ul className="list-disc list-inside mt-2 ml-4">
-                                <li>Prima etichetă va afișa scorul. Denumește-o "ScoreLabel" și setează textul la "Scor: 0"</li>
-                                <li>A doua etichetă va afișa viețile. Denumește-o "LivesLabel" și setează textul la "Vieți: 3"</li>
-                              </ul>
-                            </li>
-                            <li className="p-4 border rounded-md bg-gray-50">
-                              Din secțiunea "User Interface", adaugă un buton (Button) pentru a începe jocul:
-                              <ul className="list-disc list-inside mt-2 ml-4">
-                                <li>Denumește-l "StartButton"</li>
-                                <li>Setează textul la "Start Joc"</li>
-                                <li>Poziționează-l sub canvas</li>
-                              </ul>
-                            </li>
-                          </ol>
-                          
-                          <h3 className="text-xl font-semibold mt-6">Pasul 3: Adăugarea obiectelor de joc</h3>
-                          <p>
-                            Acum vom adăuga obiectele principale ale jocului: nava spațială și asteroizii.
-                          </p>
-                          
-                          <ol className="list-decimal list-inside space-y-4 pl-4 mt-4">
-                            <li className="p-4 border rounded-md bg-gray-50">
-                              Din secțiunea "Drawing and Animation", trage un component ImageSprite pe Canvas:
-                              <ul className="list-disc list-inside mt-2 ml-4">
-                                <li>Denumește-l "PlayerShip"</li>
-                                <li>Setează Picture la imaginea navei tale spațiale</li>
-                                <li>Poziționează-l în partea de jos a Canvas-ului</li>
-                                <li>Ajustează Width și Height pentru a se potrivi jocului</li>
-                              </ul>
-                            </li>
-                            <li className="p-4 border rounded-md bg-gray-50">
-                              Din secțiunea "Drawing and Animation", trage alt component ImageSprite pe Canvas:
-                              <ul className="list-disc list-inside mt-2 ml-4">
-                                <li>Denumește-l "Asteroid1"</li>
-                                <li>Setează Picture la imaginea asteroidului</li>
-                                <li>Poziționează-l în partea de sus a Canvas-ului</li>
-                                <li>Ajustează Width și Height după preferință</li>
-                                <li>Setează Visible la False (îl vom face vizibil când începe jocul)</li>
-                              </ul>
-                            </li>
-                            <li className="p-4 border rounded-md bg-gray-50">
-                              Din secțiunea "Sensors", adaugă un component AccelerometerSensor:
-                              <ul className="list-disc list-inside mt-2 ml-4">
-                                <li>Acesta va permite controlul navei prin înclinarea dispozitivului</li>
-                              </ul>
-                            </li>
-                            <li className="p-4 border rounded-md bg-gray-50">
-                              Din secțiunea "Media", adaugă două componente Sound:
-                              <ul className="list-disc list-inside mt-2 ml-4">
-                                <li>Primul pentru sunetul de coliziune (denumește-l "CollisionSound")</li>
-                                <li>Al doilea pentru sunetul de fundal sau efecte (denumește-l "BackgroundSound")</li>
-                              </ul>
-                            </li>
-                            <li className="p-4 border rounded-md bg-gray-50">
-                              Din secțiunea "Sensors", adaugă un component Clock:
-                              <ul className="list-disc list-inside mt-2 ml-4">
-                                <li>Denumește-l "GameClock"</li>
-                                <li>Setează TimerInterval la 50 milisecunde</li>
-                                <li>Setează TimerEnabled la False (îl vom activa când începe jocul)</li>
-                              </ul>
-                            </li>
-                          </ol>
-                          
-                          <div className="mt-6 border p-4 rounded-md text-center">
-                            <p className="text-gray-600 mb-2">
-                              Interfața ta ar trebui să arate similar cu aceasta:
-                            </p>
-                            <div className="bg-white border-2 border-gray-300 rounded-xl p-4 max-w-md mx-auto">
-                              <div className="flex justify-between p-2 bg-gray-100 rounded-t">
-                                <div>Scor: 0</div>
-                                <div>Vieți: 3</div>
-                              </div>
-                              <div className="bg-black h-60 relative flex items-center justify-center">
-                                <div className="text-white text-sm">[Zona de joc]</div>
-                                <div className="absolute bottom-4 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-xs">Navă</span>
-                                </div>
-                                <div className="absolute top-4 right-10 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-                                  <span className="text-white text-xs">Asteroid</span>
-                                </div>
-                              </div>
-                              <div className="p-2 flex justify-center">
-                                <div className="bg-green-500 text-white py-2 px-4 rounded">Start Joc</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </TabsContent>
-                      
-                      <TabsContent value="implementation">
-                        <div className="space-y-4 mt-4">
-                          <h3 className="text-xl font-semibold">Pasul 4: Programarea logicii jocului</h3>
-                          <p>
-                            Acum vom programa logica jocului nostru folosind blocurile din App Inventor.
-                          </p>
-                          
-                          <h4 className="text-lg font-medium mt-6">Variabile globale</h4>
-                          <p className="mb-3">
-                            În primul rând, vom crea variabilele globale necesare pentru jocul nostru.
-                          </p>
-                          
-                          <CodeBlock>
-{`// Inițializează scor la 0
-initialize global score to 0
-
-// Inițializează vieți la 3
-initialize global lives to 3
-
-// Variabilă pentru a controla dacă jocul rulează
-initialize global gameRunning to false
-
-// Viteza de mișcare a asteroizilor
-initialize global asteroidSpeed to 3`}
-                          </CodeBlock>
-                          
-                          <h4 className="text-lg font-medium mt-6">Butonul Start</h4>
-                          <p className="mb-3">
-                            Vom programa butonul de start pentru a începe jocul.
-                          </p>
-                          
-                          <CodeBlock>
-{`when StartButton.Click
-  do
-    // Resetează valorile inițiale
-    set global score to 0
-    set global lives to 3
-    set ScoreLabel.Text to join "Scor: " (global score)
-    set LivesLabel.Text to join "Vieți: " (global lives)
-    
-    // Asigură-te că nava este vizibilă și în poziția inițială
-    set PlayerShip.Visible to true
-    set PlayerShip.X to (divide Canvas1.Width by 2) - (divide PlayerShip.Width by 2)
-    set PlayerShip.Y to Canvas1.Height - PlayerShip.Height - 10
-    
-    // Resetează poziția asteroidului și îl face vizibil
-    set Asteroid1.Visible to true
-    reset_asteroid
-    
-    // Pornește cronometrul jocului
-    set GameClock.TimerEnabled to true
-    
-    // Marchează jocul ca fiind în desfășurare
-    set global gameRunning to true
-    
-    // Schimbă textul butonului
-    set StartButton.Text to "Joc în desfășurare..."`}
-                          </CodeBlock>
-                          
-                          <h4 className="text-lg font-medium mt-6">Funcția pentru resetarea asteroidului</h4>
-                          <p className="mb-3">
-                            Vom crea o procedură pentru a reseta poziția asteroidului.
-                          </p>
-                          
-                          <CodeBlock>
-{`to reset_asteroid
-  // Plasează asteroidul într-o poziție aleatorie în partea de sus
-  set Asteroid1.X to random integer from 0 to (Canvas1.Width - Asteroid1.Width)
-  set Asteroid1.Y to 0 - Asteroid1.Height
-  
-  // Setează viteza (poate varia pentru dificultate progresivă)
-  set global asteroidSpeed to random integer from 2 to 5`}
-                          </CodeBlock>
-                          
-                          <h4 className="text-lg font-medium mt-6">Cronometrul jocului</h4>
-                          <p className="mb-3">
-                            Cronometrul va actualiza poziția obiectelor și va verifica coliziunile.
-                          </p>
-                          
-                          <CodeBlock>
-{`when GameClock.Timer
-  do
-    // Verifică dacă jocul rulează
-    if global gameRunning then
-      // Mișcă asteroidul în jos
-      set Asteroid1.Y to Asteroid1.Y + global asteroidSpeed
-      
-      // Verifică dacă asteroidul a ieșit din ecran
-      if Asteroid1.Y > Canvas1.Height then
-        // Increment scor
-        set global score to global score + 1
-        set ScoreLabel.Text to join "Scor: " (global score)
-        // Resetează asteroidul
-        reset_asteroid
-      end if
-      
-      // Verifică coliziunea cu nava
-      if Asteroid1.CollidingWith(PlayerShip) then
-        // Scade o viață
-        set global lives to global lives - 1
-        set LivesLabel.Text to join "Vieți: " (global lives)
-        
-        // Redă sunetul de coliziune
-        call CollisionSound.Play
-        
-        // Verifică dacă am rămas fără vieți
-        if global lives <= 0 then
-          // Game over
-          set global gameRunning to false
-          set GameClock.TimerEnabled to false
-          set StartButton.Text to "Joc terminat! Reîncepe"
-        else
-          // Resetează asteroidul
-          reset_asteroid
-        end if
-      end if
-    end if`}
-                          </CodeBlock>
-                          
-                          <h4 className="text-lg font-medium mt-6">Controlul navei</h4>
-                          <p className="mb-3">
-                            Vom controla nava folosind senzorul de accelerometru.
-                          </p>
-                          
-                          <CodeBlock>
-{`when AccelerometerSensor1.AccelerationChanged
-  do
-    // Verifică dacă jocul este în desfășurare
-    if global gameRunning then
-      // Mișcă nava în funcție de înclinarea telefonului (pe axa X)
-      set PlayerShip.X to PlayerShip.X - (AccelerometerSensor1.YAccel * 10)
-      
-      // Asigură-te că nava nu iese din ecran
-      if PlayerShip.X < 0 then
-        set PlayerShip.X to 0
-      end if
-      
-      if PlayerShip.X > Canvas1.Width - PlayerShip.Width then
-        set PlayerShip.X to Canvas1.Width - PlayerShip.Width
-      end if
-    end if`}
-                          </CodeBlock>
-                          
-                          <h4 className="text-lg font-medium mt-6">Control alternativ prin atingere</h4>
-                          <p className="mb-3">
-                            De asemenea, vom adăuga posibilitatea de a controla nava prin atingerea ecranului.
-                          </p>
-                          
-                          <CodeBlock>
-{`when Canvas1.Touched
-  do
-    // Verifică dacă jocul este în desfășurare
-    if global gameRunning then
-      // Mișcă nava la poziția atingerii (pe axa X)
-      set PlayerShip.X to get x - (divide PlayerShip.Width by 2)
-      
-      // Asigură-te că nava nu iese din ecran
-      if PlayerShip.X < 0 then
-        set PlayerShip.X to 0
-      end if
-      
-      if PlayerShip.X > Canvas1.Width - PlayerShip.Width then
-        set PlayerShip.X to Canvas1.Width - PlayerShip.Width
-      end if
-    end if`}
-                          </CodeBlock>
-                        </div>
-                      </TabsContent>
-                      
-                      <TabsContent value="challenges">
-                        <div className="space-y-4 mt-4">
-                          <h3 className="text-xl font-semibold">Provocări pentru îmbunătățirea jocului</h3>
-                          <p>
-                            Acum că ai implementat baza jocului, poți încerca următoarele provocări pentru a-l îmbunătăți:
-                          </p>
-                          
-                          <div className="space-y-4">
-                            <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
-                              <h4 className="font-bold flex items-center">
-                                <Star className="h-5 w-5 text-course-purple mr-2" />
-                                Provocare 1: Adaugă mai mulți asteroizi
-                              </h4>
-                              <p className="mt-2">
-                                Adaugă 2-3 asteroizi suplimentari care se mișcă independent. Aceștia pot avea viteze diferite și pot apărea la intervale diferite.
-                              </p>
-                              <ul className="list-disc list-inside mt-2 text-gray-700">
-                                <li>Adaugă mai multe sprite-uri pentru asteroizi</li>
-                                <li>Modifică logica pentru a gestiona fiecare asteroid</li>
-                                <li>Asigură-te că jocul rămâne jucabil (nu prea dificil)</li>
-                              </ul>
-                            </div>
-                            
-                            <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
-                              <h4 className="font-bold flex items-center">
-                                <Star className="h-5 w-5 text-course-purple mr-2" />
-                                Provocare 2: Adaugă un sistem de punctaj avansat
-                              </h4>
-                              <p className="mt-2">
-                                Implementează un sistem de punctaj care crește în funcție de timpul de joc și dificultatea crescândă.
-                              </p>
-                              <ul className="list-disc list-inside mt-2 text-gray-700">
-                                <li>Adaugă puncte bonus pentru evitarea asteroizilor timp îndelungat</li>
-                                <li>Crește viteza asteroizilor pe măsură ce scorul crește</li>
-                                <li>Adaugă un sistem de high-score care se salvează între sesiuni</li>
-                              </ul>
-                            </div>
-                            
-                            <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
-                              <h4 className="font-bold flex items-center">
-                                <Star className="h-5 w-5 text-course-purple mr-2" />
-                                Provocare 3: Adaugă putere de foc navei
-                              </h4>
-                              <p className="mt-2">
-                                Permite navei să tragă pentru a distruge asteroizii. Aceasta adaugă un nou nivel de interactivitate jocului.
-                              </p>
-                              <ul className="list-disc list-inside mt-2 text-gray-700">
-                                <li>Adaugă un buton sau gest pentru a trage</li>
-                                <li>Creează sprite-uri pentru proiectile</li>
-                                <li>Implementează logica de coliziune între proiectile și asteroizi</li>
-                                <li>Adaugă efecte vizuale și sonore pentru distrugerea asteroizilor</li>
-                              </ul>
-                            </div>
-                            
-                            <div className="p-4 border-l-4 border-course-purple bg-purple-50 rounded-r-md">
-                              <h4 className="font-bold flex items-center">
-                                <Star className="h-5 w-5 text-course-purple mr-2" />
-                                Provocare 4: Adaugă power-up-uri
-                              </h4>
-                              <p className="mt-2">
-                                Implementează power-up-uri care apar ocazional și oferă avantaje temporare când sunt colectate.
-                              </p>
-                              <ul className="list-disc list-inside mt-2 text-gray-700">
-                                <li>Creează sprite-uri pentru power-up-uri</li>
-                                <li>Adaugă diferite tipuri de power-up-uri (scut, viață în plus, viteză mai mare, etc.)</li>
-                                <li>Implementează logica pentru apariția și colectarea lor</li>
-                                <li>Adaugă efecte vizuale pentru a indica power-up-ul activ</li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </TabsContent>
-                    </Tabs>
-
-                    <div className="bg-green-50 border-l-4 border-green-500 p-4 my-6">
-                      <h3 className="text-lg font-semibold text-green-700 mb-2">Ce ai învățat</h3>
-                      <ul className="list-disc list-inside space-y-1">
-                        <li>Cum să folosești Canvas și ImageSprite pentru a crea jocuri</li>
-                        <li>Cum să implementezi logica de mișcare și coliziuni</li>
-                        <li>Cum să folosești accelerometrul pentru control</li>
-                        <li>Cum să implementezi un sistem basic de scor și vieți</li>
-                        <li>Cum să implementezi un cronometru de joc pentru actualizări constante</li>
-                      </ul>
-                    </div>
-
-                    <div className="flex justify-between mt-8">
-                      <Button className="bg-gray-500 hover:bg-gray-600" asChild>
-                        <Link to="/appinventor/session4">
-                          <ArrowLeft className="mr-2 h-5 w-5" />
-                          <span>Sesiunea anterioară</span>
-                        </Link>
-                      </Button>
-                      
-                      <Button className="bg-course-purple hover:bg-course-blue" asChild>
-                        <Link to="/appinventor/session6">
-                          <span>Sesiunea următoare</span>
-                          <ChevronRight className="ml-2 h-5 w-5" />
-                        </Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-              
-              {/* Sidebar */}
-              <div className="lg:w-1/4">
-                <div className="sticky top-4">
-                  <Card className="mb-6">
-                    <CardContent className="p-4">
-                      <h3 className="text-lg font-bold mb-2">Conținut</h3>
-                      <ul className="space-y-2">
-                        <li>
-                          <a href="#" className="text-course-purple hover:text-course-blue flex items-center">
-                            <div className="h-2 w-2 bg-course-purple rounded-full mr-2"></div>
-                            Configurare
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className="text-gray-700 hover:text-course-blue flex items-center">
-                            <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
-                            Interfața jocului
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className="text-gray-700 hover:text-course-blue flex items-center">
-                            <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
-                            Programare
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className="text-gray-700 hover:text-course-blue flex items-center">
-                            <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
-                            Coliziuni
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" className="text-gray-700 hover:text-course-blue flex items-center">
-                            <div className="h-2 w-2 bg-gray-300 rounded-full mr-2"></div>
-                            Provocări
-                          </a>
-                        </li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card>
-                    <CardContent className="p-4">
-                      <h3 className="text-lg font-bold mb-2">Resurse</h3>
-                      <ul className="space-y-2">
-                        <li>
-                          <a href="https://appinventor.mit.edu/explore/ai2/space-invaders" target="_blank" rel="noopener noreferrer" className="text-course-blue hover:underline flex items-center">
-                            <Terminal className="h-4 w-4 mr-1" />
-                            Tutorial oficial Space Invaders
-                          </a>
-                        </li>
-                        <li>
-                          <a href="https://appinventor.mit.edu/explore/ai2/gaming" target="_blank" rel="noopener noreferrer" className="text-course-blue hover:underline flex items-center">
-                            <Terminal className="h-4 w-4 mr-1" />
-                            Tutoriale de jocuri MIT
-                          </a>
-                        </li>
-                        <li>
-                          <a href="https://puravidaapps.com/snippets.php" target="_blank" rel="noopener noreferrer" className="text-course-blue hover:underline flex items-center">
-                            <Terminal className="h-4 w-4 mr-1" />
-                            Elemente de cod pentru jocuri
-                          </a>
-                        </li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-      
-      <Footer />
-    </div>
+    <LessonLayout
+      courseId="appinventor"
+      sessionId="5"
+      title="Joc Arcade"
+      subtitle="Învățăm să creăm un joc arcade cu sprite-uri și detecție de coliziuni"
+      heroColor="bg-gradient-to-r from-course-purple to-course-blue"
+      previousLesson={{
+        title: "Lecția anterioară",
+        path: "/appinventor/session4"
+      }}
+      nextLesson={{
+        title: "Lecția următoare",
+        path: "/appinventor/session6"
+      }}
+      sidebarItems={sidebarItems}
+      resources={resources}
+      sections={sections}
+    />
   );
 };
 
