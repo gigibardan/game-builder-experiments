@@ -1,4 +1,3 @@
-
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
 import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
@@ -785,8 +784,8 @@ func _on_body_exited(body):
 
   return (
     <LessonLayout 
-      title="Fizică și coliziuni în Godot" 
-      description="Explorează sistemul de fizică 2D din Godot și învață să creezi jocuri cu coliziuni și interacțiuni fizice realiste."
+      title="Fizică și Coliziuni în Godot" 
+      subtitle="Dezvoltă interacțiuni realiste între obiecte și personaje" 
       sidebarItems={sidebarItems}
       resources={resources}
       sections={sections}

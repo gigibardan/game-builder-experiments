@@ -1,4 +1,3 @@
-
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
 import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
@@ -629,28 +628,4 @@ func _on_body_entered(body):
 
           <InfoBox title="Sfaturi pentru obiectele colectabile" icon="info" variant="primary">
             <p>Iată câteva idei pentru a face obiectele colectabile mai interesante:</p>
-            <ul className="list-disc list-inside space-y-1 mt-2">
-              <li>Adaugă efecte sonore când un obiect este colectat</li>
-              <li>Adaugă efecte vizuale (particule, fade-out) la colectare</li>
-              <li>Creează diferite tipuri de obiecte (monede, power-ups, chei)</li>
-              <li>Implementează un HUD pentru a afișa numărul de obiecte colectate</li>
-              <li>Folosește obiectele pentru a debloca zone sau abilități noi</li>
-            </ul>
-          </InfoBox>
-        </>
-      )
-    }
-  ];
-
-  return (
-    <LessonLayout 
-      title="Crearea unui joc simplu în Godot" 
-      description="Dezvoltă un joc de platformă 2D complet folosind Godot Engine" 
-      sidebarItems={sidebarItems}
-      resources={resources}
-      sections={sections}
-    />
-  );
-};
-
-export default SimpleGame;
+            <ul
