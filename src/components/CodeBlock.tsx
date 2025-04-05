@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card } from '@/components/ui/card';
 
@@ -27,4 +26,7 @@ const CodeBlock = ({ children, language = 'javascript', title, className, style,
   );
 };
 
+// Change to use named export
+export { CodeBlock };
+// Also keep default export for backward compatibility
 export default CodeBlock;

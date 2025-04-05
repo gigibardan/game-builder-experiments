@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Accordion } from "@/components/ui/accordion"
 import {
@@ -8,7 +9,7 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Info, CheckCircle, CircleSlash, ExclamationTriangle } from 'lucide-react';
-import { CodeBlock } from "@/components/CodeBlock";
+import CodeBlock from "@/components/CodeBlock"; // Changed from destructured import to default import
 
 interface StepItemProps {
   number: number;
@@ -572,3 +573,4 @@ func _on_body_entered(body):
 };
 
 export default SimpleGame;
+
