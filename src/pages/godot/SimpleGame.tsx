@@ -1,3 +1,4 @@
+
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
 import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
@@ -161,8 +162,8 @@ const SimpleGame = () => {
           <StepItem number={4} title="Configurarea proiectului">
             <p className="mb-2">Setează configurațiile de bază ale proiectului:</p>
             <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Mergi la Project > Project Settings</li>
-              <li>În secțiunea "Display > Window", setează rezoluția implicită (ex: 1280x720)</li>
+              <li>Mergi la Project {'>'} Project Settings</li>
+              <li>În secțiunea "Display {'>'} Window", setează rezoluția implicită (ex: 1280x720)</li>
               <li>În "Input Map", configurează acțiunile de control:
                 <ul className="list-disc list-inside ml-8 mt-1">
                   <li>Adaugă "move_left" și mapează-l la săgeata stânga și tasta A</li>
@@ -189,7 +190,7 @@ const SimpleGame = () => {
               <li>Apasă pe butonul "+" din Scene dock sau Ctrl+N</li>
               <li>Selectează "Node2D" ca nod rădăcină al scenei</li>
               <li>Redenumește nodul la "Main"</li>
-              <li>Salvează scena în directorul "scenes" (File > Save As) ca "main.tscn"</li>
+              <li>Salvează scena în directorul "scenes" (File {'>'} Save As) ca "main.tscn"</li>
             </ol>
           </StepItem>
           
@@ -218,7 +219,7 @@ const SimpleGame = () => {
           </CodeExample>
           
           <InfoBox title="Configurarea ferestrei de joc" icon="star" variant="secondary">
-            <p>Este important să setezi rezoluția potrivită și să gândești modul în care jocul se va scala pe diferite dispozitive. Poți seta modul de scalare în Project Settings > Display > Window > Stretch > Mode și Aspect.</p>
+            <p>Este important să setezi rezoluția potrivită și să gândești modul în care jocul se va scala pe diferite dispozitive. Poți seta modul de scalare în Project Settings {'>'} Display {'>'} Window {'>'} Stretch {'>'} Mode și Aspect.</p>
             <ul className="list-disc list-inside space-y-1 mt-2">
               <li><strong>Stretch Mode</strong>: "2d" este adesea cel mai bun pentru jocuri 2D, permițând ca elementele să se scaleze proporțional</li>
               <li><strong>Stretch Aspect</strong>: "keep" pentru a menține raportul de aspect, "expand" pentru a umple ecranul</li>
@@ -396,14 +397,13 @@ func take_damage():
 
 func collect_coin():
     # Va fi implementat mai târziu
-    pass
-`}
+    pass`}
           </CodeExample>
           
           <StepItem number={7} title="Salvarea și testarea personajului">
             <p className="mb-2">Să salvăm și să testăm personajul:</p>
             <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Salvează scena personajului în directorul "scenes" (File > Save As) ca "player.tscn"</li>
+              <li>Salvează scena personajului în directorul "scenes" (File {'>'} Save As) ca "player.tscn"</li>
               <li>Pentru testare, poți adăuga temporar un TileMap cu câteva platforme</li>
               <li>Apasă F5 sau butonul de "Play" pentru a testa personajul</li>
             </ol>
@@ -436,7 +436,7 @@ func collect_coin():
             <p className="mb-2">Înainte de a crea nivelul, trebuie să creăm un TileSet:</p>
             <ol className="list-decimal list-inside space-y-1 ml-4">
               <li>Mergi la directorul "assets/tilesets"</li>
-              <li>Creează un nou TileSet apăsând click dreapta > New > TileSet</li>
+              <li>Creează un nou TileSet apăsând click dreapta {'>'} New {'>'} TileSet</li>
               <li>Redenumește-l la "level_tileset.tres"</li>
               <li>Deschide TileSet-ul făcând dublu click pe el</li>
             </ol>
@@ -448,7 +448,7 @@ func collect_coin():
               <li>În panoul TileSet, trage sprite sheet-ul cu tiles în secțiunea "Texture"</li>
               <li>Selectează "New Single Tile" din meniul "Create Tile"</li>
               <li>Desenează dreptunghiuri peste fiecare tile din sprite sheet pentru a le defini</li>
-              <li>Setează proprietățile fizice pentru fiecare tile (Collision > New RectangleShape2D)</li>
+              <li>Setează proprietățile fizice pentru fiecare tile (Collision {'>'} New RectangleShape2D)</li>
             </ol>
           </StepItem>
 
@@ -477,7 +477,7 @@ func collect_coin():
             <p className="mb-2">Asigură-te că tile-urile au coliziuni corecte:</p>
             <ol className="list-decimal list-inside space-y-1 ml-4">
               <li>Selectează TileMap</li>
-              <li>În panoul TileSet, selectează fiecare tile și adaugă o formă de coliziune (Collision > New RectangleShape2D)</li>
+              <li>În panoul TileSet, selectează fiecare tile și adaugă o formă de coliziune (Collision {'>'} New RectangleShape2D)</li>
               <li>Ajustează dimensiunile formei pentru a se potrivi cu tile-ul</li>
             </ol>
           </StepItem>
@@ -513,8 +513,7 @@ func _ready():
 func get_tile_data(position):
     # Funcție pentru a obține date despre un tile la o anumită poziție
     var tile_id = tilemap.get_cell_tile_data(0, position)
-    return tile_id
-`}
+    return tile_id`}
           </CodeExample>
 
           <InfoBox title="Sfaturi pentru designul nivelului" icon="star" variant="secondary">
@@ -607,8 +606,7 @@ func _on_body_entered(body):
         $CollisionShape2D.disabled = true
         
         # Eliberăm memoria după un timp
-        queue_free()
-`}
+        queue_free()`}
           </CodeExample>
 
           <StepItem number={6} title="Adăugarea obiectelor la nivel">
@@ -629,9 +627,30 @@ func _on_body_entered(body):
             </ol>
           </StepItem>
 
-          <CodeExample title="player.gd - Gestionarea colectării" language="gdscript">
-{`func _ready():
-    # ... cod existent ...
-    
-    # Conectăm semnalul "collected" al obiectelor
-    for coin in get_tree().get_nodes_in_
+          <InfoBox title="Sfaturi pentru obiectele colectabile" icon="info" variant="primary">
+            <p>Iată câteva idei pentru a face obiectele colectabile mai interesante:</p>
+            <ul className="list-disc list-inside space-y-1 mt-2">
+              <li>Adaugă efecte sonore când un obiect este colectat</li>
+              <li>Adaugă efecte vizuale (particule, fade-out) la colectare</li>
+              <li>Creează diferite tipuri de obiecte (monede, power-ups, chei)</li>
+              <li>Implementează un HUD pentru a afișa numărul de obiecte colectate</li>
+              <li>Folosește obiectele pentru a debloca zone sau abilități noi</li>
+            </ul>
+          </InfoBox>
+        </>
+      )
+    }
+  ];
+
+  return (
+    <LessonLayout 
+      title="Crearea unui joc simplu în Godot" 
+      description="Dezvoltă un joc de platformă 2D complet folosind Godot Engine" 
+      sidebarItems={sidebarItems}
+      resources={resources}
+      sections={sections}
+    />
+  );
+};
+
+export default SimpleGame;
