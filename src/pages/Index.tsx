@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Gamepad, Laptop, Trophy } from 'lucide-react';
+import { Gamepad, Laptop, Trophy, Code } from 'lucide-react';
 import CourseCard from '@/components/CourseCard';
 
 const Index = () => {
@@ -35,6 +35,16 @@ const Index = () => {
           color="border-course-orange"
           bgcolor="bg-course-orange"
           link="/curriculum"
+        />
+        
+        <CourseCard 
+          title="Godot Engine" 
+          subtitle="Game Development Pro"
+          description="Dezvoltă jocuri 2D și 3D profesionale folosind un motor de joc gratuit și open source."
+          icon={<Gamepad className="h-6 w-6" />}
+          color="border-indigo-600"
+          bgcolor="bg-indigo-600"
+          link="/courses/godot"
         />
       </div>
     </div>

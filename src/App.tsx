@@ -33,6 +33,9 @@ import FrontendDevSession1 from '@/pages/frontenddev/Session1';
 import GodotSession1 from '@/pages/godot/Session1';
 import GodotSession2 from '@/pages/godot/Session2';
 import GodotSession3 from '@/pages/godot/Session3';
+import GodotSession4 from '@/pages/godot/Session4';
+import GodotSession5 from '@/pages/godot/Session5';
+import GodotSimpleGame from '@/pages/godot/SimpleGame';
 import LessonTemplate from '@/pages/LessonTemplate';
 
 function App() {
@@ -195,6 +198,33 @@ function App() {
         element={
           <ProtectedRoute courseId="godot" sessionId="3">
             <GodotSession3 />
+          </ProtectedRoute>
+        } 
+      />
+      
+      <Route 
+        path="/godot/session4" 
+        element={
+          <ProtectedRoute courseId="godot" sessionId="4">
+            <GodotSession4 />
+          </ProtectedRoute>
+        } 
+      />
+      
+      <Route 
+        path="/godot/session5" 
+        element={
+          <ProtectedRoute courseId="godot" sessionId="5">
+            <GodotSession5 />
+          </ProtectedRoute>
+        } 
+      />
+      
+      <Route 
+        path="/godot/game" 
+        element={
+          <ProtectedRoute courseId="godot" sessionId="game">
+            <GodotSimpleGame />
           </ProtectedRoute>
         } 
       />

@@ -207,7 +207,7 @@ func _process(delta):
           <StepItem number={5} title="Salvarea și testarea scriptului">
             <p className="mb-2">După modificarea scriptului:</p>
             <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Salvează scriptul apăsând Ctrl+S sau File > Save</li>
+              <li>Salvează scriptul apăsând Ctrl+S sau File {'>'} Save</li>
               <li>Revino la editorul scenei</li>
               <li>Rulează scena apăsând butonul Play sau F5</li>
               <li>Observă cum sprite-ul începe să se rotească</li>
