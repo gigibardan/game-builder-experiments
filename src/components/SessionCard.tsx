@@ -9,29 +9,43 @@ interface SessionCardProps {
   number: number;
   title: string;
   description: string;
-  skills: string[];
   link: string;
   isAvailable?: boolean;
+  // New props to support the Scratch page
+  duration?: string;
+  level?: string;
+  ageGroup?: string;
+  highlights?: string[];
+  color?: string;
+  skills?: string[]; // Keeping this for backward compatibility
 }
 
 const SessionCard = ({ 
   number, 
   title, 
   description, 
-  skills, 
   link, 
-  isAvailable = true 
+  isAvailable = true,
+  duration,
+  level,
+  ageGroup,
+  highlights,
+  color = "course-purple",
+  skills = []
 }: SessionCardProps) => {
+  // Use highlights if provided, otherwise use skills
+  const displaySkills = highlights || skills || [];
+
   return (
     <Card className={`overflow-hidden border-2 hover:shadow-lg transition-all duration-300 h-full ${
-      isAvailable ? 'border-course-purple' : 'border-gray-300'
+      isAvailable ? `border-${color}` : 'border-gray-300'
     }`}>
       <CardHeader className={`${
-        isAvailable ? 'bg-course-purple' : 'bg-gray-300'
+        isAvailable ? `bg-${color}` : 'bg-gray-300'
       } text-white`}>
         <div className="flex justify-between items-center">
           <CardTitle className="flex items-center">
-            <span className="bg-white text-course-purple rounded-full h-8 w-8 flex items-center justify-center mr-2">
+            <span className={`bg-white text-${color} rounded-full h-8 w-8 flex items-center justify-center mr-2`}>
               {number}
             </span>
             {title}
@@ -40,8 +54,32 @@ const SessionCard = ({
       </CardHeader>
       <CardContent className="pt-6">
         <p className="text-gray-600 mb-4">{description}</p>
+        
+        {(duration || level || ageGroup) && (
+          <div className="grid grid-cols-3 gap-2 mb-4 text-sm">
+            {duration && (
+              <div className="flex flex-col items-center bg-gray-50 p-2 rounded">
+                <span className="text-gray-500">Durată</span>
+                <span className="font-medium">{duration}</span>
+              </div>
+            )}
+            {level && (
+              <div className="flex flex-col items-center bg-gray-50 p-2 rounded">
+                <span className="text-gray-500">Nivel</span>
+                <span className="font-medium">{level}</span>
+              </div>
+            )}
+            {ageGroup && (
+              <div className="flex flex-col items-center bg-gray-50 p-2 rounded">
+                <span className="text-gray-500">Vârstă</span>
+                <span className="font-medium">{ageGroup}</span>
+              </div>
+            )}
+          </div>
+        )}
+        
         <div className="flex flex-wrap gap-2">
-          {skills.map((skill, index) => (
+          {displaySkills.map((skill, index) => (
             <Badge key={index} variant="outline" className="bg-gray-100">
               {skill}
             </Badge>
@@ -50,7 +88,7 @@ const SessionCard = ({
       </CardContent>
       <CardFooter>
         <Button asChild disabled={!isAvailable} 
-          className={`w-full ${isAvailable ? 'bg-course-purple hover:bg-course-blue' : 'bg-gray-300'}`}>
+          className={`w-full ${isAvailable ? `bg-${color} hover:bg-course-blue` : 'bg-gray-300'}`}>
           <Link to={isAvailable ? link : '#'}>
             {isAvailable ? 'Începe Lecția' : 'În curând'}
           </Link>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LessonLayout from '@/components/LessonLayout';
@@ -210,7 +209,7 @@ const Session1Alegesanatos = () => {
             </ol>
           </div>
 
-          <InfoBox title="Sfat" icon="lightbulb" variant="warning">
+          <InfoBox title="Sfat" icon="info" variant="warning">
             <p>
               Poți ajusta viteza bolului modificând numărul de pași (10) din blocurile "modifică x cu..." 
               pentru o mișcare mai lentă sau mai rapidă.
@@ -286,7 +285,7 @@ const Session1Alegesanatos = () => {
             </div>
           </div>
 
-          <InfoBox title="Sfat pentru echilibrare" icon="lightbulb" variant="info">
+          <InfoBox title="Sfat pentru echilibrare" icon="info" variant="info">
             <p>
               Poți face jocul mai ușor sau mai dificil ajustând valorile pentru punctaj și intervalele de timp. 
               Mai puține puncte negative sau intervale mai lungi = joc mai ușor.

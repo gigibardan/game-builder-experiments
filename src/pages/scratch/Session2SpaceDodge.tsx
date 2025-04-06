@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LessonLayout from '@/components/LessonLayout';
@@ -244,7 +243,7 @@ const Session2SpaceDodge = () => {
             </ol>
           </div>
 
-          <InfoBox title="Sfat pentru ajustare" icon="lightbulb" variant="warning">
+          <InfoBox title="Sfat pentru ajustare" icon="info" variant="warning">
             <p>
               Poți ajusta viteza navei modificând valorile "10" și "-10" din blocurile "modifică x cu". 
               O valoare mai mare va face nava să se miște mai rapid, iar o valoare mai mică o va face să se miște mai lent.
@@ -296,7 +295,7 @@ const Session2SpaceDodge = () => {
             </ol>
           </div>
 
-          <InfoBox title="Sfat pentru dificultate" icon="lightbulb" variant="info">
+          <InfoBox title="Sfat pentru dificultate" icon="info" variant="info">
             <p>
               Poți duplica personajul Meteorit pentru a avea mai mulți meteoriți pe ecran. 
               Acest lucru va crește dificultatea jocului. În proiectul final, sunt folosiți doi meteoriți 
@@ -375,7 +374,7 @@ const Session2SpaceDodge = () => {
             <p className="mt-4">Acest cod va adăuga câte un punct la scor în fiecare secundă cât timp jocul continuă. Cu cât jucătorul rezistă mai mult, cu atât scorul va fi mai mare!</p>
           </div>
 
-          <InfoBox title="Sfat pentru evoluția dificultății" icon="lightbulb" variant="warning">
+          <InfoBox title="Sfat pentru evoluția dificultății" icon="info" variant="warning">
             <p>
               Poți face jocul mai interesant adăugând logică prin care viteza meteoriților crește pe măsură ce 
               scorul crește, făcând jocul progresiv mai dificil.
