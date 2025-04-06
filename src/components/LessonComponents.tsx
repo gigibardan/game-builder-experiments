@@ -144,7 +144,7 @@ export const LearningOutcome: React.FC<LearningOutcomeProps> = ({ items = [], ti
   return (
     <div className="bg-blue-50 border-l-4 border-course-blue p-4 my-6">
       <h3 className="text-lg font-semibold text-course-blue mb-2">{title}</h3>
-      {items.length > 0 ? (
+      {items && items.length > 0 ? (
         <ul className="list-disc list-inside space-y-1">
           {items.map((item, index) => (
             <li key={index}>{item}</li>
