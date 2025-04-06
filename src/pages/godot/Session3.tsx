@@ -1,3 +1,4 @@
+
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
 import { InfoBox, StepItem, LearningOutcome } from '@/components/LessonComponents';
@@ -18,6 +19,14 @@ const Session3 = () => {
     { title: 'Input Map în Godot', url: 'https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html' }
   ];
 
+  // Defining learning outcomes as an array for the LearningOutcome component
+  const learningOutcomes = [
+    'Să configurezi sistemul de input pentru a detecta apăsările de taste',
+    'Să creezi un controller de player care să permită mișcarea personajului',
+    'Să folosești semnale și evenimente pentru a interacționa cu lumea jocului',
+    'Să gestionezi coliziunile dintre personaj și alte obiecte'
+  ];
+
   return (
     <LessonLayout
       title="Godot 4: Controlul Caracterelor"
@@ -27,8 +36,14 @@ const Session3 = () => {
       heroColor="bg-indigo-700"
       sidebarItems={sidebarItems}
       resources={resources}
-      previousLink="/godot/session2"
-      nextLink="/godot/session4"
+      previousLesson={{
+        title: "Lecția anterioară",
+        path: "/godot/session2"
+      }}
+      nextLesson={{
+        title: "Lecția următoare",
+        path: "/godot/session4"
+      }}
     >
       <div className="space-y-8">
         <section>
@@ -64,14 +79,7 @@ const Session3 = () => {
           </div>
         </section>
 
-        <LearningOutcome title="După această lecție, vei putea:">
-          <ul className="list-disc ml-5 space-y-1">
-            <li>Să configurezi sistemul de input pentru a detecta apăsările de taste</li>
-            <li>Să creezi un controller de player care să permită mișcarea personajului</li>
-            <li>Să folosești semnale și evenimente pentru a interacționa cu lumea jocului</li>
-            <li>Să gestionezi coliziunile dintre personaj și alte obiecte</li>
-          </ul>
-        </LearningOutcome>
+        <LearningOutcome items={learningOutcomes} />
 
         <section id="intro">
           <h2 className="text-2xl font-bold mb-4">Introducere</h2>

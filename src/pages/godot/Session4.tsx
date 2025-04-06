@@ -1,3 +1,4 @@
+
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
 import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
@@ -19,6 +20,14 @@ const Session4 = () => {
     { title: 'Animații în Godot', url: 'https://docs.godotengine.org/en/stable/tutorials/animation/index.html' }
   ];
 
+  // Define learning outcomes as an array
+  const learningOutcomes = [
+    'Să creezi și să configurezi animații 2D pentru personaje și obiecte',
+    'Să implementezi tranziții între diferite animații bazate pe input sau starea jocului',
+    'Să sincronizezi animațiile cu sunetele și efectele din joc',
+    'Să dezvolți o mașină de stări simplă pentru gestionarea animațiilor personajului'
+  ];
+
   return (
     <LessonLayout
       title="Godot 4: Animații 2D"
@@ -28,8 +37,14 @@ const Session4 = () => {
       heroColor="bg-indigo-700"
       sidebarItems={sidebarItems}
       resources={resources}
-      previousLink="/godot/session3"
-      nextLink="/godot/session5"
+      previousLesson={{
+        title: "Lecția anterioară",
+        path: "/godot/session3"
+      }}
+      nextLesson={{
+        title: "Lecția următoare",
+        path: "/godot/session5"
+      }}
     >
       <div className="space-y-8">
         <section>
@@ -65,14 +80,7 @@ const Session4 = () => {
           </div>
         </section>
 
-        <LearningOutcome title="După această lecție, vei putea:">
-          <ul className="list-disc ml-5 space-y-1">
-            <li>Să creezi și să configurezi animații 2D pentru personaje și obiecte</li>
-            <li>Să implementezi tranziții între diferite animații bazate pe input sau starea jocului</li>
-            <li>Să sincronizezi animațiile cu sunetele și efectele din joc</li>
-            <li>Să dezvolți o mașină de stări simplă pentru gestionarea animațiilor personajului</li>
-          </ul>
-        </LearningOutcome>
+        <LearningOutcome items={learningOutcomes} />
 
         <section id="spritesheet">
           <h2 className="text-2xl font-bold mb-4">Spritesheet-uri și animații frame-by-frame</h2>
@@ -148,7 +156,7 @@ const Session4 = () => {
             <p className="mb-2">Pentru a crea un SpriteFrames:</p>
             <ol className="list-decimal list-inside space-y-1 ml-4">
               <li>În panoul File System, mergi la directorul unde vrei să salvezi SpriteFrames</li>
-              <li>Click dreapta {'>'} New {'>'} Resource</li>
+              <li>Click dreapta {'>'}New {'>'}Resource</li>
               <li>Caută și selectează "SpriteFrames"</li>
               <li>Dă un nume resursiei (ex: "player_animations.tres")</li>
               <li>Dublu click pe resursă pentru a o deschide în panoul de jos</li>
@@ -192,7 +200,7 @@ const Session4 = () => {
           <StepItem number={4} title="Controlarea animațiilor prin script">
             <p className="mb-2">Pentru a controla animațiile din cod, adaugă un script la nodul AnimatedSprite2D:</p>
             
-            <CodeBlock language="gdscript" title="PlayerAnimation.gd" code={`func _process(delta):
+            <CodeBlock language="gdscript">{`func _process(delta):
     # Detectează input și schimbă animațiile în consecință
     if Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left"):
         animation = "run"
@@ -207,7 +215,7 @@ const Session4 = () => {
     
     # Verifică dacă jucătorul sare
     if Input.is_action_just_pressed("ui_up"):
-        animation = "jump"`} />
+        animation = "jump"`}</CodeBlock>
             
             <p className="mt-4">
               Prin acest script simplu, animația personajului se va schimba în funcție de tastele apăsate:
@@ -227,7 +235,7 @@ const Session4 = () => {
             Aceasta permite tranziții mai controlate între animații și evită probleme cum ar fi întreruperea animațiilor.
           </p>
 
-          <CodeBlock language="gdscript" title="PlayerStateMachine.gd" code={`extends AnimatedSprite2D
+          <CodeBlock language="gdscript">{`extends AnimatedSprite2D
 
 # Stările posibile
 enum State {IDLE, RUN, JUMP, FALL, ATTACK}
@@ -276,7 +284,7 @@ func play_animation_for_state(state):
         State.ATTACK:
             animation = "attack"
             # Asigură-te că atacul se termină înainte de a trece la altă animație
-            # Poți folosi semnalul "animation_finished" pentru asta`} />
+            # Poți folosi semnalul "animation_finished" pentru asta`}</CodeBlock>
 
           <p className="mt-4">
             Această abordare este mai robustă și permite gestionarea mai precisă a stărilor și animațiilor, 
@@ -316,7 +324,7 @@ func play_animation_for_state(state):
             </div>
           </div>
 
-          <CodeBlock language="gdscript" title="ProceduralAnimation.gd" code={`extends Node2D
+          <CodeBlock language="gdscript">{`extends Node2D
 
 # Pentru o oscilație simplă
 func _process(delta):
@@ -333,21 +341,19 @@ func start_animation():
     tween.tween_property($Sprite2D, "position", Vector2(100, 100), 1.0)
     tween.tween_property($Sprite2D, "rotation", PI/2, 0.5)
     tween.tween_property($Sprite2D, "scale", Vector2(2, 2), 0.5)
-    tween.tween_property($Sprite2D, "modulate", Color(1, 0, 0, 1), 1.0)`} />
+    tween.tween_property($Sprite2D, "modulate", Color(1, 0, 0, 1), 1.0)`}</CodeBlock>
         </section>
 
-        <section id="exercises">
-          <Challenge title="Provocare: Animează un personaj 2D" difficulty="medium">
-            <p>Creează un personaj 2D animat cu următoarele caracteristici:</p>
-            <ul className="list-disc ml-5 space-y-1 mt-2">
-              <li>Cel puțin 3 animații: idle, run și jump</li>
-              <li>Tranziții fluide între animații bazate pe input</li>
-              <li>Efecte vizuale adăugate (ex: particule de praf când aleargă)</li>
-              <li>Implementarea unei mașini de stări simplificate pentru gestionarea animațiilor</li>
-              <li>Bonus: adaugă sunete sincronizate cu animațiile</li>
-            </ul>
-          </Challenge>
-        </section>
+        <Challenge title="Provocare: Animează un personaj 2D" difficulty="medium">
+          <p>Creează un personaj 2D animat cu următoarele caracteristici:</p>
+          <ul className="list-disc ml-5 space-y-1 mt-2">
+            <li>Cel puțin 3 animații: idle, run și jump</li>
+            <li>Tranziții fluide între animații bazate pe input</li>
+            <li>Efecte vizuale adăugate (ex: particule de praf când aleargă)</li>
+            <li>Implementarea unei mașini de stări simplificate pentru gestionarea animațiilor</li>
+            <li>Bonus: adaugă sunete sincronizate cu animațiile</li>
+          </ul>
+        </Challenge>
 
         <section className="bg-amber-50 p-6 rounded-lg">
           <h2 className="text-xl font-bold mb-3">Sinteză și Continuare</h2>

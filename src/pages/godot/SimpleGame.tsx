@@ -1,3 +1,4 @@
+
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
 import { 
@@ -34,6 +35,15 @@ const SimpleGame = () => {
     { title: 'Comunitatea Godot', url: 'https://godotengine.org/community/' }
   ];
 
+  // Define learning outcomes as an array
+  const learningOutcomes = [
+    'Să configurezi un proiect Godot de la zero',
+    'Să creezi și să controlezi un personaj într-un joc',
+    'Să implementezi inamici și obstacole care interacționează cu personajul',
+    'Să creezi o interfață de utilizator simplă pentru a afișa informații despre joc',
+    'Să exporți jocul pentru diferite platforme'
+  ];
+
   return (
     <LessonLayout
       title="Crearea unui Joc Simplu în Godot"
@@ -43,7 +53,10 @@ const SimpleGame = () => {
       heroColor="bg-indigo-700"
       sidebarItems={sidebarItems}
       resources={resources}
-      previousLink="/godot/session5"
+      previousLesson={{
+        title: "Lecția anterioară",
+        path: "/godot/session5"
+      }}
     >
       <div className="space-y-8">
         <section>
@@ -79,15 +92,7 @@ const SimpleGame = () => {
           </div>
         </section>
 
-        <LearningOutcome title="După acest proiect, vei putea:">
-          <ul className="list-disc ml-5 space-y-1">
-            <li>Să configurezi un proiect Godot de la zero</li>
-            <li>Să creezi și să controlezi un personaj într-un joc</li>
-            <li>Să implementezi inamici și obstacole care interacționează cu personajul</li>
-            <li>Să creezi o interfață de utilizator simplă pentru a afișa informații despre joc</li>
-            <li>Să exporți jocul pentru diferite platforme</li>
-          </ul>
-        </LearningOutcome>
+        <LearningOutcome items={learningOutcomes} />
 
         <section>
           <h2 className="text-2xl font-bold mb-4">Configurarea proiectului</h2>

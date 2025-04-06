@@ -1,3 +1,4 @@
+
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
 import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
@@ -19,6 +20,14 @@ const Session5 = () => {
     { title: 'Sisteme de Particule', url: 'https://docs.godotengine.org/en/stable/tutorials/2d/particle_systems_2d.html' }
   ];
 
+  // Define learning outcomes as an array
+  const learningOutcomes = [
+    'Să creezi sisteme de particule pentru efecte vizuale',
+    'Să aplici efecte shader pentru a modifica aspectul obiectelor',
+    'Să implementezi efecte de cameră pentru a crea senzații dinamice',
+    'Să adaugi efecte audio pentru a îmbunătăți atmosfera jocului'
+  ];
+
   return (
     <LessonLayout
       title="Godot 4: Efecte Vizuale și Audio"
@@ -28,8 +37,14 @@ const Session5 = () => {
       heroColor="bg-indigo-700"
       sidebarItems={sidebarItems}
       resources={resources}
-      previousLink="/godot/session4"
-      nextLink="/godot/game"
+      previousLesson={{
+        title: "Lecția anterioară",
+        path: "/godot/session4"
+      }}
+      nextLesson={{
+        title: "Lecția următoare",
+        path: "/godot/game"
+      }}
     >
       <div className="space-y-8">
         <section>
@@ -63,14 +78,7 @@ const Session5 = () => {
           </div>
         </section>
 
-        <LearningOutcome title="După această lecție, vei putea:">
-          <ul className="list-disc ml-5 space-y-1">
-            <li>Să creezi sisteme de particule pentru efecte vizuale</li>
-            <li>Să aplici efecte shader pentru a modifica aspectul obiectelor</li>
-            <li>Să implementezi efecte de cameră pentru a crea senzații dinamice</li>
-            <li>Să adaugi efecte audio pentru a îmbunătăți atmosfera jocului</li>
-          </ul>
-        </LearningOutcome>
+        <LearningOutcome items={learningOutcomes} />
 
         <section id="particles">
           <h2 className="text-2xl font-bold mb-4">Sisteme de Particule</h2>
@@ -109,8 +117,8 @@ const Session5 = () => {
               Pentru a activa sistemul de particule, setează proprietatea "Emitting" la true:
             </p>
             <CodeBlock language="gdscript">{`
-      func _ready():
-          $ExplosionParticles.emitting = true
+func _ready():
+    $ExplosionParticles.emitting = true
             `}</CodeBlock>
           </StepItem>
         </section>
@@ -137,17 +145,17 @@ const Session5 = () => {
               Acum, scrie codul shader în editor. Un shader simplu care schimbă culoarea unui obiect arată astfel:
             </p>
             <CodeBlock language="glsl">{`
-      shader_type canvas_item;
+shader_type canvas_item;
 
-      uniform float time_scale : hint_range(0.0, 10.0) = 1.0;
+uniform float time_scale : hint_range(0.0, 10.0) = 1.0;
 
-      void fragment() {
-          vec4 color = texture(TEXTURE, UV);
-          float time = TIME * time_scale;
-          color.r = sin(time);
-          color.g = cos(time);
-          COLOR = color;
-      }
+void fragment() {
+    vec4 color = texture(TEXTURE, UV);
+    float time = TIME * time_scale;
+    color.r = sin(time);
+    color.g = cos(time);
+    COLOR = color;
+}
             `}</CodeBlock>
           </StepItem>
 
@@ -187,14 +195,14 @@ const Session5 = () => {
               Pentru a implementa un efect de zoom, modifică proprietatea "Zoom" a nodului Camera2D:
             </p>
             <CodeBlock language="gdscript">{`
-      func _process(delta):
-          # Zoom in
-          if Input.is_action_pressed("zoom_in"):
-              $MainCamera.zoom += Vector2(0.1, 0.1) * delta
+func _process(delta):
+    # Zoom in
+    if Input.is_action_pressed("zoom_in"):
+        $MainCamera.zoom += Vector2(0.1, 0.1) * delta
 
-          # Zoom out
-          if Input.is_action_pressed("zoom_out"):
-              $MainCamera.zoom -= Vector2(0.1, 0.1) * delta
+    # Zoom out
+    if Input.is_action_pressed("zoom_out"):
+        $MainCamera.zoom -= Vector2(0.1, 0.1) * delta
             `}</CodeBlock>
           </StepItem>
         </section>
@@ -232,8 +240,8 @@ const Session5 = () => {
               Pentru a reda efectul audio, apelează metoda "play()" a nodului AudioStreamPlayer:
             </p>
             <CodeBlock language="gdscript">{`
-      func _ready():
-          $ExplosionSound.play()
+func _ready():
+    $ExplosionSound.play()
             `}</CodeBlock>
           </StepItem>
         </section>
