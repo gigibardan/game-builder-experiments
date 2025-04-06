@@ -24,11 +24,14 @@ import ScratchSession3 from '@/pages/scratch/Session3';
 import ScratchSession4 from '@/pages/scratch/Session4';
 import Session1Alegesanatos from '@/pages/scratch/Session1Alegesanatos';
 import Session2SpaceDodge from '@/pages/scratch/Session2SpaceDodge';
+import Session3MotoRacer from '@/pages/scratch/Session3MotoRacer';
+import Session5StitchBeach from '@/pages/scratch/Session5StitchBeach';
 import AppInventorSession1 from '@/pages/appinventor/Session1';
 import AppInventorSession2 from '@/pages/appinventor/Session2';
 import AppInventorSession3 from '@/pages/appinventor/Session3';
 import AppInventorSession4 from '@/pages/appinventor/Session4';
 import AppInventorSession5 from '@/pages/appinventor/Session5';
+import AppInventorSession7 from '@/pages/appinventor/Session7';
 import PythonSession1 from '@/pages/python/Session1';
 import Alice3Session1 from '@/pages/alice3/Session1';
 import FrontendDevSession1 from '@/pages/frontenddev/Session1';
@@ -71,6 +74,8 @@ function App() {
       
       <Route path="/scratch/session1alegesanatos" element={<Session1Alegesanatos />} />
       <Route path="/scratch/session2spacedodge" element={<Session2SpaceDodge />} />
+      <Route path="/scratch/session3motoracer" element={<Session3MotoRacer />} />
+      <Route path="/scratch/session5stitchbeach" element={<Session5StitchBeach />} />
       
       <Route 
         path="/scratch/session1" 
@@ -149,6 +154,15 @@ function App() {
         element={
           <ProtectedRoute courseId="appinventor" sessionId="5">
             <AppInventorSession5 />
+          </ProtectedRoute>
+        } 
+      />
+      
+      <Route 
+        path="/appinventor/session7" 
+        element={
+          <ProtectedRoute courseId="appinventor" sessionId="7">
+            <AppInventorSession7 />
           </ProtectedRoute>
         } 
       />
