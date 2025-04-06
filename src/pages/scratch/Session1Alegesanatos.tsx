@@ -1,11 +1,11 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import LessonLayout from '@/components/LessonLayout';
 import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
 import { CodeBlock } from '@/components/CodeBlock';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
-import { Play, Rocket, Lightbulb, Check } from 'lucide-react';
+import { Play, Rocket, Lightbulb, Check, Star } from 'lucide-react';
 
 const Session1Alegesanatos = () => {
   const sidebarItems = [
@@ -331,8 +331,8 @@ const Session1Alegesanatos = () => {
             <h4 className="font-bold mb-2">Cum funcționează:</h4>
             <p className="mb-2">Ambele personaje sunt ascunse la început. Ele verifică constant scorul și apar doar când sunt îndeplinite condițiile:</p>
             <ul className="list-disc ml-5 space-y-1">
-              <li><strong>Win</strong> apare când scorul > 49, afișând un mesaj de felicitare</li>
-              <li><strong>Lose</strong> apare când scorul < -5, afișând un mesaj de încurajare pentru a încerca din nou</li>
+              <li><strong>Win</strong> apare când scorul &gt; 49, afișând un mesaj de felicitare</li>
+              <li><strong>Lose</strong> apare când scorul &lt; -5, afișând un mesaj de încurajare pentru a încerca din nou</li>
             </ul>
             <p className="mt-2">Când apare oricare dintre ele, toate celelalte acțiuni din joc sunt oprite folosind blocul "stop [totul]".</p>
           </div>

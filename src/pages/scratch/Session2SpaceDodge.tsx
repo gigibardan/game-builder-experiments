@@ -1,10 +1,11 @@
+
 import React from 'react';
+import { Link } from 'react-router-dom';
 import LessonLayout from '@/components/LessonLayout';
 import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
 import { CodeBlock } from '@/components/CodeBlock';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
-import { Play, Rocket, Lightbulb, Check } from 'lucide-react';
+import { Play, Rocket, Lightbulb, Check, Star } from 'lucide-react';
 
 const Session2SpaceDodge = () => {
   const sidebarItems = [
