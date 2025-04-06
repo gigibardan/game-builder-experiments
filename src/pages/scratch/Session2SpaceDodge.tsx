@@ -26,7 +26,7 @@ const Session2SpaceDodge = () => {
 
   return (
     <LessonLayout
-      title="Jocul Space Dodge în Scratch"
+      title="Jocul Space Dodge in Scratch"
       subtitle="Lecția 2 • Scratch Programming"
       courseId="scratch"
       sessionId="2"
@@ -199,7 +199,7 @@ const Session2SpaceDodge = () => {
             </ul>
           </div>
 
-          <InfoBox title="Sfat" icon="lightbulb" variant="info">
+          <InfoBox title="Sfat" icon="info" variant="info">
             <p>
               Poți examina costumele fiecărui personaj accesând tab-ul "Costume" după ce selectezi personajul respectiv în lista de sprite-uri.
             </p>
