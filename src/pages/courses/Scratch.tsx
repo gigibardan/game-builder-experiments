@@ -11,7 +11,7 @@ const Scratch = () => {
   const sessions = [
     {
       id: 1,
-      title: "Jocul \"Alege Sănătos\"",
+      title: "Jocul Alege Sănătos",
       description: "Învață să creezi un joc simplu în care trebuie să prinzi mâncăruri sănătoase și să eviți cele nesănătoase.",
       duration: "90 minute",
       level: "Începător",
@@ -21,7 +21,7 @@ const Scratch = () => {
     },
     {
       id: 2,
-      title: "Jocul \"Space Dodge\"",
+      title: "Jocul Space Dodge",
       description: "Creează un joc spațial în care trebuie să eviți meteoriții pentru a supraviețui cât mai mult.",
       duration: "90 minute",
       level: "Începător",
@@ -31,7 +31,7 @@ const Scratch = () => {
     },
     {
       id: 3,
-      title: "Jocul \"Labirint\"",
+      title: "Jocul Labirint",
       description: "Învață să creezi un joc de tip labirint unde jucătorul trebuie să găsească drumul către ieșire.",
       duration: "120 minute",
       level: "Începător-Intermediar",
@@ -41,7 +41,7 @@ const Scratch = () => {
     },
     {
       id: 4,
-      title: "Jocul \"Quiz\"",
+      title: "Jocul Quiz",
       description: "Creează un joc educativ de tip quiz cu întrebări și răspunsuri multiple.",
       duration: "120 minute",
       level: "Începător-Intermediar",

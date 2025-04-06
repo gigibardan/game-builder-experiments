@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LessonLayout from '@/components/LessonLayout';
@@ -25,7 +26,7 @@ const Session1Alegesanatos = () => {
 
   return (
     <LessonLayout
-      title="Jocul \"Alege Sănătos\" în Scratch"
+      title="Jocul Alege Sănătos în Scratch"
       subtitle="Lecția 1 • Scratch Programming"
       courseId="scratch"
       sessionId="1"
