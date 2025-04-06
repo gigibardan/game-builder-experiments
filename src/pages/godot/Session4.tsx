@@ -1,3 +1,4 @@
+
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
 import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
@@ -110,7 +111,7 @@ const Session4 = () => {
             <p className="mb-2">Pentru a crea un SpriteFrames:</p>
             <ol className="list-decimal list-inside space-y-1 ml-4">
               <li>În panoul File System, mergi la directorul unde vrei să salvezi SpriteFrames</li>
-              <li>Click dreapta {'>'} New {'>'} Resource</li>
+              <li>Click dreapta {'>'}New {'>'}Resource</li>
               <li>Caută și selectează "SpriteFrames"</li>
               <li>Dă un nume resursiei (ex: "player_animations.tres")</li>
               <li>Dublu click pe resursă pentru a o deschide în panoul de jos</li>
@@ -138,7 +139,7 @@ const Session4 = () => {
           <StepItem number={3} title="Adăugarea unui AnimatedSprite2D">
             <p className="mb-2">Pentru a adăuga un AnimatedSprite2D:</p>
             <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Adaugă un nod AnimatedSprite2D (Ctrl+A {'>'} AnimatedSprite2D)</li>
+              <li>Adaugă un nod AnimatedSprite2D (Ctrl+A {'>'}AnimatedSprite2D)</li>
               <li>În panoul Inspector, la SpriteFrames, trage resursa SpriteFrames creată anterior</li>
               <li>Apasă pe "Playing" pentru a porni animația implicită</li>
               <li>Selectează animația dorită din lista de animații</li>
