@@ -25,6 +25,8 @@ import ScratchSession4 from '@/pages/scratch/Session4';
 import Session1Alegesanatos from '@/pages/scratch/Session1Alegesanatos';
 import Session2SpaceDodge from '@/pages/scratch/Session2SpaceDodge';
 import Session3MotoRacer from '@/pages/scratch/Session3MotoRacer';
+import Session4CityRunner from '@/pages/scratch/Session4CityRunner';
+import Session5BeachBallBounce from '@/pages/scratch/Session5BeachBallBounce';
 import Session5StitchBeach from '@/pages/scratch/Session5StitchBeach';
 import AppInventorSession1 from '@/pages/appinventor/Session1';
 import AppInventorSession2 from '@/pages/appinventor/Session2';
@@ -75,6 +77,8 @@ function App() {
       <Route path="/scratch/session1alegesanatos" element={<Session1Alegesanatos />} />
       <Route path="/scratch/session2spacedodge" element={<Session2SpaceDodge />} />
       <Route path="/scratch/session3motoracer" element={<Session3MotoRacer />} />
+      <Route path="/scratch/session4cityrunner" element={<Session4CityRunner />} />
+      <Route path="/scratch/session5beachballbounce" element={<Session5BeachBallBounce />} />
       <Route path="/scratch/session5stitchbeach" element={<Session5StitchBeach />} />
       
       <Route 

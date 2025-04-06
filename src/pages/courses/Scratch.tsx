@@ -31,23 +31,43 @@ const Scratch = () => {
     },
     {
       id: 3,
-      title: "Jocul Labirint",
-      description: "Învață să creezi un joc de tip labirint unde jucătorul trebuie să găsească drumul către ieșire.",
-      duration: "120 minute",
+      title: "Jocul Moto Racer",
+      description: "Învață să creezi un joc captivant în care controlezi o motocicletă, eviți obstacole și colectezi stele.",
+      duration: "90 minute",
       level: "Începător-Intermediar",
-      ageGroup: "8-14 ani",
-      link: "/scratch/session3",
-      highlights: ["Crearea unui labirint", "Deplasare cu taste", "Detectarea coliziunilor cu pereții", "Timer și condiții de victorie"]
+      ageGroup: "7-14 ani",
+      link: "/scratch/session3motoracer",
+      highlights: ["Controlul cu săgeți", "Generarea de obiecte aleatorii", "Utilizarea clonelor", "Detectarea coliziunilor"]
     },
     {
       id: 4,
-      title: "Jocul Quiz",
-      description: "Creează un joc educativ de tip quiz cu întrebări și răspunsuri multiple.",
-      duration: "120 minute",
+      title: "Jocul City Runner",
+      description: "Creează un joc captivant în care controlezi o pisică ce aleargă prin oraș, colectând diamante și evitând bombe.",
+      duration: "90 minute",
+      level: "Începător-Intermediar",
+      ageGroup: "7-14 ani",
+      link: "/scratch/session4cityrunner",
+      highlights: ["Controlul cu săgeți", "Animarea personajelor", "Sisteme de recompense și penalizări", "Elemente de decor animate"]
+    },
+    {
+      id: 5,
+      title: "Beach Ball Bounce",
+      description: "Învață să creezi un joc distractiv în care controlezi un colac pentru a menține o minge de plajă în aer.",
+      duration: "90 minute",
+      level: "Începător-Intermediar",
+      ageGroup: "7-14 ani",
+      link: "/scratch/session5beachballbounce",
+      highlights: ["Control cu mouse", "Simularea fizicii", "Obiecte bonus și obstacole", "Gravitație și ricoșare"]
+    },
+    {
+      id: 6,
+      title: "Stitch's Beach Adventure",
+      description: "Creează un joc distractiv cu Stitch, personajul tău preferat, care colectează torturi și evită bombe pe o plajă.",
+      duration: "90 minute",
       level: "Începător-Intermediar",
       ageGroup: "8-14 ani",
-      link: "/scratch/session4",
-      highlights: ["Utilizarea variabilelor", "Liste pentru întrebări și răspunsuri", "Crearea unui sistem de feedback", "Design interactiv"]
+      link: "/scratch/session5stitchbeach",
+      highlights: ["Animarea personajelor", "Detecția coliziunilor", "Sisteme de punctaj complexe", "Condiții de victorie și înfrângere"]
     }
   ];
 
