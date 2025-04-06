@@ -1,28 +1,27 @@
-
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
 import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
 import { CodeBlock } from '@/components/CodeBlock';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { Play, Rocket, Lightbulb, Check, Star } from 'lucide-react';
+import { Play, Rocket, Lightbulb, Check } from 'lucide-react';
 
 const Session2SpaceDodge = () => {
   const sidebarItems = [
     { id: 'intro', title: 'Introducere', isActive: true },
     { id: 'personaje', title: 'Personajele Jocului' },
-    { id: 'controlnava', title: 'Controlarea Navei' },
+    { id: 'controlship', title: 'Controlarea Navei' },
     { id: 'meteoriti', title: 'Crearea Meteoriților' },
     { id: 'elements', title: 'Elemente Decorative' },
     { id: 'scor', title: 'Sistemul de Scor' },
-    { id: 'gameover', title: 'Sfârșitul Jocului' },
+    { id: 'final', title: 'Condiții de Final' },
     { id: 'challenge', title: 'Provocări' }
   ];
 
   const resources = [
-    { title: 'Platformă Scratch', url: 'https://scratch.mit.edu/' },
+    { title: 'Platforma Scratch', url: 'https://scratch.mit.edu/' },
     { title: 'Tutoriale Scratch Oficiale', url: 'https://scratch.mit.edu/projects/editor/?tutorial=getStarted' },
-    { title: 'Comunitate Scratch', url: 'https://scratch.mit.edu/explore/projects/all' }
+    { title: 'Comunitatea Scratch', url: 'https://scratch.mit.edu/explore/projects/all' }
   ];
 
   return (
@@ -31,7 +30,7 @@ const Session2SpaceDodge = () => {
       subtitle="Lecția 2 • Scratch Programming"
       courseId="scratch"
       sessionId="2"
-      heroColor="bg-indigo-600"
+      heroColor="bg-yellow-500"
       sidebarItems={sidebarItems}
       resources={resources}
       previousLesson={{
@@ -58,30 +57,30 @@ const Session2SpaceDodge = () => {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-            <div className="bg-indigo-50 p-6 rounded-lg border border-indigo-100">
+            <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-100">
               <h3 className="font-bold text-lg mb-3 flex items-center">
-                <Check className="h-5 w-5 text-indigo-600 mr-2" />
+                <Check className="h-5 w-5 text-yellow-600 mr-2" />
                 Ce vei învăța
               </h3>
               <ul className="space-y-2">
                 <li className="flex items-start">
-                  <div className="h-5 w-5 text-indigo-600 mr-2 flex-shrink-0">✓</div>
+                  <div className="h-5 w-5 text-yellow-600 mr-2 flex-shrink-0">✓</div>
                   <span>Controlul personajelor cu tastele de navigare</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="h-5 w-5 text-indigo-600 mr-2 flex-shrink-0">✓</div>
+                  <div className="h-5 w-5 text-yellow-600 mr-2 flex-shrink-0">✓</div>
                   <span>Animarea personajelor prin schimbarea costumelor</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="h-5 w-5 text-indigo-600 mr-2 flex-shrink-0">✓</div>
+                  <div className="h-5 w-5 text-yellow-600 mr-2 flex-shrink-0">✓</div>
                   <span>Generarea de obstacole care apar aleatoriu</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="h-5 w-5 text-indigo-600 mr-2 flex-shrink-0">✓</div>
+                  <div className="h-5 w-5 text-yellow-600 mr-2 flex-shrink-0">✓</div>
                   <span>Detectarea coliziunilor între personaje</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="h-5 w-5 text-indigo-600 mr-2 flex-shrink-0">✓</div>
+                  <div className="h-5 w-5 text-yellow-600 mr-2 flex-shrink-0">✓</div>
                   <span>Crearea unui efect de parallax pentru elemente de fundal</span>
                 </li>
               </ul>
@@ -94,7 +93,7 @@ const Session2SpaceDodge = () => {
                 className="w-full object-cover h-48"
               />
               <div className="p-4 flex flex-col items-center">
-                <Button asChild className="w-full bg-indigo-600 hover:bg-indigo-700">
+                <Button asChild className="w-full bg-yellow-600 hover:bg-yellow-700">
                   <a href="https://scratch.mit.edu/projects/1144705984" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
                     <Play className="h-4 w-4 mr-2" />
                     <span>Încearcă jocul final</span>
@@ -104,14 +103,14 @@ const Session2SpaceDodge = () => {
             </div>
           </div>
 
-          <div className="mt-8 bg-gradient-to-r from-indigo-100 to-purple-100 p-6 rounded-lg">
+          <div className="mt-8 bg-gradient-to-r from-yellow-100 to-pink-100 p-6 rounded-lg">
             <h2 className="text-xl font-bold mb-3">Să începem!</h2>
             <p className="mb-4">
               Pentru a crea acest joc mai ușor, am pregătit un proiect starter cu personajele și decorul 
               deja adăugate. Tot ce trebuie să faci este să adaugi codul pentru a le aduce la viață!
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-indigo-500 hover:bg-indigo-600">
+              <Button asChild size="lg" className="bg-yellow-500 hover:bg-yellow-600">
                 <a href="https://scratch.mit.edu/projects/1144760132/editor/" target="_blank" rel="noopener noreferrer" className="flex items-center">
                   <Rocket className="h-5 w-5 mr-2" />
                   <span>Deschide proiectul starter</span>
@@ -207,7 +206,7 @@ const Session2SpaceDodge = () => {
           </InfoBox>
         </section>
 
-        <section id="controlnava">
+        <section id="controlship">
           <h2 className="text-2xl font-bold mb-4">2. Controlarea navei spațiale</h2>
           <p className="mb-4">
             Primul pas este să facem nava să se miște stânga-dreapta folosind tastele săgeți. 
@@ -383,7 +382,7 @@ const Session2SpaceDodge = () => {
           </InfoBox>
         </section>
 
-        <section id="gameover">
+        <section id="final">
           <h2 className="text-2xl font-bold mb-4">6. Implementarea condițiilor de sfârșit de joc</h2>
           <p className="mb-4">
             Ultimul pas este să adăugăm condiții pentru terminarea jocului atunci când nava lovește un meteorit. 

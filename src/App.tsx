@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Login from '@/pages/auth/Login';
@@ -22,6 +21,8 @@ import ScratchSession1 from '@/pages/scratch/Session1';
 import ScratchSession2 from '@/pages/scratch/Session2';
 import ScratchSession3 from '@/pages/scratch/Session3';
 import ScratchSession4 from '@/pages/scratch/Session4';
+import Session1Alegesanatos from '@/pages/scratch/Session1Alegesanatos';
+import Session2SpaceDodge from '@/pages/scratch/Session2SpaceDodge';
 import AppInventorSession1 from '@/pages/appinventor/Session1';
 import AppInventorSession2 from '@/pages/appinventor/Session2';
 import AppInventorSession3 from '@/pages/appinventor/Session3';
@@ -66,6 +67,9 @@ function App() {
           </ProtectedRoute>
         } 
       />
+      
+      <Route path="/scratch/session1alegesanatos" element={<Session1Alegesanatos />} />
+      <Route path="/scratch/session2spacedodge" element={<Session2SpaceDodge />} />
       
       <Route 
         path="/scratch/session1" 
