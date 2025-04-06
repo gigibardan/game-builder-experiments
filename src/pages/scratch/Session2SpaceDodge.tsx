@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LessonLayout from '@/components/LessonLayout';
@@ -27,7 +26,7 @@ const Session2SpaceDodge = () => {
 
   return (
     <LessonLayout
-      title="Jocul „Space Dodge" în Scratch"
+      title="Jocul \"Space Dodge\" în Scratch"
       subtitle="Lecția 2 • Scratch Programming"
       courseId="scratch"
       sessionId="2"
