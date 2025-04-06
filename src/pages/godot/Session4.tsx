@@ -2,112 +2,131 @@
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
 import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
-import { CodeExample, ImageExample, BlockCodeExample } from '@/components/CodeExample';
+import { CodeBlock } from '@/components/CodeBlock';
 
 const Session4 = () => {
-  const sidebarItems = [
-    { id: 'introducere', title: 'Introducere', isActive: true },
-    { id: 'sprite-frames', title: 'SpriteFrames și AnimatedSprite2D' },
-    { id: 'animation-player', title: 'AnimationPlayer' },
-    { id: 'animation-tree', title: 'AnimationTree' },
-    { id: 'particle-effects', title: 'Efecte de particule' },
-    { id: 'proiect', title: 'Proiect practic' },
-  ];
+  return (
+    <LessonLayout
+      title="Godot 4: Animații 2D"
+      subtitle="Lecția 4 • Godot Engine"
+      courseLink="/courses/godot"
+      previousLink="/godot/session3"
+      nextLink="/godot/session5"
+    >
+      <div className="space-y-8">
+        <section>
+          <h2 className="text-2xl font-bold mb-4">Animații 2D în Godot 4</h2>
+          <p>
+            Animațiile sunt esențiale pentru a adăuga viață jocurilor tale. În această lecție, vom explora
+            cum să creăm și să gestionăm animații 2D în Godot 4 pentru a face personajele și obiectele din joc
+            să se miște într-un mod dinamic și convingător.
+          </p>
 
-  const resources = [
-    { title: 'Documentație Godot - Animații', url: 'https://docs.godotengine.org/en/stable/tutorials/animation/index.html' },
-    { title: 'Tutorial AnimationPlayer', url: 'https://docs.godotengine.org/en/stable/tutorials/animation/animation_player.html' },
-    { title: 'Tutorial AnimationTree', url: 'https://docs.godotengine.org/en/stable/tutorials/animation/animation_tree.html' },
-    { title: 'Tutorial Particles', url: 'https://docs.godotengine.org/en/stable/tutorials/2d/particle_systems_2d.html' },
-  ];
-
-  const sections = [
-    {
-      id: 'introducere',
-      title: 'Introducere în animații și efecte vizuale',
-      content: (
-        <>
-          <p className="mb-4">
-            Animațiile și efectele vizuale sunt esențiale pentru a aduce viață și dinamism jocurilor. 
-            Acestea pot îmbunătăți semnificativ experiența jucătorului, oferind feedback vizual, 
-            creând atmosferă și ghidând atenția.
-          </p>
-          
-          <p className="mb-4">
-            În această sesiune, vom explora diferitele tehnici de animație și efecte vizuale disponibile în Godot Engine, 
-            învățând cum să le implementăm și să le folosim eficient în proiectele noastre.
-          </p>
-          
-          <LearningOutcome items={[
-            "Înțelegerea conceptelor de bază ale animației în Godot",
-            "Utilizarea nodurilor AnimatedSprite2D și SpriteFrames",
-            "Crearea animațiilor cu AnimationPlayer",
-            "Implementarea animațiilor complexe cu AnimationTree",
-            "Adăugarea efectelor de particule pentru a îmbunătăți vizual jocurile"
-          ]} />
-          
-          <h3 className="text-xl font-bold mb-3">Tipuri de animații în Godot</h3>
-          
-          <p className="mb-4">
-            Godot oferă mai multe metode pentru a crea animații, fiecare având avantaje și dezavantaje. 
-            Vom explora cele mai comune tehnici:
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200">
-              <h4 className="font-bold text-course-purple mb-2">SpriteFrames și AnimatedSprite2D</h4>
-              <p className="text-gray-700">
-                Animații simple bazate pe o succesiune de imagini (sprite sheets).
-              </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <div className="bg-blue-50 p-6 rounded-lg border border-blue-100">
+              <h3 className="font-bold text-lg mb-3">Ce vom învăța</h3>
+              <ul className="list-disc ml-5 space-y-1">
+                <li>Crearea spritesheet-urilor pentru animații</li>
+                <li>Utilizarea nodului AnimatedSprite2D</li>
+                <li>Configurarea și gestionarea animațiilor</li>
+                <li>Tranziții între animații bazate pe starea jocului</li>
+                <li>Animații procedurale și efecte vizuale</li>
+              </ul>
             </div>
             
-            <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200">
-              <h4 className="font-bold text-course-purple mb-2">AnimationPlayer</h4>
-              <p className="text-gray-700">
-                Animații mai complexe, bazate pe keyframes, care pot controla proprietăți ale nodurilor.
-              </p>
-            </div>
-            
-            <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200">
-              <h4 className="font-bold text-course-purple mb-2">AnimationTree</h4>
-              <p className="text-gray-700">
-                Sistem avansat pentru animații procedurale și tranziții complexe între animații.
-              </p>
+            <div className="bg-amber-50 p-6 rounded-lg border border-amber-100">
+              <h3 className="font-bold text-lg mb-3">Concepte cheie</h3>
+              <ul className="list-disc ml-5 space-y-1">
+                <li>Spritesheet-uri și frame-uri de animație</li>
+                <li>SpriteFrames și resurse de animație</li>
+                <li>Mașină de stări pentru animații</li>
+                <li>Interpolări și tweening</li>
+                <li>Sincronizarea animațiilor cu acțiunile din joc</li>
+              </ul>
             </div>
           </div>
-          
-          <InfoBox title="Considerații de performanță" icon="info" variant="primary">
-            <p>
-              Animațiile pot afecta performanța, mai ales dacă sunt multe sprite-uri sau animații complexe.
-              Pentru optimizare:
-            </p>
-            <ul className="list-disc list-inside mt-2">
-              <li>Folosește sprite sheets optimizate (dimensiuni potrivite, compresie)</li>
-              <li>Limitează numărul de animații simultane</li>
-              <li>Dezactivează animațiile care nu sunt vizibile</li>
-              <li>Folosește AnimationTree doar când este necesar (pentru animații complexe)</li>
-            </ul>
-          </InfoBox>
-        </>
-      )
-    },
-    {
-      id: 'sprite-frames',
-      title: 'SpriteFrames și AnimatedSprite2D',
-      content: (
-        <>
+        </section>
+
+        <LearningOutcome title="După această lecție, vei putea:">
+          <ul className="list-disc ml-5 space-y-1">
+            <li>Să creezi și să configurezi animații 2D pentru personaje și obiecte</li>
+            <li>Să implementezi tranziții între diferite animații bazate pe input sau starea jocului</li>
+            <li>Să sincronizezi animațiile cu sunetele și efectele din joc</li>
+            <li>Să dezvolți o mașină de stări simplă pentru gestionarea animațiilor personajului</li>
+          </ul>
+        </LearningOutcome>
+
+        <section>
+          <h2 className="text-2xl font-bold mb-4">Spritesheet-uri și animații frame-by-frame</h2>
           <p className="mb-4">
-            AnimatedSprite2D este un nod care afișează o animație bazată pe o succesiune de imagini stocate într-un obiect SpriteFrames. 
-            Este cea mai simplă metodă de a crea animații în Godot, ideală pentru efecte simple și animații de bază.
+            Un <strong>spritesheet</strong> este o imagine care conține mai multe frame-uri separate 
+            pentru o animație. Când aceste frame-uri sunt afișate rapid unul după altul, creează iluzia 
+            de mișcare - la fel ca în filmele de animație clasice.
           </p>
           
-          <h3 className="text-xl font-bold mb-3">Crearea unui SpriteFrames</h3>
-          
-          <p className="mb-4">
-            SpriteFrames este un resursă care conține o listă de animații, fiecare animație fiind o succesiune de imagini (cadre).
+          <div className="bg-white border rounded-md overflow-hidden mb-6">
+            <img 
+              src="https://docs.godotengine.org/en/stable/_images/sprite_sheet.png" 
+              alt="Exemplu de Spritesheet" 
+              className="w-full"
+            />
+            <div className="p-3 text-sm text-center text-gray-600 bg-gray-50">
+              Un exemplu de spritesheet cu frame-uri pentru o animație de alergare
+            </div>
+          </div>
+
+          <p>
+            În Godot, putem folosi aceste spritesheet-uri pentru a crea animații pentru personajele și obiectele din joc.
+            Godot oferă două abordări principale pentru animații 2D:
           </p>
           
-          <StepItem number={1} title="Crearea unui SpriteFrames">
+          <ul className="list-disc ml-5 space-y-2 my-4">
+            <li>
+              <strong>AnimatedSprite2D</strong> - Un nod specializat pentru animații sprite care folosește resursa SpriteFrames
+            </li>
+            <li>
+              <strong>Sprite2D + AnimationPlayer</strong> - Folosirea unui Sprite2D normal și controlarea frame-urilor cu un nod AnimationPlayer
+            </li>
+          </ul>
+
+          <p>
+            În această lecție, ne vom concentra pe abordarea cu AnimatedSprite2D, care este mai simplă și potrivită 
+            pentru începători.
+          </p>
+        </section>
+
+        <InfoBox title="Resurse pentru animații" variant="info">
+          <p>
+            Pentru această lecție, vei putea folosi propriile tale sprite-uri sau poți descărca resurse gratuite 
+            de pe site-uri precum:
+          </p>
+          <ul className="list-disc ml-5 mt-2">
+            <li><a href="https://opengameart.org/" className="text-blue-600 hover:underline">OpenGameArt</a></li>
+            <li><a href="https://kenney.nl/" className="text-blue-600 hover:underline">Kenney Assets</a></li>
+            <li><a href="https://itch.io/game-assets/free" className="text-blue-600 hover:underline">Itch.io (resurse gratuite)</a></li>
+          </ul>
+          <p className="mt-2">
+            Asigură-te că verifici licența resurselor înainte de a le folosi în proiectele tale.
+          </p>
+        </InfoBox>
+
+        <section>
+          <h2 className="text-2xl font-bold mb-4">Crearea și utilizarea animațiilor în Godot</h2>
+          <p className="mb-6">
+            Să exploram pas cu pas cum să implementăm animații pentru un personaj 2D în Godot:
+          </p>
+
+          <StepItem number={1} title="Importarea spritesheet-ului">
+            <p className="mb-2">Pentru a începe, trebuie să importăm spritesheet-ul în proiectul Godot:</p>
+            <ol className="list-decimal list-inside space-y-1 ml-4">
+              <li>Copiază imaginea spritesheet în directorul proiectului tău</li>
+              <li>În Godot, imaginea va apărea automat în panoul FileSystem</li>
+              <li>Selectează imaginea și verifică setările de import în panoul Import</li>
+              <li>Pentru spritesheet-uri, asigură-te că "Filter" este dezactivat pentru a evita estomparea pixelilor</li>
+            </ol>
+          </StepItem>
+
+          <StepItem number={2} title="Crearea unei resurse SpriteFrames">
             <p className="mb-2">Pentru a crea un SpriteFrames:</p>
             <ol className="list-decimal list-inside space-y-1 ml-4">
               <li>În panoul File System, mergi la directorul unde vrei să salvezi SpriteFrames</li>
@@ -116,26 +135,32 @@ const Session4 = () => {
               <li>Dă un nume resursiei (ex: "player_animations.tres")</li>
               <li>Dublu click pe resursă pentru a o deschide în panoul de jos</li>
             </ol>
+
+            <div className="mt-4 mb-6">
+              <p className="mb-2">În editorul SpriteFrames:</p>
+              <ol className="list-decimal list-inside space-y-1 ml-4">
+                <li>Apasă butonul "Add Animation" pentru a adăuga o nouă animație (ex: "idle", "run", "jump")</li>
+                <li>Selectează animația creată</li>
+                <li>Ajustează proprietățile animației (FPS, loop)</li>
+                <li>Apasă butonul "Add Frame(s) from Sprite Sheet"</li>
+                <li>Selectează spritesheet-ul tău</li>
+                <li>În fereastra care apare, configurează dimensiunea frame-ului și selectează frame-urile dorite</li>
+                <li>Repetă procesul pentru toate animațiile necesare</li>
+              </ol>
+            </div>
+
+            <div className="bg-white border rounded-md overflow-hidden mb-6">
+              <img 
+                src="https://docs.godotengine.org/en/stable/_images/sprite_animation_frames.png" 
+                alt="Editor SpriteFrames" 
+                className="w-full"
+              />
+              <div className="p-3 text-sm text-center text-gray-600 bg-gray-50">
+                Editorul SpriteFrames în Godot
+              </div>
+            </div>
           </StepItem>
-          
-          <StepItem number={2} title="Adăugarea animațiilor">
-            <p className="mb-2">Pentru a adăuga animații la SpriteFrames:</p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>În panoul SpriteFrames, apasă pe butonul "Add" pentru a crea o nouă animație</li>
-              <li>Dă un nume animației (ex: "idle", "run", "jump")</li>
-              <li>Selectează animația din listă</li>
-              <li>Trage sprite-urile corespunzătoare pentru animație în lista de cadre</li>
-              <li>Ajustează FPS (cadre pe secundă) pentru a controla viteza animației</li>
-              <li>Bifează "Loop" dacă vrei ca animația să se repete</li>
-            </ol>
-          </StepItem>
-          
-          <h3 className="text-xl font-bold mt-6 mb-3">Utilizarea AnimatedSprite2D</h3>
-          
-          <p className="mb-4">
-            AnimatedSprite2D este nodul care afișează animațiile definite în SpriteFrames.
-          </p>
-          
+
           <StepItem number={3} title="Adăugarea unui AnimatedSprite2D">
             <p className="mb-2">Pentru a adăuga un AnimatedSprite2D:</p>
             <ol className="list-decimal list-inside space-y-1 ml-4">
@@ -145,479 +170,186 @@ const Session4 = () => {
               <li>Selectează animația dorită din lista de animații</li>
             </ol>
           </StepItem>
-          
-          <CodeExample title="Controlul animațiilor prin cod" language="gdscript">
-{`extends Sprite2D
 
-@onready var animated_sprite = $AnimatedSprite2D
-
-func _ready():
-    # Redăm animația "run"
-    animated_sprite.play("run")
-    
-    # Oprim animația
-    #animated_sprite.stop()
-    
-    # Verificăm dacă animația se repetă
-    #var is_looping = animated_sprite.is_playing()
-    
-    # Obținem animația curentă
-    #var current_animation = animated_sprite.animation`}
-          </CodeExample>
-          
-          <Challenge title="Crearea unui personaj animat cu AnimatedSprite2D" difficulty="easy">
-            <p className="mb-2">
-              Creează un personaj animat folosind AnimatedSprite2D:
-            </p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Descarcă un sprite sheet cu animații pentru un personaj (idle, run, jump)</li>
-              <li>Creează un SpriteFrames și adaugă animațiile corespunzătoare</li>
-              <li>Adaugă un AnimatedSprite2D și setează SpriteFrames-ul creat</li>
-              <li>Implementează un script care schimbă animația în funcție de input-ul jucătorului</li>
-            </ol>
-          </Challenge>
-          
-          <InfoBox title="Sfaturi pentru SpriteFrames" icon="info" variant="primary">
-            <p>
-              Când folosești SpriteFrames:
-            </p>
-            <ul className="list-disc list-inside space-y-1 mt-2">
-              <li>Organizează sprite-urile într-un sprite sheet pentru eficiență</li>
-              <li>Folosește nume descriptive pentru animații</li>
-              <li>Ajustează FPS pentru a obține viteza dorită</li>
-              <li>Folosește semnale pentru a sincroniza animațiile cu alte evenimente</li>
-            </ul>
-          </InfoBox>
-        </>
-      )
-    },
-    {
-      id: 'animation-player',
-      title: 'AnimationPlayer',
-      content: (
-        <>
-          <p className="mb-4">
-            AnimationPlayer este un nod puternic care permite crearea de animații complexe bazate pe keyframes. 
-            Poți anima orice proprietate a unui nod, inclusiv poziție, rotație, scalare, culoare, textură, și multe altele.
-          </p>
-          
-          <h3 className="text-xl font-bold mb-3">Crearea unei animații cu AnimationPlayer</h3>
-          
-          <StepItem number={1} title="Adăugarea unui AnimationPlayer">
-            <p className="mb-2">Pentru a adăuga un AnimationPlayer:</p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Adaugă un nod AnimationPlayer (Ctrl+A {'>'} AnimationPlayer)</li>
-              <li>Selectează nodul AnimationPlayer</li>
-              <li>În panoul de jos, apasă pe butonul "Animation" {'>'} "New" pentru a crea o nouă animație</li>
-              <li>Dă un nume animației (ex: "fade_in", "move_left", "rotate")</li>
-            </ol>
-          </StepItem>
-          
-          <StepItem number={2} title="Adăugarea de track-uri și keyframes">
-            <p className="mb-2">Pentru a adăuga track-uri și keyframes:</p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Selectează nodul pe care vrei să-l animezi</li>
-              <li>În panoul AnimationPlayer, apasă pe butonul "Add Track" {'>'} "Property Track"</li>
-              <li>Selectează proprietatea pe care vrei să o animezi (ex: "position", "rotation", "modulate")</li>
-              <li>Poziționează cursorul de timp la momentul dorit</li>
-              <li>Modifică valoarea proprietății în panoul Inspector</li>
-              <li>Apasă pe butonul cu cheie ("Insert Key") pentru a adăuga un keyframe</li>
-              <li>Repetă pașii pentru a adăuga mai multe keyframes și a crea animația</li>
-            </ol>
-          </StepItem>
-          
-          <StepItem number={3} title="Controlul animației prin cod">
-            <p className="mb-2">Pentru a controla animația prin cod:</p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Obține o referință la nodul AnimationPlayer</li>
-              <li>Folosește funcțiile <code>play()</code>, <code>stop()</code>, <code>seek()</code>, etc. pentru a controla animația</li>
-            </ol>
-          </StepItem>
-          
-          <CodeExample title="Controlul animațiilor prin cod" language="gdscript">
-{`extends Sprite2D
-
-@onready var animation_player = $AnimationPlayer
-
-func _ready():
-    # Redăm animația "fade_in"
-    animation_player.play("fade_in")
-    
-    # Oprim animația
-    #animation_player.stop()
-    
-    # Mergem la un anumit moment în animație (în secunde)
-    #animation_player.seek(1.5)
-    
-    # Verificăm dacă animația se repetă
-    #animation_player.animation_set_loop("fade_in", true)
-    
-    # Obținem durata animației
-    #var duration = animation_player.get_current_animation_length()
-    
-    # Conectăm semnalul animation_finished pentru a executa cod când animația se termină
-    animation_player.animation_finished.connect(_on_animation_finished)
-
-func _on_animation_finished(anim_name):
-    print("Animația s-a terminat: ", anim_name)`}
-          </CodeExample>
-          
-          <Challenge title="Crearea unei animații de ușă care se deschide" difficulty="medium">
-            <p className="mb-2">
-              Creează o animație pentru o ușă care se deschide folosind AnimationPlayer:
-            </p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Adaugă un nod Sprite2D pentru ușa</li>
-              <li>Adaugă un nod CollisionShape2D pentru ușa (pentru a bloca accesul)</li>
-              <li>Adaugă un nod AnimationPlayer</li>
-              <li>Creează o animație care rotește ușa pentru a se deschide</li>
-              <li>Creează o animație care dezactivează CollisionShape2D când ușa este deschisă</li>
-              <li>Implementează un script care pornește animația când jucătorul interacționează cu ușa</li>
-            </ol>
-          </Challenge>
-          
-          <InfoBox title="Sfaturi pentru AnimationPlayer" icon="info" variant="primary">
-            <p>
-              Când folosești AnimationPlayer:
-            </p>
-            <ul className="list-disc list-inside space-y-1 mt-2">
-              <li>Folosește nume descriptive pentru animații</li>
-              <li>Organizează animațiile pe noduri pentru a face proiectul mai ușor de gestionat</li>
-              <li>Folosește easing functions pentru a crea animații mai naturale</li>
-              <li>Folosește semnale pentru a sincroniza animațiile cu alte evenimente</li>
-            </ul>
-          </InfoBox>
-        </>
-      )
-    },
-    {
-      id: 'animation-tree',
-      title: 'AnimationTree',
-      content: (
-        <>
-          <p className="mb-4">
-            AnimationTree este un sistem avansat pentru gestionarea animațiilor complexe, cum ar fi animațiile procedurale, 
-            tranzițiile între animații, și amestecarea animațiilor. Este ideal pentru personaje cu animații realiste și variate.
-          </p>
-          
-          <h3 className="text-xl font-bold mb-3">Concepte de bază ale AnimationTree</h3>
-          
-          <p className="mb-4">
-            AnimationTree folosește un graf de noduri pentru a defini logica animațiilor. 
-            Fiecare nod reprezintă o animație, o tranziție, sau o operație de amestecare.
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div>
-              <h4 className="font-bold mb-2">Noduri importante:</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>AnimationNodeAnimation</strong>: Redă o animație simplă</li>
-                <li><strong>AnimationNodeBlend2</strong>: Amestecă două animații</li>
-                <li><strong>AnimationNodeBlendTree</strong>: Graf complex de animații și tranziții</li>
-                <li><strong>AnimationNodeStateMachine</strong>: Mașină de stări pentru tranziții automate</li>
-              </ul>
-            </div>
+          <StepItem number={4} title="Controlarea animațiilor prin script">
+            <p className="mb-2">Pentru a controla animațiile din cod, adaugă un script la nodul AnimatedSprite2D:</p>
             
-            <div>
-              <h4 className="font-bold mb-2">Pași pentru a crea un AnimationTree:</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li>Adaugă un nod AnimationTree</li>
-                <li>Setează AnimationPlayer-ul care conține animațiile</li>
-                <li>Creează un graf de noduri pentru a defini logica animațiilor</li>
-                <li>Conectează nodurile între ele</li>
-                <li>Controlează AnimationTree prin cod</li>
-              </ul>
-            </div>
-          </div>
-          
-          <StepItem number={1} title="Adăugarea unui AnimationTree">
-            <p className="mb-2">Pentru a adăuga un AnimationTree:</p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Adaugă un nod AnimationTree</li>
-              <li>În panoul Inspector, setează AnimationPlayer-ul care conține animațiile</li>
-              <li>Apasă pe "Tree Root" {'>'} "New AnimationNodeStateMachine" pentru a crea o mașină de stări</li>
-              <li>Dublu click pe nodul "AnimationNodeStateMachine" pentru a deschide editorul de graf</li>
-            </ol>
-          </StepItem>
-          
-          <StepItem number={2} title="Crearea stărilor și tranzițiilor">
-            <p className="mb-2">Pentru a crea stări și tranziții:</p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>În editorul de graf, click dreapta {'>'} "Add Node" {'>'} "Animation" pentru a adăuga o animație</li>
-              <li>Selectează animația dorită din lista de animații</li>
-              <li>Repetă pentru a adăuga mai multe animații</li>
-              <li>Click dreapta pe o animație {'>'} "Set as Start Node" pentru a seta starea inițială</li>
-              <li>Trage de la o animație la alta pentru a crea o tranziție</li>
-              <li>Selectează tranziția și ajustează parametrii (timp de tranziție, condiții)</li>
-            </ol>
-          </StepItem>
-          
-          <StepItem number={3} title="Controlul AnimationTree prin cod">
-            <p className="mb-2">Pentru a controla AnimationTree prin cod:</p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Obține o referință la nodul AnimationTree</li>
-              <li>Folosește funcțiile <code>set()</code> și <code>get()</code> pentru a controla parametrii nodurilor</li>
-              <li>Folosește funcția <code>travel()</code> pentru a schimba starea curentă</li>
-            </ol>
-          </StepItem>
-          
-          <CodeExample title="Controlul AnimationTree prin cod" language="gdscript">
-{`extends Sprite2D
-
-@onready var animation_tree = $AnimationTree
-@onready var animation_state_machine = animation_tree.tree_root
-
-func _ready():
-    # Activează AnimationTree
-    animation_tree.active = true
-
-func _physics_process(delta):
-    # Obține input-ul jucătorului
-    var direction = Input.get_axis("ui_left", "ui_right")
-    
-    # Setează parametrul "speed" în AnimationTree
-    animation_tree.set("parameters/move/blend_amount", abs(direction))
-    
-    # Schimbă starea în funcție de input
-    if direction != 0:
-        animation_state_machine.travel("run")
+            <CodeBlock language="gdscript" title="PlayerAnimation.gd">
+func _process(delta):
+    # Detectează input și schimbă animațiile în consecință
+    if Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left"):
+        animation = "run"
     else:
-        animation_state_machine.travel("idle")`}
-          </CodeExample>
-          
-          <Challenge title="Crearea unui personaj cu AnimationTree" difficulty="hard">
-            <p className="mb-2">
-              Creează un personaj cu animații complexe folosind AnimationTree:
+        animation = "idle"
+    
+    # Întoarce sprite-ul când se mișcă la stânga
+    if Input.is_action_pressed("ui_left"):
+        flip_h = true
+    elif Input.is_action_pressed("ui_right"):
+        flip_h = false
+    
+    # Verifică dacă jucătorul sare
+    if Input.is_action_just_pressed("ui_up"):
+        animation = "jump"
+            </CodeBlock>
+            
+            <p className="mt-4">
+              Prin acest script simplu, animația personajului se va schimba în funcție de tastele apăsate:
             </p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Descarcă animații pentru idle, run, jump, attack</li>
-              <li>Creează un AnimationPlayer cu toate animațiile</li>
-              <li>Creează un AnimationTree cu o mașină de stări</li>
-              <li>Adaugă stări pentru fiecare animație</li>
-              <li>Creează tranziții între stări (ex: idle -> run, run -> jump)</li>
-              <li>Implementează un script care controlează AnimationTree în funcție de input-ul jucătorului</li>
-            </ol>
-          </Challenge>
-          
-          <InfoBox title="Sfaturi pentru AnimationTree" icon="info" variant="primary">
-            <p>
-              Când folosești AnimationTree:
-            </p>
-            <ul className="list-disc list-inside space-y-1 mt-2">
-              <li>Planifică graficul de animații înainte de a începe</li>
-              <li>Folosește nume descriptive pentru stări și tranziții</li>
-              <li>Ajustează parametrii tranzițiilor pentru a obține un aspect natural</li>
-              <li>Folosește funcții de amestecare (blend) pentru a crea tranziții line</li>
+            <ul className="list-disc ml-5 mt-2">
+              <li>"run" când te miști la stânga sau la dreapta</li>
+              <li>"jump" când sari</li>
+              <li>"idle" când nu faci nicio acțiune</li>
             </ul>
-          </InfoBox>
-        </>
-      )
-    },
-    {
-      id: 'particle-effects',
-      title: 'Efecte de particule',
-      content: (
-        <>
-          <p className="mb-4">
-            Efectele de particule sunt folosite pentru a crea efecte vizuale dinamice, cum ar fi fum, foc, ploaie, explozii, etc. 
-            Godot oferă un sistem de particule flexibil și puternic, care permite crearea de efecte vizuale spectaculoase.
-          </p>
-          
-          <h3 className="text-xl font-bold mb-3">Utilizarea CPUParticles2D</h3>
-          
-          <p className="mb-4">
-            CPUParticles2D este un nod care emite particule folosind procesorul (CPU). 
-            Este ideal pentru efecte simple și medii, care nu necesită performanță extremă.
-          </p>
-          
-          <StepItem number={1} title="Adăugarea unui CPUParticles2D">
-            <p className="mb-2">Pentru a adăuga un CPUParticles2D:</p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Adaugă un nod CPUParticles2D</li>
-              <li>În panoul Inspector, setează textura particulelor (Texture)</li>
-              <li>Ajustează parametrii de emisie (Amount, Lifetime, Emission Shape)</li>
-              <li>Ajustează parametrii de aspect (Color, Scale, Rotation)</li>
-              <li>Ajustează parametrii de mișcare (Gravity, Velocity, Angle)</li>
-            </ol>
           </StepItem>
-          
-          <h3 className="text-xl font-bold mt-6 mb-3">Parametri importanți</h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-bold mb-4">Mașină de stări pentru animații</h2>
+          <p className="mb-4">
+            Pentru jocuri mai complexe, este util să implementezi o mașină de stări pentru a gestiona animațiile. 
+            Aceasta permite tranziții mai controlate între animații și evită probleme cum ar fi întreruperea animațiilor.
+          </p>
+
+          <CodeBlock language="gdscript" title="PlayerStateMachine.gd">
+extends AnimatedSprite2D
+
+# Stările posibile
+enum State {IDLE, RUN, JUMP, FALL, ATTACK}
+
+# Starea curentă
+var current_state = State.IDLE
+
+func _process(delta):
+    # Determină starea următoare bazată pe input și fizică
+    var next_state = determine_next_state()
+    
+    # Dacă starea s-a schimbat, actualizează animația
+    if next_state != current_state:
+        current_state = next_state
+        play_animation_for_state(current_state)
+
+func determine_next_state():
+    # Logica pentru determinarea stării
+    # Aceasta va depinde de cum este structurat jocul tău
+    # Exemplu simplu:
+    
+    if Input.is_action_just_pressed("attack"):
+        return State.ATTACK
+    
+    if not is_on_floor():
+        if velocity.y < 0:
+            return State.JUMP
+        else:
+            return State.FALL
+    
+    if Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left"):
+        return State.RUN
+    
+    return State.IDLE
+
+func play_animation_for_state(state):
+    match state:
+        State.IDLE:
+            animation = "idle"
+        State.RUN:
+            animation = "run"
+        State.JUMP:
+            animation = "jump"
+        State.FALL:
+            animation = "fall"
+        State.ATTACK:
+            animation = "attack"
+            # Asigură-te că atacul se termină înainte de a trece la altă animație
+            # Poți folosi semnalul "animation_finished" pentru asta
+          </CodeBlock>
+
+          <p className="mt-4">
+            Această abordare este mai robustă și permite gestionarea mai precisă a stărilor și animațiilor, 
+            inclusiv pentru cazuri speciale cum ar fi asigurarea că o animație de atac se termină înainte 
+            de a trece la altă stare.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-bold mb-4">Animații procedurale și efecte vizuale</h2>
+          <p className="mb-4">
+            Pe lângă animațiile frame-by-frame, Godot oferă și posibilitatea de a crea animații procedurale
+            și efecte vizuale folosind funcții matematice și noduri specifice.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
             <div>
-              <h4 className="font-bold mb-2">Parametri de emisie:</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Amount</strong>: Numărul de particule emise pe secundă</li>
-                <li><strong>Lifetime</strong>: Durata de viață a unei particule (în secunde)</li>
-                <li><strong>Emission Shape</strong>: Forma zonei de emisie (Point, Line, Circle, Rectangle)</li>
-                <li><strong>Spread</strong>: Unghiul de dispersie al particulelor</li>
+              <h3 className="font-bold text-lg mb-3">Animații procedurale cu noduri</h3>
+              <p className="mb-2">Poți crea efecte precum:</p>
+              <ul className="list-disc ml-5 space-y-1">
+                <li>Oscilații și mișcări pendulare folosind funcții sin/cos</li>
+                <li>Efecte de leagăn sau balansare cu CPUParticles2D și GPUParticles2D</li>
+                <li>Efecte de lumină cu noduri Light2D și CanvasModulate</li>
+                <li>Distorsiuni de shader cu noduri ShaderMaterial</li>
               </ul>
             </div>
             
             <div>
-              <h4 className="font-bold mb-2">Parametri de aspect:</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li><strong>Texture</strong>: Textura particulelor</li>
-                <li><strong>Color</strong>: Culoarea particulelor</li>
-                <li><strong>Scale</strong>: Dimensiunea particulelor</li>
-                <li><strong>Rotation</strong>: Rotația particulelor</li>
-                <li><strong>Initial Velocity</strong>: Viteza inițială a particulelor</li>
+              <h3 className="font-bold text-lg mb-3">Interpolări și Tweening</h3>
+              <p className="mb-2">Pentru tranziții line între poziții, rotații, scale:</p>
+              <ul className="list-disc ml-5 space-y-1">
+                <li>Utilizeză noduri Tween pentru animații predefinite</li>
+                <li>Implementează interpolarea liniară sau smoothstep în script</li>
+                <li>Combină multiple proprietăți pentru efecte complexe</li>
+                <li>Folosește curbe de animație pentru control precis</li>
               </ul>
             </div>
           </div>
-          
-          <CodeExample title="Controlul efectelor de particule prin cod" language="gdscript">
-{`extends Sprite2D
 
-@onready var cpu_particles = $CPUParticles2D
+          <CodeBlock language="gdscript" title="ProceduralAnimation.gd">
+extends Node2D
 
-func _ready():
-    # Pornește efectul de particule
-    cpu_particles.emitting = true
+# Pentru o oscilație simplă
+func _process(delta):
+    # Oscilație pe axa Y cu sin()
+    $Sprite2D.position.y = sin(Time.get_ticks_msec() * 0.005) * 10
     
-    # Oprește efectul de particule după un timp
-    #await get_tree().create_timer(2).timeout
-    #cpu_particles.emitting = false
-    
-    # Modifică culoarea particulelor
-    #cpu_particles.color = Color(1, 0, 0)
-    
-    # Modifică viteza inițială a particulelor
-    #cpu_particles.initial_velocity = 200`}
-          </CodeExample>
-          
-          <Challenge title="Crearea unui efect de foc de tabără" difficulty="medium">
-            <p className="mb-2">
-              Creează un efect de foc de tabără folosind CPUParticles2D:
-            </p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Adaugă un nod CPUParticles2D</li>
-              <li>Setează o textură pentru flăcări (poți folosi o imagine simplă sau un sprite sheet)</li>
-              <li>Ajustează parametrii de emisie pentru a crea un flux constant de flăcări</li>
-              <li>Ajustează parametrii de aspect pentru a da flăcărilor un aspect realist (culoare, scalare, rotație)</li>
-              <li>Adaugă un efect de fum folosind un alt CPUParticles2D</li>
-            </ol>
-          </Challenge>
-          
-          <InfoBox title="Sfaturi pentru efecte de particule" icon="info" variant="primary">
-            <p>
-              Când folosești efecte de particule:
-            </p>
-            <ul className="list-disc list-inside space-y-1 mt-2">
-              <li>Folosește texturi optimizate pentru performanță</li>
-              <li>Limitează numărul de particule pentru a evita încetinirea jocului</li>
-              <li>Folosește gradient colors pentru a crea efecte vizuale interesante</li>
-              <li>Folosește animații pentru a da viață particulelor</li>
-            </ul>
-          </InfoBox>
-        </>
-      )
-    },
-    {
-      id: 'proiect',
-      title: 'Proiect practic',
-      content: (
-        <>
+    # Pulsație cu scala folosind cos()
+    var scale_factor = 1.0 + 0.1 * cos(Time.get_ticks_msec() * 0.003)
+    $Sprite2D.scale = Vector2(scale_factor, scale_factor)
+
+# Pentru Tweening
+func start_animation():
+    var tween = create_tween()
+    tween.tween_property($Sprite2D, "position", Vector2(100, 100), 1.0)
+    tween.tween_property($Sprite2D, "rotation", PI/2, 0.5)
+    tween.tween_property($Sprite2D, "scale", Vector2(2, 2), 0.5)
+    tween.tween_property($Sprite2D, "modulate", Color(1, 0, 0, 1), 1.0)
+          </CodeBlock>
+        </section>
+
+        <Challenge title="Provocare: Animează un personaj 2D" difficulty="medium">
+          <p>Creează un personaj 2D animat cu următoarele caracteristici:</p>
+          <ul className="list-disc ml-5 space-y-1 mt-2">
+            <li>Cel puțin 3 animații: idle, run și jump</li>
+            <li>Tranziții fluide între animații bazate pe input</li>
+            <li>Efecte vizuale adăugate (ex: particule de praf când aleargă)</li>
+            <li>Implementarea unei mașini de stări simplificate pentru gestionarea animațiilor</li>
+            <li>Bonus: adaugă sunete sincronizate cu animațiile</li>
+          </ul>
+        </Challenge>
+
+        <section className="bg-amber-50 p-6 rounded-lg">
+          <h2 className="text-xl font-bold mb-3">Sinteză și Continuare</h2>
           <p className="mb-4">
-            Acum că am explorat diferitele tehnici de animație și efecte vizuale, 
-            să le aplicăm într-un proiect practic: un mic joc de platformă cu un personaj animat, 
-            efecte de particule și tranziții animate.
+            În această lecție, am învățat cum să creăm și să gestionăm animații 2D în Godot 4. 
+            Am explorat utilizarea SpriteFrames, nodului AnimatedSprite2D, și am implementat 
+            o mașină de stări de bază pentru animații. De asemenea, am discutat despre animații 
+            procedurale și efecte vizuale.
           </p>
-          
-          <StepItem number={1} title="Configurarea proiectului">
-            <p className="mb-2">Începe prin crearea unui nou proiect și configurarea scenei principale:</p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Creează un nou proiect 2D în Godot</li>
-              <li>Importă resursele necesare (sprite-uri, animații, sunete)</li>
-              <li>Creează o scenă principală cu un nod Node2D ca rădăcină</li>
-            </ol>
-          </StepItem>
-          
-          <StepItem number={2} title="Crearea personajului animat">
-            <p className="mb-2">Implementează personajul principal cu animații:</p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Creează o scenă nouă cu un nod CharacterBody2D ca rădăcină</li>
-              <li>Adaugă un nod AnimatedSprite2D pentru animații simple (idle, run, jump)</li>
-              <li>Alternativ, folosește un AnimationTree pentru animații mai complexe</li>
-              <li>Implementează un script de control bazat pe input-ul jucătorului</li>
-            </ol>
-          </StepItem>
-          
-          <StepItem number={3} title="Adăugarea efectelor de particule">
-            <p className="mb-2">Adaugă efecte de particule pentru a îmbunătăți vizual jocul:</p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Adaugă un nod CPUParticles2D pentru efecte simple (ex: praf la aterizare)</li>
-              <li>Adaugă un nod GPUParticles2D pentru efecte mai complexe (ex: explozii)</li>
-              <li>Ajustează parametrii pentru a obține efectele dorite</li>
-            </ol>
-          </StepItem>
-          
-          <StepItem number={4} title="Crearea tranzițiilor animate">
-            <p className="mb-2">Adaugă tranziții animate între scene sau stări:</p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Folosește AnimationPlayer pentru a crea animații de tranziție (ex: fade in/out)</li>
-              <li>Folosește semnale pentru a sincroniza tranzițiile cu alte evenimente</li>
-            </ol>
-          </StepItem>
-          
-          <h3 className="text-xl font-bold mt-6 mb-3">Idei pentru extinderea proiectului</h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div>
-              <h4 className="font-bold mb-2">Mecanici adiționale:</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li>Inamici cu animații</li>
-                <li>Obiecte interactive cu animații</li>
-                <li>Efecte de particule pentru atacuri și abilități</li>
-                <li>Animații de cutscene</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-bold mb-2">Îmbunătățiri de gameplay:</h4>
-              <ul className="list-disc list-inside space-y-1">
-                <li>UI animat</li>
-                <li>Efecte sonore sincronizate cu animațiile</li>
-                <li>Animații de feedback pentru jucător</li>
-                <li>Sistem de power-ups cu efecte vizuale</li>
-              </ul>
-            </div>
-          </div>
-          
-          <InfoBox title="Sfaturi pentru animații și efecte vizuale" icon="star" variant="secondary">
-            <p>Când adaugi animații și efecte vizuale, ține cont de următoarele:</p>
-            <ul className="list-disc list-inside space-y-1 mt-2">
-              <li>Folosește animații și efecte vizuale pentru a îmbunătăți experiența jucătorului</li>
-              <li>Nu exagera cu efectele vizuale, deoarece pot distrage atenția</li>
-              <li>Optimizează animațiile și efectele vizuale pentru a menține performanța</li>
-              <li>Folosește semnale pentru a sincroniza animațiile cu alte evenimente</li>
-            </ul>
-          </InfoBox>
-          
-          <Challenge title="Extinderea proiectului de platformer" difficulty="hard">
-            <p className="mb-2">
-              Extinde proiectul de platformer cu următoarele funcționalități:
-            </p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>Adaugă un inamic cu animații și AI</li>
-              <li>Implementează o mecanică de atac pentru jucător cu efecte vizuale</li>
-              <li>Creează un sistem de power-ups cu efecte vizuale</li>
-              <li>Adaugă o animație de cutscene la începutul sau sfârșitul nivelului</li>
-            </ol>
-          </Challenge>
-        </>
-      )
-    }
-  ];
-
-  return (
-    <LessonLayout 
-      title="Animații și Efecte Vizuale în Godot" 
-      subtitle="Adaugă mișcare și viață proiectelor tale prin animații și efecte" 
-      sidebarItems={sidebarItems}
-      resources={resources}
-      sections={sections}
-    />
+          <p>
+            În următoarea lecție, vom explora sisteme de particule și efecte vizuale avansate 
+            pentru a adăuga și mai multă viață jocurilor noastre.
+          </p>
+        </section>
+      </div>
+    </LessonLayout>
   );
 };
 
