@@ -1,46 +1,38 @@
-
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
 import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
 import { CodeBlock } from '@/components/CodeBlock';
 
 const Session4 = () => {
-  // Define the required props for LessonLayout
   const sidebarItems = [
-    { id: 'introducere', title: 'Introducere', isActive: true },
+    { id: 'intro', title: 'Introducere', isActive: true },
     { id: 'spritesheet', title: 'Spritesheet-uri' },
-    { id: 'creare-animatii', title: 'Crearea animațiilor' },
-    { id: 'masina-stari', title: 'Mașină de stări' },
-    { id: 'animatii-procedurale', title: 'Animații procedurale' },
-    { id: 'provocari', title: 'Provocări' }
+    { id: 'animation', title: 'Animații Frame-by-Frame' },
+    { id: 'state-machine', title: 'Mașină de Stări' },
+    { id: 'procedural', title: 'Animații Procedurale' },
+    { id: 'exercises', title: 'Exerciții' }
   ];
 
   const resources = [
-    { title: 'Documentație Godot - Animații', url: 'https://docs.godotengine.org/en/stable/tutorials/2d/2d_sprite_animation.html' },
-    { title: 'OpenGameArt - Resurse gratuite', url: 'https://opengameart.org/' },
-    { title: 'Kenney - Resurse pentru jocuri', url: 'https://kenney.nl/' }
+    { title: 'Documentația Godot', url: 'https://docs.godotengine.org/en/stable/' },
+    { title: 'Tutoriale Godot', url: 'https://docs.godotengine.org/en/stable/tutorials/index.html' },
+    { title: 'Animații în Godot', url: 'https://docs.godotengine.org/en/stable/tutorials/animation/index.html' }
   ];
 
   return (
     <LessonLayout
-      courseId="godot"
-      sessionId="4"
       title="Godot 4: Animații 2D"
       subtitle="Lecția 4 • Godot Engine"
-      heroColor="bg-gradient-to-r from-indigo-700 to-purple-700"
-      previousLesson={{
-        title: "Lecția anterioară",
-        path: "/godot/session3"
-      }}
-      nextLesson={{
-        title: "Lecția următoare",
-        path: "/godot/session5"
-      }}
+      courseId="godot"
+      sessionId="4"
+      heroColor="bg-indigo-700"
       sidebarItems={sidebarItems}
       resources={resources}
+      previousLink="/godot/session3"
+      nextLink="/godot/session5"
     >
       <div className="space-y-8">
-        <section id="introducere">
+        <section>
           <h2 className="text-2xl font-bold mb-4">Animații 2D în Godot 4</h2>
           <p>
             Animațiile sunt esențiale pentru a adăuga viață jocurilor tale. În această lecție, vom explora
@@ -73,12 +65,14 @@ const Session4 = () => {
           </div>
         </section>
 
-        <LearningOutcome items={[
-          "Să creezi și să configurezi animații 2D pentru personaje și obiecte",
-          "Să implementezi tranziții între diferite animații bazate pe input sau starea jocului",
-          "Să sincronizezi animațiile cu sunetele și efectele din joc",
-          "Să dezvolți o mașină de stări simplă pentru gestionarea animațiilor personajului"
-        ]} />
+        <LearningOutcome title="După această lecție, vei putea:">
+          <ul className="list-disc ml-5 space-y-1">
+            <li>Să creezi și să configurezi animații 2D pentru personaje și obiecte</li>
+            <li>Să implementezi tranziții între diferite animații bazate pe input sau starea jocului</li>
+            <li>Să sincronizezi animațiile cu sunetele și efectele din joc</li>
+            <li>Să dezvolți o mașină de stări simplă pentru gestionarea animațiilor personajului</li>
+          </ul>
+        </LearningOutcome>
 
         <section id="spritesheet">
           <h2 className="text-2xl font-bold mb-4">Spritesheet-uri și animații frame-by-frame</h2>
@@ -154,7 +148,7 @@ const Session4 = () => {
             <p className="mb-2">Pentru a crea un SpriteFrames:</p>
             <ol className="list-decimal list-inside space-y-1 ml-4">
               <li>În panoul File System, mergi la directorul unde vrei să salvezi SpriteFrames</li>
-              <li>Click dreapta {'>'}New {'>'}Resource</li>
+              <li>Click dreapta {'>'} New {'>'} Resource</li>
               <li>Caută și selectează "SpriteFrames"</li>
               <li>Dă un nume resursiei (ex: "player_animations.tres")</li>
               <li>Dublu click pe resursă pentru a o deschide în panoul de jos</li>
@@ -226,7 +220,7 @@ const Session4 = () => {
           </StepItem>
         </section>
 
-        <section id="masina-stari">
+        <section id="state-machine">
           <h2 className="text-2xl font-bold mb-4">Mașină de stări pentru animații</h2>
           <p className="mb-4">
             Pentru jocuri mai complexe, este util să implementezi o mașină de stări pentru a gestiona animațiile. 
@@ -291,7 +285,7 @@ func play_animation_for_state(state):
           </p>
         </section>
 
-        <section id="animatii-procedurale">
+        <section id="procedural">
           <h2 className="text-2xl font-bold mb-4">Animații procedurale și efecte vizuale</h2>
           <p className="mb-4">
             Pe lângă animațiile frame-by-frame, Godot oferă și posibilitatea de a crea animații procedurale
@@ -342,7 +336,7 @@ func start_animation():
     tween.tween_property($Sprite2D, "modulate", Color(1, 0, 0, 1), 1.0)`} />
         </section>
 
-        <section id="provocari">
+        <section id="exercises">
           <Challenge title="Provocare: Animează un personaj 2D" difficulty="medium">
             <p>Creează un personaj 2D animat cu următoarele caracteristici:</p>
             <ul className="list-disc ml-5 space-y-1 mt-2">

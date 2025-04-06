@@ -19,6 +19,11 @@ interface CourseCardProps {
 }
 
 const CourseCard = ({ title, subtitle, description, icon, color, bgcolor, link, age, level }: CourseCardProps) => {
+  // Ensure all links start with "/courses/"
+  const formattedLink = !link.startsWith("/courses/") && !link.startsWith("/") 
+    ? `/courses/${link}` 
+    : link;
+    
   return (
     <motion.div 
       whileHover={{ y: -8 }}
@@ -60,7 +65,7 @@ const CourseCard = ({ title, subtitle, description, icon, color, bgcolor, link, 
           
           <div className="mt-auto pt-4">
             <Button asChild className={`w-full ${bgcolor}`}>
-              <Link to={link} className="flex items-center justify-center">
+              <Link to={formattedLink} className="flex items-center justify-center">
                 <span>Explorează</span>
                 <ChevronRight className="ml-2 h-4 w-4" />
               </Link>

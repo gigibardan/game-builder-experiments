@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { 
   Gamepad, Laptop, Trophy, Code, Puzzle, Box, 
   Rocket, Layout, Brush, Blocks, Coffee, Globe, BookOpen, Award,
-  ArrowRight, Sparkles, Trophy as TrophyIcon, Target, Lightbulb
+  ArrowRight, Sparkles, Target, Lightbulb
 } from 'lucide-react';
 import CourseCard from '@/components/CourseCard';
 import { Button } from '@/components/ui/button';
@@ -162,11 +162,6 @@ const Index = () => {
     },
   ];
 
-  // Group courses by level for the featured section
-  const beginnerCourses = courses.filter(course => course.level.includes("Începător")).slice(0, 3);
-  const intermediateCourses = courses.filter(course => course.level.includes("Intermediar")).slice(0, 3);
-  const advancedCourses = courses.filter(course => course.level.includes("Avansat")).slice(0, 3);
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
       {/* Hero Section with Interactive Elements */}
@@ -291,134 +286,8 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Featured Courses Section */}
-      <section id="featured-courses" className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Cursuri Recomandate</h2>
-            <p className="text-xl text-gray-600">
-              Explorează programele noastre educative adaptate pentru diferite niveluri de experiență și vârste
-            </p>
-          </motion.div>
-          
-          <div className="mb-16">
-            <div className="flex items-center mb-8">
-              <TrophyIcon className="h-8 w-8 text-yellow-500 mr-3" />
-              <h3 className="text-2xl font-bold text-gray-800">Pentru Începători</h3>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {beginnerCourses.map((course, index) => (
-                <motion.div 
-                  key={`beginner-${index}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                >
-                  <CourseCard
-                    title={course.title}
-                    subtitle={course.subtitle}
-                    description={course.description}
-                    icon={course.icon}
-                    color={course.color}
-                    bgcolor={course.bgcolor}
-                    link={course.link}
-                    age={course.age}
-                    level={course.level}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          
-          <div className="mb-16">
-            <div className="flex items-center mb-8">
-              <Target className="h-8 w-8 text-blue-500 mr-3" />
-              <h3 className="text-2xl font-bold text-gray-800">Nivel Intermediar</h3>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {intermediateCourses.map((course, index) => (
-                <motion.div 
-                  key={`intermediate-${index}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                >
-                  <CourseCard
-                    title={course.title}
-                    subtitle={course.subtitle}
-                    description={course.description}
-                    icon={course.icon}
-                    color={course.color}
-                    bgcolor={course.bgcolor}
-                    link={course.link}
-                    age={course.age}
-                    level={course.level}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          
-          <div className="mb-12">
-            <div className="flex items-center mb-8">
-              <Lightbulb className="h-8 w-8 text-purple-500 mr-3" />
-              <h3 className="text-2xl font-bold text-gray-800">Pentru Avansați</h3>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {advancedCourses.map((course, index) => (
-                <motion.div 
-                  key={`advanced-${index}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                >
-                  <CourseCard
-                    title={course.title}
-                    subtitle={course.subtitle}
-                    description={course.description}
-                    icon={course.icon}
-                    color={course.color}
-                    bgcolor={course.bgcolor}
-                    link={course.link}
-                    age={course.age}
-                    level={course.level}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          
-          <motion.div 
-            className="text-center mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700">
-              <Link to="/courses" className="inline-flex items-center text-lg">
-                <span>Vezi toate cursurile</span>
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-      
       {/* Highlighted Features Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -479,6 +348,126 @@ const Index = () => {
         </div>
       </section>
       
+      {/* Featured Courses */}
+      <section id="featured-courses" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Cursuri Recomandate</h2>
+            <p className="text-xl text-gray-600">
+              Explorează programele noastre educative adaptate pentru diferite niveluri de experiență și vârste
+            </p>
+          </motion.div>
+          
+          <div className="mb-12">
+            <div className="flex items-center mb-6">
+              <Trophy className="h-8 w-8 text-yellow-500 mr-3" />
+              <h3 className="text-2xl font-bold text-gray-800">Pentru Începători</h3>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {courses
+                .filter(course => course.level.includes("Începător"))
+                .slice(0, 3)
+                .map((course, index) => (
+                <motion.div 
+                  key={`beginner-${index}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                >
+                  <CourseCard
+                    title={course.title}
+                    subtitle={course.subtitle}
+                    description={course.description}
+                    icon={course.icon}
+                    color={course.color}
+                    bgcolor={course.bgcolor}
+                    link={course.link}
+                    age={course.age}
+                    level={course.level}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="mb-12">
+            <div className="flex items-center mb-6">
+              <Target className="h-8 w-8 text-blue-500 mr-3" />
+              <h3 className="text-2xl font-bold text-gray-800">Nivel Intermediar</h3>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {courses
+                .filter(course => course.level.includes("Intermediar"))
+                .slice(0, 3)
+                .map((course, index) => (
+                <motion.div 
+                  key={`intermediate-${index}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                >
+                  <CourseCard
+                    title={course.title}
+                    subtitle={course.subtitle}
+                    description={course.description}
+                    icon={course.icon}
+                    color={course.color}
+                    bgcolor={course.bgcolor}
+                    link={course.link}
+                    age={course.age}
+                    level={course.level}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="mb-12">
+            <div className="flex items-center mb-6">
+              <Lightbulb className="h-8 w-8 text-purple-500 mr-3" />
+              <h3 className="text-2xl font-bold text-gray-800">Pentru Avansați</h3>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {courses
+                .filter(course => course.level.includes("Avansat"))
+                .slice(0, 3)
+                .map((course, index) => (
+                <motion.div 
+                  key={`advanced-${index}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                >
+                  <CourseCard
+                    title={course.title}
+                    subtitle={course.subtitle}
+                    description={course.description}
+                    icon={course.icon}
+                    color={course.color}
+                    bgcolor={course.bgcolor}
+                    link={course.link}
+                    age={course.age}
+                    level={course.level}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+      
       {/* All Courses Section */}
       <section id="courses" className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -486,7 +475,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Toate Cursurile Noastre</h2>
             <p className="text-xl text-gray-600">
