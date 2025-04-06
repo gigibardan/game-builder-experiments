@@ -350,7 +350,7 @@ const Session3MotoRacer = () => {
 
         <InfoBox title="Sfat" icon="info" variant="warning">
           <p>
-            Poți modifica scorul necesar pentru victorie schimbând valoarea din blocul "dacă Scor > 49". 
+            Poți modifica scorul necesar pentru victorie schimbând valoarea din blocul "dacă Scor {'>'}{'>'} 49". 
             De exemplu, pentru un joc mai lung, poți seta scorul necesar la 100.
           </p>
         </InfoBox>
