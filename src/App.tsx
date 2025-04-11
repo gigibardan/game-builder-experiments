@@ -50,6 +50,7 @@ import LessonTemplate from '@/pages/LessonTemplate';
 import Session1 from '@/pages/minecraftmodding/Session1';
 import RubyArmor from '@/pages/minecraftmodding/RubyArmor';
 import CrystalRealm from '@/pages/minecraftmodding/CrystalRealm';
+import MinecraftModding from '@/pages/minecraftmodding/MinecraftModding';
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
       <Route path="/courses/alice3" element={<Alice3 />} />
       <Route path="/courses/frontenddev" element={<FrontendDev />} />
       <Route path="/courses/godot" element={<Godot />} />
+      <Route path="/courses/minecraft-modding" element={<MinecraftModding />} />
       
       <Route 
         path="/admin/dashboard" 
@@ -267,8 +269,8 @@ function App() {
       <Route path="/lesson-template" element={<LessonTemplate />} />
       
       <Route path="/minecraftmodding/session1" element={<Session1 />} />
-      <Route path="/minecraftmodding/rubyarmor" element={<RubyArmor />} />
-      <Route path="/minecraftmodding/crystalrealm" element={<CrystalRealm />} />
+      <Route path="/minecraftmodding/ruby-armor" element={<RubyArmor />} />
+      <Route path="/minecraftmodding/crystal-realm" element={<CrystalRealm />} />
     </Routes>
   );
 }
