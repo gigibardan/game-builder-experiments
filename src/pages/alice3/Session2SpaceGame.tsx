@@ -1,4 +1,3 @@
-
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
 import { Image } from '@/components/ui/image';
@@ -6,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
 import { CodeBlock } from '@/components/CodeBlock';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Info, Lightbulb, AlertTriangle } from 'lucide-react';
+import { Info, Lightbulb, AlertTriangle, Rocket } from 'lucide-react';
 
 const Session2SpaceGame = () => {
   // Sidebar navigation items
@@ -604,7 +603,7 @@ Scene.moveDown() {
             <AlertDescription className="text-green-700">
               După implementarea controalelor, rulează jocul și testează mișcarea navei în toate direcțiile. 
               Verifică dacă nava se oprește la marginile ecranului și dacă mișcarea este fluidă și responsivă. 
-              Ajustează valorile de viteză și limitele dacă este necesar pentru a obține o experiență de joc optimă.
+              Ajustează valorile de viteză și limitele dacă este necesar pentru a obține o experiența de joc optimă.
             </AlertDescription>
           </Alert>
           
