@@ -36,6 +36,8 @@ import AppInventorSession5 from '@/pages/appinventor/Session5';
 import AppInventorSession7 from '@/pages/appinventor/Session7';
 import PythonSession1 from '@/pages/python/Session1';
 import Alice3Session1 from '@/pages/alice3/Session1';
+import Session1Adventure from '@/pages/alice3/Session1Adventure';
+import Session2SpaceGame from '@/pages/alice3/Session2SpaceGame';
 import FrontendDevSession1 from '@/pages/frontenddev/Session1';
 import GodotSession1 from '@/pages/godot/Session1';
 import GodotSession2 from '@/pages/godot/Session2';
@@ -188,6 +190,10 @@ function App() {
           </ProtectedRoute>
         } 
       />
+      
+      {/* Alice 3 new tutorial routes */}
+      <Route path="/alice3/session1adventure" element={<Session1Adventure />} />
+      <Route path="/alice3/session2spacegame" element={<Session2SpaceGame />} />
       
       <Route 
         path="/frontenddev/session1" 
