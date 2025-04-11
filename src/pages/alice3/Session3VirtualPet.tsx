@@ -1,4 +1,3 @@
-
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
 import { Image } from '@/components/ui/image';
@@ -9,7 +8,6 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Info, Lightbulb, AlertTriangle, Heart, CircleCheck, Code } from 'lucide-react';
 
 const Session3VirtualPet = () => {
-  // Sidebar navigation items
   const sidebarItems = [
     { id: 'introducere', title: 'Introducere', isActive: true },
     { id: 'instalare', title: 'Instalare Alice 3' },
@@ -22,14 +20,12 @@ const Session3VirtualPet = () => {
     { id: 'concluzii', title: 'Concluzii' },
   ];
 
-  // Resources links
   const resources = [
     { title: 'Ghidul Alice 3', url: 'https://www.alice.org/resources/how-tos/' },
     { title: 'Biblioteca de modele', url: 'https://www.alice.org/gallery/' },
     { title: 'Forum Alice', url: 'https://www.alice.org/community/' },
   ];
 
-  // Content sections
   const sections = [
     {
       id: 'introducere',
@@ -218,7 +214,7 @@ const Session3VirtualPet = () => {
           </StepItem>
 
           <div className="my-6">
-            <CodeBlock language="plaintext" showLineNumbers>
+            <CodeBlock language="plaintext">
 {`// Exemplu de cod Alice 3 generat pentru poziționarea animalului
 this.scene.rabbit.setPositionRelativeToSceneMethod(0.0, 0.0, 0.0);
 this.scene.rabbit.turn(TurnDirection.LEFT, 0.25);`}
@@ -301,7 +297,7 @@ this.scene.rabbit.turn(TurnDirection.LEFT, 0.25);`}
           </StepItem>
 
           <div className="my-6">
-            <CodeBlock language="plaintext" showLineNumbers>
+            <CodeBlock language="plaintext">
 {`// Exemplu de metoda 'sare' în Alice 3
 this.scene.rabbit.sare() {
     // Do together
@@ -414,7 +410,7 @@ this.scene.rabbit.sare() {
           </StepItem>
 
           <div className="my-6">
-            <CodeBlock language="plaintext" showLineNumbers>
+            <CodeBlock language="plaintext">
 {`// Exemplu de cod pentru listener de click
 addSceneActivationListener(
     new SceneActivationListener() {
@@ -463,8 +459,8 @@ addSceneActivationListener(
             <ul className="list-disc list-inside mt-2 space-y-1">
               <li><strong>Tasta V (Vino):</strong> Când se apasă "V", animalul va veni spre cameră</li>
               <li><strong>Tasta S (Stai):</strong> Când se apasă "S", animalul va sta pe loc</li>
-              <li><strong>Tasta R (Rostogolește):</strong> Când se apasă "R", animalul se va rostogoli</li>
-              <li><strong>Tasta C (Culcă):</strong> Când se apasă "C", animalul se va culca</li>
+              <li><strong>Tasta R (Rostogolește):</strong> Când se apasă "R", animalul se va rostogolească</li>
+              <li><strong>Tasta C (Culcă):</strong> Când se apasă "C", animalul se va culcă</li>
             </ul>
           </StepItem>
 
@@ -512,7 +508,7 @@ addSceneActivationListener(
           </StepItem>
 
           <div className="my-6">
-            <CodeBlock language="plaintext" showLineNumbers>
+            <CodeBlock language="plaintext">
 {`// Exemplu de cod pentru comanda "Vino"
 addKeyPressListener(
     'v', 
@@ -555,7 +551,7 @@ addKeyPressListener(
             
             <Challenge title="Implementează un sistem de zi și noapte" difficulty="medium">
               <p>
-                Adaugă un ciclu de zi și noapte care schimbă iluminarea scenei și comportamentul animalului (activ ziua, doarme noaptea). Poți face aceasta folosind setările de iluminare ale scenei și un timer.
+                Adaugă un ciclu de zi și noapte care schimbă iluminarea scenei și comportamentul animalului (activ ziua, doarme noaptea). Poți face acesta folosind setările de iluminare ale scenei și un timer.
               </p>
             </Challenge>
             

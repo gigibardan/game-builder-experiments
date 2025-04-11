@@ -1,4 +1,3 @@
-
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
 import { Image } from '@/components/ui/image';
@@ -270,7 +269,7 @@ const Session4Geometry = () => {
           </StepItem>
 
           <div className="my-6">
-            <CodeBlock language="plaintext" showLineNumbers>
+            <CodeBlock language="plaintext">
 {`// Exemplu de poziționare în cerc pentru 5 obiecte
 // Raza cercului: 2 metri
 // Înălțimea uniformă: 0 metri (nivelul "solului")
@@ -364,7 +363,7 @@ piramida1.setPosition(2.0 * Math.cos(288), 0, 2.0 * Math.sin(288)); // 288 grade
           </StepItem>
 
           <div className="my-6">
-            <CodeBlock language="plaintext" showLineNumbers>
+            <CodeBlock language="plaintext">
 {`// Exemplu de metodă pentru rotirea formelor în cerc
 public void rotesteCercul() {
     // Repetă la infinit
@@ -514,7 +513,7 @@ public void rotesteCercul() {
           </StepItem>
 
           <div className="my-6">
-            <CodeBlock language="plaintext" showLineNumbers>
+            <CodeBlock language="plaintext">
 {`// Exemplu de metodă pentru secvența de dans geometric
 public void dansGeometric() {
     // Partea 1: Rotirea cercului
@@ -614,7 +613,7 @@ public void dansGeometric() {
           </StepItem>
 
           <div className="my-6">
-            <CodeBlock language="plaintext" showLineNumbers>
+            <CodeBlock language="plaintext">
 {`// Exemplu de listener pentru tasta "C"
 addKeyPressListener(
     'c',
