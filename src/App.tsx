@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Login from '@/pages/auth/Login';
@@ -48,6 +47,9 @@ import GodotSession4 from '@/pages/godot/Session4';
 import GodotSession5 from '@/pages/godot/Session5';
 import GodotSimpleGame from '@/pages/godot/SimpleGame';
 import LessonTemplate from '@/pages/LessonTemplate';
+import Session1 from '@/pages/minecraftmodding/Session1';
+import RubyArmor from '@/pages/minecraftmodding/RubyArmor';
+import CrystalRealm from '@/pages/minecraftmodding/CrystalRealm';
 
 function App() {
   return (
@@ -263,6 +265,10 @@ function App() {
       />
       
       <Route path="/lesson-template" element={<LessonTemplate />} />
+      
+      <Route path="/minecraftmodding/session1" element={<Session1 />} />
+      <Route path="/minecraftmodding/rubyarmor" element={<RubyArmor />} />
+      <Route path="/minecraftmodding/crystalrealm" element={<CrystalRealm />} />
     </Routes>
   );
 }
