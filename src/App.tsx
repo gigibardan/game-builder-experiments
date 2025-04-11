@@ -38,6 +38,8 @@ import PythonSession1 from '@/pages/python/Session1';
 import Alice3Session1 from '@/pages/alice3/Session1';
 import Session1Adventure from '@/pages/alice3/Session1Adventure';
 import Session2SpaceGame from '@/pages/alice3/Session2SpaceGame';
+import Session3VirtualPet from '@/pages/alice3/Session3VirtualPet';
+import Session4Geometry from '@/pages/alice3/Session4Geometry';
 import FrontendDevSession1 from '@/pages/frontenddev/Session1';
 import GodotSession1 from '@/pages/godot/Session1';
 import GodotSession2 from '@/pages/godot/Session2';
@@ -191,9 +193,11 @@ function App() {
         } 
       />
       
-      {/* Alice 3 new tutorial routes */}
+      {/* Alice 3 tutorial routes */}
       <Route path="/alice3/session1adventure" element={<Session1Adventure />} />
       <Route path="/alice3/session2spacegame" element={<Session2SpaceGame />} />
+      <Route path="/alice3/session3virtualpet" element={<Session3VirtualPet />} />
+      <Route path="/alice3/session4geometry" element={<Session4Geometry />} />
       
       <Route 
         path="/frontenddev/session1" 

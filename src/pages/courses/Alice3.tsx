@@ -29,6 +29,26 @@ const Alice3 = () => {
       ageGroup: "9-14 ani",
       link: "/alice3/session2spacegame",
       highlights: ["Controlul obiectelor cu tastatura", "Crearea mișcărilor fluide", "Implementarea coliziunilor", "Adăugarea efectelor sonore"]
+    },
+    {
+      id: 3,
+      title: "Animalul Virtual",
+      description: "Creează un animal virtual interactiv 3D care poate executa comenzi, își poate schimba comportamentul și poate interacționa cu utilizatorul.",
+      duration: "90 minute",
+      level: "Începător",
+      ageGroup: "8-14 ani",
+      link: "/alice3/session3virtualpet",
+      highlights: ["Personalizarea animalelor 3D", "Animarea comportamentelor", "Implementarea comenzilor vocale", "Programarea stărilor și reacțiilor"]
+    },
+    {
+      id: 4,
+      title: "Animații Geometrice",
+      description: "Explorează concepte matematice prin crearea unei expoziții interactive de forme geometrice animate care creează modele fascinante.",
+      duration: "90 minute",
+      level: "Începător-Intermediar",
+      ageGroup: "10-15 ani",
+      link: "/alice3/session4geometry",
+      highlights: ["Utilizarea formelor primitive 3D", "Crearea animațiilor coordonate", "Aplicarea conceptelor matematice", "Implementarea interactivității"]
     }
   ];
 
