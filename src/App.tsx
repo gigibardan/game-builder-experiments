@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Login from '@/pages/auth/Login';
@@ -50,7 +51,7 @@ import LessonTemplate from '@/pages/LessonTemplate';
 import Session1 from '@/pages/minecraftmodding/Session1';
 import RubyArmor from '@/pages/minecraftmodding/RubyArmor';
 import CrystalRealm from '@/pages/minecraftmodding/CrystalRealm';
-import MinecraftModding from '@/pages/minecraftmodding/MinecraftModding';
+import MinecraftModding from '@/pages/courses/MinecraftModding';
 
 function App() {
   return (
