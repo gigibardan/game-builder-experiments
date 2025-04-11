@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Brush, Grid3X3, Cube } from 'lucide-react';
+import { Brush, Grid3X3, Box } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
@@ -112,27 +112,27 @@ const MinecraftModding = () => {
                   <h3 className="text-xl font-bold mt-6 mb-3 text-green-700">Ce vei învăța:</h3>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6">
                     <li className="flex items-start">
-                      <Cube className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <Box className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                       <span>Crearea de blocuri personalizate</span>
                     </li>
                     <li className="flex items-start">
-                      <Cube className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <Box className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                       <span>Adăugarea de iteme și unelte noi</span>
                     </li>
                     <li className="flex items-start">
-                      <Cube className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <Box className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                       <span>Designul armurilor și texturilor</span>
                     </li>
                     <li className="flex items-start">
-                      <Cube className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <Box className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                       <span>Generare de structuri și lumi</span>
                     </li>
                     <li className="flex items-start">
-                      <Cube className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <Box className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                       <span>Crearea de creaturi și entități</span>
                     </li>
                     <li className="flex items-start">
-                      <Cube className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <Box className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                       <span>Publicarea și distribuirea mod-urilor</span>
                     </li>
                   </ul>
