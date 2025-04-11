@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Login from '@/pages/auth/Login';
@@ -15,6 +14,7 @@ import Python from '@/pages/courses/Python';
 import Alice3 from '@/pages/courses/Alice3';
 import FrontendDev from '@/pages/courses/FrontendDev';
 import Godot from '@/pages/courses/Godot';
+import Greenfoot from '@/pages/courses/Greenfoot';
 import Unauthorized from '@/pages/auth/Unauthorized';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Dashboard from '@/pages/admin/Dashboard';
@@ -52,6 +52,9 @@ import Session1 from '@/pages/minecraftmodding/Session1';
 import RubyArmor from '@/pages/minecraftmodding/RubyArmor';
 import CrystalRealm from '@/pages/minecraftmodding/CrystalRealm';
 import MinecraftModding from '@/pages/courses/MinecraftModding';
+import GreenfootSession1 from '@/pages/greenfoot/Session1';
+import GreenfootSession2 from '@/pages/greenfoot/Session2';
+import GreenfootSession3 from '@/pages/greenfoot/Session3';
 
 function App() {
   return (
@@ -73,6 +76,7 @@ function App() {
       <Route path="/courses/frontenddev" element={<FrontendDev />} />
       <Route path="/courses/godot" element={<Godot />} />
       <Route path="/courses/minecraft-modding" element={<MinecraftModding />} />
+      <Route path="/courses/greenfoot" element={<Greenfoot />} />
       
       <Route 
         path="/admin/dashboard" 
@@ -84,11 +88,6 @@ function App() {
       />
       
       <Route path="/scratch/session1alegesanatos" element={<Session1Alegesanatos />} />
-      <Route path="/scratch/session2spacedodge" element={<Session2SpaceDodge />} />
-      <Route path="/scratch/session3motoracer" element={<Session3MotoRacer />} />
-      <Route path="/scratch/session4cityrunner" element={<Session4CityRunner />} />
-      <Route path="/scratch/session5beachballbounce" element={<Session5BeachBallBounce />} />
-      <Route path="/scratch/session5stitchbeach" element={<Session5StitchBeach />} />
       
       <Route 
         path="/scratch/session1" 
@@ -198,7 +197,6 @@ function App() {
         } 
       />
       
-      {/* Alice 3 tutorial routes */}
       <Route path="/alice3/session1adventure" element={<Session1Adventure />} />
       <Route path="/alice3/session2spacegame" element={<Session2SpaceGame />} />
       <Route path="/alice3/session3virtualpet" element={<Session3VirtualPet />} />
@@ -272,6 +270,10 @@ function App() {
       <Route path="/minecraftmodding/session1" element={<Session1 />} />
       <Route path="/minecraftmodding/ruby-armor" element={<RubyArmor />} />
       <Route path="/minecraftmodding/crystal-realm" element={<CrystalRealm />} />
+      
+      <Route path="/greenfoot/session1" element={<GreenfootSession1 />} />
+      <Route path="/greenfoot/session2" element={<GreenfootSession2 />} />
+      <Route path="/greenfoot/session3" element={<GreenfootSession3 />} />
     </Routes>
   );
 }
