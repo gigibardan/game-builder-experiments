@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -18,7 +19,8 @@ import {
   Boxes,
   User,
   LogOut,
-  ShieldCheck
+  ShieldCheck,
+  Coffee
 } from 'lucide-react';
 import {
   NavigationMenu,
