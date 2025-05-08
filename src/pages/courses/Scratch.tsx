@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -17,7 +18,9 @@ const Scratch = () => {
       level: "Începător",
       ageGroup: "7-14 ani",
       link: "/scratch/session1alegesanatos",
-      highlights: ["Controlarea personajelor", "Detectarea coliziunilor", "Folosirea variabilelor", "Condiții de victorie"]
+      highlights: ["Controlarea personajelor", "Detectarea coliziunilor", "Folosirea variabilelor", "Condiții de victorie"],
+      imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratch-alegesanatos-preview.png",
+      color: "amber"
     },
     {
       id: 2,
@@ -27,7 +30,9 @@ const Scratch = () => {
       level: "Începător",
       ageGroup: "7-14 ani",
       link: "/scratch/session2spacedodge",
-      highlights: ["Animarea personajelor", "Generarea de obstacole", "Sistem de scor", "Elemente de fundal"]
+      highlights: ["Animarea personajelor", "Generarea de obstacole", "Sistem de scor", "Elemente de fundal"],
+      imageSrc: "https://scratch.mit.edu/images/space-chase-static.png",
+      color: "blue"
     },
     {
       id: 3,
@@ -37,7 +42,9 @@ const Scratch = () => {
       level: "Începător-Intermediar",
       ageGroup: "7-14 ani",
       link: "/scratch/session3motoracer",
-      highlights: ["Controlul cu săgeți", "Generarea de obiecte aleatorii", "Utilizarea clonelor", "Detectarea coliziunilor"]
+      highlights: ["Controlul cu săgeți", "Generarea de obiecte aleatorii", "Utilizarea clonelor", "Detectarea coliziunilor"],
+      imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratchproiect2preview.png",
+      color: "green"
     },
     {
       id: 4,
@@ -47,7 +54,9 @@ const Scratch = () => {
       level: "Începător-Intermediar",
       ageGroup: "7-14 ani",
       link: "/scratch/session4cityrunner",
-      highlights: ["Controlul cu săgeți", "Animarea personajelor", "Sisteme de recompense și penalizări", "Elemente de decor animate"]
+      highlights: ["Controlul cu săgeți", "Animarea personajelor", "Sisteme de recompense și penalizări", "Elemente de decor animate"],
+      imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratchproiect3preview.png",
+      color: "purple"
     },
     {
       id: 5,
@@ -57,7 +66,9 @@ const Scratch = () => {
       level: "Începător-Intermediar",
       ageGroup: "7-14 ani",
       link: "/scratch/session5beachballbounce",
-      highlights: ["Control cu mouse", "Simularea fizicii", "Obiecte bonus și obstacole", "Gravitație și ricoșare"]
+      highlights: ["Control cu mouse", "Simularea fizicii", "Obiecte bonus și obstacole", "Gravitație și ricoșare"],
+      imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratchproiect4preview.png",
+      color: "cyan"
     },
     {
       id: 6,
@@ -67,7 +78,9 @@ const Scratch = () => {
       level: "Începător-Intermediar",
       ageGroup: "8-14 ani",
       link: "/scratch/session5stitchbeach",
-      highlights: ["Animarea personajelor", "Detecția coliziunilor", "Sisteme de punctaj complexe", "Condiții de victorie și înfrângere"]
+      highlights: ["Animarea personajelor", "Detecția coliziunilor", "Sisteme de punctaj complexe", "Condiții de victorie și înfrângere"],
+      imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratchproiect7preview.png",
+      color: "indigo"
     }
   ];
 
@@ -101,12 +114,12 @@ const Scratch = () => {
                   transition={{ duration: 0.6, delay: 0.3 }}
                   className="flex flex-wrap gap-4"
                 >
-                  <Button asChild size="lg" className="bg-amber-900 hover:bg-amber-800 text-white">
+                  <Button asChild size="lg" className="bg-amber-900 hover:bg-amber-800 text-white shadow-md">
                     <a href="#sessions">
                       <span>Vezi lecțiile</span>
                     </a>
                   </Button>
-                  <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/20">
+                  <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/20 shadow-md">
                     <a href="https://scratch.mit.edu/" target="_blank" rel="noopener noreferrer">
                       <span>Site oficial Scratch</span>
                     </a>
@@ -145,34 +158,34 @@ const Scratch = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-yellow-50 to-amber-50 p-6 rounded-xl shadow-md">
-                <div className="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                  <Puzzle className="h-8 w-8 text-yellow-600" />
+              <div className="bg-gradient-to-br from-yellow-100 to-amber-100 p-6 rounded-xl shadow-md border border-amber-200">
+                <div className="bg-amber-200 rounded-full w-16 h-16 flex items-center justify-center mb-4 shadow-md">
+                  <Puzzle className="h-8 w-8 text-amber-700" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">Programare Vizuală</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold mb-2 text-amber-800">Programare Vizuală</h3>
+                <p className="text-gray-700">
                   Scratch utilizează blocuri colorate care se îmbină precum piesele unui puzzle, 
                   făcând programarea accesibilă și distractivă pentru începători.
                 </p>
               </div>
               
-              <div className="bg-gradient-to-br from-yellow-50 to-amber-50 p-6 rounded-xl shadow-md">
-                <div className="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                  <Gamepad className="h-8 w-8 text-yellow-600" />
+              <div className="bg-gradient-to-br from-yellow-100 to-amber-100 p-6 rounded-xl shadow-md border border-amber-200">
+                <div className="bg-amber-200 rounded-full w-16 h-16 flex items-center justify-center mb-4 shadow-md">
+                  <Gamepad className="h-8 w-8 text-amber-700" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">Proiecte Creative</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold mb-2 text-amber-800">Proiecte Creative</h3>
+                <p className="text-gray-700">
                   Elevii vor crea jocuri, povești animate și proiecte interactive 
                   care pot fi împărtășite cu prietenii și familia.
                 </p>
               </div>
               
-              <div className="bg-gradient-to-br from-yellow-50 to-amber-50 p-6 rounded-xl shadow-md">
-                <div className="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                  <CheckCircle className="h-8 w-8 text-yellow-600" />
+              <div className="bg-gradient-to-br from-yellow-100 to-amber-100 p-6 rounded-xl shadow-md border border-amber-200">
+                <div className="bg-amber-200 rounded-full w-16 h-16 flex items-center justify-center mb-4 shadow-md">
+                  <CheckCircle className="h-8 w-8 text-amber-700" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">Gândire Computațională</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold mb-2 text-amber-800">Gândire Computațională</h3>
+                <p className="text-gray-700">
                   Dezvoltă abilitățile de rezolvare a problemelor, gândirea logică 
                   și creativitatea prin activități practice.
                 </p>
@@ -191,7 +204,7 @@ const Scratch = () => {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {sessions.map((session) => (
                 <SessionCard 
                   key={session.id}
@@ -203,7 +216,8 @@ const Scratch = () => {
                   level={session.level}
                   ageGroup={session.ageGroup}
                   highlights={session.highlights}
-                  color="amber"
+                  color={session.color}
+                  imageSrc={session.imageSrc}
                 />
               ))}
             </div>
@@ -221,45 +235,45 @@ const Scratch = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-                <div className="bg-amber-50 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                  <BookOpen className="h-8 w-8 text-amber-500" />
+              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
+                <div className="bg-amber-100 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                  <BookOpen className="h-8 w-8 text-amber-600" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Documentație Scratch</h3>
                 <p className="text-gray-600 mb-4">
                   Explorează documentația oficială și tutorialele pentru a învăța toate aspectele Scratch.
                 </p>
-                <Button asChild variant="outline" className="w-full">
+                <Button asChild variant="outline" className="w-full border-amber-300 hover:bg-amber-50 text-amber-700">
                   <a href="https://scratch.mit.edu/ideas" target="_blank" rel="noopener noreferrer">
                     <span>Explorează</span>
                   </a>
                 </Button>
               </div>
               
-              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-                <div className="bg-amber-50 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                  <Gamepad className="h-8 w-8 text-amber-500" />
+              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
+                <div className="bg-amber-100 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                  <Gamepad className="h-8 w-8 text-amber-600" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Tutoriale Video</h3>
                 <p className="text-gray-600 mb-4">
                   Urmărește tutoriale video pentru a vedea cum se creează diverse proiecte în Scratch.
                 </p>
-                <Button asChild variant="outline" className="w-full">
+                <Button asChild variant="outline" className="w-full border-amber-300 hover:bg-amber-50 text-amber-700">
                   <a href="https://scratch.mit.edu/studios/1809250/" target="_blank" rel="noopener noreferrer">
                     <span>Vizionează</span>
                   </a>
                 </Button>
               </div>
               
-              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-                <div className="bg-amber-50 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                  <Award className="h-8 w-8 text-amber-500" />
+              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
+                <div className="bg-amber-100 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                  <Award className="h-8 w-8 text-amber-600" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Comunitatea Scratch</h3>
                 <p className="text-gray-600 mb-4">
                   Descoperă proiecte create de alți utilizatori și împărtășește propriile tale creații.
                 </p>
-                <Button asChild variant="outline" className="w-full">
+                <Button asChild variant="outline" className="w-full border-amber-300 hover:bg-amber-50 text-amber-700">
                   <a href="https://scratch.mit.edu/explore/projects/all" target="_blank" rel="noopener noreferrer">
                     <span>Conectează-te</span>
                   </a>
@@ -280,7 +294,7 @@ const Scratch = () => {
             </div>
             
             <div className="max-w-3xl mx-auto space-y-6">
-              <div className="bg-white p-6 rounded-xl shadow-sm">
+              <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                 <h3 className="text-xl font-bold mb-2">Ce este Scratch?</h3>
                 <p className="text-gray-600">
                   Scratch este un limbaj de programare vizual și o platformă online dezvoltată de MIT Media Lab.
@@ -289,7 +303,7 @@ const Scratch = () => {
                 </p>
               </div>
               
-              <div className="bg-white p-6 rounded-xl shadow-sm">
+              <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                 <h3 className="text-xl font-bold mb-2">Ce vârstă trebuie să aibă copilul meu pentru a folosi Scratch?</h3>
                 <p className="text-gray-600">
                   Scratch este recomandat pentru copii cu vârste între 8 și 16 ani, dar este accesibil și pentru cei mai mici
@@ -297,7 +311,7 @@ const Scratch = () => {
                 </p>
               </div>
               
-              <div className="bg-white p-6 rounded-xl shadow-sm">
+              <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                 <h3 className="text-xl font-bold mb-2">Este nevoie de cunoștințe anterioare de programare?</h3>
                 <p className="text-gray-600">
                   Nu, Scratch este conceput special pentru începători. Interfața vizuală și instrucțiunile de tip puzzle
@@ -305,7 +319,7 @@ const Scratch = () => {
                 </p>
               </div>
               
-              <div className="bg-white p-6 rounded-xl shadow-sm">
+              <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                 <h3 className="text-xl font-bold mb-2">Ce vor învăța copiii în acest curs?</h3>
                 <p className="text-gray-600">
                   Copiii vor învăța concepte fundamentale de programare precum secvențe, bucle, condiții, variabile, 
@@ -335,7 +349,7 @@ const Scratch = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Button asChild size="lg" className="bg-amber-900 hover:bg-amber-800">
+                <Button asChild size="lg" className="bg-amber-900 hover:bg-amber-800 text-white shadow-lg">
                   <Link to="/scratch/session1alegesanatos" className="flex items-center">
                     <span>Începe prima lecție</span>
                     <ArrowRight className="ml-2 h-5 w-5" />

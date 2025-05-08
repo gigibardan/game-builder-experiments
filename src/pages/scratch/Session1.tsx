@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ReadingProgressBar from '@/components/ReadingProgressBar';
 import { motion } from 'framer-motion';
+import ImageModal from '@/components/ImageModal';
 
 const Session1 = () => {
   return (
@@ -45,11 +46,11 @@ const Session1 = () => {
                 care se îmbină pentru a crea programe.
               </p>
 
-              <div className="mb-8 rounded-lg overflow-hidden">
-                <img 
+              <div className="mb-8">
+                <ImageModal 
                   src="https://scratch.mit.edu/images/scratch-interface.png" 
-                  alt="Interfața Scratch" 
-                  className="w-full"
+                  alt="Interfața Scratch"
+                  caption="Interfața Scratch - click pentru a mări imaginea"
                 />
               </div>
 
@@ -69,7 +70,7 @@ const Session1 = () => {
                 finalul cursului, vei putea să-ți creezi propriile jocuri și să le împărtășești cu prietenii tăi.
               </p>
 
-              <div className="bg-yellow-50 p-6 rounded-lg mb-8">
+              <div className="bg-yellow-50 p-6 rounded-lg mb-8 border-l-4 border-yellow-400">
                 <h3 className="text-xl font-bold mb-3 text-amber-700">Exercițiu pentru acasă</h3>
                 <p className="text-gray-700 mb-4">
                   Pentru a te familiariza cu mediul Scratch, intră pe site-ul oficial Scratch (scratch.mit.edu) 
@@ -79,13 +80,13 @@ const Session1 = () => {
               </div>
 
               <div className="flex justify-between mt-12">
-                <Button asChild variant="outline">
-                  <Link to="/scratch" className="flex items-center">
+                <Button asChild variant="outline" className="hover:bg-gray-100 shadow-sm">
+                  <Link to="/courses/scratch" className="flex items-center">
                     <ArrowLeft className="mr-2 h-5 w-5" />
                     <span>Înapoi la curs</span>
                   </Link>
                 </Button>
-                <Button asChild>
+                <Button asChild className="bg-amber-600 hover:bg-amber-700 text-white shadow-md">
                   <Link to="/scratch/session2" className="flex items-center">
                     <span>Lecția următoare</span>
                     <ArrowRight className="ml-2 h-5 w-5" />
