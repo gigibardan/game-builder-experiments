@@ -147,7 +147,7 @@ const Header = () => {
                     <span>Cursuri</span>
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="grid grid-cols-3 p-4 w-[850px] bg-white text-gray-800">
+                    <div className="grid grid-cols-2 p-4 w-[600px] max-w-[95vw] bg-white text-gray-800 overflow-visible">
                       {courses.map((category, idx) => (
                         <div key={idx} className="mb-4 mx-2">
                           <h3 className="text-sm font-medium mb-2 text-gray-500 border-b pb-1">{category.category}</h3>
@@ -172,7 +172,7 @@ const Header = () => {
                           </div>
                         </div>
                       ))}
-                      <div className="text-center col-span-3 mt-4 pt-2 border-t">
+                      <div className="text-center col-span-2 mt-2 pt-2 border-t">
                         <NavigationMenuLink asChild>
                           <Link
                             to="/#courses"
