@@ -12,8 +12,8 @@ const Home = () => {
       <Header />
       
       <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-r from-course-blue to-course-purple py-16">
+        {/* Hero Section - Reduced to 50% height */}
+        <section className="bg-gradient-to-r from-course-blue to-course-purple py-8">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center">
               <motion.div 
@@ -48,8 +48,8 @@ const Home = () => {
                 className="md:w-1/2 flex justify-center"
               >
                 <img 
-                  src="/placeholder.svg" 
-                  alt="Copii învățând programare" 
+                  src="https://techminds-academy.ro/assets/images/logo-techminds-academy.webp" 
+                  alt="TechMinds Academy Logo" 
                   className="max-w-full rounded-lg shadow-xl"
                 />
               </motion.div>

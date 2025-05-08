@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -72,36 +71,36 @@ const Header = () => {
   };
 
   const isActive = (path) => {
-    return location.pathname === path || location.pathname === `/courses${path}`;
+    return location.pathname === path || location.pathname.startsWith(path);
   };
 
-  // Organize courses by category - updated paths for consistency
+  // Updated courses with consistent paths
   const courses = [
     {
       category: "Începători (8-12 ani)",
       items: [
-        { title: "Scratch", path: "/scratch", icon: <PenTool className="h-4 w-4 mr-2" />, description: "Laboratorul de Jocuri pentru începători" },
-        { title: "App Inventor", path: "/appinventor", icon: <Laptop className="h-4 w-4 mr-2" />, description: "Atelierul de Aplicații Mobile" },
+        { title: "Scratch", path: "/courses/scratch", icon: <PenTool className="h-4 w-4 mr-2" />, description: "Laboratorul de Jocuri pentru începători" },
+        { title: "App Inventor", path: "/courses/appinventor", icon: <Laptop className="h-4 w-4 mr-2" />, description: "Atelierul de Aplicații Mobile" },
       ]
     },
     {
       category: "Intermediari (10-15 ani)",
       items: [
-        { title: "Construct 3", path: "/construct3", icon: <Gamepad className="h-4 w-4 mr-2" />, description: "Dezvoltare de Jocuri 2D" },
-        { title: "GDevelop", path: "/gdevelop", icon: <Rocket className="h-4 w-4 mr-2" />, description: "Fabrica de Jocuri" },
-        { title: "Alice 3", path: "/alice3", icon: <Code className="h-4 w-4 mr-2" />, description: "Povești 3D Interactive" },
-        { title: "micro:bit Arcade", path: "/microbitarcade", icon: <LayoutGrid className="h-4 w-4 mr-2" />, description: "Jocuri și Electronice" },
+        { title: "Construct 3", path: "/courses/construct3", icon: <Gamepad className="h-4 w-4 mr-2" />, description: "Dezvoltare de Jocuri 2D" },
+        { title: "GDevelop", path: "/courses/gdevelop", icon: <Rocket className="h-4 w-4 mr-2" />, description: "Fabrica de Jocuri" },
+        { title: "Alice 3", path: "/courses/alice3", icon: <Code className="h-4 w-4 mr-2" />, description: "Povești 3D Interactive" },
+        { title: "micro:bit Arcade", path: "/courses/microbitarcade", icon: <LayoutGrid className="h-4 w-4 mr-2" />, description: "Jocuri și Electronice" },
       ]
     },
     {
       category: "Avansați (12-18 ani)",
       items: [
-        { title: "Minecraft Modding", path: "/minecraftmodding", icon: <Boxes className="h-4 w-4 mr-2" />, description: "De la jucător la creator" },
-        { title: "Roblox Lua", path: "/robloxlua", icon: <Code className="h-4 w-4 mr-2" />, description: "Universul Dezvoltării de Jocuri" },
-        { title: "Python", path: "/python", icon: <Code className="h-4 w-4 mr-2" />, description: "De la Cod la Aplicații" },
-        { title: "Frontend Development", path: "/frontenddev", icon: <Globe className="h-4 w-4 mr-2" />, description: "Construiește Web-ul Viitorului" },
-        { title: "Greenfoot", path: "/greenfoot", icon: <Paintbrush className="h-4 w-4 mr-2" />, description: "Java prin Jocuri" },
-        { title: "Godot", path: "/godot", icon: <Gamepad className="h-4 w-4 mr-2" />, description: "Game Development Pro" },
+        { title: "Minecraft Modding", path: "/courses/minecraft-modding", icon: <Boxes className="h-4 w-4 mr-2" />, description: "De la jucător la creator" },
+        { title: "Roblox Lua", path: "/courses/robloxlua", icon: <Code className="h-4 w-4 mr-2" />, description: "Universul Dezvoltării de Jocuri" },
+        { title: "Python", path: "/courses/python", icon: <Code className="h-4 w-4 mr-2" />, description: "De la Cod la Aplicații" },
+        { title: "Frontend Development", path: "/courses/frontenddev", icon: <Globe className="h-4 w-4 mr-2" />, description: "Construiește Web-ul Viitorului" },
+        { title: "Greenfoot", path: "/courses/greenfoot", icon: <Coffee className="h-4 w-4 mr-2" />, description: "Java prin Jocuri" },
+        { title: "Godot", path: "/courses/godot", icon: <Gamepad className="h-4 w-4 mr-2" />, description: "Game Development Pro" },
       ]
     }
   ];

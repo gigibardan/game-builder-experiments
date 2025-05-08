@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Login from '@/pages/auth/Login';
@@ -15,6 +16,7 @@ import Alice3 from '@/pages/courses/Alice3';
 import FrontendDev from '@/pages/courses/FrontendDev';
 import Godot from '@/pages/courses/Godot';
 import Greenfoot from '@/pages/courses/Greenfoot';
+import MinecraftModding from '@/pages/courses/MinecraftModding';
 import Unauthorized from '@/pages/auth/Unauthorized';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Dashboard from '@/pages/admin/Dashboard';
@@ -51,7 +53,6 @@ import LessonTemplate from '@/pages/LessonTemplate';
 import Session1 from '@/pages/minecraftmodding/Session1';
 import RubyArmor from '@/pages/minecraftmodding/RubyArmor';
 import CrystalRealm from '@/pages/minecraftmodding/CrystalRealm';
-import MinecraftModding from '@/pages/courses/MinecraftModding';
 import GreenfootSession1 from '@/pages/greenfoot/Session1';
 import GreenfootSession2 from '@/pages/greenfoot/Session2';
 import GreenfootSession3 from '@/pages/greenfoot/Session3';
@@ -69,6 +70,7 @@ function App() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/about" element={<About />} />
       
+      {/* Course pages with consistent paths */}
       <Route path="/courses/scratch" element={<Scratch />} />
       <Route path="/courses/appinventor" element={<AppInventor />} />
       <Route path="/courses/python" element={<Python />} />
@@ -87,193 +89,58 @@ function App() {
         } 
       />
       
+      {/* Scratch session routes */}
       <Route path="/scratch/session1alegesanatos" element={<Session1Alegesanatos />} />
+      <Route path="/scratch/session1" element={<ScratchSession1 />} />
+      <Route path="/scratch/session2" element={<ScratchSession2 />} />
+      <Route path="/scratch/session3" element={<ScratchSession3 />} />
+      <Route path="/scratch/session4" element={<ScratchSession4 />} />
+      <Route path="/scratch/session2spacedodge" element={<Session2SpaceDodge />} />
+      <Route path="/scratch/session3motoracer" element={<Session3MotoRacer />} />
+      <Route path="/scratch/session4cityrunner" element={<Session4CityRunner />} />
+      <Route path="/scratch/session5beachballbounce" element={<Session5BeachBallBounce />} />
+      <Route path="/scratch/session5stitchbeach" element={<Session5StitchBeach />} />
       
-      <Route 
-        path="/scratch/session1" 
-        element={
-          <ProtectedRoute courseId="scratch" sessionId="1">
-            <ScratchSession1 />
-          </ProtectedRoute>
-        } 
-      />
+      {/* App Inventor session routes */}
+      <Route path="/appinventor/session1" element={<AppInventorSession1 />} />
+      <Route path="/appinventor/session2" element={<AppInventorSession2 />} />
+      <Route path="/appinventor/session3" element={<AppInventorSession3 />} />
+      <Route path="/appinventor/session4" element={<AppInventorSession4 />} />
+      <Route path="/appinventor/session5" element={<AppInventorSession5 />} />
+      <Route path="/appinventor/session7" element={<AppInventorSession7 />} />
       
-      <Route 
-        path="/scratch/session2" 
-        element={
-          <ProtectedRoute courseId="scratch" sessionId="2">
-            <ScratchSession2 />
-          </ProtectedRoute>
-        } 
-      />
+      {/* Python session routes */}
+      <Route path="/python/session1" element={<PythonSession1 />} />
       
-      <Route 
-        path="/scratch/session3" 
-        element={
-          <ProtectedRoute courseId="scratch" sessionId="3">
-            <ScratchSession3 />
-          </ProtectedRoute>
-        } 
-      />
-      
-      <Route 
-        path="/scratch/session4" 
-        element={
-          <ProtectedRoute courseId="scratch" sessionId="4">
-            <ScratchSession4 />
-          </ProtectedRoute>
-        } 
-      />
-      
-      <Route 
-        path="/appinventor/session1" 
-        element={
-          <ProtectedRoute courseId="appinventor" sessionId="1">
-            <AppInventorSession1 />
-          </ProtectedRoute>
-        } 
-      />
-      
-      <Route 
-        path="/appinventor/session2" 
-        element={
-          <ProtectedRoute courseId="appinventor" sessionId="2">
-            <AppInventorSession2 />
-          </ProtectedRoute>
-        } 
-      />
-      
-      <Route 
-        path="/appinventor/session3" 
-        element={
-          <ProtectedRoute courseId="appinventor" sessionId="3">
-            <AppInventorSession3 />
-          </ProtectedRoute>
-        } 
-      />
-      
-      <Route 
-        path="/appinventor/session4" 
-        element={
-          <ProtectedRoute courseId="appinventor" sessionId="4">
-            <AppInventorSession4 />
-          </ProtectedRoute>
-        } 
-      />
-      
-      <Route 
-        path="/appinventor/session5" 
-        element={
-          <ProtectedRoute courseId="appinventor" sessionId="5">
-            <AppInventorSession5 />
-          </ProtectedRoute>
-        } 
-      />
-      
-      <Route 
-        path="/appinventor/session7" 
-        element={
-          <ProtectedRoute courseId="appinventor" sessionId="7">
-            <AppInventorSession7 />
-          </ProtectedRoute>
-        } 
-      />
-      
-      <Route 
-        path="/python/session1" 
-        element={
-          <ProtectedRoute courseId="python" sessionId="1">
-            <PythonSession1 />
-          </ProtectedRoute>
-        } 
-      />
-      
-      <Route 
-        path="/alice3/session1" 
-        element={
-          <ProtectedRoute courseId="alice3" sessionId="1">
-            <Alice3Session1 />
-          </ProtectedRoute>
-        } 
-      />
-      
+      {/* Alice3 session routes */}
+      <Route path="/alice3/session1" element={<Alice3Session1 />} />
       <Route path="/alice3/session1adventure" element={<Session1Adventure />} />
       <Route path="/alice3/session2spacegame" element={<Session2SpaceGame />} />
       <Route path="/alice3/session3virtualpet" element={<Session3VirtualPet />} />
       <Route path="/alice3/session4geometry" element={<Session4Geometry />} />
       
-      <Route 
-        path="/frontenddev/session1" 
-        element={
-          <ProtectedRoute courseId="frontenddev" sessionId="1">
-            <FrontendDevSession1 />
-          </ProtectedRoute>
-        } 
-      />
+      {/* Frontend Development session routes */}
+      <Route path="/frontenddev/session1" element={<FrontendDevSession1 />} />
       
-      <Route 
-        path="/godot/session1" 
-        element={
-          <ProtectedRoute courseId="godot" sessionId="1">
-            <GodotSession1 />
-          </ProtectedRoute>
-        } 
-      />
+      {/* Godot session routes */}
+      <Route path="/godot/session1" element={<GodotSession1 />} />
+      <Route path="/godot/session2" element={<GodotSession2 />} />
+      <Route path="/godot/session3" element={<GodotSession3 />} />
+      <Route path="/godot/session4" element={<GodotSession4 />} />
+      <Route path="/godot/session5" element={<GodotSession5 />} />
+      <Route path="/godot/game" element={<GodotSimpleGame />} />
       
-      <Route 
-        path="/godot/session2" 
-        element={
-          <ProtectedRoute courseId="godot" sessionId="2">
-            <GodotSession2 />
-          </ProtectedRoute>
-        } 
-      />
-      
-      <Route 
-        path="/godot/session3" 
-        element={
-          <ProtectedRoute courseId="godot" sessionId="3">
-            <GodotSession3 />
-          </ProtectedRoute>
-        } 
-      />
-      
-      <Route 
-        path="/godot/session4" 
-        element={
-          <ProtectedRoute courseId="godot" sessionId="4">
-            <GodotSession4 />
-          </ProtectedRoute>
-        } 
-      />
-      
-      <Route 
-        path="/godot/session5" 
-        element={
-          <ProtectedRoute courseId="godot" sessionId="5">
-            <GodotSession5 />
-          </ProtectedRoute>
-        } 
-      />
-      
-      <Route 
-        path="/godot/game" 
-        element={
-          <ProtectedRoute courseId="godot" sessionId="game">
-            <GodotSimpleGame />
-          </ProtectedRoute>
-        } 
-      />
-      
-      <Route path="/lesson-template" element={<LessonTemplate />} />
-      
+      {/* Minecraft Modding session routes */}
       <Route path="/minecraftmodding/session1" element={<Session1 />} />
       <Route path="/minecraftmodding/ruby-armor" element={<RubyArmor />} />
       <Route path="/minecraftmodding/crystal-realm" element={<CrystalRealm />} />
       
+      {/* Greenfoot session routes */}
       <Route path="/greenfoot/session1" element={<GreenfootSession1 />} />
       <Route path="/greenfoot/session2" element={<GreenfootSession2 />} />
       <Route path="/greenfoot/session3" element={<GreenfootSession3 />} />
+      
+      <Route path="/lesson-template" element={<LessonTemplate />} />
     </Routes>
   );
 }
