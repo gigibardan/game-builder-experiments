@@ -17,7 +17,7 @@ const Session1 = () => {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-yellow-500 to-amber-500 py-12">
+        <section className="bg-gradient-to-r from-amber-500 to-amber-600 py-12">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -28,9 +28,22 @@ const Session1 = () => {
               <h1 className="text-3xl md:text-4xl font-bold mb-4">
                 Lecția 1: Introducere în Scratch
               </h1>
-              <p className="text-xl mb-0 max-w-2xl mx-auto">
+              <p className="text-xl mb-6 max-w-2xl mx-auto">
                 Primii pași în programarea vizuală și mediul de dezvoltare Scratch
               </p>
+              <Button
+                asChild
+                className="bg-amber-800 hover:bg-amber-900 text-white shadow-lg"
+              >
+                <a 
+                  href="https://scratch.mit.edu/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="px-6 py-3"
+                >
+                  Site oficial Scratch
+                </a>
+              </Button>
             </motion.div>
           </div>
         </section>
@@ -80,14 +93,14 @@ const Session1 = () => {
               </div>
 
               <div className="flex justify-between mt-12">
-                <Button asChild variant="outline" className="hover:bg-gray-100 shadow-sm">
+                <Button asChild variant="outline" className="bg-gray-200 hover:bg-gray-300 text-gray-700 shadow-sm">
                   <Link to="/courses/scratch" className="flex items-center">
                     <ArrowLeft className="mr-2 h-5 w-5" />
                     <span>Înapoi la curs</span>
                   </Link>
                 </Button>
                 <Button asChild className="bg-amber-600 hover:bg-amber-700 text-white shadow-md">
-                  <Link to="/scratch/session2" className="flex items-center">
+                  <Link to="/scratch/session2spacedodge" className="flex items-center">
                     <span>Lecția următoare</span>
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>

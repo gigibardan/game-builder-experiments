@@ -29,7 +29,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
           src={src} 
           alt={alt} 
           onClick={openModal}
-          className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02] w-full max-w-full max-h-[400px] object-contain"
+          className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02] w-full max-w-full max-h-[300px] object-contain"
         />
         {caption && (
           <p className="text-sm text-center text-gray-600 mt-2">{caption}</p>

@@ -111,7 +111,7 @@ const SessionCard = ({
       <CardFooter className="bg-white">
         <Button asChild disabled={!isAvailable} 
           className={`w-full ${isAvailable 
-            ? `bg-${color} hover:bg-${color}/80 text-${textColor} shadow-md` 
+            ? `bg-amber-500 hover:bg-amber-600 text-white shadow-md` 
             : 'bg-gray-300'}`}>
           <Link to={isAvailable ? link : '#'}>
             {isAvailable ? 'Începe Lecția' : 'În curând'}

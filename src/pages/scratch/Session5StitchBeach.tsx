@@ -33,8 +33,8 @@ const Session5StitchBeach = () => {
       sidebarItems={sidebarItems}
       resources={resources}
       previousLesson={{
-        title: "Sesiunea 4: Bucle și Evenimente",
-        path: "/scratch/session4"
+        title: "Sesiunea 4: City Runner",
+        path: "/scratch/session4cityrunner"
       }}
       nextLesson={null}
     >
@@ -97,7 +97,7 @@ const Session5StitchBeach = () => {
         </p>
 
         <ImageExample 
-          src="https://appinventor.mit.edu/explore/sites/all/files/ai2tutorials/picture/DoItNowAppPreview.png" 
+          src="https://elearning.techminds-academy.ro/assets/images/scratchproiect7personaje.png" 
           alt="Personajele jocului Stitch's Beach Adventure" 
           caption="Personajele principale din jocul Stitch's Beach Adventure"
         />
@@ -150,7 +150,7 @@ const Session5StitchBeach = () => {
 
         <BlockCodeExample 
           title="Codul pentru Stitch" 
-          src="https://appinventor.mit.edu/explore/sites/all/files/tutorials/stockMarketPortfolio/blocks/URL_request.png" 
+          src="https://elearning.techminds-academy.ro/assets/images/scratchproiect7stitch.png" 
           alt="Codul pentru Stitch" 
           caption="Controlul și animația personajului Stitch"
         />
@@ -197,7 +197,7 @@ const Session5StitchBeach = () => {
 
         <BlockCodeExample 
           title="Codul pentru tort" 
-          src="https://appinventor.mit.edu/explore/sites/all/files/tutorials/stockMarketPortfolio/blocks/URL_request.png" 
+          src="https://elearning.techminds-academy.ro/assets/images/scratchproiect7cake.png" 
           alt="Codul pentru tort" 
           caption="Generarea și controlul torturilor cu ajutorul clonelor"
         />
@@ -241,7 +241,7 @@ const Session5StitchBeach = () => {
 
         <BlockCodeExample 
           title="Codul pentru bombă" 
-          src="https://appinventor.mit.edu/explore/sites/all/files/tutorials/stockMarketPortfolio/blocks/URL_request.png" 
+          src="https://elearning.techminds-academy.ro/assets/images/scratchproiect7bomb.png" 
           alt="Codul pentru bombă" 
           caption="Generarea și controlul bombelor cu ajutorul clonelor"
         />
@@ -307,7 +307,7 @@ const Session5StitchBeach = () => {
 
         <BlockCodeExample 
           title="Codul pentru decor" 
-          src="https://appinventor.mit.edu/explore/sites/all/files/tutorials/stockMarketPortfolio/blocks/URL_request.png" 
+          src="https://elearning.techminds-academy.ro/assets/images/scratchproiect7decor.png" 
           alt="Codul pentru decor" 
           caption="Configurarea decorului și condițiilor de final"
         />
