@@ -75,6 +75,20 @@ const LessonLayout: React.FC<LessonProps> = ({
     }
   }, [location]);
 
+  // Extract the main color from heroColor for the button
+  const extractMainColor = () => {
+    if (heroColor.includes('from-')) {
+      const colorMatch = heroColor.match(/from-([a-z]+-[0-9]+)/);
+      return colorMatch ? colorMatch[1] : 'course-purple';
+    } else if (heroColor.includes('bg-')) {
+      const colorMatch = heroColor.match(/bg-([a-z]+-[0-9]+)/);
+      return colorMatch ? colorMatch[1] : 'course-purple';
+    }
+    return 'course-purple';
+  };
+
+  const mainColor = extractMainColor();
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -101,7 +115,11 @@ const LessonLayout: React.FC<LessonProps> = ({
               </p>
             </div>
             <div className="mt-6 md:mt-0">
-              <Button asChild variant="outline" className="border-white text-white hover:bg-white/20 hover:text-white shadow-md">
+              <Button 
+                asChild 
+                variant="outline" 
+                className={`border-white text-${mainColor} hover:bg-${mainColor} hover:text-white hover:border-white shadow-md`}
+              >
                 <Link to={`/courses/${courseId}`} className="flex items-center">
                   <ArrowLeft className="mr-2 h-5 w-5" />
                   <span>Înapoi la curs</span>

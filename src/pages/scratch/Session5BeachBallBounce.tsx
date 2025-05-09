@@ -3,447 +3,25 @@ import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
 import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
 import { CodeExample, ImageExample, BlockCodeExample } from '@/components/CodeExample';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const Session5BeachBallBounce = () => {
   const sidebarItems = [
-    { id: 'introducere', title: 'Introducere', isActive: true },
-    { id: 'personaje', title: 'Personaje' },
-    { id: 'controlul-colacului', title: 'Controlul colacului' },
-    { id: 'mingea', title: 'Programarea mingii' },
-    { id: 'scoici', title: 'Adăugarea scoicilor' },
-    { id: 'pufferfish', title: 'Adăugarea peștilor' },
-    { id: 'conditii-final', title: 'Condiții de final' },
-    { id: 'testare', title: 'Testare și îmbunătățiri' },
-    { id: 'concluzii', title: 'Concluzii' },
+    { id: 'intro', title: 'Introducere', isActive: true },
+    { id: 'obiective', title: 'Obiective' },
+    { id: 'etapa1', title: 'Etapa 1: Mingea' },
+    { id: 'etapa2', title: 'Etapa 2: Scena și controlul' },
+    { id: 'etapa3', title: 'Etapa 3: Scorul' },
+    { id: 'etapa4', title: 'Etapa 4: Efecte și sunet' },
+    { id: 'provocare', title: 'Provocare' },
+    { id: 'concluzii', title: 'Concluzii' }
   ];
 
   const resources = [
-    { title: 'Proiect final', url: 'https://scratch.mit.edu/projects/1144457304' },
-    { title: 'Proiect starter', url: 'https://scratch.mit.edu/projects/1144470436/editor/' },
-    { title: 'Documentație Scratch', url: 'https://scratch.mit.edu/ideas' },
-  ];
-
-  const sections = [
-    {
-      id: 'introducere',
-      title: 'Introducere',
-      content: (
-        <>
-          <p className="mb-4">
-            Este o zi perfectă de vară pe o plajă însorită! În acest joc plin de distracție și provocări, 
-            tu controlezi un colac de înot colorat care trebuie să mențină o minge de plajă în aer. 
-            Scopul tău este să nu lași mingea să atingă nisipul și să obții cât mai multe puncte!
-          </p>
-
-          <p className="mb-6">
-            Pe lângă provocarea principală, vei avea șansa să colectezi scoici marine care îți aduc puncte bonus. 
-            Dar ai grijă la peștii pufferfish care apar din când în când - atingerea lor cu mingea îți va scădea din punctaj. 
-            Acest joc distractiv combină reflexele rapide cu abilitățile de sincronizare și este perfect pentru a învăța 
-            concepte importante de programare în Scratch.
-          </p>
-
-          <LearningOutcome items={[
-            "Controlul obiectelor folosind mouse-ul",
-            "Simularea fizicii și mișcării realiste a mingii",
-            "Generarea de obiecte aleatorii cu comportamente diferite",
-            "Detectarea coliziunilor între multiple personaje",
-            "Implementarea unui sistem de scor cu recompense și penalizări"
-          ]} />
-
-          <div className="mt-6 bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
-            <h3 className="font-bold text-lg mb-2">Proiect Starter</h3>
-            <p className="mb-4">
-              Pentru a crea acest joc mai ușor, am pregătit un proiect starter cu colacul de înot și 
-              mesajele de victorie/înfrângere deja adăugate. Tot ce trebuie să faci este să adaugi 
-              restul personajelor și să programezi comportamentul lor!
-            </p>
-            <a 
-              href="https://scratch.mit.edu/projects/1144470436/editor/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
-            >
-              Deschide proiectul starter
-            </a>
-            <p className="mt-3 text-sm text-blue-700">
-              Sfat: Apasă butonul "Vezi în interior" pentru a putea edita proiectul, apoi "Remixează" pentru a salva propria versiune!
-            </p>
-          </div>
-        </>
-      )
-    },
-    {
-      id: 'personaje',
-      title: 'Personajele jocului',
-      content: (
-        <>
-          <p className="mb-4">
-            Proiectul starter conține deja colacul de înot și câteva elemente. 
-            Va trebui să adăugăm mingea de plajă, scoicile și peștele puffer din biblioteca Scratch:
-          </p>
-
-          <ImageExample 
-            src="https://cdn.pixabay.com/photo/2022/01/30/13/33/scratch-6980327_1280.jpg" 
-            alt="Personajele jocului Beach Ball Bounce" 
-            caption="Exemplu de personaje pentru jocul Beach Ball Bounce"
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-              <div className="flex items-center mb-2">
-                <span className="text-2xl mr-3">🏊</span>
-                <h3 className="font-bold">Swim Ring (Colacul)</h3>
-              </div>
-              <p className="text-gray-700">Personajul principal pe care îl vei controla cu mouse-ul pentru a respinge mingea și a colecta obiecte.</p>
-            </div>
-
-            <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-              <div className="flex items-center mb-2">
-                <span className="text-2xl mr-3">🏐</span>
-                <h3 className="font-bold">Beach Ball (Mingea de plajă)</h3>
-              </div>
-              <p className="text-gray-700">Obiectul principal care trebuie menținut în aer, căzând în mod natural și ricoșând când atinge colacul.</p>
-            </div>
-
-            <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-              <div className="flex items-center mb-2">
-                <span className="text-2xl mr-3">🐚</span>
-                <h3 className="font-bold">Shell (Scoica)</h3>
-              </div>
-              <p className="text-gray-700">Obiect bonus care apare aleatoriu și aduce puncte suplimentare când este atins de minge.</p>
-            </div>
-
-            <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-              <div className="flex items-center mb-2">
-                <span className="text-2xl mr-3">🐡</span>
-                <h3 className="font-bold">Pufferfish (Peștele balon)</h3>
-              </div>
-              <p className="text-gray-700">Obstacol care apare aleatoriu și scade punctajul când este atins de minge.</p>
-            </div>
-          </div>
-
-          <h3 className="font-bold text-xl mt-6 mb-2">Adăugarea personajelor lipsă:</h3>
-          <ol className="list-decimal pl-5 space-y-2 mb-4">
-            <li>Pentru a adăuga <strong>Mingea de plajă</strong>, apasă pe iconița "Alege un personaj" din colțul din dreapta jos</li>
-            <li>Caută "beach ball" sau "volleyball" în biblioteca Scratch și alege o minge colorată</li>
-            <li>Pentru <strong>Pufferfish</strong>, caută "pufferfish" și alege un model potrivit</li>
-            <li>Pentru decor, caută "beach" și selectează un decor de plajă precum "Malibu Beach"</li>
-          </ol>
-
-          <InfoBox title="Sfat" icon="info" variant="primary">
-            <p>
-              Personajul "Shell" (scoica) are 3 costume diferite care vor fi folosite aleatoriu 
-              pentru a adăuga diversitate în joc.
-            </p>
-          </InfoBox>
-        </>
-      )
-    },
-    {
-      id: 'controlul-colacului',
-      title: 'Controlarea colacului cu mouse-ul',
-      content: (
-        <>
-          <p className="mb-4">
-            Primul pas este să facem colacul să urmărească mouse-ul pe axa orizontală. 
-            Acesta va fi instrumentul principal pentru a menține mingea în aer. 
-            Selectează personajul <strong>Swim Ring</strong> și adaugă următorul cod:
-          </p>
-
-          <BlockCodeExample 
-            title="Codul pentru colac" 
-            src="https://cdn.pixabay.com/photo/2022/01/30/13/33/scratch-6980327_1280.jpg" 
-            alt="Codul pentru controlul colacului" 
-            caption="Cod pentru controlarea colacului cu mouse-ul"
-          />
-
-          <h3 className="font-bold text-xl mt-6 mb-2">Cum funcționează:</h3>
-          <ol className="list-decimal pl-5 space-y-2 mb-4">
-            <li><strong>La începerea jocului</strong> - colacul se poziționează în partea de jos a ecranului, se face vizibil, și se setează scorul inițial la 0.</li>
-            <li><strong>Controlul mișcării</strong> - într-o buclă infinită, colacul își ajustează poziția orizontală (x) pentru a urma poziția mouse-ului (mouseX).
-            </li>
-            <li><strong>Limitarea mișcării</strong> - Ne asigurăm că colacul nu poate ieși din marginile ecranului.</li>
-          </ol>
-
-          <InfoBox title="Sfat" icon="info" variant="primary">
-            <p>
-              Valoarea y a colacului rămâne fixă (-140) pentru a-l menține în partea de jos a ecranului. 
-              Poți ajusta această valoare dacă vrei să schimbi înălțimea la care se deplasează colacul.
-            </p>
-          </InfoBox>
-        </>
-      )
-    },
-    {
-      id: 'mingea',
-      title: 'Programarea mingii de plajă',
-      content: (
-        <>
-          <p className="mb-4">
-            Acum vom programa comportamentul mingii de plajă, care este elementul central al jocului. 
-            Mingea va cădea în mod natural, va ricoșa când atinge colacul și va adăuga puncte la scor. 
-            Selectează personajul <strong>Beach Ball</strong> și adaugă următorul cod:
-          </p>
-
-          <BlockCodeExample 
-            title="Codul pentru mingea de plajă" 
-            src="https://cdn.pixabay.com/photo/2022/01/30/13/33/scratch-6980327_1280.jpg" 
-            alt="Codul pentru mingea de plajă" 
-            caption="Cod pentru simularea fizicii mingii de plajă"
-          />
-
-          <h3 className="font-bold text-xl mt-6 mb-2">Cum funcționează:</h3>
-          <ol className="list-decimal pl-5 space-y-2 mb-4">
-            <li><strong>La început</strong> - mingea se poziționează în partea de sus a ecranului și primește o direcție inițială aleatoare.</li>
-            <li><strong>Simularea gravitației</strong> - într-o buclă infinită:
-              <ul className="list-disc pl-6 mt-1 mb-2">
-                <li>Aplicăm o forță gravitațională constantă (modifică y cu un număr negativ)</li>
-                <li>Verificăm dacă mingea atinge colacul - în acest caz, ricoșează și adaugă un punct</li>
-                <li>Verificăm dacă mingea atinge linia de jos - în acest caz, jocul se termină</li>
-              </ul>
-            </li>
-            <li><strong>Ricoșare</strong> - Când mingea atinge colacul, ii dăm o velocitate pozitivă (în sus) și o direcție ușor aleatoare pentru a face jocul mai interesant.</li>
-          </ol>
-
-          <InfoBox title="Sfat" icon="info" variant="primary">
-            <p>
-              Poți face jocul mai dificil sau mai ușor ajustând valorile de gravitație și ricoșare. 
-              O valoare mai mare pentru gravitație va face mingea să cadă mai repede.
-            </p>
-          </InfoBox>
-        </>
-      )
-    },
-    {
-      id: 'scoici',
-      title: 'Adăugarea scoicilor bonus',
-      content: (
-        <>
-          <p className="mb-4">
-            Pentru a face jocul mai interesant, vom adăuga scoici marine care apar aleatoriu pe ecran. 
-            Când mingea atinge o scoică, jucătorul primește puncte bonus. 
-            Selectează personajul <strong>Shell</strong> și adaugă următorul cod:
-          </p>
-
-          <BlockCodeExample 
-            title="Codul pentru scoici" 
-            src="https://cdn.pixabay.com/photo/2022/01/30/13/33/scratch-6980327_1280.jpg" 
-            alt="Codul pentru scoici" 
-            caption="Cod pentru generarea și comportamentul scoicilor bonus"
-          />
-
-          <h3 className="font-bold text-xl mt-6 mb-2">Cum funcționează:</h3>
-          <ol className="list-decimal pl-5 space-y-2 mb-4">
-            <li><strong>La început</strong> - ascundem scoica originală și pregătim generarea de clone.</li>
-            <li><strong>Generarea scoicilor</strong> - într-o buclă infinită:
-              <ul className="list-disc pl-6 mt-1 mb-2">
-                <li>Așteptăm un interval aleatoriu de timp (între 5 și 10 secunde)</li>
-                <li>Creăm o nouă scoică (clonă)</li>
-              </ul>
-            </li>
-            <li><strong>Comportamentul scoicilor</strong> - fiecare clonă:
-              <ul className="list-disc pl-6 mt-1 mb-2">
-                <li>Alege aleatoriu unul din cele 3 costume disponibile</li>
-                <li>Apare la o poziție aleatoare pe ecran</li>
-                <li>Se face vizibilă pentru 5 secunde</li>
-                <li>Verifică constant dacă este atinsă de minge, caz în care adaugă 3 puncte la scor și dispare</li>
-              </ul>
-            </li>
-          </ol>
-
-          <InfoBox title="Sfat" icon="info" variant="primary">
-            <p>
-              Poți adăuga efecte sonore sau vizuale atunci când mingea colectează o scoică 
-              pentru a face experiența mai satisfăcătoare.
-            </p>
-          </InfoBox>
-        </>
-      )
-    },
-    {
-      id: 'pufferfish',
-      title: 'Adăugarea peștelui pufferfish',
-      content: (
-        <>
-          <p className="mb-4">
-            Pentru a crește dificultatea, vom adăuga un pește pufferfish care apare aleatoriu. 
-            Dacă mingea atinge acest pește, jucătorul pierde puncte. 
-            Selectează personajul <strong>Pufferfish</strong> și adaugă următorul cod:
-          </p>
-
-          <BlockCodeExample 
-            title="Codul pentru pufferfish" 
-            src="https://cdn.pixabay.com/photo/2022/01/30/13/33/scratch-6980327_1280.jpg" 
-            alt="Codul pentru pufferfish" 
-            caption="Cod pentru generarea și comportamentul peștelui pufferfish"
-          />
-
-          <h3 className="font-bold text-xl mt-6 mb-2">Cum funcționează:</h3>
-          <ol className="list-decimal pl-5 space-y-2 mb-4">
-            <li><strong>La început</strong> - ascundem peștele original și pregătim generarea de clone.</li>
-            <li><strong>Generarea peștilor</strong> - într-o buclă infinită:
-              <ul className="list-disc pl-6 mt-1 mb-2">
-                <li>Așteptăm un interval aleatoriu de timp (între 10 și 15 secunde)</li>
-                <li>Creăm un nou pește (clonă)</li>
-              </ul>
-            </li>
-            <li><strong>Comportamentul peștilor</strong> - fiecare clonă:
-              <ul className="list-disc pl-6 mt-1 mb-2">
-                <li>Apare la o poziție aleatoare pe ecran</li>
-                <li>Se face vizibilă pentru 4 secunde</li>
-                <li>Verifică constant dacă este atinsă de minge, caz în care scade 5 puncte din scor și dispare</li>
-              </ul>
-            </li>
-          </ol>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-              <h4 className="font-bold text-green-700 mb-2">Pentru scoici (bonus):</h4>
-              <div className="bg-green-100 p-3 rounded text-green-800">
-                <p>dacă atinge [Beach Ball] atunci</p>
-                <p className="mt-1">modifică [Scor] cu [3]</p>
-              </div>
-            </div>
-
-            <div className="bg-red-50 p-4 rounded-lg border border-red-200">
-              <h4 className="font-bold text-red-700 mb-2">Pentru pufferfish (penalizare):</h4>
-              <div className="bg-red-100 p-3 rounded text-red-800">
-                <p>dacă atinge [Beach Ball] atunci</p>
-                <p className="mt-1">modifică [Scor] cu [-5]</p>
-              </div>
-            </div>
-          </div>
-        </>
-      )
-    },
-    {
-      id: 'conditii-final',
-      title: 'Condiții de victorie și înfrângere',
-      content: (
-        <>
-          <p className="mb-4">
-            În final, vom adăuga condiții pentru a determina când jocul se termină cu victorie sau înfrângere. 
-            Vom folosi personajele "Win" și "Lose" care sunt deja în proiect.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2 mb-6">
-            <div>
-              <h4 className="font-bold text-xl mb-2">Pentru personajul "Win":</h4>
-              <BlockCodeExample 
-                title="Codul pentru victorie" 
-                src="https://cdn.pixabay.com/photo/2022/01/30/13/33/scratch-6980327_1280.jpg" 
-                alt="Codul pentru victorie" 
-                caption="Cod pentru mesajul de victorie"
-              />
-              <p className="mt-2 text-gray-700">Când scorul atinge 50, jucătorul câștigă!</p>
-            </div>
-            
-            <div>
-              <h4 className="font-bold text-xl mb-2">Pentru personajul "Lose":</h4>
-              <BlockCodeExample 
-                title="Codul pentru înfrângere" 
-                src="https://cdn.pixabay.com/photo/2022/01/30/13/33/scratch-6980327_1280.jpg" 
-                alt="Codul pentru înfrângere" 
-                caption="Cod pentru mesajul de înfrângere"
-              />
-              <p className="mt-2 text-gray-700">Când mingea atinge pământul (linia de jos), jocul se termină!</p>
-            </div>
-          </div>
-
-          <h3 className="font-bold text-xl mt-6 mb-2">Cum funcționează:</h3>
-          <p className="mb-4">
-            Ambele personaje sunt ascunse la început. Ele apar doar când sunt îndeplinite condițiile specifice:
-          </p>
-          <ul className="list-disc pl-6 space-y-2 mb-4">
-            <li><strong>Win</strong> - verifică constant dacă scorul a atins 50 de puncte și afișează un mesaj de felicitare când această condiție este îndeplinită.</li>
-            <li><strong>Lose</strong> - ascultă pentru mesajul "game over" (care este trimis când mingea atinge linia de jos) și afișează un mesaj de înfrângere.</li>
-          </ul>
-          <p className="mb-4">
-            Când apare oricare dintre aceste mesaje, jocul se oprește folosind blocul "stop [totul]".
-          </p>
-
-          <InfoBox title="Sfat" icon="info" variant="primary">
-            <p>
-              Poți personaliza mesajele de victorie și înfrângere sau poți adăuga efecte sonore 
-              pentru a face finalul jocului mai interesant.
-            </p>
-          </InfoBox>
-        </>
-      )
-    },
-    {
-      id: 'testare',
-      title: 'Testează și îmbunătățește',
-      content: (
-        <>
-          <p className="mb-4">
-            Acum că toate elementele jocului sunt implementate, este timpul să îl testezi! 
-            Apasă steagul verde și încearcă să menții mingea în aer cât mai mult timp, 
-            colectând scoici și evitând peștii pufferfish.
-          </p>
-
-          <h3 className="font-bold text-xl mt-6 mb-3">Provocări pentru îmbunătățirea jocului</h3>
-          <p className="mb-4">
-            După ce ai terminat jocul de bază, încearcă aceste îmbunătățiri:
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-            <Challenge title="Adaugă efecte sonore" difficulty="easy">
-              <p>Adaugă sunete pentru ricoșarea mingii, colectarea scoicilor, lovirea peștelui pufferfish și pentru finalul jocului.</p>
-            </Challenge>
-            
-            <Challenge title="Adaugă un cronometru" difficulty="medium">
-              <p>Implementează un timer care să măsoare cât timp reușești să ții mingea în aer.</p>
-            </Challenge>
-            
-            <Challenge title="Adaugă mai multe tipuri de obiecte" difficulty="medium">
-              <p>Creează noi obiecte bonus sau obstacole, cum ar fi stele de mare, meduze sau valuri.</p>
-            </Challenge>
-            
-            <Challenge title="Crește dificultatea progresiv" difficulty="hard">
-              <p>Fă jocul să devină mai dificil pe măsură ce scorul crește, de exemplu mărind viteza de cădere a mingii.</p>
-            </Challenge>
-          </div>
-        </>
-      )
-    },
-    {
-      id: 'concluzii',
-      title: 'Concluzii',
-      content: (
-        <>
-          <p className="mb-6">
-            Ai creat un joc captivant de vară în care trebuie să menții o minge de plajă în aer! 
-            Acest proiect ți-a permis să înveți despre controlul cu mouse-ul, simularea fizicii, 
-            generarea de obiecte aleatorii și implementarea unui sistem de punctaj.
-          </p>
-
-          <InfoBox title="Ce ai învățat" icon="success" variant="success">
-            <ul className="list-disc list-inside space-y-1">
-              <li>Cum să controlezi un obiect folosind mouse-ul</li>
-              <li>Cum să simulezi gravitația și ricoșarea pentru un comportament realist</li>
-              <li>Cum să generezi obiecte aleatorii cu comportamente diferite</li>
-              <li>Cum să detectezi coliziuni între multiple personaje</li>
-              <li>Cum să implementezi un sistem de punctaj cu recompense și penalizări</li>
-            </ul>
-          </InfoBox>
-
-          <div className="mt-6 bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
-            <h3 className="text-lg font-semibold mb-2">Ce urmează?</h3>
-            <p className="mb-4">
-              Acum că ai învățat cum să creezi un joc bazat pe fizică și controlat cu mouse-ul, 
-              poți încerca să creezi jocuri mai complexe cu mai multe niveluri sau cu mecanici de joc diferite.
-            </p>
-            <a 
-              href="/courses/scratch" 
-              className="inline-flex items-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
-            >
-              Descoperă mai multe tutoriale Scratch
-            </a>
-          </div>
-        </>
-      )
-    }
+    { title: 'Platforma Scratch', url: 'https://scratch.mit.edu/' },
+    { title: 'Tutoriale Scratch', url: 'https://scratch.mit.edu/projects/editor/?tutorial=all' },
+    { title: 'Forum Scratch', url: 'https://scratch.mit.edu/discuss/' }
   ];
 
   return (
@@ -460,11 +38,327 @@ const Session5BeachBallBounce = () => {
         path: "/scratch/session4cityrunner"
       }}
       nextLesson={{
-        title: "Sesiunea 6: Stitch's Beach Adventure",
+        title: "Sesiunea 6: Stitch Beach Adventure",
         path: "/scratch/session6stitchbeach"
       }}
-      sections={sections}
-    />
+    >
+      <div className="space-y-8">
+        <section id="intro">
+          <h2 className="text-2xl font-bold mb-4">Beach Ball Bounce</h2>
+          <p className="mb-4">
+            Bine ai venit la cursul despre "Beach Ball Bounce" în Scratch! Astăzi vom crea un joc distractiv în care vom controla o minge de plajă și o vom face să sară cât mai mult timp posibil fără să atingă solul.
+          </p>
+          
+          <div className="bg-white border rounded-lg p-6 mb-6">
+            <ImageExample 
+              src="https://elearning.techminds-academy.ro/assets/images/scratch-beachball-preview.png" 
+              alt="Previzualizare joc Beach Ball Bounce" 
+              caption="Jocul Beach Ball Bounce - Previzualizare"
+            />
+          </div>
+
+          <LearningOutcome items={[
+            "Cum să creezi animații în Scratch",
+            "Cum să implementezi gravitație și sărituri",
+            "Cum să creezi un sistem de scor",
+            "Cum să adaugi efecte vizuale și sonore"
+          ]} />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-lg border border-blue-100">
+              <h3 className="font-bold text-lg mb-3 text-blue-700">Descrierea jocului</h3>
+              <p>
+                În acest joc, jucătorul controlează o minge de plajă și trebuie să o facă să sară cât mai mult timp posibil, atingând-o cu cursorul. Cu fiecare săritură, mingea câștigă puncte. Dacă mingea atinge solul, jocul se termină.
+              </p>
+              <div className="mt-4">
+                <h4 className="font-semibold mb-2 text-blue-600">Elementele jocului:</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>O minge de plajă care se mișcă</li>
+                  <li>Gravitație care trage mingea în jos</li>
+                  <li>Interacțiunea cu cursorul pentru a face mingea să sară</li>
+                  <li>Un sistem de scor</li>
+                  <li>Efecte vizuale și sonore</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-lg border p-6">
+              <h3 className="font-bold text-lg mb-3">Începe proiectul</h3>
+              <p className="mb-4">
+                Pentru a începe să lucrezi la acest proiect, poți porni de la zero sau poți folosi proiectul starter care conține deja fundalul și personajele pregătite.
+              </p>
+              <div className="space-y-4">
+                <Button asChild className="w-full bg-blue-500 hover:bg-blue-600 text-white">
+                  <a href="https://scratch.mit.edu/projects/editor/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+                    <span>Începe de la zero</span>
+                  </a>
+                </Button>
+                
+                <Button asChild variant="outline" className="w-full border-blue-500 text-blue-500 hover:bg-blue-50">
+                  <a href="https://scratch.mit.edu/projects/editor/?tutorial=getStarted" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+                    <span>Folosește proiectul starter</span>
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="etapa1">
+          <h2 className="text-2xl font-bold mb-4">Etapa 1: Creează și animează mingea de plajă</h2>
+          
+          <p className="mb-4">
+            Primul pas este să creăm personajul principal al jocului nostru - mingea de plajă. Vom configura animația inițială și vom adăuga efecte de mișcare.
+          </p>
+
+          <StepItem number={1} title="Adaugă mingea de plajă">
+            <p>În Scratch, vom căuta o minge de plajă în biblioteca de sprite-uri sau vom desena una nouă:</p>
+            
+            <ImageExample 
+              src="https://elearning.techminds-academy.ro/assets/images/scratch-beachball-step1.png" 
+              alt="Adăugarea mingii de plajă" 
+              caption="Selectarea sau desenarea unei mingi de plajă din biblioteca Scratch"
+            />
+          </StepItem>
+
+          <InfoBox title="Sfat" icon="info" variant="info">
+            <p>Dacă nu găsești o minge de plajă potrivită în biblioteca Scratch, poți căuta online o imagine cu o minge de plajă și să o încarci în proiect.</p>
+          </InfoBox>
+          
+          <InfoBox title="Alternativă" icon="info" variant="secondary">
+            <p>Poți crea propria minge de plajă folosind editorul de imagini din Scratch. Desenează un cerc și adaugă-i culori diferite pentru a obține efectul de minge de plajă.</p>
+          </InfoBox>
+
+          <StepItem number={2} title="Adaugă cod pentru gravitație">
+            <p>Acum, vom adăuga cod mingii pentru a simula gravitația. Aceasta va face ca mingea să cadă constant:</p>
+            
+            <BlockCodeExample 
+              title="Codul pentru gravitație" 
+              src="https://elearning.techminds-academy.ro/assets/images/scratch-beachball-gravity.png" 
+              alt="Codul pentru gravitație" 
+              caption="Blocuri de cod pentru simularea gravitației în Scratch"
+            />
+          </StepItem>
+
+          <StepItem number={3} title="Adaugă săritura la atingerea cursorului">
+            <p>Adaugă acest cod pentru a face mingea să sară atunci când este atinsă de cursor:</p>
+            
+            <BlockCodeExample 
+              title="Codul pentru săritură" 
+              src="https://elearning.techminds-academy.ro/assets/images/scratch-beachball-bounce.png" 
+              alt="Codul pentru săritură" 
+              caption="Blocuri de cod pentru a face mingea să sară la atingerea cursorului"
+            />
+          </StepItem>
+        </section>
+
+        <section id="etapa2">
+          <h2 className="text-2xl font-bold mb-4">Etapa 2: Creează scena și adaugă controlul</h2>
+          
+          <p className="mb-4">
+            După ce am creat mingea și i-am adăugat mișcare, acum vom configura fundalul și vom îmbunătăți controlul jocului.
+          </p>
+
+          <StepItem number={1} title="Alege un fundal de plajă">
+            <p>Selectează un fundal de plajă din biblioteca de fundaluri Scratch:</p>
+            
+            <ImageExample 
+              src="https://elearning.techminds-academy.ro/assets/images/scratch-beachball-background.png" 
+              alt="Selectarea fundalului de plajă" 
+              caption="Alegerea unui fundal de plajă potrivit din biblioteca Scratch"
+            />
+          </StepItem>
+
+          <InfoBox title="Sfat" icon="info" variant="info">
+            <p>Un fundal de plajă cu nisip în partea de jos și cer în partea de sus este ideal pentru jocul nostru.</p>
+          </InfoBox>
+          
+          <InfoBox title="Alternativă" icon="info" variant="secondary">
+            <p>Poți crea propriul fundal de plajă folosind editorul de imagini din Scratch sau poți încărca o imagine de pe internet.</p>
+          </InfoBox>
+
+          <StepItem number={2} title="Adaugă limite de margine">
+            <p>Adaugă acest cod pentru a face mingea să ricoșeze când atinge marginile ecranului:</p>
+            
+            <BlockCodeExample 
+              title="Codul pentru limitele de margine" 
+              src="https://elearning.techminds-academy.ro/assets/images/scratch-beachball-edges.png" 
+              alt="Codul pentru limitele de margine" 
+              caption="Blocuri de cod pentru a face mingea să ricoșeze de marginile ecranului"
+            />
+          </StepItem>
+
+          <StepItem number={3} title="Adaugă condiția de Game Over">
+            <p>Acum, vom adăuga codul care va opri jocul când mingea atinge nisipul:</p>
+            
+            <BlockCodeExample 
+              title="Codul pentru Game Over" 
+              src="https://elearning.techminds-academy.ro/assets/images/scratch-beachball-gameover.png" 
+              alt="Codul pentru Game Over" 
+              caption="Blocuri de cod pentru a opri jocul când mingea atinge nisipul"
+            />
+          </StepItem>
+        </section>
+
+        <section id="etapa3">
+          <h2 className="text-2xl font-bold mb-4">Etapa 3: Adaugă sistemul de scor</h2>
+          
+          <p className="mb-4">
+            Acum vom adăuga un sistem de scor care va crește de fiecare dată când mingea sare după ce a fost atinsă de cursor.
+          </p>
+
+          <StepItem number={1} title="Creează variabila pentru scor">
+            <p>Creează o variabilă numită "Scor" din secțiunea "Variabile":</p>
+            
+            <ImageExample 
+              src="https://elearning.techminds-academy.ro/assets/images/scratch-beachball-score-var.png" 
+              alt="Crearea variabilei pentru scor" 
+              caption="Crearea variabilei 'Scor' în Scratch"
+            />
+          </StepItem>
+
+          <InfoBox title="Sfat" icon="info" variant="info">
+            <p>Asigură-te că variabila "Scor" este vizibilă pe ecran pentru ca jucătorul să poată vedea punctajul curent.</p>
+          </InfoBox>
+          
+          <InfoBox title="Alternativă" icon="info" variant="secondary">
+            <p>Poți crea și alte variabile precum "Scor maxim" pentru a păstra cel mai bun scor obținut în joc.</p>
+          </InfoBox>
+
+          <StepItem number={2} title="Adaugă codul pentru actualizarea scorului">
+            <p>Adaugă acest cod pentru a incrementa scorul de fiecare dată când mingea sare după atingerea cursorului:</p>
+            
+            <BlockCodeExample 
+              title="Codul pentru actualizarea scorului" 
+              src="https://elearning.techminds-academy.ro/assets/images/scratch-beachball-score-update.png" 
+              alt="Codul pentru actualizarea scorului" 
+              caption="Blocuri de cod pentru a incrementa scorul la fiecare săritură"
+            />
+          </StepItem>
+
+          <StepItem number={3} title="Resetează scorul la început">
+            <p>Adaugă acest cod pentru a reseta scorul la începutul jocului:</p>
+            
+            <BlockCodeExample 
+              title="Codul pentru resetarea scorului" 
+              src="https://elearning.techminds-academy.ro/assets/images/scratch-beachball-score-reset.png" 
+              alt="Codul pentru resetarea scorului" 
+              caption="Blocuri de cod pentru a reseta scorul la începutul jocului"
+            />
+          </StepItem>
+        </section>
+
+        <section id="etapa4">
+          <h2 className="text-2xl font-bold mb-4">Etapa 4: Adaugă efecte vizuale și sonore</h2>
+          
+          <p className="mb-4">
+            Pentru a face jocul mai interesant, vom adăuga efecte vizuale și sonore care se vor declanșa în timpul jocului.
+          </p>
+
+          <StepItem number={1} title="Adaugă efecte vizuale la săritură">
+            <p>Adaugă efecte vizuale care se vor declanșa când mingea sare:</p>
+            
+            <BlockCodeExample 
+              title="Codul pentru efecte vizuale" 
+              src="https://elearning.techminds-academy.ro/assets/images/scratch-beachball-visual-effects.png" 
+              alt="Codul pentru efecte vizuale" 
+              caption="Blocuri de cod pentru a adăuga efecte vizuale la săritură"
+            />
+          </StepItem>
+
+          <InfoBox title="Sfat" icon="info" variant="info">
+            <p>Experimentează cu diferite efecte vizuale precum "culoare", "fantomă" sau "strălucire" pentru a găsi cel mai potrivit efect pentru jocul tău.</p>
+          </InfoBox>
+          
+          <InfoBox title="Alternativă" icon="info" variant="secondary">
+            <p>Poți adăuga și alte efecte vizuale precum schimbarea mărimii mingii sau rotirea acesteia pentru a face jocul mai dinamic.</p>
+          </InfoBox>
+
+          <StepItem number={2} title="Adaugă sunete la săritură și game over">
+            <p>Acum, vom adăuga sunete care se vor auzi când mingea sare sau când jocul se termină:</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <BlockCodeExample 
+                title="Codul pentru sunetul de săritură" 
+                src="https://elearning.techminds-academy.ro/assets/images/scratch-beachball-bounce-sound.png" 
+                alt="Codul pentru sunetul de săritură" 
+                caption="Adăugarea sunetului de săritură"
+              />
+              
+              <BlockCodeExample 
+                title="Codul pentru sunetul de game over" 
+                src="https://elearning.techminds-academy.ro/assets/images/scratch-beachball-gameover-sound.png" 
+                alt="Codul pentru sunetul de game over" 
+                caption="Adăugarea sunetului de game over"
+              />
+            </div>
+          </StepItem>
+
+          <StepItem number={3} title="Adaugă mesajul de game over">
+            <p>În final, vom adăuga un mesaj de game over care va apărea când jocul se termină și va afișa scorul final:</p>
+            
+            <BlockCodeExample 
+              title="Codul pentru mesajul de game over" 
+              src="https://elearning.techminds-academy.ro/assets/images/scratch-beachball-gameover-message.png" 
+              alt="Codul pentru mesajul de game over" 
+              caption="Blocuri de cod pentru a afișa mesajul de game over și scorul final"
+            />
+          </StepItem>
+        </section>
+
+        <section id="provocare" className="bg-blue-50 p-6 rounded-lg">
+          <h2 className="text-2xl font-bold mb-4">Provocări suplimentare</h2>
+          
+          <p className="mb-4">
+            Felicitări! Ai creat jocul "Beach Ball Bounce". Pentru a-l face și mai interesant, încearcă aceste provocări suplimentare:
+          </p>
+
+          <div className="space-y-4">
+            <Challenge title="Nivel de dificultate" difficulty="easy">
+              <p>Adaugă un nivel de dificultate care crește pe măsură ce scorul crește, făcând mingea să cadă mai repede.</p>
+            </Challenge>
+            
+            <Challenge title="Power-ups" difficulty="medium">
+              <p>Adaugă power-ups care apar aleatoriu și oferă avantaje precum scor dublu sau sărituri mai înalte.</p>
+            </Challenge>
+            
+            <Challenge title="Multiplayer" difficulty="hard">
+              <p>Modifică jocul pentru a permite doi jucători să joace simultan, fiecare controlând propria minge.</p>
+            </Challenge>
+            
+            <Challenge title="Niveluri" difficulty="hard">
+              <p>Creează mai multe niveluri cu diferite fundaluri și obstacole.</p>
+            </Challenge>
+          </div>
+        </section>
+
+        <section id="concluzii">
+          <h2 className="text-2xl font-bold mb-4">Concluzii</h2>
+          
+          <p className="mb-4">
+            În această lecție, am învățat cum să creăm un joc simplu dar captivant în Scratch. Am implementat concepte importante precum:
+          </p>
+
+          <InfoBox title="Ce am învățat" icon="success" variant="success">
+            <ul className="list-disc list-inside">
+              <li>Cum să simulăm gravitația și săriturile</li>
+              <li>Cum să implementăm interacțiunea cu cursorul</li>
+              <li>Cum să folosim variabile pentru a ține scorul</li>
+              <li>Cum să adăugăm efecte vizuale și sonore</li>
+              <li>Cum să creăm condiții de game over</li>
+            </ul>
+          </InfoBox>
+
+          <div className="mt-6 flex justify-center">
+            <Button asChild className="bg-blue-500 hover:bg-blue-600">
+              <Link to="/scratch/session6stitchbeach" className="flex items-center">
+                <span>Continuă cu următoarea lecție: Stitch Beach Adventure</span>
+              </Link>
+            </Button>
+          </div>
+        </section>
+      </div>
+    </LessonLayout>
   );
 };
 

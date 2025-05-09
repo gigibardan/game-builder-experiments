@@ -1,26 +1,33 @@
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { Card } from '@/components/ui/card';
+import { CodeBlock } from '@/components/CodeBlock';
+import ImageModal from '@/components/ImageModal';
 
 interface CodeExampleProps {
   title?: string;
   language?: string;
-  children: React.ReactNode;
+  children: string;
+  className?: string;
 }
 
-export const CodeExample: React.FC<CodeExampleProps> = ({ title, language = 'javascript', children }) => {
+export const CodeExample: React.FC<CodeExampleProps> = ({ 
+  title, 
+  language = "javascript", 
+  children,
+  className 
+}) => {
   return (
-    <div className="my-6 rounded-lg overflow-hidden border border-gray-200 bg-gray-50">
+    <Card className={`mb-6 overflow-hidden ${className}`}>
       {title && (
-        <div className="bg-gray-100 px-4 py-2 border-b border-gray-200 flex items-center">
-          <span className="text-sm font-medium text-gray-700">{title}</span>
-          {language && <span className="ml-auto text-xs bg-gray-200 px-2 py-1 rounded text-gray-600">{language}</span>}
+        <div className="bg-gray-100 px-4 py-2 border-b">
+          <h3 className="text-gray-800 font-medium">{title}</h3>
         </div>
       )}
-      <div className="p-4 overflow-x-auto font-mono text-sm">
-        {children}
+      <div className="p-0">
+        <CodeBlock language={language} code={children} />
       </div>
-    </div>
+    </Card>
   );
 };
 
@@ -28,24 +35,23 @@ interface ImageExampleProps {
   src: string;
   alt: string;
   caption?: string;
+  className?: string;
 }
 
-export const ImageExample: React.FC<ImageExampleProps> = ({ src, alt, caption }) => {
+export const ImageExample: React.FC<ImageExampleProps> = ({ 
+  src, 
+  alt, 
+  caption,
+  className 
+}) => {
   return (
-    <motion.div 
-      className="my-6 rounded-lg overflow-hidden border border-gray-200"
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-    >
-      <img src={src} alt={alt} className="w-full h-auto" />
-      {caption && (
-        <div className="bg-gray-50 p-3 text-center text-sm text-gray-600">
-          {caption}
-        </div>
-      )}
-    </motion.div>
+    <div className={`mb-6 ${className}`}>
+      <ImageModal 
+        src={src}
+        alt={alt}
+        caption={caption}
+      />
+    </div>
   );
 };
 
@@ -54,30 +60,26 @@ interface BlockCodeExampleProps {
   src: string;
   alt: string;
   caption?: string;
+  className?: string;
 }
 
-export const BlockCodeExample: React.FC<BlockCodeExampleProps> = ({ title, src, alt, caption }) => {
+export const BlockCodeExample: React.FC<BlockCodeExampleProps> = ({
+  title,
+  src,
+  alt,
+  caption,
+  className
+}) => {
   return (
-    <motion.div 
-      className="my-6 rounded-lg overflow-hidden border border-gray-200"
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-    >
+    <div className={`mb-6 ${className}`}>
       {title && (
-        <div className="bg-gray-100 px-4 py-2 border-b border-gray-200">
-          <span className="text-sm font-medium text-gray-700">{title}</span>
-        </div>
+        <h3 className="text-gray-800 font-medium mb-2">{title}</h3>
       )}
-      <img src={src} alt={alt} className="w-full h-auto" />
-      {caption && (
-        <div className="bg-gray-50 p-3 text-sm text-gray-600">
-          {caption}
-        </div>
-      )}
-    </motion.div>
+      <ImageModal 
+        src={src}
+        alt={alt}
+        caption={caption}
+      />
+    </div>
   );
 };
-
-export default { CodeExample, ImageExample, BlockCodeExample };

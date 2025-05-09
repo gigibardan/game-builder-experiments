@@ -2,7 +2,8 @@
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
 import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
-import { CodeExample, ImageExample, BlockCodeExample } from '@/components/CodeExample';
+import { CodeExample } from '@/components/CodeExample';
+import ImageModal from '@/components/ImageModal';
 
 const LessonTemplate = () => {
   const sidebarItems = [
@@ -108,21 +109,21 @@ salutLume(); // Afișează "Salut, lume!" în consolă`}
           </CodeExample>
 
           <p className="mb-4">
-            Pentru a afișa imagini, utilizează componenta ImageExample:
+            Pentru a afișa imagini, utilizează componenta ImageModal:
           </p>
 
-          <ImageExample 
+          <ImageModal 
             src="https://cdn.pixabay.com/photo/2019/10/09/07/28/development-4536630_1280.png" 
             alt="Exemplu de dezvoltare web" 
             caption="Un exemplu de imagine cu explicații în legendă"
           />
 
           <p className="mb-4">
-            Pentru a afișa capturi de ecran cu cod block-based, utilizează componenta BlockCodeExample:
+            Pentru a afișa capturi de ecran cu cod block-based, utilizează aceeași componenta ImageModal 
+            pentru imagini de cod:
           </p>
 
-          <BlockCodeExample 
-            title="Exemplu de cod Scratch" 
+          <ImageModal 
             src="https://www.researchgate.net/profile/Wendy-Roldan/publication/333607893/figure/fig7/AS:768211096338432@1560179865328/Example-Scratch-code-for-the-jumping-mechanic.png" 
             alt="Exemplu de cod Scratch" 
             caption="Un exemplu de cod Scratch pentru mecanica de salt"

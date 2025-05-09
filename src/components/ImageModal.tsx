@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import { X, ZoomIn } from 'lucide-react';
 import { Image } from '@/components/ui/image';
 import { cn } from '@/lib/utils';
 
@@ -24,13 +24,16 @@ const ImageModal: React.FC<ImageModalProps> = ({
 
   return (
     <>
-      <div className={cn("cursor-pointer", className)}>
+      <div className={cn("cursor-pointer group relative", className)}>
         <Image 
           src={src} 
           alt={alt} 
           onClick={openModal}
-          className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02] w-full max-w-full max-h-[300px] object-contain"
+          className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02] w-full max-w-full max-h-[300px] object-contain border border-gray-200"
         />
+        <div className="absolute top-2 right-2 bg-white/80 p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <ZoomIn className="h-5 w-5 text-gray-700" />
+        </div>
         {caption && (
           <p className="text-sm text-center text-gray-600 mt-2">{caption}</p>
         )}
