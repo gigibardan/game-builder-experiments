@@ -1,8 +1,5 @@
-
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
-import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
-import { CodeExample, ImageExample, BlockCodeExample } from '@/components/CodeExample';
 
 const Session5BeachBallBounce = () => {
   const sidebarItems = [
@@ -448,21 +445,21 @@ const Session5BeachBallBounce = () => {
 
   return (
     <LessonLayout
+      title="Beach Ball Bounce"
+      subtitle="Lecția 5 • Scratch Programming"
       courseId="scratch"
       sessionId="5"
-      title="Jocul Beach Ball Bounce"
-      subtitle="Un joc distractiv în care controlezi un colac pentru a menține o minge de plajă în aer, colectând scoici și evitând pești periculoși"
-      heroColor="bg-gradient-to-r from-blue-500 to-blue-600"
+      heroColor="bg-gradient-to-r from-cyan-500 to-blue-500"
+      sidebarItems={[]}
+      resources={[]}
       previousLesson={{
-        title: "Lecția anterioară",
+        title: "Sesiunea 4: City Runner",
         path: "/scratch/session4cityrunner"
       }}
       nextLesson={{
-        title: "Înapoi la curs",
-        path: "/courses/scratch"
+        title: "Sesiunea 6: Stitch's Beach Adventure",
+        path: "/scratch/session6stitchbeach"
       }}
-      sidebarItems={sidebarItems}
-      resources={resources}
       sections={sections}
     />
   );

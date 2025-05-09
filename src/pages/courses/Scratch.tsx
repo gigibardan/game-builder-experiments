@@ -77,7 +77,7 @@ const Scratch = () => {
       duration: "90 minute",
       level: "Începător-Intermediar",
       ageGroup: "8-14 ani",
-      link: "/scratch/session5stitchbeach",
+      link: "/scratch/session6stitchbeach",
       highlights: ["Animarea personajelor", "Detecția coliziunilor", "Sisteme de punctaj complexe", "Condiții de victorie și înfrângere"],
       imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratchproiect7preview.png",
       color: "indigo"

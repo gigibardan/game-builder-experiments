@@ -82,11 +82,13 @@ const SessionCard = ({
         isAvailable ? `bg-${color}` : 'bg-gray-300'
       } ${textColor}`}>
         <div className="flex justify-between items-center">
-          <CardTitle className="flex items-center">
-            <span className={`bg-white ${textColor === 'text-white' ? `text-${color}` : 'text-gray-800'} rounded-full h-8 w-8 flex items-center justify-center mr-2 shadow-md`}>
+          <CardTitle className="flex items-center text-gray-800">
+            <span className={`bg-white rounded-full h-8 w-8 flex items-center justify-center mr-2 shadow-md text-gray-800`}>
               {number}
             </span>
-            {title}
+            <span className={textColor === 'text-white' ? textColor : 'text-gray-800'}>
+              {title}
+            </span>
           </CardTitle>
         </div>
       </CardHeader>

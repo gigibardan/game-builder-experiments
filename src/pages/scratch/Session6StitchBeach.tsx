@@ -1,11 +1,10 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LessonLayout from '@/components/LessonLayout';
 import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
 import { CodeExample, ImageExample, BlockCodeExample } from '@/components/CodeExample';
 
-const Session5StitchBeach = () => {
+const Session6StitchBeach = () => {
   const sidebarItems = [
     { id: 'introducere', title: 'Introducere', isActive: true },
     { id: 'personaje', title: 'Personajele jocului' },
@@ -26,15 +25,15 @@ const Session5StitchBeach = () => {
   return (
     <LessonLayout
       title="Stitch's Beach Adventure in Scratch"
-      subtitle="Lecția 5 • Scratch Programming"
+      subtitle="Lecția 6 • Scratch Programming"
       courseId="scratch"
-      sessionId="5"
+      sessionId="6"
       heroColor="bg-gradient-to-r from-blue-500 to-purple-500"
       sidebarItems={sidebarItems}
       resources={resources}
       previousLesson={{
-        title: "Sesiunea 4: City Runner",
-        path: "/scratch/session4cityrunner"
+        title: "Sesiunea 5: Beach Ball Bounce",
+        path: "/scratch/session5beachballbounce"
       }}
       nextLesson={null}
     >
@@ -387,4 +386,4 @@ const Session5StitchBeach = () => {
   );
 };
 
-export default Session5StitchBeach;
+export default Session6StitchBeach;

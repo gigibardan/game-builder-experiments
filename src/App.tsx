@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Login from '@/pages/auth/Login';
@@ -20,16 +19,12 @@ import MinecraftModding from '@/pages/courses/MinecraftModding';
 import Unauthorized from '@/pages/auth/Unauthorized';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Dashboard from '@/pages/admin/Dashboard';
-import ScratchSession1 from '@/pages/scratch/Session1';
-import ScratchSession2 from '@/pages/scratch/Session2';
-import ScratchSession3 from '@/pages/scratch/Session3';
-import ScratchSession4 from '@/pages/scratch/Session4';
 import Session1Alegesanatos from '@/pages/scratch/Session1Alegesanatos';
 import Session2SpaceDodge from '@/pages/scratch/Session2SpaceDodge';
 import Session3MotoRacer from '@/pages/scratch/Session3MotoRacer';
 import Session4CityRunner from '@/pages/scratch/Session4CityRunner';
 import Session5BeachBallBounce from '@/pages/scratch/Session5BeachBallBounce';
-import Session5StitchBeach from '@/pages/scratch/Session5StitchBeach';
+import Session6StitchBeach from '@/pages/scratch/Session6StitchBeach';
 import AppInventorSession1 from '@/pages/appinventor/Session1';
 import AppInventorSession2 from '@/pages/appinventor/Session2';
 import AppInventorSession3 from '@/pages/appinventor/Session3';
@@ -89,17 +84,13 @@ function App() {
         } 
       />
       
-      {/* Scratch session routes */}
+      {/* Scratch session routes - Updated to keep only the 6 required courses */}
       <Route path="/scratch/session1alegesanatos" element={<Session1Alegesanatos />} />
-      <Route path="/scratch/session1" element={<ScratchSession1 />} />
-      <Route path="/scratch/session2" element={<ScratchSession2 />} />
-      <Route path="/scratch/session3" element={<ScratchSession3 />} />
-      <Route path="/scratch/session4" element={<ScratchSession4 />} />
       <Route path="/scratch/session2spacedodge" element={<Session2SpaceDodge />} />
       <Route path="/scratch/session3motoracer" element={<Session3MotoRacer />} />
       <Route path="/scratch/session4cityrunner" element={<Session4CityRunner />} />
       <Route path="/scratch/session5beachballbounce" element={<Session5BeachBallBounce />} />
-      <Route path="/scratch/session5stitchbeach" element={<Session5StitchBeach />} />
+      <Route path="/scratch/session6stitchbeach" element={<Session6StitchBeach />} />
       
       {/* App Inventor session routes */}
       <Route path="/appinventor/session1" element={<AppInventorSession1 />} />
