@@ -1,5 +1,8 @@
+
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
+import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/LessonComponents';
+import { CodeExample, ImageExample, BlockCodeExample } from '@/components/CodeExample';
 
 const Session5BeachBallBounce = () => {
   const sidebarItems = [
@@ -450,8 +453,8 @@ const Session5BeachBallBounce = () => {
       courseId="scratch"
       sessionId="5"
       heroColor="bg-gradient-to-r from-cyan-500 to-blue-500"
-      sidebarItems={[]}
-      resources={[]}
+      sidebarItems={sidebarItems}
+      resources={resources}
       previousLesson={{
         title: "Sesiunea 4: City Runner",
         path: "/scratch/session4cityrunner"
