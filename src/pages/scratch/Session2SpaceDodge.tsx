@@ -5,6 +5,8 @@ import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/Less
 import { CodeBlock } from '@/components/CodeBlock';
 import { Button } from '@/components/ui/button';
 import { Play, Rocket, Lightbulb, Check, Star } from 'lucide-react';
+import ImageModal from '@/components/ImageModal';
+import { ImageExample, BlockCodeExample } from '@/components/CodeExample';
 
 const Session2SpaceDodge = () => {
   const sidebarItems = [
@@ -87,10 +89,10 @@ const Session2SpaceDodge = () => {
             </div>
 
             <div className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
-              <img 
+              <ImageModal 
                 src="https://elearning.techminds-academy.ro/assets/images/scratchproiect5preview.png" 
                 alt="Previzualizare joc Space Dodge" 
-                className="w-full object-cover h-48"
+                className="w-full object-contain h-48"
               />
               <div className="p-4 flex flex-col items-center">
                 <Button asChild className="w-full bg-yellow-600 hover:bg-yellow-700">
@@ -130,11 +132,11 @@ const Session2SpaceDodge = () => {
             Proiectul starter conține deja toate personajele de care ai nevoie pentru a crea jocul:
           </p>
 
-          <div className="mb-6 bg-white border rounded-lg overflow-hidden shadow-md">
-            <img 
+          <div className="mb-6">
+            <ImageModal 
               src="https://elearning.techminds-academy.ro/assets/images/scratchproiect5personaje.png" 
               alt="Personajele jocului" 
-              className="w-full"
+              className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
           </div>
 
@@ -214,11 +216,11 @@ const Session2SpaceDodge = () => {
             Selectează personajul <strong>Ship</strong> și adaugă următorul cod:
           </p>
 
-          <div className="mb-6 bg-white border rounded-lg overflow-hidden shadow-md">
-            <img 
+          <div className="mb-6">
+            <ImageModal 
               src="https://elearning.techminds-academy.ro/assets/images/scratchproiect5ship.png" 
               alt="Codul pentru nava spațială" 
-              className="w-full"
+              className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
           </div>
 
@@ -259,11 +261,11 @@ const Session2SpaceDodge = () => {
             Selectează personajul <strong>Meteorit</strong> și adaugă următorul cod:
           </p>
 
-          <div className="mb-6 bg-white border rounded-lg overflow-hidden shadow-md">
-            <img 
+          <div className="mb-6">
+            <ImageModal 
               src="https://elearning.techminds-academy.ro/assets/images/scratchproiect5meteorit.png" 
               alt="Codul pentru meteorit" 
-              className="w-full"
+              className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
           </div>
 
@@ -312,11 +314,11 @@ const Session2SpaceDodge = () => {
             Selectează personajul <strong>Space elements</strong> și adaugă următorul cod:
           </p>
 
-          <div className="mb-6 bg-white border rounded-lg overflow-hidden shadow-md">
-            <img 
+          <div className="mb-6">
+            <ImageModal 
               src="https://elearning.techminds-academy.ro/assets/images/scratchproiect5elements.png" 
               alt="Codul pentru elementele spațiale" 
-              className="w-full"
+              className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
           </div>
 
