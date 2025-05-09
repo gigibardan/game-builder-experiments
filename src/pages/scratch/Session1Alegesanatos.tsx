@@ -6,6 +6,8 @@ import { InfoBox, StepItem, Challenge, LearningOutcome } from '@/components/Less
 import { CodeBlock } from '@/components/CodeBlock';
 import { Button } from '@/components/ui/button';
 import { Play, Rocket, Lightbulb, Check, Star } from 'lucide-react';
+import ImageModal from '@/components/ImageModal';
+import { ImageExample, BlockCodeExample } from '@/components/CodeExample';
 
 const Session1Alegesanatos = () => {
   const sidebarItems = [
@@ -81,10 +83,10 @@ const Session1Alegesanatos = () => {
             </div>
 
             <div className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
-              <img 
+              <ImageModal 
                 src="https://elearning.techminds-academy.ro/assets/images/scratch-alegesanatos-preview.png" 
                 alt="Previzualizare joc Alege Sănătos" 
-                className="w-full object-cover h-48"
+                className="w-full"
               />
               <div className="p-4 flex flex-col items-center">
                 <Button asChild className="w-full bg-yellow-500 hover:bg-yellow-600">
@@ -123,11 +125,11 @@ const Session1Alegesanatos = () => {
             Proiectul starter conține deja toate personajele de care ai nevoie:
           </p>
 
-          <div className="mb-6 bg-white border rounded-lg overflow-hidden shadow-md">
-            <img 
+          <div className="mb-6">
+            <ImageModal 
               src="https://elearning.techminds-academy.ro/assets/images/scratchproiect1personaje.png" 
               alt="Personajele jocului" 
-              className="w-full"
+              className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
           </div>
 
@@ -193,11 +195,11 @@ const Session1Alegesanatos = () => {
             Selectează personajul <strong>Bowl</strong> și adaugă următorul cod:
           </p>
 
-          <div className="mb-6 bg-white border rounded-lg overflow-hidden shadow-md">
-            <img 
+          <div className="mb-6">
+            <ImageModal 
               src="https://elearning.techminds-academy.ro/assets/images/scratchproiect1codbowl.png" 
               alt="Codul pentru controlul bolului" 
-              className="w-full"
+              className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
           </div>
 
@@ -225,11 +227,11 @@ const Session1Alegesanatos = () => {
             Selectează personajul <strong>Apple</strong> și adaugă acest cod:
           </p>
 
-          <div className="mb-6 bg-white border rounded-lg overflow-hidden shadow-md">
-            <img 
+          <div className="mb-6">
+            <ImageModal 
               src="https://elearning.techminds-academy.ro/assets/images/scratchproiect1codapple.png" 
               alt="Codul pentru măr" 
-              className="w-full"
+              className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
           </div>
 
@@ -304,25 +306,21 @@ const Session1Alegesanatos = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
               <h4 className="font-bold mb-2">Pentru personajul "win":</h4>
-              <div className="bg-white border rounded-lg overflow-hidden shadow-md">
-                <img 
-                  src="https://elearning.techminds-academy.ro/assets/images/scratchproiect1codwin.png" 
-                  alt="Codul pentru victorie" 
-                  className="w-full"
-                />
-              </div>
+              <ImageModal 
+                src="https://elearning.techminds-academy.ro/assets/images/scratchproiect1codwin.png" 
+                alt="Codul pentru victorie" 
+                className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+              />
               <p className="mt-2 text-center text-sm">Când scorul depășește 49, jucătorul câștigă!</p>
             </div>
             
             <div>
               <h4 className="font-bold mb-2">Pentru personajul "lose":</h4>
-              <div className="bg-white border rounded-lg overflow-hidden shadow-md">
-                <img 
-                  src="https://elearning.techminds-academy.ro/assets/images/scratchproiect1codlose.png" 
-                  alt="Codul pentru înfrângere" 
-                  className="w-full"
-                />
-              </div>
+              <ImageModal 
+                src="https://elearning.techminds-academy.ro/assets/images/scratchproiect1codlose.png" 
+                alt="Codul pentru înfrângere" 
+                className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+              />
               <p className="mt-2 text-center text-sm">Când scorul scade sub -5, jucătorul pierde!</p>
             </div>
           </div>
