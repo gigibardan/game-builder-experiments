@@ -45,7 +45,23 @@ const SessionCard = ({
     return darkColors.includes(bgColor) ? 'text-white' : 'text-gray-800';
   };
 
+  // For better button visibility based on card color
+  const getButtonColor = (cardColor: string) => {
+    const colorMap: Record<string, string> = {
+      'amber': 'bg-amber-500 hover:bg-amber-600',
+      'blue': 'bg-blue-500 hover:bg-blue-600',
+      'green': 'bg-green-500 hover:bg-green-600',
+      'purple': 'bg-purple-500 hover:bg-purple-600',
+      'cyan': 'bg-cyan-500 hover:bg-cyan-600',
+      'indigo': 'bg-indigo-500 hover:bg-indigo-600',
+      'default': 'bg-amber-500 hover:bg-amber-600'
+    };
+
+    return colorMap[cardColor] || colorMap.default;
+  };
+
   const textColor = getTextColor(color);
+  const buttonColorClass = getButtonColor(color);
 
   return (
     <Card className={`overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full border-2 ${
@@ -110,9 +126,7 @@ const SessionCard = ({
       </CardContent>
       <CardFooter className="bg-white">
         <Button asChild disabled={!isAvailable} 
-          className={`w-full ${isAvailable 
-            ? `bg-amber-500 hover:bg-amber-600 text-white shadow-md` 
-            : 'bg-gray-300'}`}>
+          className={`w-full ${isAvailable ? buttonColorClass : 'bg-gray-300'} text-white shadow-md`}>
           <Link to={isAvailable ? link : '#'}>
             {isAvailable ? 'Începe Lecția' : 'În curând'}
           </Link>

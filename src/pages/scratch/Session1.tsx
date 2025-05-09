@@ -93,7 +93,7 @@ const Session1 = () => {
               </div>
 
               <div className="flex justify-between mt-12">
-                <Button asChild variant="outline" className="bg-gray-200 hover:bg-gray-300 text-gray-700 shadow-sm">
+                <Button asChild variant="outline" className="bg-amber-600 hover:bg-amber-700 text-white shadow-sm">
                   <Link to="/courses/scratch" className="flex items-center">
                     <ArrowLeft className="mr-2 h-5 w-5" />
                     <span>Înapoi la curs</span>

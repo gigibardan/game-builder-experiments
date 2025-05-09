@@ -119,7 +119,7 @@ const Scratch = () => {
                       <span>Vezi lecțiile</span>
                     </a>
                   </Button>
-                  <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/20 shadow-md">
+                  <Button asChild size="lg" variant="outline" className="border-amber-800 bg-amber-800 text-white hover:bg-amber-700 shadow-md">
                     <a href="https://scratch.mit.edu/" target="_blank" rel="noopener noreferrer">
                       <span>Site oficial Scratch</span>
                     </a>
