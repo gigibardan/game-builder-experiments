@@ -1,4 +1,6 @@
 
+import { Database } from '@/integrations/supabase/types';
+
 export enum UserRole {
   USER = 'student',
   ADMIN = 'admin'
@@ -14,6 +16,11 @@ export interface User {
     sessions: string[];
   }[];
 }
+
+export type Profile = Database['public']['Tables']['profiles']['Row'];
+export type Course = Database['public']['Tables']['courses']['Row'];
+export type Session = Database['public']['Tables']['sessions']['Row'];
+export type UserAccess = Database['public']['Tables']['user_access']['Row'];
 
 export interface AuthContextType {
   isAuthenticated: boolean;

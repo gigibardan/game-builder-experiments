@@ -1,109 +1,114 @@
 
 import React, { useState } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { toast } from "sonner";
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { motion } from 'framer-motion';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Loader2 } from 'lucide-react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const { login, isAuthenticated } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const { login } = useAuth();
   const navigate = useNavigate();
 
-  // If user is already logged in, redirect to homepage
-  if (isAuthenticated) {
-    return <Navigate to="/" />;
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setLoading(true);
+    setError('');
 
     try {
+      // Assuming the username field is actually an email
       const success = await login(username, password);
-      
       if (success) {
-        toast.success("Autentificare reușită!");
         navigate('/');
       } else {
-        toast.error("Nume de utilizator sau parolă incorecte!");
+        setError('Login failed. Please check your credentials.');
       }
-    } catch (error) {
-      toast.error("A apărut o eroare la autentificare!");
+    } catch (err) {
+      setError('An unexpected error occurred. Please try again.');
+      console.error('Login error:', err);
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-course-blue to-course-purple flex flex-col items-center justify-center p-4">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="w-full max-w-md"
-      >
-        <div className="bg-white p-8 rounded-lg shadow-xl">
-          <div className="text-center mb-6">
-            <img 
-              src="https://techminds-academy.ro/assets/images/logo-techminds-sigla.png" 
-              alt="TechMinds Academy Logo" 
-              className="h-16 mx-auto mb-4" 
-            />
-            <h1 className="text-2xl font-bold text-gray-800">Autentificare</h1>
-            <p className="text-gray-600">Accesează cursurile tale</p>
-          </div>
-          
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="username">Nume de utilizator</Label>
-              <Input
-                id="username"
-                type="text"
-                placeholder="Introdu numele de utilizator"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <Label htmlFor="password">Parolă</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Introdu parola"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            
-            <Button 
-              type="submit" 
-              className="w-full bg-course-blue hover:bg-course-blue/90"
-              disabled={isLoading}
-            >
-              {isLoading ? "Se procesează..." : "Autentificare"}
-            </Button>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      
+      <main className="flex-grow flex items-center justify-center p-4">
+        <Card className="w-full max-w-md">
+          <CardHeader className="space-y-1 text-center">
+            <CardTitle className="text-2xl font-bold">Autentificare</CardTitle>
+            <CardDescription>
+              Introdu datele tale de autentificare pentru a accesa platforma
+            </CardDescription>
+          </CardHeader>
+          <form onSubmit={handleSubmit}>
+            <CardContent className="space-y-4">
+              {error && (
+                <div className="p-3 rounded-md bg-red-50 text-red-700 text-sm">
+                  {error}
+                </div>
+              )}
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  type="text"
+                  placeholder="nume@exemplu.ro"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <Label htmlFor="password">Parolă</Label>
+                  <Link to="/forgot-password" className="text-sm text-course-purple hover:underline">
+                    Ai uitat parola?
+                  </Link>
+                </div>
+                <Input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+            </CardContent>
+            <CardFooter className="flex flex-col space-y-4">
+              <Button type="submit" className="w-full" disabled={loading}>
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Se procesează...
+                  </>
+                ) : (
+                  'Autentificare'
+                )}
+              </Button>
+              <div className="text-center text-sm">
+                Nu ai cont încă?{' '}
+                <Link to="/register" className="text-course-purple hover:underline">
+                  Înregistrează-te
+                </Link>
+              </div>
+            </CardFooter>
           </form>
-          
-          <div className="mt-6 text-sm text-center text-gray-600">
-            <p>Demo conturi:</p>
-            <p>Admin: username: <strong>admin</strong>, password: <strong>admin123</strong></p>
-            <p>Student: username: <strong>student1</strong>, password: <strong>student123</strong></p>
-          </div>
-        </div>
-        
-        <p className="text-white text-center mt-4 text-sm">
-          © {new Date().getFullYear()} TechMinds Academy. Toate drepturile rezervate.
-        </p>
-      </motion.div>
+        </Card>
+      </main>
+      
+      <Footer />
     </div>
   );
 };

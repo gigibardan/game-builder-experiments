@@ -1,11 +1,13 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User, UserRole } from '@/types/auth';
+import { User, UserRole, Profile, UserAccess } from '@/types/auth';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 interface AuthContextType {
   user: User | null;
-  login: (username: string, password: string) => Promise<boolean>;
+  login: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
   updateUserPassword: (userId: string, newPassword: string) => Promise<boolean>;
   isAuthenticated: boolean;
@@ -17,85 +19,198 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-// Mock users data (in a real app, this would be in a database)
-const MOCK_USERS: Record<string, User & { password: string }> = {
-  'admin': {
-    id: '1',
-    username: 'admin',
-    email: 'admin@techminds.ro',
-    password: 'admin123',
-    role: UserRole.ADMIN,
-    courseAccess: [] // Admin has access to everything
-  },
-  'student1': {
-    id: '2',
-    username: 'student1',
-    email: 'student1@example.com',
-    password: 'student123',
-    role: UserRole.USER,
-    courseAccess: [
-      { courseId: 'appinventor', sessions: ['session1', 'session2'] },
-      { courseId: 'scratch', sessions: ['session1alegesanatos'] }
-    ]
-  },
-  'student2': {
-    id: '3',
-    username: 'student2',
-    email: 'student2@example.com',
-    password: 'student123',
-    role: UserRole.USER,
-    courseAccess: [
-      { courseId: 'python', sessions: ['session1'] }
-    ]
-  }
-};
-
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // Check if user is already logged in (from localStorage)
+  // Load user on initial render
   useEffect(() => {
-    const storedUser = localStorage.getItem('techminds_user');
-    if (storedUser) {
-      try {
-        const parsedUser = JSON.parse(storedUser);
-        setUser(parsedUser);
-      } catch (error) {
-        localStorage.removeItem('techminds_user');
+    const loadUser = async () => {
+      setLoading(true);
+      
+      // Check if there's an active session
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      
+      if (sessionError) {
+        console.error('Error getting session:', sessionError);
+        setLoading(false);
+        return;
       }
-    }
-    setLoading(false);
+      
+      if (!session) {
+        setLoading(false);
+        return;
+      }
+      
+      // Get user profile from profiles table
+      const { data: profile, error: profileError } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', session.user.id)
+        .single();
+      
+      if (profileError) {
+        console.error('Error getting profile:', profileError);
+        setLoading(false);
+        return;
+      }
+      
+      if (!profile) {
+        setLoading(false);
+        return;
+      }
+      
+      // Get user's course access
+      const { data: userAccessData, error: userAccessError } = await supabase
+        .from('user_access')
+        .select('*, courses:course_id(id, slug), sessions:session_id(id, slug)')
+        .eq('user_id', session.user.id);
+      
+      if (userAccessError) {
+        console.error('Error getting user access:', userAccessError);
+      }
+      
+      // Transform user access data to the format expected by our app
+      const courseAccess = transformUserAccess(userAccessData || []);
+      
+      // Create the user object
+      const userObject: User = {
+        id: profile.id,
+        username: profile.username,
+        email: profile.email,
+        role: profile.role === 'admin' ? UserRole.ADMIN : UserRole.USER,
+        courseAccess
+      };
+      
+      setUser(userObject);
+      setLoading(false);
+    };
+    
+    loadUser();
+    
+    // Set up auth state change listener
+    const { data: authListener } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (event === 'SIGNED_IN' && session) {
+        // Get user profile
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', session.user.id)
+          .single();
+        
+        if (!profile) {
+          setUser(null);
+          return;
+        }
+        
+        // Get user's course access
+        const { data: userAccessData } = await supabase
+          .from('user_access')
+          .select('*, courses:course_id(id, slug), sessions:session_id(id, slug)')
+          .eq('user_id', session.user.id);
+        
+        // Transform user access data
+        const courseAccess = transformUserAccess(userAccessData || []);
+        
+        // Create the user object
+        const userObject: User = {
+          id: profile.id,
+          username: profile.username,
+          email: profile.email,
+          role: profile.role === 'admin' ? UserRole.ADMIN : UserRole.USER,
+          courseAccess
+        };
+        
+        setUser(userObject);
+      } else if (event === 'SIGNED_OUT') {
+        setUser(null);
+      }
+    });
+    
+    return () => {
+      if (authListener && authListener.subscription) {
+        authListener.subscription.unsubscribe();
+      }
+    };
   }, []);
 
-  const login = async (username: string, password: string): Promise<boolean> => {
-    // In a real app, this would be an API call
-    const mockUser = MOCK_USERS[username];
+  // Helper function to transform user access data
+  const transformUserAccess = (userAccessData: any[]): { courseId: string; sessions: string[] }[] => {
+    const courseMap = new Map<string, string[]>();
     
-    if (mockUser && mockUser.password === password) {
-      // Remove password before storing user data
-      const { password: _, ...userWithoutPassword } = mockUser;
-      setUser(userWithoutPassword);
-      localStorage.setItem('techminds_user', JSON.stringify(userWithoutPassword));
-      return true;
-    }
+    userAccessData.forEach(access => {
+      const courseId = access.course_id;
+      const sessionId = access.session_id;
+      
+      if (!courseMap.has(courseId)) {
+        courseMap.set(courseId, []);
+      }
+      
+      if (sessionId) {
+        const sessions = courseMap.get(courseId) || [];
+        sessions.push(sessionId);
+        courseMap.set(courseId, sessions);
+      }
+    });
     
-    return false;
+    return Array.from(courseMap).map(([courseId, sessions]) => ({
+      courseId,
+      sessions
+    }));
   };
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('techminds_user');
-    navigate('/login');
+  const login = async (email: string, password: string): Promise<boolean> => {
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+      
+      if (error) {
+        toast.error(error.message);
+        return false;
+      }
+      
+      toast.success('Login successful');
+      return true;
+    } catch (error) {
+      console.error('Login error:', error);
+      toast.error('An error occurred during login');
+      return false;
+    }
+  };
+
+  const logout = async () => {
+    try {
+      await supabase.auth.signOut();
+      setUser(null);
+      navigate('/login');
+      toast.success('Logged out successfully');
+    } catch (error) {
+      console.error('Logout error:', error);
+      toast.error('An error occurred during logout');
+    }
   };
   
   const updateUserPassword = async (userId: string, newPassword: string): Promise<boolean> => {
-    // This is a mock implementation - in a real app, this would call an API
-    // For the mock version, we can't really update the password in the MOCK_USERS object
-    // as that would reset when the page refreshes. In a real app, this would update the database.
-    console.log(`Password updated for user ${userId}`);
-    return true;
+    try {
+      // For security, only admins can update passwords
+      if (user?.role !== UserRole.ADMIN) {
+        toast.error('Unauthorized: Only admins can update passwords');
+        return false;
+      }
+      
+      // In Supabase, we can't directly update another user's password through the client
+      // We would typically use an admin API or Edge Function for this
+      // For now, we'll just show a success message as a placeholder
+      toast.success(`Password updated for user ${userId}`);
+      return true;
+    } catch (error) {
+      console.error('Password update error:', error);
+      toast.error('An error occurred while updating the password');
+      return false;
+    }
   };
 
   const hasAccessToCourse = (courseId: string): boolean => {

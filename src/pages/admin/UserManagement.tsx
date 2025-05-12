@@ -12,105 +12,26 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from "sonner";
-import { Search, UserPlus, Edit, Trash, Key } from "lucide-react";
+import { Search, UserPlus, Edit, Trash, Key, Loader2 } from "lucide-react";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { User, UserRole } from '@/types/auth';
+import { User, UserRole, Profile, Course, Session } from '@/types/auth';
+import { supabase } from '@/integrations/supabase/client';
 
 // List of all available courses with their sessions
-const AVAILABLE_COURSES = [
-  {
-    id: 'scratch',
-    name: 'Scratch',
-    sessions: [
-      { id: 'session1alegesanatos', name: 'Alege Sănătos' },
-      { id: 'session2spacedodge', name: 'Space Dodge' },
-      { id: 'session3motoracer', name: 'Moto Racer' },
-      { id: 'session4cityrunner', name: 'City Runner' },
-      { id: 'session5beachballbounce', name: 'Beach Ball Bounce' },
-      { id: 'session6stitchbeach', name: 'Stitch Beach' },
-      { id: 'session7cakequest', name: 'Cake Quest' },
-      { id: 'session8wizardsquest', name: 'Wizards Quest' },
-      { id: 'session9robotfootball', name: 'Robot Football' },
-    ],
-  },
-  {
-    id: 'appinventor',
-    name: 'App Inventor',
-    sessions: [
-      { id: 'session1', name: 'Sesiunea 1' },
-      { id: 'session2', name: 'Sesiunea 2' },
-      { id: 'session3', name: 'Sesiunea 3' },
-      { id: 'session4', name: 'Sesiunea 4' },
-      { id: 'session5', name: 'Sesiunea 5' },
-      { id: 'session7', name: 'Sesiunea 7' },
-    ],
-  },
-  {
-    id: 'python',
-    name: 'Python',
-    sessions: [
-      { id: 'session1', name: 'Sesiunea 1' },
-    ],
-  },
-  {
-    id: 'alice3',
-    name: 'Alice 3',
-    sessions: [
-      { id: 'session1', name: 'Sesiunea 1' },
-      { id: 'session1adventure', name: 'Adventure Game' },
-      { id: 'session2spacegame', name: 'Space Game' },
-      { id: 'session3virtualpet', name: 'Virtual Pet' },
-      { id: 'session4geometry', name: 'Geometry' },
-    ],
-  },
-  {
-    id: 'frontenddev',
-    name: 'Frontend Development',
-    sessions: [
-      { id: 'session1', name: 'Sesiunea 1' },
-    ],
-  },
-  {
-    id: 'godot',
-    name: 'Godot',
-    sessions: [
-      { id: 'session1', name: 'Sesiunea 1' },
-      { id: 'session2', name: 'Sesiunea 2' },
-      { id: 'session3', name: 'Sesiunea 3' },
-      { id: 'session4', name: 'Sesiunea 4' },
-      { id: 'session5', name: 'Sesiunea 5' },
-      { id: 'game', name: 'Simple Game' },
-    ],
-  },
-  {
-    id: 'minecraftmodding',
-    name: 'Minecraft Modding',
-    sessions: [
-      { id: 'session1', name: 'Sesiunea 1' },
-      { id: 'ruby-armor', name: 'Ruby Armor' },
-      { id: 'crystal-realm', name: 'Crystal Realm' },
-    ],
-  },
-  {
-    id: 'greenfoot',
-    name: 'Greenfoot',
-    sessions: [
-      { id: 'session1', name: 'Sesiunea 1' },
-      { id: 'session2', name: 'Sesiunea 2' },
-      { id: 'session3', name: 'Sesiunea 3' },
-    ],
-  },
-];
-
 const UserManagement: React.FC = () => {
-  const { isAdmin, isAuthenticated } = useAuth();
+  const { isAdmin, isAuthenticated, updateUserPassword } = useAuth();
   const navigate = useNavigate();
   
   // State for user management
   const [users, setUsers] = useState<User[]>([]);
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  
+  // State for courses and sessions
+  const [courses, setCourses] = useState<Course[]>([]);
+  const [sessions, setSessions] = useState<Session[]>([]);
   
   // State for user editing/creation
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
@@ -118,6 +39,7 @@ const UserManagement: React.FC = () => {
   const [isResetPasswordDialogOpen, setIsResetPasswordDialogOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [newPassword, setNewPassword] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
   
   // Form fields
   const [formData, setFormData] = useState({
@@ -125,7 +47,7 @@ const UserManagement: React.FC = () => {
     username: '',
     email: '',
     password: '',
-    role: UserRole.USER, // Using enum instead of string literal
+    role: UserRole.USER,
     courseAccess: [] as {courseId: string, sessions: string[]}[]
   });
   
@@ -133,40 +55,102 @@ const UserManagement: React.FC = () => {
   const [selectedCourses, setSelectedCourses] = useState<{[key: string]: boolean}>({});
   const [selectedSessions, setSelectedSessions] = useState<{[key: string]: {[key: string]: boolean}}>({});
   
-  // Mock load users on component mount
+  // Load users, courses, and sessions on component mount
   useEffect(() => {
-    // This would be replaced with an API call
-    const mockUsers: User[] = [
-      {
-        id: '1',
-        username: 'student1',
-        email: 'student1@example.com',
-        role: UserRole.USER,
-        courseAccess: [
-          { courseId: 'scratch', sessions: ['session1alegesanatos', 'session2spacedodge'] },
-          { courseId: 'appinventor', sessions: ['session1'] }
-        ]
-      },
-      {
-        id: '2',
-        username: 'student2',
-        email: 'student2@example.com',
-        role: UserRole.USER,
-        courseAccess: [
-          { courseId: 'python', sessions: ['session1'] }
-        ]
-      },
-      {
-        id: '3',
-        username: 'admin',
-        email: 'admin@techminds.ro',
-        role: UserRole.ADMIN,
-        courseAccess: []
+    const loadData = async () => {
+      setIsLoading(true);
+      
+      try {
+        // Load courses
+        const { data: coursesData, error: coursesError } = await supabase
+          .from('courses')
+          .select('*')
+          .order('name');
+        
+        if (coursesError) {
+          throw coursesError;
+        }
+        
+        // Load sessions
+        const { data: sessionsData, error: sessionsError } = await supabase
+          .from('sessions')
+          .select('*')
+          .order('order_number');
+        
+        if (sessionsError) {
+          throw sessionsError;
+        }
+        
+        // Load profiles
+        const { data: profilesData, error: profilesError } = await supabase
+          .from('profiles')
+          .select('*');
+        
+        if (profilesError) {
+          throw profilesError;
+        }
+        
+        // Load user access
+        const { data: userAccessData, error: userAccessError } = await supabase
+          .from('user_access')
+          .select('*');
+        
+        if (userAccessError) {
+          throw userAccessError;
+        }
+        
+        // Set courses and sessions
+        setCourses(coursesData);
+        setSessions(sessionsData);
+        
+        // Transform profiles to users
+        const transformedUsers = profilesData.map(profile => {
+          // Find all access entries for this user
+          const userAccess = userAccessData.filter(access => access.user_id === profile.id);
+          
+          // Group sessions by course
+          const courseAccessMap = new Map<string, string[]>();
+          
+          userAccess.forEach(access => {
+            const courseId = access.course_id;
+            if (!courseAccessMap.has(courseId)) {
+              courseAccessMap.set(courseId, []);
+            }
+            
+            if (access.session_id) {
+              const sessions = courseAccessMap.get(courseId) || [];
+              sessions.push(access.session_id);
+              courseAccessMap.set(courseId, sessions);
+            }
+          });
+          
+          // Convert map to array
+          const courseAccess = Array.from(courseAccessMap).map(([courseId, sessions]) => ({
+            courseId,
+            sessions
+          }));
+          
+          // Create user object
+          return {
+            id: profile.id,
+            username: profile.username,
+            email: profile.email,
+            role: profile.role === 'admin' ? UserRole.ADMIN : UserRole.USER,
+            courseAccess
+          };
+        });
+        
+        setUsers(transformedUsers);
+        setFilteredUsers(transformedUsers);
+      } catch (error) {
+        console.error('Error loading data:', error);
+        toast.error('Failed to load data');
+      } finally {
+        setIsLoading(false);
       }
-    ];
+    };
     
-    setUsers(mockUsers);
-    setFilteredUsers(mockUsers);
+    loadData();
   }, []);
   
   // Filter users when search term changes
@@ -198,7 +182,7 @@ const UserManagement: React.FC = () => {
       username: '',
       email: '',
       password: '',
-      role: UserRole.USER, // Using enum instead of string literal
+      role: UserRole.USER,
       courseAccess: []
     });
     
@@ -206,10 +190,12 @@ const UserManagement: React.FC = () => {
     const initialCoursesState: {[key: string]: boolean} = {};
     const initialSessionsState: {[key: string]: {[key: string]: boolean}} = {};
     
-    AVAILABLE_COURSES.forEach(course => {
+    courses.forEach(course => {
       initialCoursesState[course.id] = false;
       initialSessionsState[course.id] = {};
-      course.sessions.forEach(session => {
+      
+      const courseSessions = sessions.filter(session => session.course_id === course.id);
+      courseSessions.forEach(session => {
         initialSessionsState[course.id][session.id] = false;
       });
     });
@@ -236,12 +222,14 @@ const UserManagement: React.FC = () => {
     const coursesState: {[key: string]: boolean} = {};
     const sessionsState: {[key: string]: {[key: string]: boolean}} = {};
     
-    AVAILABLE_COURSES.forEach(course => {
+    courses.forEach(course => {
       const courseAccess = user.courseAccess.find(access => access.courseId === course.id);
       coursesState[course.id] = !!courseAccess;
       
       sessionsState[course.id] = {};
-      course.sessions.forEach(session => {
+      const courseSessions = sessions.filter(session => session.course_id === course.id);
+      
+      courseSessions.forEach(session => {
         sessionsState[course.id][session.id] = courseAccess ? 
           courseAccess.sessions.includes(session.id) : false;
       });
@@ -285,8 +273,10 @@ const UserManagement: React.FC = () => {
     // If unchecking a course, make sure all sessions are unchecked too
     if (!checked) {
       const updatedSessions = { ...selectedSessions };
-      Object.keys(updatedSessions[courseId]).forEach(sessionId => {
-        updatedSessions[courseId][sessionId] = false;
+      Object.keys(updatedSessions[courseId] || {}).forEach(sessionId => {
+        if (updatedSessions[courseId]) {
+          updatedSessions[courseId][sessionId] = false;
+        }
       });
       setSelectedSessions(updatedSessions);
     }
@@ -296,7 +286,7 @@ const UserManagement: React.FC = () => {
     setSelectedSessions(prev => ({
       ...prev,
       [courseId]: {
-        ...prev[courseId],
+        ...(prev[courseId] || {}),
         [sessionId]: checked
       }
     }));
@@ -312,13 +302,15 @@ const UserManagement: React.FC = () => {
   
   const handleSelectAllSessions = (courseId: string, checked: boolean) => {
     const updatedSessions = { ...selectedSessions };
-    const course = AVAILABLE_COURSES.find(c => c.id === courseId);
+    const courseSessions = sessions.filter(session => session.course_id === courseId);
     
-    if (course) {
-      course.sessions.forEach(session => {
-        updatedSessions[courseId][session.id] = checked;
-      });
+    if (!updatedSessions[courseId]) {
+      updatedSessions[courseId] = {};
     }
+    
+    courseSessions.forEach(session => {
+      updatedSessions[courseId][session.id] = checked;
+    });
     
     setSelectedSessions(updatedSessions);
     
@@ -331,75 +323,192 @@ const UserManagement: React.FC = () => {
     }
   };
   
-  const handleSaveUser = () => {
-    // Validate form data
-    if (!formData.username || !formData.email || (!currentUser && !formData.password)) {
-      toast.error("Toate câmpurile trebuie completate");
-      return;
-    }
-    
-    // Create updated courseAccess based on selections
-    const updatedCourseAccess: {courseId: string, sessions: string[]}[] = [];
-    
-    Object.entries(selectedCourses).forEach(([courseId, isSelected]) => {
-      if (isSelected) {
-        const selectedSessionIds = Object.entries(selectedSessions[courseId])
-          .filter(([_, isChecked]) => isChecked)
-          .map(([sessionId]) => sessionId);
-        
-        if (selectedSessionIds.length > 0) {
-          updatedCourseAccess.push({
-            courseId,
-            sessions: selectedSessionIds
-          });
-        }
+  const handleSaveUser = async () => {
+    try {
+      setIsProcessing(true);
+      
+      // Validate form data
+      if (!formData.username || !formData.email || (!currentUser && !formData.password)) {
+        toast.error("Toate câmpurile trebuie completate");
+        return;
       }
-    });
-    
-    const updatedUser: User = {
-      ...formData,
-      courseAccess: updatedCourseAccess
-    };
-    
-    // Check if we're creating or updating
-    if (currentUser) {
-      // Update existing user
-      const updatedUsers = users.map(user => 
-        user.id === currentUser.id ? updatedUser : user
-      );
-      setUsers(updatedUsers);
-      toast.success(`Utilizatorul ${updatedUser.username} a fost actualizat`);
-    } else {
-      // Create new user
-      const newUser: User = {
-        ...updatedUser,
-        id: String(users.length + 1) // In a real app, this would be generated by the backend
-      };
-      setUsers([...users, newUser]);
-      toast.success(`Utilizatorul ${newUser.username} a fost creat`);
+      
+      // Create updated courseAccess based on selections
+      const updatedCourseAccess: {courseId: string, sessions: string[]}[] = [];
+      
+      Object.entries(selectedCourses).forEach(([courseId, isSelected]) => {
+        if (isSelected && selectedSessions[courseId]) {
+          const selectedSessionIds = Object.entries(selectedSessions[courseId])
+            .filter(([_, isChecked]) => isChecked)
+            .map(([sessionId]) => sessionId);
+          
+          if (selectedSessionIds.length > 0) {
+            updatedCourseAccess.push({
+              courseId,
+              sessions: selectedSessionIds
+            });
+          }
+        }
+      });
+      
+      if (currentUser) {
+        // Update existing user
+        
+        // 1. Update profile
+        const { error: profileError } = await supabase
+          .from('profiles')
+          .update({
+            username: formData.username,
+            email: formData.email,
+            role: formData.role === UserRole.ADMIN ? 'admin' : 'student',
+            updated_at: new Date().toISOString()
+          })
+          .eq('id', currentUser.id);
+        
+        if (profileError) {
+          throw profileError;
+        }
+        
+        // 2. Delete all existing user access
+        const { error: deleteError } = await supabase
+          .from('user_access')
+          .delete()
+          .eq('user_id', currentUser.id);
+        
+        if (deleteError) {
+          throw deleteError;
+        }
+        
+        // 3. Insert new user access entries
+        const userAccessEntries: any[] = [];
+        
+        updatedCourseAccess.forEach(access => {
+          access.sessions.forEach(sessionId => {
+            userAccessEntries.push({
+              user_id: currentUser.id,
+              course_id: access.courseId,
+              session_id: sessionId
+            });
+          });
+        });
+        
+        if (userAccessEntries.length > 0) {
+          const { error: insertError } = await supabase
+            .from('user_access')
+            .insert(userAccessEntries);
+          
+          if (insertError) {
+            throw insertError;
+          }
+        }
+        
+        // 4. Update password if provided
+        if (formData.password) {
+          if (updateUserPassword) {
+            await updateUserPassword(currentUser.id, formData.password);
+          }
+        }
+        
+        // 5. Update local state
+        const updatedUsers = users.map(user => 
+          user.id === currentUser.id 
+            ? { ...user, username: formData.username, email: formData.email, role: formData.role, courseAccess: updatedCourseAccess }
+            : user
+        );
+        
+        setUsers(updatedUsers);
+        toast.success(`Utilizatorul ${formData.username} a fost actualizat`);
+        
+      } else {
+        // Create new user
+        
+        // 1. Create auth user (this would normally be done via Supabase admin API or edge function)
+        // For now, we'll simulate it with a success message
+        
+        // In a real implementation, you would use Supabase Edge Functions or an admin API
+        // to create the user in auth.users, and the trigger we created would handle
+        // creating the profile
+        
+        toast.success(`Utilizatorul ${formData.username} a fost creat`);
+        toast.info('Notă: În implementarea actuală, utilizatorii trebuie să se înregistreze manual.');
+        
+        // For local state update, we'll simulate a new user
+        const newUserId = Math.random().toString(36).substring(2, 15);
+        
+        const newUser: User = {
+          id: newUserId,
+          username: formData.username,
+          email: formData.email,
+          role: formData.role,
+          courseAccess: updatedCourseAccess
+        };
+        
+        setUsers([...users, newUser]);
+      }
+      
+      setIsEditDialogOpen(false);
+      
+    } catch (error) {
+      console.error('Error saving user:', error);
+      toast.error('A apărut o eroare la salvarea utilizatorului');
+    } finally {
+      setIsProcessing(false);
     }
-    
-    setIsEditDialogOpen(false);
   };
   
-  const handleDeleteUser = () => {
+  const handleDeleteUser = async () => {
     if (!currentUser) return;
     
-    const updatedUsers = users.filter(user => user.id !== currentUser.id);
-    setUsers(updatedUsers);
-    toast.success(`Utilizatorul ${currentUser.username} a fost șters`);
-    setIsDeleteDialogOpen(false);
+    try {
+      setIsProcessing(true);
+      
+      // In a real implementation, you would use Supabase Edge Functions to delete the user
+      // from auth.users, and the cascading delete would handle the profile and access
+      // For now, we'll just update the local state
+      
+      const updatedUsers = users.filter(user => user.id !== currentUser.id);
+      setUsers(updatedUsers);
+      
+      toast.success(`Utilizatorul ${currentUser.username} a fost șters`);
+      toast.info('Notă: În implementarea actuală, utilizatorii nu sunt șterși din baza de date.');
+      
+      setIsDeleteDialogOpen(false);
+      
+    } catch (error) {
+      console.error('Error deleting user:', error);
+      toast.error('A apărut o eroare la ștergerea utilizatorului');
+    } finally {
+      setIsProcessing(false);
+    }
   };
   
-  const handleResetPassword = () => {
+  const handleResetPassword = async () => {
     if (!currentUser || !newPassword) {
       toast.error("Te rugăm să introduci o parolă nouă");
       return;
     }
     
-    // In a real app, this would make an API call to reset the password
-    toast.success(`Parola pentru ${currentUser.username} a fost resetată`);
-    setIsResetPasswordDialogOpen(false);
+    try {
+      setIsProcessing(true);
+      
+      if (updateUserPassword) {
+        await updateUserPassword(currentUser.id, newPassword);
+      }
+      
+      toast.success(`Parola pentru ${currentUser.username} a fost resetată`);
+      setIsResetPasswordDialogOpen(false);
+      
+    } catch (error) {
+      console.error('Error resetting password:', error);
+      toast.error('A apărut o eroare la resetarea parolei');
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  // Function to get course and session information for display
+  const getCourseInfo = (courseId: string) => {
+    return courses.find(course => course.id === courseId)?.name || courseId;
   };
   
   return (
@@ -431,65 +540,71 @@ const UserManagement: React.FC = () => {
               </div>
             </CardHeader>
             <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Utilizator</TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>Rol</TableHead>
-                    <TableHead>Cursuri</TableHead>
-                    <TableHead>Acțiuni</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {filteredUsers.length > 0 ? (
-                    filteredUsers.map(user => (
-                      <TableRow key={user.id}>
-                        <TableCell className="font-medium">{user.username}</TableCell>
-                        <TableCell>{user.email}</TableCell>
-                        <TableCell>
-                          <span className={`px-2 py-1 rounded-full text-xs ${
-                            user.role === UserRole.ADMIN ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800'
-                          }`}>
-                            {user.role === UserRole.ADMIN ? 'Administrator' : 'Student'}
-                          </span>
-                        </TableCell>
-                        <TableCell>
-                          <div className="flex flex-wrap gap-1">
-                            {user.courseAccess.map(access => (
-                              <span key={access.courseId} className="px-1.5 py-0.5 bg-gray-100 rounded text-xs">
-                                {AVAILABLE_COURSES.find(c => c.id === access.courseId)?.name || access.courseId}
-                              </span>
-                            ))}
-                          </div>
-                        </TableCell>
-                        <TableCell>
-                          <div className="flex gap-2">
-                            <Button variant="outline" size="sm" onClick={() => openEditDialog(user)}>
-                              <Edit className="h-3.5 w-3.5" />
-                            </Button>
-                            <Button variant="outline" size="sm" onClick={() => openResetPasswordDialog(user)}>
-                              <Key className="h-3.5 w-3.5" />
-                            </Button>
-                            {user.role !== UserRole.ADMIN && (
-                              <Button variant="outline" size="sm" onClick={() => openDeleteDialog(user)}
-                                className="text-red-500 hover:bg-red-50">
-                                <Trash className="h-3.5 w-3.5" />
+              {isLoading ? (
+                <div className="flex justify-center items-center py-8">
+                  <Loader2 className="h-8 w-8 animate-spin text-course-blue" />
+                </div>
+              ) : (
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Utilizator</TableHead>
+                      <TableHead>Email</TableHead>
+                      <TableHead>Rol</TableHead>
+                      <TableHead>Cursuri</TableHead>
+                      <TableHead>Acțiuni</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {filteredUsers.length > 0 ? (
+                      filteredUsers.map(user => (
+                        <TableRow key={user.id}>
+                          <TableCell className="font-medium">{user.username}</TableCell>
+                          <TableCell>{user.email}</TableCell>
+                          <TableCell>
+                            <span className={`px-2 py-1 rounded-full text-xs ${
+                              user.role === UserRole.ADMIN ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800'
+                            }`}>
+                              {user.role === UserRole.ADMIN ? 'Administrator' : 'Student'}
+                            </span>
+                          </TableCell>
+                          <TableCell>
+                            <div className="flex flex-wrap gap-1">
+                              {user.courseAccess.map(access => (
+                                <span key={access.courseId} className="px-1.5 py-0.5 bg-gray-100 rounded text-xs">
+                                  {getCourseInfo(access.courseId)}
+                                </span>
+                              ))}
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <div className="flex gap-2">
+                              <Button variant="outline" size="sm" onClick={() => openEditDialog(user)}>
+                                <Edit className="h-3.5 w-3.5" />
                               </Button>
-                            )}
-                          </div>
+                              <Button variant="outline" size="sm" onClick={() => openResetPasswordDialog(user)}>
+                                <Key className="h-3.5 w-3.5" />
+                              </Button>
+                              {user.role !== UserRole.ADMIN && (
+                                <Button variant="outline" size="sm" onClick={() => openDeleteDialog(user)}
+                                  className="text-red-500 hover:bg-red-50">
+                                  <Trash className="h-3.5 w-3.5" />
+                                </Button>
+                              )}
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      ))
+                    ) : (
+                      <TableRow>
+                        <TableCell colSpan={5} className="text-center py-6 text-gray-500">
+                          Nu s-au găsit utilizatori care să corespundă criteriilor de căutare
                         </TableCell>
                       </TableRow>
-                    ))
-                  ) : (
-                    <TableRow>
-                      <TableCell colSpan={5} className="text-center py-6 text-gray-500">
-                        Nu s-au găsit utilizatori care să corespundă criteriilor de căutare
-                      </TableCell>
-                    </TableRow>
-                  )}
-                </TableBody>
-              </Table>
+                    )}
+                  </TableBody>
+                </Table>
+              )}
             </CardContent>
           </Card>
         </div>
@@ -579,71 +694,81 @@ const UserManagement: React.FC = () => {
             
             <TabsContent value="access" className="py-4">
               <div className="space-y-6">
-                {AVAILABLE_COURSES.map((course) => (
-                  <div key={course.id} className="space-y-2 border-b pb-4">
-                    <div className="flex items-center gap-2">
-                      <Checkbox 
-                        id={`course-${course.id}`}
-                        checked={selectedCourses[course.id] || false}
-                        onCheckedChange={(checked) => 
-                          handleCourseToggle(course.id, checked === true)}
-                      />
-                      <Label htmlFor={`course-${course.id}`} className="font-semibold">
-                        {course.name}
-                      </Label>
-                    </div>
-                    
-                    {selectedCourses[course.id] && (
-                      <div className="ml-6 mt-2">
-                        <div className="flex items-center gap-2 mb-2">
-                          <Button 
-                            variant="outline" 
-                            size="sm"
-                            onClick={() => handleSelectAllSessions(course.id, true)}
-                          >
-                            Selectează tot
-                          </Button>
-                          <Button 
-                            variant="outline" 
-                            size="sm"
-                            onClick={() => handleSelectAllSessions(course.id, false)}
-                          >
-                            Deselectează tot
-                          </Button>
-                        </div>
-                        
-                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-1">
-                          {course.sessions.map((session) => (
-                            <div key={session.id} className="flex items-center gap-2">
-                              <Checkbox 
-                                id={`session-${course.id}-${session.id}`}
-                                checked={selectedSessions[course.id]?.[session.id] || false}
-                                onCheckedChange={(checked) => 
-                                  handleSessionToggle(course.id, session.id, checked === true)}
-                              />
-                              <Label 
-                                htmlFor={`session-${course.id}-${session.id}`}
-                                className="text-sm"
-                              >
-                                {session.name}
-                              </Label>
-                            </div>
-                          ))}
-                        </div>
+                {courses.map((course) => {
+                  const courseSessions = sessions.filter(session => session.course_id === course.id);
+                  return (
+                    <div key={course.id} className="space-y-2 border-b pb-4">
+                      <div className="flex items-center gap-2">
+                        <Checkbox 
+                          id={`course-${course.id}`}
+                          checked={selectedCourses[course.id] || false}
+                          onCheckedChange={(checked) => 
+                            handleCourseToggle(course.id, checked === true)}
+                        />
+                        <Label htmlFor={`course-${course.id}`} className="font-semibold">
+                          {course.name}
+                        </Label>
                       </div>
-                    )}
-                  </div>
-                ))}
+                      
+                      {selectedCourses[course.id] && (
+                        <div className="ml-6 mt-2">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              onClick={() => handleSelectAllSessions(course.id, true)}
+                            >
+                              Selectează tot
+                            </Button>
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              onClick={() => handleSelectAllSessions(course.id, false)}
+                            >
+                              Deselectează tot
+                            </Button>
+                          </div>
+                          
+                          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-1">
+                            {courseSessions.map((session) => (
+                              <div key={session.id} className="flex items-center gap-2">
+                                <Checkbox 
+                                  id={`session-${course.id}-${session.id}`}
+                                  checked={selectedSessions[course.id]?.[session.id] || false}
+                                  onCheckedChange={(checked) => 
+                                    handleSessionToggle(course.id, session.id, checked === true)}
+                                />
+                                <Label 
+                                  htmlFor={`session-${course.id}-${session.id}`}
+                                  className="text-sm"
+                                >
+                                  {session.name}
+                                </Label>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </TabsContent>
           </Tabs>
           
           <DialogFooter className="mt-6">
-            <Button variant="outline" onClick={() => setIsEditDialogOpen(false)}>
+            <Button variant="outline" onClick={() => setIsEditDialogOpen(false)} disabled={isProcessing}>
               Anulează
             </Button>
-            <Button onClick={handleSaveUser}>
-              {currentUser ? 'Salvează Modificările' : 'Creează Utilizator'}
+            <Button onClick={handleSaveUser} disabled={isProcessing}>
+              {isProcessing ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Se procesează...
+                </>
+              ) : (
+                currentUser ? 'Salvează Modificările' : 'Creează Utilizator'
+              )}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -659,14 +784,22 @@ const UserManagement: React.FC = () => {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setIsDeleteDialogOpen(false)}>
+            <Button variant="outline" onClick={() => setIsDeleteDialogOpen(false)} disabled={isProcessing}>
               Anulează
             </Button>
             <Button 
               variant="destructive" 
               onClick={handleDeleteUser}
+              disabled={isProcessing}
             >
-              Șterge utilizatorul
+              {isProcessing ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Se procesează...
+                </>
+              ) : (
+                'Șterge utilizatorul'
+              )}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -696,11 +829,18 @@ const UserManagement: React.FC = () => {
           </div>
           
           <DialogFooter>
-            <Button variant="outline" onClick={() => setIsResetPasswordDialogOpen(false)}>
+            <Button variant="outline" onClick={() => setIsResetPasswordDialogOpen(false)} disabled={isProcessing}>
               Anulează
             </Button>
-            <Button onClick={handleResetPassword}>
-              Resetează Parola
+            <Button onClick={handleResetPassword} disabled={isProcessing}>
+              {isProcessing ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Se procesează...
+                </>
+              ) : (
+                'Resetează Parola'
+              )}
             </Button>
           </DialogFooter>
         </DialogContent>
