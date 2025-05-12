@@ -25,7 +25,7 @@ import Session3MotoRacer from '@/pages/scratch/Session3MotoRacer';
 import Session4CityRunner from '@/pages/scratch/Session4CityRunner';
 import Session5BeachBallBounce from '@/pages/scratch/Session5BeachBallBounce';
 import Session6StitchBeach from '@/pages/scratch/Session6StitchBeach';
-import Session7CakeQuest from '@/pages/scratch/Session7CakeQuest';
+import Session7CakeQuest from '@/pages/scratch/Session7cakequest';
 import Session8WizardsQuest from '@/pages/scratch/Session8WizardsQuest';
 import AppInventorSession1 from '@/pages/appinventor/Session1';
 import AppInventorSession2 from '@/pages/appinventor/Session2';
