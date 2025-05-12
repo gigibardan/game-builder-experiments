@@ -3,6 +3,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { CheckCircle, Clock, Users, BarChart3, ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // Interface defined for proper TypeScript typing
 interface SessionCardProps {

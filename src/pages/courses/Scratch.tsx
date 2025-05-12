@@ -178,7 +178,7 @@ const Scratch = () => {
               <div className="lg:w-1/2 flex justify-center">
                 <div className="relative">
                   <img 
-                    src="https://scratch.mit.edu/images/scratch-og.png" 
+                    src="/assets/images/scratch/logoscratch.webp" 
                     alt="Scratch Programming Interface" 
                     className="rounded-xl shadow-2xl max-w-md w-full border-4 border-white/30 transform rotate-1"
                   />
