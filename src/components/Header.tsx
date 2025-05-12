@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -190,7 +189,7 @@ const Header = () => {
               
               {isAdmin && (
                 <NavigationMenuItem>
-                  <Link to="/admin">
+                  <Link to="/admin/dashboard">
                     <Button variant="ghost" className={cn(
                       "text-sm text-white hover:bg-white/10 hover:text-white",
                       isActive('/admin') ? "bg-white/20" : ""
@@ -261,7 +260,7 @@ const Header = () => {
                   
                   {isAdmin && (
                     <li>
-                      <Link to="/admin" className="text-gray-800 hover:text-course-purple flex items-center" onClick={closeMenu}>
+                      <Link to="/admin/dashboard" className="text-gray-800 hover:text-course-purple flex items-center" onClick={closeMenu}>
                         <ShieldCheck className="mr-2 h-5 w-5" />
                         <span>Admin</span>
                       </Link>
