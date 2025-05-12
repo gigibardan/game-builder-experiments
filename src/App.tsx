@@ -18,6 +18,7 @@ import Godot from '@/pages/courses/Godot';
 import Greenfoot from '@/pages/courses/Greenfoot';
 import MinecraftModding from '@/pages/courses/MinecraftModding';
 import Unauthorized from '@/pages/auth/Unauthorized';
+import NotFound from '@/pages/NotFound';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Dashboard from '@/pages/admin/Dashboard';
 import UserManagement from '@/pages/admin/UserManagement';
@@ -149,6 +150,9 @@ function App() {
       <Route path="/greenfoot/session3" element={<GreenfootSession3 />} />
       
       <Route path="/lesson-template" element={<LessonTemplate />} />
+
+      {/* Catch all route - 404 */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
