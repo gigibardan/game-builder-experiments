@@ -41,7 +41,7 @@ const Session4CityRunner = () => {
       }}
       nextLesson={{
         title: "Lecția următoare",
-        path: "/scratch/session5stitchbeach"
+        path: "/scratch/session5beachballbounce"
       }}
     >
       <div className="space-y-8">
@@ -443,7 +443,7 @@ const Session4CityRunner = () => {
             și implementarea unui sistem de punctaj.
           </p>
           <Button asChild className="bg-amber-500 hover:bg-amber-600">
-            <Link to="/scratch/session5stitchbeach" className="flex items-center">
+            <Link to="/scratch/session5beachballbounce" className="flex items-center">
               <span>Continuă cu următoarea lecție</span>
             </Link>
           </Button>

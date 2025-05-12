@@ -38,7 +38,10 @@ const Session8WizardsQuest = () => {
         title: "Lecția anterioară",
         path: "/scratch/session7cakequest"
       }}
-      nextLesson={null}
+      nextLesson={{
+        title: "Lecția următoare",
+        path: "/scratch/session9robotfootball"
+      }}
     >
       <div className="space-y-8">
         <section id="intro">
@@ -399,11 +402,11 @@ const Session8WizardsQuest = () => {
             Acum poți împărtăși jocul cu prietenii și familia, îl poți personaliza adăugând propriile tale idei și 
             îmbunătățiri, și poți folosi aceste concepte pentru a crea alte jocuri similare.
           </p>
-          <Button asChild className="bg-purple-500 hover:bg-purple-600">
-            <Link to="/scratch" className="flex items-center">
-              <span>Înapoi la cursul Scratch</span>
-            </Link>
-          </Button>
+          <Button asChild className="bg-cyan-500 hover:bg-cyan-600">
+                                          <Link to="/scratch/session9robotfootball" className="flex items-center">
+                                            <span>Continuă cu următoarea lecție</span>
+                                          </Link>
+                                        </Button>
         </section>
       </div>
     </LessonLayout>

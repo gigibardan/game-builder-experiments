@@ -41,7 +41,7 @@ const Session2SpaceDodge = () => {
       }}
       nextLesson={{
         title: "Lecția următoare",
-        path: "/scratch/session3"
+        path: "/scratch/session3motoracer"
       }}
     >
       <div className="space-y-8">

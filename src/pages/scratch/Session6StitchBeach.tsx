@@ -39,7 +39,10 @@ const Session6StitchBeach = () => {
         title: "Lecția anterioară",
         path: "/scratch/session5beachballbounce"
       }}
-      nextLesson={null}
+       nextLesson={{
+        title: "Lecția următoare",
+        path: "/scratch/session7cakequest"
+      }}
     >
       <div className="space-y-8">
         <section id="intro">
@@ -453,11 +456,11 @@ const Session6StitchBeach = () => {
             Acum poți împărtăși jocul cu prietenii și familia, îl poți personaliza adăugând propriile tale idei și 
             îmbunătățiri, și poți folosi aceste concepte pentru a crea alte jocuri similare.
           </p>
-          <Button asChild className="bg-blue-500 hover:bg-blue-600">
-            <Link to="/scratch" className="flex items-center">
-              <span>Înapoi la cursul Scratch</span>
-            </Link>
-          </Button>
+          <Button asChild className="bg-cyan-500 hover:bg-cyan-600">
+                      <Link to="/scratch/session7cakequest" className="flex items-center">
+                        <span>Continuă cu următoarea lecție</span>
+                      </Link>
+                    </Button>
         </section>
       </div>
     </LessonLayout>
