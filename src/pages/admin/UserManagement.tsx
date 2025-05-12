@@ -125,7 +125,7 @@ const UserManagement: React.FC = () => {
     username: '',
     email: '',
     password: '',
-    role: 'student' as UserRole,
+    role: UserRole.USER, // Using enum instead of string literal
     courseAccess: [] as {courseId: string, sessions: string[]}[]
   });
   
@@ -141,7 +141,7 @@ const UserManagement: React.FC = () => {
         id: '1',
         username: 'student1',
         email: 'student1@example.com',
-        role: 'student',
+        role: UserRole.USER,
         courseAccess: [
           { courseId: 'scratch', sessions: ['session1alegesanatos', 'session2spacedodge'] },
           { courseId: 'appinventor', sessions: ['session1'] }
@@ -151,7 +151,7 @@ const UserManagement: React.FC = () => {
         id: '2',
         username: 'student2',
         email: 'student2@example.com',
-        role: 'student',
+        role: UserRole.USER,
         courseAccess: [
           { courseId: 'python', sessions: ['session1'] }
         ]
@@ -160,7 +160,7 @@ const UserManagement: React.FC = () => {
         id: '3',
         username: 'admin',
         email: 'admin@techminds.ro',
-        role: 'admin',
+        role: UserRole.ADMIN,
         courseAccess: []
       }
     ];
@@ -198,7 +198,7 @@ const UserManagement: React.FC = () => {
       username: '',
       email: '',
       password: '',
-      role: 'student',
+      role: UserRole.USER, // Using enum instead of string literal
       courseAccess: []
     });
     
@@ -269,7 +269,10 @@ const UserManagement: React.FC = () => {
   };
   
   const handleRoleChange = (value: string) => {
-    setFormData(prev => ({ ...prev, role: value as UserRole }));
+    setFormData(prev => ({ 
+      ...prev, 
+      role: value === 'admin' ? UserRole.ADMIN : UserRole.USER 
+    }));
   };
   
   const handleCourseToggle = (courseId: string, checked: boolean) => {
@@ -446,9 +449,9 @@ const UserManagement: React.FC = () => {
                         <TableCell>{user.email}</TableCell>
                         <TableCell>
                           <span className={`px-2 py-1 rounded-full text-xs ${
-                            user.role === 'admin' ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800'
+                            user.role === UserRole.ADMIN ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800'
                           }`}>
-                            {user.role === 'admin' ? 'Administrator' : 'Student'}
+                            {user.role === UserRole.ADMIN ? 'Administrator' : 'Student'}
                           </span>
                         </TableCell>
                         <TableCell>
@@ -468,7 +471,7 @@ const UserManagement: React.FC = () => {
                             <Button variant="outline" size="sm" onClick={() => openResetPasswordDialog(user)}>
                               <Key className="h-3.5 w-3.5" />
                             </Button>
-                            {user.role !== 'admin' && (
+                            {user.role !== UserRole.ADMIN && (
                               <Button variant="outline" size="sm" onClick={() => openDeleteDialog(user)}
                                 className="text-red-500 hover:bg-red-50">
                                 <Trash className="h-3.5 w-3.5" />
@@ -557,9 +560,9 @@ const UserManagement: React.FC = () => {
                   <div className="space-y-2">
                     <Label htmlFor="role">Rol</Label>
                     <Select 
-                      value={formData.role} 
+                      value={formData.role === UserRole.ADMIN ? 'admin' : 'student'} 
                       onValueChange={handleRoleChange}
-                      disabled={currentUser?.role === 'admin'}
+                      disabled={currentUser?.role === UserRole.ADMIN}
                     >
                       <SelectTrigger id="role">
                         <SelectValue placeholder="Selectează un rol" />
