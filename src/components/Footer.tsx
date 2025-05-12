@@ -99,15 +99,15 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <MapPin className="h-6 w-6 mr-3 text-gray-400 flex-shrink-0" />
-                <span>Strada Exemplu, Nr. 123, București, România</span>
+                <span>Strada Știrbei Vodă, Nr. 26-28, Etaj 3, Union Business Center Sector 1, București</span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-6 w-6 mr-3 text-gray-400 flex-shrink-0" />
-                <span>+40 123 456 789</span>
+                <span>+40 758 707 448</span>
               </li>
               <li className="flex items-center">
                 <Mail className="h-6 w-6 mr-3 text-gray-400 flex-shrink-0" />
-                <span>contact@techminds.ro</span>
+                <span>office@techminds-academy.ro</span>
               </li>
             </ul>
           </div>
