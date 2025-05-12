@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Login from '@/pages/auth/Login';
@@ -19,6 +20,7 @@ import MinecraftModding from '@/pages/courses/MinecraftModding';
 import Unauthorized from '@/pages/auth/Unauthorized';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Dashboard from '@/pages/admin/Dashboard';
+import UserManagement from '@/pages/admin/UserManagement';
 import Session1Alegesanatos from '@/pages/scratch/Session1Alegesanatos';
 import Session2SpaceDodge from '@/pages/scratch/Session2SpaceDodge';
 import Session3MotoRacer from '@/pages/scratch/Session3MotoRacer';
@@ -78,6 +80,7 @@ function App() {
       <Route path="/courses/minecraft-modding" element={<MinecraftModding />} />
       <Route path="/courses/greenfoot" element={<Greenfoot />} />
       
+      {/* Admin Routes - Protected */}
       <Route 
         path="/admin/dashboard" 
         element={
@@ -86,8 +89,16 @@ function App() {
           </ProtectedRoute>
         } 
       />
+      <Route 
+        path="/admin/users" 
+        element={
+          <ProtectedRoute requireAdmin={true}>
+            <UserManagement />
+          </ProtectedRoute>
+        } 
+      />
       
-      {/* Scratch session routes - Updated to keep only the 6 required courses */}
+      {/* Scratch session routes */}
       <Route path="/scratch/session1alegesanatos" element={<Session1Alegesanatos />} />
       <Route path="/scratch/session2spacedodge" element={<Session2SpaceDodge />} />
       <Route path="/scratch/session3motoracer" element={<Session3MotoRacer />} />

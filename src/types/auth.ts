@@ -1,6 +1,6 @@
 
 export enum UserRole {
-  USER = 'user',
+  USER = 'student',
   ADMIN = 'admin'
 }
 
@@ -24,4 +24,5 @@ export interface AuthContextType {
   hasAccessToSession: (courseId: string, sessionId: string) => boolean;
   login: (username: string, password: string) => Promise<void>;
   logout: () => void;
+  updateUserPassword?: (userId: string, newPassword: string) => Promise<boolean>;
 }
