@@ -86,7 +86,7 @@ const SessionCard = ({
             <span className={`bg-white rounded-full h-8 w-8 flex items-center justify-center mr-2 shadow-md text-gray-800`}>
               {number}
             </span>
-            <span className={textColor === 'text-white' ? textColor : 'text-gray-800'}>
+                <span className={textColor === 'text-white' && isAvailable ? textColor : 'text-gray-800'}>
               {title}
             </span>
           </CardTitle>

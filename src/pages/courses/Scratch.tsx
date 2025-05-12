@@ -31,7 +31,7 @@ const Scratch = () => {
       ageGroup: "7-14 ani",
       link: "/scratch/session2spacedodge",
       highlights: ["Animarea personajelor", "Generarea de obstacole", "Sistem de scor", "Elemente de fundal"],
-      imageSrc: "https://scratch.mit.edu/images/space-chase-static.png",
+      imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratchproiect5preview.png",
       color: "blue"
     },
     {
@@ -81,7 +81,44 @@ const Scratch = () => {
       highlights: ["Animarea personajelor", "Detecția coliziunilor", "Sisteme de punctaj complexe", "Condiții de victorie și înfrângere"],
       imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratchproiect7preview.png",
       color: "indigo"
-    }
+    },
+    {
+    id: 7,
+    title: "The Cake Quest",
+    description: "Ajută personajul Roadster să traverseze o stradă aglomerată, evitând mașinile, pentru a ajunge la un tort delicios.",
+    duration: "90 minute",
+    level: "Începător-Intermediar",
+    ageGroup: "7-14 ani",
+    link: "/scratch/session7cakequest",
+    highlights: ["Controlul personajului", "Clonarea obiectelor", "Detecția coliziunilor", "Condiții de victorie și înfrângere"],
+    imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratchproiect8preview.png",
+    color: "rose"
+   },
+   {
+  id: 8,
+  title: "Wizard's Quest",
+  description: "Ghidează un vrăjitor broscoi prin labirint pentru a găsi bagheta magică pierdută, evitând liliecii periculoși care patrulează coridoarele.",
+  duration: "90 minute",
+  level: "Intermediar",
+  ageGroup: "7-14 ani",
+  link: "/scratch/session8wizardsquest",
+  highlights: ["Detectarea coliziunilor folosind culori", "Algoritm de evitare a obstacolelor", "Mișcarea inamicilor autonomi", "Labirint interactiv"],
+  imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratchproiect6preview.png",
+  color: "purple"
+  },
+{
+  id: 9,
+  title: "Robot Football",
+  description: "Creează un joc distractiv în Scratch unde doi roboți joacă fotbal, controlând mingea și marcând goluri împotriva adversarului.",
+  duration: "90 minute",
+  level: "Intermediar",
+  ageGroup: "7-14 ani",
+  link: "/scratch/session9robotfootball",
+  highlights: ["Joc pentru doi jucători", "Coliziuni și ricoșări", "Sistem de scor", "Animații de countdown"],
+  imageSrc: "https://elearning.techminds-academy.ro/assets/images/robotfootballpreview.png",
+  color: "emerald"
+}
+
   ];
 
   return (

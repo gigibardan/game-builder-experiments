@@ -25,6 +25,8 @@ import Session3MotoRacer from '@/pages/scratch/Session3MotoRacer';
 import Session4CityRunner from '@/pages/scratch/Session4CityRunner';
 import Session5BeachBallBounce from '@/pages/scratch/Session5BeachBallBounce';
 import Session6StitchBeach from '@/pages/scratch/Session6StitchBeach';
+import Session7CakeQuest from '@/pages/scratch/Session7CakeQuest';
+import Session8WizardsQuest from '@/pages/scratch/Session8WizardsQuest';
 import AppInventorSession1 from '@/pages/appinventor/Session1';
 import AppInventorSession2 from '@/pages/appinventor/Session2';
 import AppInventorSession3 from '@/pages/appinventor/Session3';
@@ -51,6 +53,7 @@ import CrystalRealm from '@/pages/minecraftmodding/CrystalRealm';
 import GreenfootSession1 from '@/pages/greenfoot/Session1';
 import GreenfootSession2 from '@/pages/greenfoot/Session2';
 import GreenfootSession3 from '@/pages/greenfoot/Session3';
+import Session9RobotFootball from './pages/scratch/Session9RobotFootball';
 
 function App() {
   return (
@@ -91,7 +94,10 @@ function App() {
       <Route path="/scratch/session4cityrunner" element={<Session4CityRunner />} />
       <Route path="/scratch/session5beachballbounce" element={<Session5BeachBallBounce />} />
       <Route path="/scratch/session6stitchbeach" element={<Session6StitchBeach />} />
-      
+      <Route path="/scratch/session7cakequest" element={<Session7CakeQuest />} />
+      <Route path="/scratch/session8wizardsquest" element={<Session8WizardsQuest />} />
+      <Route path="/scratch/session9robotfootball" element={<Session9RobotFootball />} /> 
+
       {/* App Inventor session routes */}
       <Route path="/appinventor/session1" element={<AppInventorSession1 />} />
       <Route path="/appinventor/session2" element={<AppInventorSession2 />} />

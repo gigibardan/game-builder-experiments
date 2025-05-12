@@ -92,7 +92,7 @@ const Session2SpaceDodge = () => {
               <ImageModal 
                 src="https://elearning.techminds-academy.ro/assets/images/scratchproiect5preview.png" 
                 alt="Previzualizare joc Space Dodge" 
-                className="w-full object-contain h-48"
+                className="w-full"
               />
               <div className="p-4 flex flex-col items-center">
                 <Button asChild className="w-full bg-yellow-600 hover:bg-yellow-700">
@@ -488,7 +488,7 @@ const Session2SpaceDodge = () => {
             </li>
           </ul>
           <Button asChild className="bg-indigo-500 hover:bg-indigo-600">
-            <Link to="/scratch/session3" className="flex items-center">
+            <Link to="/scratch/session3motoracer" className="flex items-center">
               <span>Continuă cu următoarea lecție</span>
             </Link>
           </Button>
