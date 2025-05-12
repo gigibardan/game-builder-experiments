@@ -108,7 +108,7 @@ const Scratch = () => {
   },
 {
   id: 9,
-  title: "Robot Football",
+  title: "Robot Footballl",
   description: "Creează un joc distractiv în Scratch unde doi roboți joacă fotbal, controlând mingea și marcând goluri împotriva adversarului.",
   duration: "90 minute",
   level: "Intermediar",
