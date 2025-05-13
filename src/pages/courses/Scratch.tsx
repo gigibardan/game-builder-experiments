@@ -114,7 +114,31 @@ const Scratch = () => {
       highlights: ["Joc pentru doi jucători", "Coliziuni și ricoșări", "Sistem de scor", "Animații de countdown"],
       imageSrc: "https://elearning.techminds-academy.ro/assets/images/robotfootballpreview.png",
       color: "emerald"
-    }
+    },
+    {
+  id: 10,
+  title: "Flappy Minecraft (Partea 1)",
+  description: "Începe să creezi un joc captivant inspirat din Flappy Bird, dar cu elemente și personaje din universul Minecraft.",
+  duration: "90 minute",
+  level: "Intermediar",
+  ageGroup: "8-14 ani",
+  link: "/scratch/session10flappyminecraftpart1",
+  highlights: ["Crearea obstacolelor", "Sistem de clonare", "Efecte de animație", "Detecția punctelor"],
+  imageSrc: "/assets/images/scratch/previewminecraft.png",
+  color: "amber"
+},
+{
+  id: 11,
+  title: "Flappy Minecraft (Partea 2)",
+  description: "Finalizează jocul Flappy Minecraft adăugând personajul principal, fizica zborului, detecția coliziunilor și efecte vizuale.",
+  duration: "90 minute",
+  level: "Intermediar",
+  ageGroup: "8-14 ani",
+  link: "/scratch/session10flappyminecraftpart2",
+  highlights: ["Fizică de zbor", "Controlul personajului", "Detecția coliziunilor", "Efecte vizuale și sonore"],
+  imageSrc: "/assets/images/scratch/previewminecraft.png",
+  color: "green"
+}
   ];
 
   return (

@@ -57,6 +57,8 @@ import GreenfootSession1 from '@/pages/greenfoot/Session1';
 import GreenfootSession2 from '@/pages/greenfoot/Session2';
 import GreenfootSession3 from '@/pages/greenfoot/Session3';
 import Session9RobotFootball from './pages/scratch/Session9RobotFootball';
+import Session10FlappyMinecraftPart1 from './pages/scratch/Session10FlappyMinecraftPart1';
+import Session10FlappyMinecraftPart2 from './pages/scratch/Session10FlappyMinecraftPart2';
 
 function App() {
   return (
@@ -109,6 +111,8 @@ function App() {
       <Route path="/scratch/session7cakequest" element={<Session7CakeQuest />} />
       <Route path="/scratch/session8wizardsquest" element={<Session8WizardsQuest />} />
       <Route path="/scratch/session9robotfootball" element={<Session9RobotFootball />} /> 
+      <Route path="/scratch/session10flappyminecraftpart1" element={<Session10FlappyMinecraftPart1 />} /> 
+      <Route path="/scratch/session10flappyminecraftpart2" element={<Session10FlappyMinecraftPart2 />} /> 
 
       {/* App Inventor session routes */}
       <Route path="/appinventor/session1" element={<AppInventorSession1 />} />

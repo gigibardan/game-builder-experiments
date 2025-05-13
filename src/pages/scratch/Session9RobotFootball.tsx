@@ -38,7 +38,10 @@ const Session9RobotFootball = () => {
         title: "Lecția anterioară",
         path: "/scratch/session8wizardsquest"
       }}
-      nextLesson={null}
+      nextLesson={{
+        title: "Lecția următoare",
+        path: "/scratch/session10flappyminecraftpart1"
+      }}
     >
       <div className="space-y-8">
         <section id="intro">
@@ -408,11 +411,11 @@ const Session9RobotFootball = () => {
             Acum poți împărtăși jocul cu prietenii și familia pentru a juca împreună, îl poți personaliza adăugând 
             propriile tale idei și îmbunătățiri, și poți folosi aceste concepte pentru a crea alte jocuri multiplayer.
           </p>
-          <Button asChild className="bg-emerald-500 hover:bg-emerald-600">
-            <Link to="/scratch" className="flex items-center">
-              <span>Înapoi la cursul Scratch</span>
-            </Link>
-          </Button>
+            <Button asChild className="bg-cyan-500 hover:bg-cyan-600">
+                                                    <Link to="/scratch/session10flappyminecraftpart1" className="flex items-center">
+                                                      <span>Continuă cu următoarea lecție</span>
+                                                    </Link>
+                                                  </Button>
         </section>
       </div>
     </LessonLayout>
