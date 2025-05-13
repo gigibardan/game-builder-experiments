@@ -95,8 +95,8 @@ const LessonLayout: React.FC<LessonProps> = ({
       <ReadingProgressBar />
       
       {/* Hero Section with Dynamic Color */}
-      <section className={`${heroColor} text-white py-10 md:py-12 px-4 md:px-0`}>
-        <div className="container mx-auto">
+      <section className={`${heroColor} text-white py-10 md:py-12 px-2 sm:px-4 md:px-0`}>
+        <div className="container mx-auto px-0 sm:px-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -131,8 +131,8 @@ const LessonLayout: React.FC<LessonProps> = ({
       </section>
 
       {/* Content Section */}
-      <section className="py-8 px-4 md:px-0 bg-gray-50">
-        <div className="container mx-auto">
+      <section className="py-8 px-2 sm:px-4 md:px-0 bg-gray-50">
+        <div className="container mx-auto px-0 sm:px-auto">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Main Content */}
             <div className="lg:w-3/4">
@@ -144,7 +144,7 @@ const LessonLayout: React.FC<LessonProps> = ({
                   </div>
                 </div>
                 
-                <CardContent className="p-6 md:p-8">
+                <CardContent className="p-3 sm:p-6 md:p-8">
                   {sections ? (
                     <div className="space-y-12">
                       {sections.map((section, index) => (
