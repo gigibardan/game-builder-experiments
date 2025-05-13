@@ -58,6 +58,17 @@ const Courses = () => {
       level: "Începător-Intermediar"
     },
     {
+      title: "Fabrica de Jocuri",
+      subtitle: "GDevelop",
+      description: "Dezvoltă jocuri 2D complexe cu fizică realistă și efecte vizuale impresionante.",
+      icon: <Rocket className="h-10 w-10 text-indigo-600" />,
+      color: "border-indigo-600",
+      bgColor: "bg-indigo-600",
+      link: "/courses/gdevelop",
+      age: "11-15 ani",
+      level: "Intermediar"
+    },
+    {
       title: "Povești 3D Interactive",
       subtitle: "Alice 3",
       description: "Creează povești și animații 3D interactive într-un mediu vizual de programare.",
@@ -66,17 +77,6 @@ const Courses = () => {
       bgColor: "bg-pink-600",
       link: "/courses/alice3",
       age: "12-16 ani",
-      level: "Intermediar"
-    },
-    {
-      title: "Jocuri și Electronice",
-      subtitle: "micro:bit Arcade",
-      description: "Combină programarea cu electronica pentru a crea jocuri fizice interactive.",
-      icon: <LayoutGrid className="h-10 w-10 text-red-500" />,
-      color: "border-red-500",
-      bgColor: "bg-red-500",
-      link: "/courses/microbitarcade",
-      age: "11-15 ani",
       level: "Intermediar"
     },
     {
@@ -100,6 +100,17 @@ const Courses = () => {
       link: "/courses/robloxlua",
       age: "12-17 ani",
       level: "Intermediar-Avansat"
+    },
+    {
+      title: "Jocuri și Electronice",
+      subtitle: "micro:bit Arcade",
+      description: "Combină programarea cu electronica pentru a crea jocuri fizice interactive.",
+      icon: <LayoutGrid className="h-10 w-10 text-red-500" />,
+      color: "border-red-500",
+      bgColor: "bg-red-500",
+      link: "/courses/microbitarcade",
+      age: "11-15 ani",
+      level: "Intermediar"
     },
     {
       title: "De la Cod la Aplicații",
@@ -156,17 +167,7 @@ const Courses = () => {
       age: "10-15 ani",
       level: "Începător-Intermediar"
     },
-    {
-      title: "Fabrica de Jocuri",
-      subtitle: "GDevelop",
-      description: "Dezvoltă jocuri 2D complexe cu fizică realistă și efecte vizuale impresionante.",
-      icon: <Rocket className="h-10 w-10 text-indigo-600" />,
-      color: "border-indigo-600",
-      bgColor: "bg-indigo-600",
-      link: "/courses/gdevelop",
-      age: "11-15 ani",
-      level: "Intermediar"
-    }
+    
   ];
 
   return (

@@ -91,7 +91,7 @@ const Session6StitchBeach = () => {
 
             <div className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
               <ImageModal 
-                src="https://elearning.techminds-academy.ro/assets/images/scratchproiect7preview.png" 
+                src="/assets/images/scratch/scratchproiect7preview.png" 
                 alt="Previzualizare joc Stitch's Beach Adventure" 
                 className="w-full"
               />
@@ -134,7 +134,7 @@ const Session6StitchBeach = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect7personaje.png" 
+              src="/assets/images/scratch/scratchproiect7personaje.png" 
               alt="Personajele jocului" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -208,7 +208,7 @@ const Session6StitchBeach = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect7stitch.png" 
+              src="/assets/images/scratch/scratchproiect7stitch.png" 
               alt="Codul pentru Stitch" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -256,7 +256,7 @@ const Session6StitchBeach = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect7cake.png" 
+              src="/assets/images/scratch/scratchproiect7cake.png" 
               alt="Codul pentru tort" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -301,7 +301,7 @@ const Session6StitchBeach = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect7bomb.png" 
+              src="/assets/images/scratch/scratchproiect7bomb.png" 
               alt="Codul pentru bombă" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -360,7 +360,7 @@ const Session6StitchBeach = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect7decor.png" 
+              src="/assets/images/scratch/scratchproiect7decor.png" 
               alt="Codul pentru decor" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />

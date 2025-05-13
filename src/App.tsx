@@ -60,6 +60,7 @@ import Session9RobotFootball from './pages/scratch/Session9RobotFootball';
 import Session10FlappyMinecraftPart1 from './pages/scratch/Session10FlappyMinecraftPart1';
 import Session10FlappyMinecraftPart2 from './pages/scratch/Session10FlappyMinecraftPart2';
 import Session11EggDropper from './pages/scratch/Session11EggDropper';
+import GDevelop from './pages/courses/GDevelop';
 
 function App() {
   return (
@@ -77,6 +78,7 @@ function App() {
       {/* Course pages with consistent paths */}
       <Route path="/courses/scratch" element={<Scratch />} />
       <Route path="/courses/appinventor" element={<AppInventor />} />
+      <Route path="/courses/gdevelop" element={<GDevelop />} />
       <Route path="/courses/python" element={<Python />} />
       <Route path="/courses/alice3" element={<Alice3 />} />
       <Route path="/courses/frontenddev" element={<FrontendDev />} />
