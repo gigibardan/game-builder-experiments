@@ -61,6 +61,7 @@ import Session10FlappyMinecraftPart1 from './pages/scratch/Session10FlappyMinecr
 import Session10FlappyMinecraftPart2 from './pages/scratch/Session10FlappyMinecraftPart2';
 import Session11EggDropper from './pages/scratch/Session11EggDropper';
 import GDevelop from './pages/courses/GDevelop';
+import RobloxLua from './pages/courses/RobloxLua';
 
 function App() {
   return (
@@ -85,6 +86,7 @@ function App() {
       <Route path="/courses/godot" element={<Godot />} />
       <Route path="/courses/minecraft-modding" element={<MinecraftModding />} />
       <Route path="/courses/greenfoot" element={<Greenfoot />} />
+      <Route path="/courses/robloxlua" element={<RobloxLua />} />
       
       {/* Admin Routes - Protected */}
       <Route 
