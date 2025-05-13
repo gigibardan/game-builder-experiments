@@ -89,7 +89,7 @@ const Session7CakeQuest = () => {
 
             <div className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
               <ImageModal 
-                src="../../assets/images/scratchproiect8preview.png" 
+                src="/assets/images/scratch/scratchproiect8preview.png" 
                 alt="Previzualizare joc The Cake Quest" 
                 className="w-full"
               />
@@ -133,7 +133,7 @@ const Session7CakeQuest = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="../../assets/images/scratchproiect8personaje.png" 
+              src="/assets/images/scratch/scratchproiect8personaje.png" 
               alt="Personajele jocului" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -197,7 +197,7 @@ const Session7CakeQuest = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="../../assets/images/scratchproiect8car.png" 
+              src="/assets/images/scratch/scratchproiect8car.png" 
               alt="Codul pentru o mașină" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -278,7 +278,7 @@ const Session7CakeQuest = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="../../assets/images/scratchproiect8roadster.png" 
+              src="/assets/images/scratch/scratchproiect8roadster.png" 
               alt="Codul pentru Roadster" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -334,7 +334,7 @@ const Session7CakeQuest = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="../../assets/images/scratchproiect8cake.png" 
+              src="/assets/images/scratch/scratchproiect8cake.png" 
               alt="Codul pentru tort" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -387,7 +387,7 @@ const Session7CakeQuest = () => {
           <div className="mb-6">
             <p className="mb-2">Adaugă următorul cod pentru scenă:</p>
             <ImageModal 
-              src="../../assets/images/scratchproiect8scena.png" 
+              src="/assets/images/scratch/scratchproiect8scena.png" 
               alt="Codul pentru scena jocului" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />

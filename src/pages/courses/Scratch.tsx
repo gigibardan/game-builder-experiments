@@ -138,6 +138,18 @@ const Scratch = () => {
   highlights: ["Fizică de zbor", "Controlul personajului", "Detecția coliziunilor", "Efecte vizuale și sonore"],
   imageSrc: "/assets/images/scratch/previewminecraft.png",
   color: "green"
+},
+{
+  id: 12,
+  title: "Egg Dropper",
+  description: "Creează un joc captivant în care controlezi un iepuraș cu jetpack care aruncă ouă, încercând să țintească coșurile în mișcare pentru a acumula puncte.",
+  duration: "120 minute",
+  level: "Intermediar",
+  ageGroup: "8-14 ani",
+  link: "/scratch/session11eggdropper",
+  highlights: ["Funcții trigonometrice", "Sistemul de lansare de ouă", "Efecte vizuale și de fum", "Detecția coliziunilor avansată"],
+  imageSrc: "/assets/images/scratch/previewEggD.png",
+  color: "purple"
 }
   ];
 

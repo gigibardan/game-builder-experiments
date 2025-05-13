@@ -90,7 +90,7 @@ const Session3MotoRacer = () => {
 
             <div className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
               <ImageModal 
-                src="https://elearning.techminds-academy.ro/assets/images/scratchproiect2preview.png" 
+                src="/assets/images/scratch/scratchproiect2preview.png" 
                 alt="Previzualizare joc Moto Racer" 
                 className="w-full"
               />
@@ -133,7 +133,7 @@ const Session3MotoRacer = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect2personaje.png" 
+              src="/assets/images/scratch/scratchproiect2personaje.png" 
               alt="Personajele jocului" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -173,7 +173,7 @@ const Session3MotoRacer = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect2decor.png" 
+              src="/assets/images/scratch/scratchproiect2decor.png" 
               alt="Fundalul jocului" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -190,7 +190,7 @@ const Session3MotoRacer = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect2moto.png" 
+              src="/assets/images/scratch/scratchproiect2moto.png" 
               alt="Codul pentru controlul motocicletei" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -227,7 +227,7 @@ const Session3MotoRacer = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect2rocks.png" 
+              src="/assets/images/scratch/scratchproiect2rocks.png" 
               alt="Codul pentru pietre" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -265,7 +265,7 @@ const Session3MotoRacer = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect2stars.png" 
+              src="/assets/images/scratch/scratchproiect2stars.png" 
               alt="Codul pentru stele" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -311,7 +311,7 @@ const Session3MotoRacer = () => {
             <div>
               <h4 className="font-bold mb-2">Condiția de înfrângere:</h4>
               <ImageModal 
-                src="https://elearning.techminds-academy.ro/assets/images/scratchproiect2lost.png" 
+                src="/assets/images/scratch/scratchproiect2lost.png" 
                 alt="Codul pentru înfrângere" 
                 className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
               />
@@ -321,7 +321,7 @@ const Session3MotoRacer = () => {
             <div>
               <h4 className="font-bold mb-2">Condiția de victorie:</h4>
               <ImageModal 
-                src="https://elearning.techminds-academy.ro/assets/images/scratchproiect2win.png" 
+                src="/assets/images/scratch/scratchproiect2win.png" 
                 alt="Codul pentru victorie" 
                 className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
               />

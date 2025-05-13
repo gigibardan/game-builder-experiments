@@ -86,7 +86,7 @@ const Session9RobotFootball = () => {
 
             <div className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
               <ImageModal 
-                src="../../assets/images/robotfootballpreview.png" 
+                src="/assets/images/scratch/robotfootballpreview.png" 
                 alt="Previzualizare joc Robot Football" 
                 className="w-full"
               />
@@ -130,7 +130,7 @@ const Session9RobotFootball = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="../../assets/images/robotfootballcharacters.png" 
+              src="/assets/images/scratch/robotfootballcharacters.png" 
               alt="Personajele jocului" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -213,7 +213,7 @@ const Session9RobotFootball = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="../../assets/images/robotcod.png" 
+              src="/assets/images/scratch/robotcod.png" 
               alt="Codul pentru roboți" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -256,7 +256,7 @@ const Session9RobotFootball = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="../../assets/images/ballcod.png" 
+              src="/assets/images/scratch/ballcod.png" 
               alt="Codul pentru minge" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -307,7 +307,7 @@ const Session9RobotFootball = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="../../assets/images/scorecod.png" 
+              src="/assets/images/scratch/scorecod.png" 
               alt="Codul pentru sistemul de scor" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />

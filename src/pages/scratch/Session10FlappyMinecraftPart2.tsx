@@ -41,7 +41,7 @@ const Session10FlappyMinecraftPart2 = () => {
       }}
        nextLesson={{
         title: "Lecția următoare",
-        path: "/scratch/session11"
+        path: "/scratch/session11eggdropper"
       }}
     >
       <div className="space-y-8">

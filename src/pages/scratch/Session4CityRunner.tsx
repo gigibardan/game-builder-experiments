@@ -90,7 +90,7 @@ const Session4CityRunner = () => {
 
             <div className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
               <ImageModal 
-                src="https://elearning.techminds-academy.ro/assets/images/scratchproiect3preview.png" 
+                src="/assets/images/scratch/scratchproiect3preview.png" 
                 alt="Previzualizare joc City Runner" 
                 className="w-full"
               />
@@ -134,7 +134,7 @@ const Session4CityRunner = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect3personaje.png" 
+              src="/assets/images/scratch/scratchproiect3personaje.png" 
               alt="Personajele jocului" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -209,7 +209,7 @@ const Session4CityRunner = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect3pisica.png" 
+              src="/assets/images/scratch/scratchproiect3pisica.png" 
               alt="Codul pentru controlul pisicii" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -247,7 +247,7 @@ const Session4CityRunner = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect3buildings.png" 
+              src="/assets/images/scratch/scratchproiect3buildings.png" 
               alt="Codul pentru clădiri" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -278,7 +278,7 @@ const Session4CityRunner = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect3crystal.png" 
+              src="/assets/images/scratch/scratchproiect3crystal.png" 
               alt="Codul pentru diamante" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -314,7 +314,7 @@ const Session4CityRunner = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect3bomb.png" 
+              src="/assets/images/scratch/scratchproiect3bomb.png" 
               alt="Codul pentru bombe" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -367,7 +367,7 @@ const Session4CityRunner = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect3linie.png" 
+              src="/assets/images/scratch/scratchproiect3linie.png" 
               alt="Codul pentru linia de margine" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />

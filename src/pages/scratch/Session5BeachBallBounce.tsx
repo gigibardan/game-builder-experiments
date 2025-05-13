@@ -90,7 +90,7 @@ const Session5BeachBallBounce = () => {
 
             <div className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
               <ImageModal 
-                src="https://elearning.techminds-academy.ro/assets/images/scratchproiect4preview.png" 
+                src="/assets/images/scratch/scratchproiect4preview.png" 
                 alt="Previzualizare joc Beach Ball Bounce" 
                 className="w-full"
               />
@@ -133,7 +133,7 @@ const Session5BeachBallBounce = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect4personaje.png" 
+              src="/assets/images/scratch/scratchproiect4personaje.png" 
               alt="Personajele jocului" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -219,7 +219,7 @@ const Session5BeachBallBounce = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect4swimring.png" 
+              src="/assets/images/scratch/scratchproiect4swimring.png" 
               alt="Codul pentru inelul de înot" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -256,7 +256,7 @@ const Session5BeachBallBounce = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect4beachball.png" 
+              src="/assets/images/scratch/scratchproiect4beachball.png" 
               alt="Codul pentru mingea de plajă" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -289,7 +289,7 @@ const Session5BeachBallBounce = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect4shell.png" 
+              src="/assets/images/scratch/scratchproiect4shell.png" 
               alt="Codul pentru scoică" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -348,7 +348,7 @@ const Session5BeachBallBounce = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect4pufferfish.png" 
+              src="/assets/images/scratch/scratchproiect4pufferfish.png" 
               alt="Codul pentru peștele balon" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -395,7 +395,7 @@ const Session5BeachBallBounce = () => {
             <div>
               <h4 className="font-bold mb-2">Condiția de victorie:</h4>
               <ImageModal 
-                src="https://elearning.techminds-academy.ro/assets/images/scratchproiect4win.png" 
+                src="/assets/images/scratch/scratchproiect4win.png" 
                 alt="Codul pentru victorie" 
                 className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
               />
@@ -405,7 +405,7 @@ const Session5BeachBallBounce = () => {
             <div>
               <h4 className="font-bold mb-2">Condiția de înfrângere:</h4>
               <ImageModal 
-                src="https://elearning.techminds-academy.ro/assets/images/scratchproiect4lose.png" 
+                src="/assets/images/scratch/scratchproiect4lose.png" 
                 alt="Codul pentru înfrângere" 
                 className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
               />

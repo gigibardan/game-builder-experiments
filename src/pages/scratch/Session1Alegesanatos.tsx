@@ -84,7 +84,7 @@ const Session1Alegesanatos = () => {
 
             <div className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
               <ImageModal 
-                src="https://elearning.techminds-academy.ro/assets/images/scratch-alegesanatos-preview.png" 
+                src="/assets/images/scratch/scratch-alegesanatos-preview.png" 
                 alt="Previzualizare joc Alege Sănătos" 
                 className="w-full"
               />
@@ -127,7 +127,7 @@ const Session1Alegesanatos = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect1personaje.png" 
+              src="/assets/images/scratch/scratchproiect1personaje.png" 
               alt="Personajele jocului" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -197,7 +197,7 @@ const Session1Alegesanatos = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect1codbowl.png" 
+              src="/assets/images/scratch/scratchproiect1codbowl.png" 
               alt="Codul pentru controlul bolului" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -229,7 +229,7 @@ const Session1Alegesanatos = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect1codapple.png" 
+              src="/assets/images/scratch/scratchproiect1codapple.png" 
               alt="Codul pentru măr" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -307,7 +307,7 @@ const Session1Alegesanatos = () => {
             <div>
               <h4 className="font-bold mb-2">Pentru personajul "win":</h4>
               <ImageModal 
-                src="https://elearning.techminds-academy.ro/assets/images/scratchproiect1codwin.png" 
+                src="/assets/images/scratch/scratchproiect1codwin.png" 
                 alt="Codul pentru victorie" 
                 className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
               />
@@ -317,7 +317,7 @@ const Session1Alegesanatos = () => {
             <div>
               <h4 className="font-bold mb-2">Pentru personajul "lose":</h4>
               <ImageModal 
-                src="https://elearning.techminds-academy.ro/assets/images/scratchproiect1codlose.png" 
+                src="/assets/images/scratch/scratchproiect1codlose.png" 
                 alt="Codul pentru înfrângere" 
                 className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
               />

@@ -89,7 +89,7 @@ const Session8WizardsQuest = () => {
 
             <div className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
               <ImageModal 
-                src="../../assets/images/scratchproiect6preview.png" 
+                src="/assets/images/scratch/scratchproiect6preview.png" 
                 alt="Previzualizare joc Wizard's Quest" 
                 className="w-full"
               />
@@ -133,7 +133,7 @@ const Session8WizardsQuest = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="../../assets/images/scratchproiect6personaje.png" 
+              src="/assets/images/scratch/scratchproiect6personaje.png" 
               alt="Personajele jocului" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -198,7 +198,7 @@ const Session8WizardsQuest = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="../../assets/images/scratchproiect6wizard-toad.png" 
+              src="/assets/images/scratch/scratchproiect6wizard-toad.png" 
               alt="Codul pentru vrăjitor" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -249,7 +249,7 @@ const Session8WizardsQuest = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="../../assets/images/scratchproiect6bat.png" 
+              src="/assets/images/scratch/scratchproiect6bat.png" 
               alt="Codul pentru liliac" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -310,7 +310,7 @@ const Session8WizardsQuest = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="../../assets/images/scratchproiect6scena.png" 
+              src="/assets/images/scratch/scratchproiect6scena.png" 
               alt="Codul pentru scena jocului" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />

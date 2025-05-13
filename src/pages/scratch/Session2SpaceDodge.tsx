@@ -90,7 +90,7 @@ const Session2SpaceDodge = () => {
 
             <div className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
               <ImageModal 
-                src="https://elearning.techminds-academy.ro/assets/images/scratchproiect5preview.png" 
+                src="/assets/images/scratch/scratchproiect5preview.png" 
                 alt="Previzualizare joc Space Dodge" 
                 className="w-full"
               />
@@ -134,7 +134,7 @@ const Session2SpaceDodge = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect5personaje.png" 
+              src="/assets/images/scratch/scratchproiect5personaje.png" 
               alt="Personajele jocului" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -218,7 +218,7 @@ const Session2SpaceDodge = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect5ship.png" 
+              src="/assets/images/scratch/scratchproiect5ship.png" 
               alt="Codul pentru nava spațială" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -263,7 +263,7 @@ const Session2SpaceDodge = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect5meteorit.png" 
+              src="/assets/images/scratch/scratchproiect5meteorit.png" 
               alt="Codul pentru meteorit" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -316,7 +316,7 @@ const Session2SpaceDodge = () => {
 
           <div className="mb-6">
             <ImageModal 
-              src="https://elearning.techminds-academy.ro/assets/images/scratchproiect5elements.png" 
+              src="/assets/images/scratch/scratchproiect5elements.png" 
               alt="Codul pentru elementele spațiale" 
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
