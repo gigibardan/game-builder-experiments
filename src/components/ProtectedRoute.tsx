@@ -1,25 +1,20 @@
 
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/hooks/useAuth';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
   requireAdmin?: boolean;
-  courseId?: string;
-  sessionId?: string;
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   children,
   requireAdmin = false,
-  courseId,
-  sessionId,
 }) => {
-  const { isAuthenticated, isAdmin, hasAccessToCourse, hasAccessToSession, loading } = useAuth();
+  const { isAuthenticated, isAdmin, loading } = useAuth();
   const location = useLocation();
 
-  // Show loading state if auth is still initializing
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -28,24 +23,12 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     );
   }
 
-  // Check if user is authenticated
   if (!isAuthenticated) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    return <Navigate to="/auth" state={{ from: location }} replace />;
   }
 
-  // Check if route requires admin privileges
   if (requireAdmin && !isAdmin) {
-    return <Navigate to="/unauthorized" replace />;
-  }
-
-  // Check if route requires course access
-  if (courseId && !hasAccessToCourse(courseId)) {
-    return <Navigate to="/unauthorized" replace />;
-  }
-
-  // Check if route requires session access
-  if (courseId && sessionId && !hasAccessToSession(courseId, sessionId)) {
-    return <Navigate to="/unauthorized" replace />;
+    return <Navigate to="/" replace />;
   }
 
   return <>{children}</>;
