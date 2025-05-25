@@ -1,6 +1,6 @@
+
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from '@/hooks/useAuth';
+import { Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/sonner';
 import AuthPage from '@/pages/auth/AuthPage';
 import Home from '@/pages/Home';
@@ -62,107 +62,105 @@ import GreenfootSession3 from '@/pages/greenfoot/Session3';
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<AuthPage />} />
-          <Route path="/auth" element={<AuthPage />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
-          
-          {/* Course pages with consistent paths */}
-          <Route path="/courses/scratch" element={<Scratch />} />
-          <Route path="/courses/appinventor" element={<AppInventor />} />
-          <Route path="/courses/gdevelop" element={<GDevelop />} />
-          <Route path="/courses/python" element={<Python />} />
-          <Route path="/courses/alice3" element={<Alice3 />} />
-          <Route path="/courses/frontenddev" element={<FrontendDev />} />
-          <Route path="/courses/godot" element={<Godot />} />
-          <Route path="/courses/minecraft-modding" element={<MinecraftModding />} />
-          <Route path="/courses/greenfoot" element={<Greenfoot />} />
-          <Route path="/courses/robloxlua" element={<RobloxLua />} />
-          
-          {/* Admin Routes - Protected */}
-          <Route 
-            path="/admin/dashboard" 
-            element={
-              <ProtectedRoute requireAdmin={true}>
-                <Dashboard />
-              </ProtectedRoute>
-            } 
-          />
-          <Route 
-            path="/admin/users" 
-            element={
-              <ProtectedRoute requireAdmin={true}>
-                <UserManagement />
-              </ProtectedRoute>
-            } 
-          />
-          
-          {/* Scratch session routes */}
-          <Route path="/scratch/session1alegesanatos" element={<Session1Alegesanatos />} />
-          <Route path="/scratch/session2spacedodge" element={<Session2SpaceDodge />} />
-          <Route path="/scratch/session3motoracer" element={<Session3MotoRacer />} />
-          <Route path="/scratch/session4cityrunner" element={<Session4CityRunner />} />
-          <Route path="/scratch/session5beachballbounce" element={<Session5BeachBallBounce />} />
-          <Route path="/scratch/session6stitchbeach" element={<Session6StitchBeach />} />
-          <Route path="/scratch/session7cakequest" element={<Session7CakeQuest />} />
-          <Route path="/scratch/session8wizardsquest" element={<Session8WizardsQuest />} />
-          <Route path="/scratch/session9robotfootball" element={<Session9RobotFootball />} /> 
-          <Route path="/scratch/session10flappyminecraftpart1" element={<Session10FlappyMinecraftPart1 />} /> 
-          <Route path="/scratch/session10flappyminecraftpart2" element={<Session10FlappyMinecraftPart2 />} /> 
-          <Route path="/scratch/session11eggdropper" element={<Session11EggDropper />} /> 
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<AuthPage />} />
+        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
+        
+        {/* Course pages with consistent paths */}
+        <Route path="/courses/scratch" element={<Scratch />} />
+        <Route path="/courses/appinventor" element={<AppInventor />} />
+        <Route path="/courses/gdevelop" element={<GDevelop />} />
+        <Route path="/courses/python" element={<Python />} />
+        <Route path="/courses/alice3" element={<Alice3 />} />
+        <Route path="/courses/frontenddev" element={<FrontendDev />} />
+        <Route path="/courses/godot" element={<Godot />} />
+        <Route path="/courses/minecraft-modding" element={<MinecraftModding />} />
+        <Route path="/courses/greenfoot" element={<Greenfoot />} />
+        <Route path="/courses/robloxlua" element={<RobloxLua />} />
+        
+        {/* Admin Routes - Protected */}
+        <Route 
+          path="/admin/dashboard" 
+          element={
+            <ProtectedRoute requireAdmin={true}>
+              <Dashboard />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/admin/users" 
+          element={
+            <ProtectedRoute requireAdmin={true}>
+              <UserManagement />
+            </ProtectedRoute>
+          } 
+        />
+        
+        {/* Scratch session routes */}
+        <Route path="/scratch/session1alegesanatos" element={<Session1Alegesanatos />} />
+        <Route path="/scratch/session2spacedodge" element={<Session2SpaceDodge />} />
+        <Route path="/scratch/session3motoracer" element={<Session3MotoRacer />} />
+        <Route path="/scratch/session4cityrunner" element={<Session4CityRunner />} />
+        <Route path="/scratch/session5beachballbounce" element={<Session5BeachBallBounce />} />
+        <Route path="/scratch/session6stitchbeach" element={<Session6StitchBeach />} />
+        <Route path="/scratch/session7cakequest" element={<Session7CakeQuest />} />
+        <Route path="/scratch/session8wizardsquest" element={<Session8WizardsQuest />} />
+        <Route path="/scratch/session9robotfootball" element={<Session9RobotFootball />} /> 
+        <Route path="/scratch/session10flappyminecraftpart1" element={<Session10FlappyMinecraftPart1 />} /> 
+        <Route path="/scratch/session10flappyminecraftpart2" element={<Session10FlappyMinecraftPart2 />} /> 
+        <Route path="/scratch/session11eggdropper" element={<Session11EggDropper />} /> 
 
-          {/* App Inventor session routes */}
-          <Route path="/appinventor/session1" element={<AppInventorSession1 />} />
-          <Route path="/appinventor/session2" element={<AppInventorSession2 />} />
-          <Route path="/appinventor/session3" element={<AppInventorSession3 />} />
-          <Route path="/appinventor/session4" element={<AppInventorSession4 />} />
-          <Route path="/appinventor/session5" element={<AppInventorSession5 />} />
-          <Route path="/appinventor/session7" element={<AppInventorSession7 />} />
-          
-          {/* Python session routes */}
-          <Route path="/python/session1" element={<PythonSession1 />} />
-          
-          {/* Alice3 session routes */}
-          <Route path="/alice3/session1" element={<Alice3Session1 />} />
-          <Route path="/alice3/session1adventure" element={<Session1Adventure />} />
-          <Route path="/alice3/session2spacegame" element={<Session2SpaceGame />} />
-          <Route path="/alice3/session3virtualpet" element={<Session3VirtualPet />} />
-          <Route path="/alice3/session4geometry" element={<Session4Geometry />} />
-          
-          {/* Frontend Development session routes */}
-          <Route path="/frontenddev/session1" element={<FrontendDevSession1 />} />
-          
-          {/* Godot session routes */}
-          <Route path="/godot/session1" element={<GodotSession1 />} />
-          <Route path="/godot/session2" element={<GodotSession2 />} />
-          <Route path="/godot/session3" element={<GodotSession3 />} />
-          <Route path="/godot/session4" element={<GodotSession4 />} />
-          <Route path="/godot/session5" element={<GodotSession5 />} />
-          <Route path="/godot/game" element={<GodotSimpleGame />} />
-          
-          {/* Minecraft Modding session routes */}
-          <Route path="/minecraftmodding/session1" element={<Session1 />} />
-          <Route path="/minecraftmodding/ruby-armor" element={<RubyArmor />} />
-          <Route path="/minecraftmodding/crystal-realm" element={<CrystalRealm />} />
-          
-          {/* Greenfoot session routes */}
-          <Route path="/greenfoot/session1" element={<GreenfootSession1 />} />
-          <Route path="/greenfoot/session2" element={<GreenfootSession2 />} />
-          <Route path="/greenfoot/session3" element={<GreenfootSession3 />} />
-          
-          <Route path="/lesson-template" element={<LessonTemplate />} />
+        {/* App Inventor session routes */}
+        <Route path="/appinventor/session1" element={<AppInventorSession1 />} />
+        <Route path="/appinventor/session2" element={<AppInventorSession2 />} />
+        <Route path="/appinventor/session3" element={<AppInventorSession3 />} />
+        <Route path="/appinventor/session4" element={<AppInventorSession4 />} />
+        <Route path="/appinventor/session5" element={<AppInventorSession5 />} />
+        <Route path="/appinventor/session7" element={<AppInventorSession7 />} />
+        
+        {/* Python session routes */}
+        <Route path="/python/session1" element={<PythonSession1 />} />
+        
+        {/* Alice3 session routes */}
+        <Route path="/alice3/session1" element={<Alice3Session1 />} />
+        <Route path="/alice3/session1adventure" element={<Session1Adventure />} />
+        <Route path="/alice3/session2spacegame" element={<Session2SpaceGame />} />
+        <Route path="/alice3/session3virtualpet" element={<Session3VirtualPet />} />
+        <Route path="/alice3/session4geometry" element={<Session4Geometry />} />
+        
+        {/* Frontend Development session routes */}
+        <Route path="/frontenddev/session1" element={<FrontendDevSession1 />} />
+        
+        {/* Godot session routes */}
+        <Route path="/godot/session1" element={<GodotSession1 />} />
+        <Route path="/godot/session2" element={<GodotSession2 />} />
+        <Route path="/godot/session3" element={<GodotSession3 />} />
+        <Route path="/godot/session4" element={<GodotSession4 />} />
+        <Route path="/godot/session5" element={<GodotSession5 />} />
+        <Route path="/godot/game" element={<GodotSimpleGame />} />
+        
+        {/* Minecraft Modding session routes */}
+        <Route path="/minecraftmodding/session1" element={<Session1 />} />
+        <Route path="/minecraftmodding/ruby-armor" element={<RubyArmor />} />
+        <Route path="/minecraftmodding/crystal-realm" element={<CrystalRealm />} />
+        
+        {/* Greenfoot session routes */}
+        <Route path="/greenfoot/session1" element={<GreenfootSession1 />} />
+        <Route path="/greenfoot/session2" element={<GreenfootSession2 />} />
+        <Route path="/greenfoot/session3" element={<GreenfootSession3 />} />
+        
+        <Route path="/lesson-template" element={<LessonTemplate />} />
 
-          {/* Catch all route - 404 */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Toaster />
-      </AuthProvider>
-    </Router>
+        {/* Catch all route - 404 */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Toaster />
+    </>
   );
 }
 
