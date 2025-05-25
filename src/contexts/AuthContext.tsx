@@ -19,15 +19,15 @@ const AuthContext = createContext<AuthContextType | null>(null);
 
 // Mock users data (in a real app, this would be in a database)
 const MOCK_USERS: Record<string, User & { password: string }> = {
-  'admin': {
+  'admin@techminds.ro': {  // ← Folosește email-ul ca cheie
     id: '1',
     username: 'admin',
     email: 'admin@techminds.ro',
     password: 'admin123',
     role: UserRole.ADMIN,
-    courseAccess: [] // Admin has access to everything
+    courseAccess: []
   },
-  'student1': {
+  'student1@example.com': {  // ← Și pentru restul
     id: '2',
     username: 'student1',
     email: 'student1@example.com',
@@ -38,7 +38,7 @@ const MOCK_USERS: Record<string, User & { password: string }> = {
       { courseId: 'scratch', sessions: ['session1alegesanatos'] }
     ]
   },
-  'student2': {
+  'student2@example.com': {
     id: '3',
     username: 'student2',
     email: 'student2@example.com',
@@ -69,9 +69,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setLoading(false);
   }, []);
 
-  const login = async (username: string, password: string): Promise<boolean> => {
-    // In a real app, this would be an API call
-    const mockUser = MOCK_USERS[username];
+const login = async (email: string, password: string): Promise<boolean> => {
+  const mockUser = MOCK_USERS[email];  // ← Folosește email
     
     if (mockUser && mockUser.password === password) {
       // Remove password before storing user data

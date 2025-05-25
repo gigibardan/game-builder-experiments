@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from '@/contexts/AuthContext'; // ← Modificat să folosească contextul corect
 import { toast } from "sonner";
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -17,7 +16,7 @@ const AuthPage = () => {
   const [signupUsername, setSignupUsername] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   
-  const { signIn, signUp, isAuthenticated } = useAuth();
+  const { login, isAuthenticated } = useAuth(); // ← Folosește login din context
 
   if (isAuthenticated) {
     return <Navigate to="/" />;
@@ -27,10 +26,11 @@ const AuthPage = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    const { error } = await signIn(loginEmail, loginPassword);
+    // Folosește emailul ca username pentru MOCK_USERS
+    const success = await login(loginEmail, loginPassword);
     
-    if (error) {
-      toast.error(error);
+    if (!success) {
+      toast.error("Email sau parolă incorectă!");
     } else {
       toast.success("Autentificare reușită!");
     }
@@ -42,13 +42,8 @@ const AuthPage = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    const { error } = await signUp(signupEmail, signupPassword, signupUsername);
-    
-    if (error) {
-      toast.error(error);
-    } else {
-      toast.success("Cont creat cu succes! Verifică emailul pentru confirmare.");
-    }
+    // Pentru demo, doar afișează un mesaj
+    toast.info("Înregistrarea nu este disponibilă în versiunea demo. Folosește contul admin.");
     
     setIsLoading(false);
   };
