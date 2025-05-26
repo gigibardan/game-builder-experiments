@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -12,7 +11,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
 
 const Dashboard: React.FC = () => {
-  const { user } = useAuth();
+  const { profile } = useAuth();
   
   // Mock users data
   const [users] = useState<User[]>([
@@ -65,7 +64,7 @@ const Dashboard: React.FC = () => {
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-8">
             <div>
               <h1 className="text-3xl font-bold">Dashboard Administrator</h1>
-              <p className="text-gray-500">Bine ai venit, {user?.username}! Administrează platforma TechMinds Academy</p>
+              <p className="text-gray-500">Bine ai venit, {profile?.username}! Administrează platforma TechMinds Academy</p>
             </div>
             
             <div className="mt-4 md:mt-0">
