@@ -1,8 +1,8 @@
-
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/sonner';
 import AuthPage from '@/pages/auth/AuthPage';
+import Unauthorized from '@/pages/auth/Unauthorized';
 import Home from '@/pages/Home';
 import Courses from '@/pages/Courses';
 import Contact from '@/pages/Contact';
@@ -19,6 +19,7 @@ import GDevelop from '@/pages/courses/GDevelop';
 import RobloxLua from '@/pages/courses/RobloxLua';
 import NotFound from '@/pages/NotFound';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import CourseAccessGuard from '@/components/CourseAccessGuard';
 import Dashboard from '@/pages/admin/Dashboard';
 import UserManagement from '@/pages/admin/UserManagement';
 import Session1Alegesanatos from '@/pages/scratch/Session1Alegesanatos';
@@ -66,21 +67,62 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/auth" element={<AuthPage />} />
+        <Route path="/unauthorized" element={<Unauthorized />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         
-        {/* Course pages with consistent paths */}
-        <Route path="/courses/scratch" element={<Scratch />} />
-        <Route path="/courses/appinventor" element={<AppInventor />} />
-        <Route path="/courses/gdevelop" element={<GDevelop />} />
-        <Route path="/courses/python" element={<Python />} />
-        <Route path="/courses/alice3" element={<Alice3 />} />
-        <Route path="/courses/frontenddev" element={<FrontendDev />} />
-        <Route path="/courses/godot" element={<Godot />} />
-        <Route path="/courses/minecraft-modding" element={<MinecraftModding />} />
-        <Route path="/courses/greenfoot" element={<Greenfoot />} />
-        <Route path="/courses/robloxlua" element={<RobloxLua />} />
+        {/* Course pages with access control */}
+        <Route path="/courses/scratch" element={
+          <CourseAccessGuard courseSlug="scratch">
+            <Scratch />
+          </CourseAccessGuard>
+        } />
+        <Route path="/courses/appinventor" element={
+          <CourseAccessGuard courseSlug="appinventor">
+            <AppInventor />
+          </CourseAccessGuard>
+        } />
+        <Route path="/courses/gdevelop" element={
+          <CourseAccessGuard courseSlug="gdevelop">
+            <GDevelop />
+          </CourseAccessGuard>
+        } />
+        <Route path="/courses/python" element={
+          <CourseAccessGuard courseSlug="python">
+            <Python />
+          </CourseAccessGuard>
+        } />
+        <Route path="/courses/alice3" element={
+          <CourseAccessGuard courseSlug="alice3">
+            <Alice3 />
+          </CourseAccessGuard>
+        } />
+        <Route path="/courses/frontenddev" element={
+          <CourseAccessGuard courseSlug="frontenddev">
+            <FrontendDev />
+          </CourseAccessGuard>
+        } />
+        <Route path="/courses/godot" element={
+          <CourseAccessGuard courseSlug="godot">
+            <Godot />
+          </CourseAccessGuard>
+        } />
+        <Route path="/courses/minecraft-modding" element={
+          <CourseAccessGuard courseSlug="minecraft-modding">
+            <MinecraftModding />
+          </CourseAccessGuard>
+        } />
+        <Route path="/courses/greenfoot" element={
+          <CourseAccessGuard courseSlug="greenfoot">
+            <Greenfoot />
+          </CourseAccessGuard>
+        } />
+        <Route path="/courses/robloxlua" element={
+          <CourseAccessGuard courseSlug="robloxlua">
+            <RobloxLua />
+          </CourseAccessGuard>
+        } />
         
         {/* Admin Routes - Protected */}
         <Route 
@@ -100,19 +142,68 @@ function App() {
           } 
         />
         
-        {/* Scratch session routes */}
-        <Route path="/scratch/session1alegesanatos" element={<Session1Alegesanatos />} />
-        <Route path="/scratch/session2spacedodge" element={<Session2SpaceDodge />} />
-        <Route path="/scratch/session3motoracer" element={<Session3MotoRacer />} />
-        <Route path="/scratch/session4cityrunner" element={<Session4CityRunner />} />
-        <Route path="/scratch/session5beachballbounce" element={<Session5BeachBallBounce />} />
-        <Route path="/scratch/session6stitchbeach" element={<Session6StitchBeach />} />
-        <Route path="/scratch/session7cakequest" element={<Session7CakeQuest />} />
-        <Route path="/scratch/session8wizardsquest" element={<Session8WizardsQuest />} />
-        <Route path="/scratch/session9robotfootball" element={<Session9RobotFootball />} /> 
-        <Route path="/scratch/session10flappyminecraftpart1" element={<Session10FlappyMinecraftPart1 />} /> 
-        <Route path="/scratch/session10flappyminecraftpart2" element={<Session10FlappyMinecraftPart2 />} /> 
-        <Route path="/scratch/session11eggdropper" element={<Session11EggDropper />} /> 
+        {/* Scratch session routes with access control */}
+        <Route path="/scratch/session1alegesanatos" element={
+          <CourseAccessGuard courseSlug="scratch" sessionSlug="session1alegesanatos">
+            <Session1Alegesanatos />
+          </CourseAccessGuard>
+        } />
+        <Route path="/scratch/session2spacedodge" element={
+          <CourseAccessGuard courseSlug="scratch" sessionSlug="session2spacedodge">
+            <Session2SpaceDodge />
+          </CourseAccessGuard>
+        } />
+        
+        <Route path="/scratch/session3motoracer" element={
+          <CourseAccessGuard courseSlug="scratch" sessionSlug="session3motoracer">
+            <Session3MotoRacer />
+          </CourseAccessGuard>
+        } />
+        <Route path="/scratch/session4cityrunner" element={
+          <CourseAccessGuard courseSlug="scratch" sessionSlug="session4cityrunner">
+            <Session4CityRunner />
+          </CourseAccessGuard>
+        } />
+        <Route path="/scratch/session5beachballbounce" element={
+          <CourseAccessGuard courseSlug="scratch" sessionSlug="session5beachballbounce">
+            <Session5BeachBallBounce />
+          </CourseAccessGuard>
+        } />
+        <Route path="/scratch/session6stitchbeach" element={
+          <CourseAccessGuard courseSlug="scratch" sessionSlug="session6stitchbeach">
+            <Session6StitchBeach />
+          </CourseAccessGuard>
+        } />
+        <Route path="/scratch/session7cakequest" element={
+          <CourseAccessGuard courseSlug="scratch" sessionSlug="session7cakequest">
+            <Session7CakeQuest />
+          </CourseAccessGuard>
+        } />
+        <Route path="/scratch/session8wizardsquest" element={
+          <CourseAccessGuard courseSlug="scratch" sessionSlug="session8wizardsquest">
+            <Session8WizardsQuest />
+          </CourseAccessGuard>
+        } />
+        <Route path="/scratch/session9robotfootball" element={
+          <CourseAccessGuard courseSlug="scratch" sessionSlug="session9robotfootball">
+            <Session9RobotFootball />
+          </CourseAccessGuard>
+        } />
+        <Route path="/scratch/session10flappyminecraftpart1" element={
+          <CourseAccessGuard courseSlug="scratch" sessionSlug="session10flappyminecraftpart1">
+            <Session10FlappyMinecraftPart1 />
+          </CourseAccessGuard>
+        } />
+        <Route path="/scratch/session10flappyminecraftpart2" element={
+          <CourseAccessGuard courseSlug="scratch" sessionSlug="session10flappyminecraftpart2">
+            <Session10FlappyMinecraftPart2 />
+          </CourseAccessGuard>
+        } />
+        <Route path="/scratch/session11eggdropper" element={
+          <CourseAccessGuard courseSlug="scratch" sessionSlug="session11eggdropper">
+            <Session11EggDropper />
+          </CourseAccessGuard>
+        } />
 
         {/* App Inventor session routes */}
         <Route path="/appinventor/session1" element={<AppInventorSession1 />} />

@@ -67,7 +67,7 @@ export function useUserManagement() {
     }
   };
 
-  const createUser = async (email: string, password: string, username: string, role: 'student' | 'admin' = 'student') => {
+  const createUser = async (email: string, password: string, username: string, firstName?: string, lastName?: string, role: 'student' | 'admin' = 'student') => {
     try {
       // Create auth user
       const { data: authData, error: authError } = await supabase.auth.signUp({
@@ -76,6 +76,8 @@ export function useUserManagement() {
         options: {
           data: {
             username,
+            first_name: firstName,
+            last_name: lastName,
             role,
           },
         },
@@ -149,11 +151,17 @@ export function useUserManagement() {
 
       // Insert new access
       const accessRecords = courseAccess.flatMap(access =>
-        access.sessions.map(sessionId => ({
-          user_id: userId,
-          course_id: access.courseId,
-          session_id: sessionId,
-        }))
+        access.sessions.length > 0 
+          ? access.sessions.map(sessionId => ({
+              user_id: userId,
+              course_id: access.courseId,
+              session_id: sessionId,
+            }))
+          : [{
+              user_id: userId,
+              course_id: access.courseId,
+              session_id: null,
+            }]
       );
 
       if (accessRecords.length > 0) {
