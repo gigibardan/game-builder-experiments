@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from '@/components/ui/sonner';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import Index from '@/pages/Index';
+import HomePage from '@/pages/HomePage';
 import Home from '@/pages/Home';
 import About from '@/pages/About';
 import Contact from '@/pages/Contact';
@@ -55,7 +55,7 @@ function App() {
       <div className="App">
         <Routes>
           {/* Public routes */}
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
