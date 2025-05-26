@@ -20,7 +20,11 @@ import {
   User,
   LogOut,
   ShieldCheck,
-  Coffee
+  Coffee,
+  Cog,
+  Cpu,
+  Zap,
+  BarChart3
 } from 'lucide-react';
 import {
   NavigationMenu,
@@ -77,8 +81,8 @@ const Header = () => {
     return location.pathname === path || location.pathname.startsWith(path);
   };
 
-  // Updated courses with consistent paths
-  const courses = [
+  // Cursuri de programare
+  const programmingCourses = [
     {
       category: "Începători (8-12 ani)",
       items: [
@@ -104,6 +108,18 @@ const Header = () => {
         { title: "Frontend Development", path: "/courses/frontenddev", icon: <Globe className="h-4 w-4 mr-2" />, description: "Construiește Web-ul Viitorului" },
         { title: "Greenfoot", path: "/courses/greenfoot", icon: <Coffee className="h-4 w-4 mr-2" />, description: "Java prin Jocuri" },
         { title: "Godot", path: "/courses/godot", icon: <Gamepad className="h-4 w-4 mr-2" />, description: "Game Development Pro" },
+      ]
+    }
+  ];
+
+  // Cursuri de robotică
+  const roboticsCourses = [
+    {
+      category: "Robotică pentru Copii",
+      items: [
+        { title: "LEGO SPIKE Essentials", path: "/courses/lego-spike-essentials", icon: <Cog className="h-4 w-4 mr-2" />, description: "7-9 ani - Primul pas în robotică" },
+        { title: "LEGO SPIKE Prime", path: "/courses/lego-spike-prime", icon: <Cpu className="h-4 w-4 mr-2" />, description: "9-12 ani - Robotică avansată" },
+        { title: "micro:bit Explorers", path: "/courses/microbit-explorers", icon: <Zap className="h-4 w-4 mr-2" />, description: "9-12 ani - Programare și electronice" },
       ]
     }
   ];
@@ -141,6 +157,20 @@ const Header = () => {
                 </Link>
               </NavigationMenuItem>
               
+              {isAuthenticated && !isAdmin && (
+                <NavigationMenuItem>
+                  <Link to="/student/dashboard">
+                    <Button variant="ghost" className={cn(
+                      "text-sm text-white hover:bg-white/10 hover:text-white",
+                      isActive('/student/dashboard') ? "bg-white/20" : ""
+                    )}>
+                      <BarChart3 className="mr-1 h-4 w-4" />
+                      <span>Dashboard</span>
+                    </Button>
+                  </Link>
+                </NavigationMenuItem>
+              )}
+              
               {isAuthenticated && (
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm text-white hover:bg-white/10 hover:text-white bg-transparent">
@@ -148,31 +178,67 @@ const Header = () => {
                     <span>Cursuri</span>
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="grid grid-cols-2 p-4 w-[600px] max-w-[95vw] bg-white text-gray-800 overflow-visible">
-                      {courses.map((category, idx) => (
-                        <div key={idx} className="mb-4 mx-2">
-                          <h3 className="text-sm font-medium mb-2 text-gray-500 border-b pb-1">{category.category}</h3>
-                          <div className="grid grid-cols-1 gap-2 mb-2">
-                            {category.items.map((item, i) => (
-                              <NavigationMenuLink asChild key={i}>
-                                <Link
-                                  to={item.path}
-                                  onClick={closeMenu}
-                                  className="block select-none space-y-1 rounded-md p-3 no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                                >
-                                  <div className="flex items-center">
-                                    {item.icon}
-                                    <span className="text-sm font-medium">{item.title}</span>
-                                  </div>
-                                  <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-                                    {item.description}
-                                  </p>
-                                </Link>
-                              </NavigationMenuLink>
-                            ))}
+                    <div className="grid grid-cols-2 p-4 w-[800px] max-w-[95vw] bg-white text-gray-800">
+                      <div className="p-4">
+                        <h2 className="text-lg font-bold mb-4 text-course-purple border-b-2 border-course-purple pb-2">
+                          Programare
+                        </h2>
+                        {programmingCourses.map((category, idx) => (
+                          <div key={idx} className="mb-4">
+                            <h3 className="text-sm font-medium mb-2 text-gray-500 border-b pb-1">{category.category}</h3>
+                            <div className="grid grid-cols-1 gap-2 mb-2">
+                              {category.items.map((item, i) => (
+                                <NavigationMenuLink asChild key={i}>
+                                  <Link
+                                    to={item.path}
+                                    onClick={closeMenu}
+                                    className="block select-none space-y-1 rounded-md p-3 no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                  >
+                                    <div className="flex items-center">
+                                      {item.icon}
+                                      <span className="text-sm font-medium">{item.title}</span>
+                                    </div>
+                                    <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
+                                      {item.description}
+                                    </p>
+                                  </Link>
+                                </NavigationMenuLink>
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
+                      
+                      <div className="p-4 border-l">
+                        <h2 className="text-lg font-bold mb-4 text-orange-600 border-b-2 border-orange-600 pb-2">
+                          Robotică
+                        </h2>
+                        {roboticsCourses.map((category, idx) => (
+                          <div key={idx} className="mb-4">
+                            <h3 className="text-sm font-medium mb-2 text-gray-500 border-b pb-1">{category.category}</h3>
+                            <div className="grid grid-cols-1 gap-2 mb-2">
+                              {category.items.map((item, i) => (
+                                <NavigationMenuLink asChild key={i}>
+                                  <Link
+                                    to={item.path}
+                                    onClick={closeMenu}
+                                    className="block select-none space-y-1 rounded-md p-3 no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                  >
+                                    <div className="flex items-center">
+                                      {item.icon}
+                                      <span className="text-sm font-medium">{item.title}</span>
+                                    </div>
+                                    <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
+                                      {item.description}
+                                    </p>
+                                  </Link>
+                                </NavigationMenuLink>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      
                       <div className="text-center col-span-2 mt-2 pt-2 border-t">
                         <NavigationMenuLink asChild>
                           <Link
@@ -217,6 +283,15 @@ const Header = () => {
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>Cont utilizator</DropdownMenuLabel>
                 <DropdownMenuSeparator />
+                {!isAdmin && (
+                  <DropdownMenuItem asChild>
+                    <Link to="/student/dashboard">
+                      <BarChart3 className="mr-2 h-4 w-4" />
+                      <span>Dashboard</span>
+                    </Link>
+                  </DropdownMenuItem>
+                )}
+                <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleLogout}>
                   <LogOut className="mr-2 h-4 w-4" />
                   <span>Deconectare</span>
@@ -230,7 +305,7 @@ const Header = () => {
           )}
         </nav>
         
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - similar updates for mobile menu */}
         <nav className={`fixed inset-y-0 right-0 transform ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} sm:hidden w-80 bg-white shadow-xl transition-transform duration-300 ease-in-out z-50 flex flex-col h-full`}>
           <div className="p-6 overflow-y-auto">
             <div className="flex justify-between items-center mb-8">
@@ -260,6 +335,15 @@ const Header = () => {
                     </Link>
                   </li>
                   
+                  {!isAdmin && (
+                    <li>
+                      <Link to="/student/dashboard" className="text-gray-800 hover:text-course-purple flex items-center" onClick={closeMenu}>
+                        <BarChart3 className="mr-2 h-5 w-5" />
+                        <span>Dashboard</span>
+                      </Link>
+                    </li>
+                  )}
+                  
                   {isAdmin && (
                     <li>
                       <Link to="/admin/dashboard" className="text-gray-800 hover:text-course-purple flex items-center" onClick={closeMenu}>
@@ -269,25 +353,51 @@ const Header = () => {
                     </li>
                   )}
                   
-                  {courses.map((category, idx) => (
-                    <li key={idx} className="space-y-2">
-                      <div className="font-medium text-gray-500 border-b pb-1">{category.category}</div>
-                      <ul className="pl-2 space-y-3 mt-2">
-                        {category.items.map((item, i) => (
-                          <li key={i}>
-                            <Link 
-                              to={item.path} 
-                              className="text-gray-800 hover:text-course-purple flex items-center py-1" 
-                              onClick={closeMenu}
-                            >
-                              {item.icon}
-                              <span>{item.title}</span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </li>
-                  ))}
+                  <li className="space-y-2">
+                    <div className="font-medium text-course-purple border-b pb-1">Programare</div>
+                    {programmingCourses.map((category, idx) => (
+                      <div key={idx} className="space-y-2">
+                        <div className="font-medium text-gray-500 pl-2 text-sm">{category.category}</div>
+                        <ul className="pl-4 space-y-3 mt-2">
+                          {category.items.map((item, i) => (
+                            <li key={i}>
+                              <Link 
+                                to={item.path} 
+                                className="text-gray-800 hover:text-course-purple flex items-center py-1" 
+                                onClick={closeMenu}
+                              >
+                                {item.icon}
+                                <span>{item.title}</span>
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </li>
+                  
+                  <li className="space-y-2">
+                    <div className="font-medium text-orange-600 border-b pb-1">Robotică</div>
+                    {roboticsCourses.map((category, idx) => (
+                      <div key={idx} className="space-y-2">
+                        <div className="font-medium text-gray-500 pl-2 text-sm">{category.category}</div>
+                        <ul className="pl-4 space-y-3 mt-2">
+                          {category.items.map((item, i) => (
+                            <li key={i}>
+                              <Link 
+                                to={item.path} 
+                                className="text-gray-800 hover:text-orange-600 flex items-center py-1" 
+                                onClick={closeMenu}
+                              >
+                                {item.icon}
+                                <span>{item.title}</span>
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </li>
                   
                   <li>
                     <Link to="/#courses" className="text-course-purple font-medium block" onClick={closeMenu}>
