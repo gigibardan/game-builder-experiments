@@ -5,12 +5,12 @@ import { useAuth } from '@/hooks/useAuth';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
-  requireAdmin?: boolean;
+  requiredRole?: 'admin' | 'student';
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   children,
-  requireAdmin = false,
+  requiredRole,
 }) => {
   const { isAuthenticated, isAdmin, loading } = useAuth();
   const location = useLocation();
@@ -27,8 +27,13 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     return <Navigate to="/auth" state={{ from: location }} replace />;
   }
 
-  if (requireAdmin && !isAdmin) {
-    return <Navigate to="/" replace />;
+  if (requiredRole === 'admin' && !isAdmin) {
+    return <Navigate to="/unauthorized" replace />;
+  }
+
+  if (requiredRole === 'student' && isAdmin) {
+    // Admins can access student pages, so we don't block them
+    // But if you want to restrict, you can add logic here
   }
 
   return <>{children}</>;
