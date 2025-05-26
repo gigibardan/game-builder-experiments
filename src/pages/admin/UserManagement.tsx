@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react';
-import { useUserManagement } from '@/hooks/useUserManagement';
+import { useUsers } from '@/hooks/useUsers';
+import { useCourses } from '@/hooks/useCourses';
+import { useUserAccess } from '@/hooks/useUserAccess';
 import { useAuth } from '@/hooks/useAuth';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -18,19 +20,11 @@ import { Profile } from '@/types/database';
 
 const UserManagement: React.FC = () => {
   const { isAdmin } = useAuth();
-  const { 
-    users, 
-    courses, 
-    sessions, 
-    loading, 
-    createUser, 
-    updateUser, 
-    deleteUser, 
-    updateUserAccess, 
-    getUserAccess,
-    getUsersWithoutAccess
-  } = useUserManagement();
+  const { users, loading: usersLoading, createUser, updateUser, deleteUser } = useUsers();
+  const { courses, sessions, loading: coursesLoading } = useCourses();
+  const { updateUserAccess, getUserAccess, getUsersWithoutAccess, loading: accessLoading } = useUserAccess();
   
+  const loading = usersLoading || coursesLoading || accessLoading;
   const [filteredUsers, setFilteredUsers] = useState<Profile[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   
@@ -48,7 +42,7 @@ const UserManagement: React.FC = () => {
   const [selectedCourses, setSelectedCourses] = useState<{[key: string]: boolean}>({});
   const [selectedSessions, setSelectedSessions] = useState<{[key: string]: {[key: string]: boolean}}>({});
 
-  const usersWithoutAccess = getUsersWithoutAccess();
+  const usersWithoutAccess = getUsersWithoutAccess(users);
 
   React.useEffect(() => {
     const filtered = users.filter(user => 

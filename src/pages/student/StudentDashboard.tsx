@@ -6,12 +6,16 @@ import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useAuth } from '@/hooks/useAuth';
-import { useUserManagement } from '@/hooks/useUserManagement';
+import { useUsers } from '@/hooks/useUsers';
+import { useCourses } from '@/hooks/useCourses';
+import { useUserAccess } from '@/hooks/useUserAccess';
 import { Book, Clock, Award, TrendingUp } from 'lucide-react';
 
 const StudentDashboard: React.FC = () => {
   const { profile } = useAuth();
-  const { courses, sessions, userAccess, getUserAccess } = useUserManagement();
+  const { users } = useUsers();
+  const { courses, sessions } = useCourses();
+  const { getUserAccess } = useUserAccess();
   
   const myAccess = getUserAccess(profile?.id || '');
   const myCourses = courses.filter(course => 

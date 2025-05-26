@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -8,19 +7,40 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Users, Shield, Book, Settings, BarChart3, UserPlus, FileText, Key, AlertTriangle } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
-import { useUserManagement } from '@/hooks/useUserManagement';
+import { useUsers } from '@/hooks/useUsers';
+import { useCourses } from '@/hooks/useCourses';
+import { useUserAccess } from '@/hooks/useUserAccess';
 import { toast } from 'sonner';
 
 const Dashboard: React.FC = () => {
   const { profile } = useAuth();
-  const { 
-    loading, 
-    getStatistics, 
-    getUsersWithoutAccess 
-  } = useUserManagement();
+  const { users, loading: usersLoading } = useUsers();
+  const { courses, sessions, loading: coursesLoading } = useCourses();
+  const { getUsersWithoutAccess, loading: accessLoading } = useUserAccess();
   
+  const loading = usersLoading || coursesLoading || accessLoading;
+  const usersWithoutAccess = getUsersWithoutAccess(users);
+
+  // Calculate statistics
+  const getStatistics = () => {
+    const totalUsers = users.length;
+    const totalStudents = users.filter(user => user.role === 'student').length;
+    const totalAdmins = users.filter(user => user.role === 'admin').length;
+    const totalCourses = courses.length;
+    const totalSessions = sessions.length;
+    const usersWithoutAccessCount = usersWithoutAccess.length;
+
+    return {
+      totalUsers,
+      totalStudents,
+      totalAdmins,
+      totalCourses,
+      totalSessions,
+      usersWithoutAccess: usersWithoutAccessCount
+    };
+  };
+
   const stats = getStatistics();
-  const usersWithoutAccess = getUsersWithoutAccess();
 
   const handleFeatureInDevelopment = () => {
     toast.info("Această funcționalitate este în curs de dezvoltare");
