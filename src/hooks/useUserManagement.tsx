@@ -1,7 +1,11 @@
+
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { Profile, Course, Session, UserAccess } from '@/types/database';
 import { toast } from 'sonner';
+
+// Service role key pentru operațiuni administrative
+const SERVICE_ROLE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNtcW5hZnBqcHFwZ2Rqdm9ndXVrIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0NzA0MzY3MCwiZXhwIjoyMDYyNjE5NjcwfQ.AyT60g9TuZkXMaa5qG4z5WAdp_dzT6uywVBr9MQWNnk';
 
 export function useUserManagement() {
   const [users, setUsers] = useState<Profile[]>([]);
@@ -70,37 +74,49 @@ export function useUserManagement() {
     try {
       console.log('Creating user with:', { email, username, role });
       
-      // Create auth user
-      const { data: authData, error: authError } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
+      // Create auth user using admin API
+      const createUserResponse = await fetch(`https://smqnafpjpqpgdjvoguuk.supabase.co/auth/v1/admin/users`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${SERVICE_ROLE_KEY}`,
+          'apikey': SERVICE_ROLE_KEY
+        },
+        body: JSON.stringify({
+          email,
+          password,
+          user_metadata: {
             username,
             first_name: firstName,
             last_name: lastName,
             role,
           },
-        },
+          email_confirm: true
+        })
       });
 
-      if (authError) {
-        console.error('Auth error:', authError);
-        throw authError;
+      if (!createUserResponse.ok) {
+        const errorData = await createUserResponse.json();
+        console.error('User creation failed:', errorData);
+        throw new Error(errorData.message || 'Eroare la crearea utilizatorului');
       }
 
-      console.log('User created successfully:', authData);
+      const userData = await createUserResponse.json();
+      console.log('User created successfully:', userData);
 
-      if (authData.user) {
-        // Update profile with role
+      // Update profile with role
+      if (userData.id) {
         const { error: profileError } = await supabase
           .from('profiles')
-          .update({ role })
-          .eq('id', authData.user.id);
+          .upsert({ 
+            id: userData.id,
+            username,
+            email,
+            role 
+          });
 
         if (profileError) {
           console.error('Profile update error:', profileError);
-          throw profileError;
         }
       }
 
@@ -133,35 +149,29 @@ export function useUserManagement() {
         }
       }
 
-      // Update password if provided - this requires service_role key
+      // Update password if provided using admin API
       if (password) {
         console.log('Attempting to update password for user:', userId);
         
-        // Try to update password using the admin API
-        try {
-          const response = await fetch(`https://smqnafpjpqpgdjvoguuk.supabase.co/auth/v1/admin/users/${userId}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_SERVICE_ROLE_KEY || 'service_role_key_not_configured'}`,
-              'apikey': import.meta.env.VITE_SUPABASE_SERVICE_ROLE_KEY || 'service_role_key_not_configured'
-            },
-            body: JSON.stringify({
-              password: password
-            })
-          });
+        const updatePasswordResponse = await fetch(`https://smqnafpjpqpgdjvoguuk.supabase.co/auth/v1/admin/users/${userId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${SERVICE_ROLE_KEY}`,
+            'apikey': SERVICE_ROLE_KEY
+          },
+          body: JSON.stringify({
+            password: password
+          })
+        });
 
-          if (!response.ok) {
-            const errorData = await response.json();
-            console.error('Password update failed:', errorData);
-            throw new Error(`Eroare la actualizarea parolei: ${errorData.message || 'Service role key nu este configurat'}`);
-          }
-
-          console.log('Password updated successfully');
-        } catch (fetchError) {
-          console.error('Password update error:', fetchError);
-          throw new Error('Nu se poate actualiza parola. Verifică configurarea service_role key în Supabase.');
+        if (!updatePasswordResponse.ok) {
+          const errorData = await updatePasswordResponse.json();
+          console.error('Password update failed:', errorData);
+          throw new Error(`Eroare la actualizarea parolei: ${errorData.message || 'Unknown error'}`);
         }
+
+        console.log('Password updated successfully');
       }
 
       await fetchUsers();
@@ -179,27 +189,22 @@ export function useUserManagement() {
       console.log('Deleting user:', userId);
       
       // Delete user using admin API
-      try {
-        const response = await fetch(`https://smqnafpjpqpgdjvoguuk.supabase.co/auth/v1/admin/users/${userId}`, {
-          method: 'DELETE',
-          headers: {
-            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_SERVICE_ROLE_KEY || 'service_role_key_not_configured'}`,
-            'apikey': import.meta.env.VITE_SUPABASE_SERVICE_ROLE_KEY || 'service_role_key_not_configured'
-          }
-        });
-
-        if (!response.ok) {
-          const errorData = await response.json();
-          console.error('User deletion failed:', errorData);
-          throw new Error(`Eroare la ștergerea utilizatorului: ${errorData.message || 'Service role key nu este configurat'}`);
+      const deleteUserResponse = await fetch(`https://smqnafpjpqpgdjvoguuk.supabase.co/auth/v1/admin/users/${userId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${SERVICE_ROLE_KEY}`,
+          'apikey': SERVICE_ROLE_KEY
         }
+      });
 
-        console.log('User deleted successfully');
-      } catch (fetchError) {
-        console.error('User deletion error:', fetchError);
-        throw new Error('Nu se poate șterge utilizatorul. Verifică configurarea service_role key în Supabase.');
+      if (!deleteUserResponse.ok) {
+        const errorData = await deleteUserResponse.json();
+        console.error('User deletion failed:', errorData);
+        throw new Error(`Eroare la ștergerea utilizatorului: ${errorData.message || 'Unknown error'}`);
       }
 
+      console.log('User deleted successfully');
+      
       await fetchUsers();
       toast.success('Utilizator șters cu succes!');
       return { success: true };
