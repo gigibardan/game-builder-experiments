@@ -68,6 +68,8 @@ export function useUserManagement() {
 
   const createUser = async (email: string, password: string, username: string, firstName?: string, lastName?: string, role: 'student' | 'admin' = 'student') => {
     try {
+      console.log('Creating user with:', { email, username, role });
+      
       // Create auth user
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
@@ -82,7 +84,12 @@ export function useUserManagement() {
         },
       });
 
-      if (authError) throw authError;
+      if (authError) {
+        console.error('Auth error:', authError);
+        throw authError;
+      }
+
+      console.log('User created successfully:', authData);
 
       if (authData.user) {
         // Update profile with role
@@ -91,7 +98,10 @@ export function useUserManagement() {
           .update({ role })
           .eq('id', authData.user.id);
 
-        if (profileError) throw profileError;
+        if (profileError) {
+          console.error('Profile update error:', profileError);
+          throw profileError;
+        }
       }
 
       await fetchUsers();
@@ -106,6 +116,8 @@ export function useUserManagement() {
 
   const updateUser = async (userId: string, updates: Partial<Profile> & { password?: string }) => {
     try {
+      console.log('Updating user:', userId, updates);
+      
       // Update profile data
       const { password, ...profileUpdates } = updates;
       
@@ -115,17 +127,41 @@ export function useUserManagement() {
           .update(profileUpdates)
           .eq('id', userId);
 
-        if (profileError) throw profileError;
+        if (profileError) {
+          console.error('Profile update error:', profileError);
+          throw profileError;
+        }
       }
 
-      // Update password if provided
+      // Update password if provided - this requires service_role key
       if (password) {
-        const { error: passwordError } = await supabase.auth.admin.updateUserById(
-          userId,
-          { password }
-        );
+        console.log('Attempting to update password for user:', userId);
+        
+        // Try to update password using the admin API
+        try {
+          const response = await fetch(`https://smqnafpjpqpgdjvoguuk.supabase.co/auth/v1/admin/users/${userId}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_SERVICE_ROLE_KEY || 'service_role_key_not_configured'}`,
+              'apikey': import.meta.env.VITE_SUPABASE_SERVICE_ROLE_KEY || 'service_role_key_not_configured'
+            },
+            body: JSON.stringify({
+              password: password
+            })
+          });
 
-        if (passwordError) throw passwordError;
+          if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Password update failed:', errorData);
+            throw new Error(`Eroare la actualizarea parolei: ${errorData.message || 'Service role key nu este configurat'}`);
+          }
+
+          console.log('Password updated successfully');
+        } catch (fetchError) {
+          console.error('Password update error:', fetchError);
+          throw new Error('Nu se poate actualiza parola. Verifică configurarea service_role key în Supabase.');
+        }
       }
 
       await fetchUsers();
@@ -140,10 +176,29 @@ export function useUserManagement() {
 
   const deleteUser = async (userId: string) => {
     try {
-      // Delete from auth.users (will cascade to profiles)
-      const { error } = await supabase.auth.admin.deleteUser(userId);
+      console.log('Deleting user:', userId);
+      
+      // Delete user using admin API
+      try {
+        const response = await fetch(`https://smqnafpjpqpgdjvoguuk.supabase.co/auth/v1/admin/users/${userId}`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_SERVICE_ROLE_KEY || 'service_role_key_not_configured'}`,
+            'apikey': import.meta.env.VITE_SUPABASE_SERVICE_ROLE_KEY || 'service_role_key_not_configured'
+          }
+        });
 
-      if (error) throw error;
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error('User deletion failed:', errorData);
+          throw new Error(`Eroare la ștergerea utilizatorului: ${errorData.message || 'Service role key nu este configurat'}`);
+        }
+
+        console.log('User deleted successfully');
+      } catch (fetchError) {
+        console.error('User deletion error:', fetchError);
+        throw new Error('Nu se poate șterge utilizatorul. Verifică configurarea service_role key în Supabase.');
+      }
 
       await fetchUsers();
       toast.success('Utilizator șters cu succes!');
@@ -253,6 +308,34 @@ export function useUserManagement() {
     };
 
     loadData();
+
+    // Set up real-time listeners for data updates
+    const usersChannel = supabase
+      .channel('profiles-changes')
+      .on('postgres_changes', 
+        { event: '*', schema: 'public', table: 'profiles' }, 
+        () => {
+          console.log('Profiles table changed, refetching users...');
+          fetchUsers();
+        }
+      )
+      .subscribe();
+
+    const accessChannel = supabase
+      .channel('user-access-changes')
+      .on('postgres_changes', 
+        { event: '*', schema: 'public', table: 'user_access' }, 
+        () => {
+          console.log('User access table changed, refetching access data...');
+          fetchUserAccess();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(usersChannel);
+      supabase.removeChannel(accessChannel);
+    };
   }, []);
 
   return {
