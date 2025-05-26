@@ -123,7 +123,7 @@ const Header = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <Button asChild>
+              <Button asChild className="bg-course-blue hover:bg-course-blue/90">
                 <Link to="/auth">Autentificare</Link>
               </Button>
             )}

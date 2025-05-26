@@ -1,6 +1,7 @@
+
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext'; // ← Modificat să folosească contextul corect
+import { useAuth } from '@/hooks/useAuth';
 import { toast } from "sonner";
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -16,7 +17,7 @@ const AuthPage = () => {
   const [signupUsername, setSignupUsername] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   
-  const { login, isAuthenticated } = useAuth(); // ← Folosește login din context
+  const { signIn, signUp, isAuthenticated } = useAuth();
 
   if (isAuthenticated) {
     return <Navigate to="/" />;
@@ -26,11 +27,10 @@ const AuthPage = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Folosește emailul ca username pentru MOCK_USERS
-    const success = await login(loginEmail, loginPassword);
+    const { error } = await signIn(loginEmail, loginPassword);
     
-    if (!success) {
-      toast.error("Email sau parolă incorectă!");
+    if (error) {
+      toast.error(error);
     } else {
       toast.success("Autentificare reușită!");
     }
@@ -42,8 +42,13 @@ const AuthPage = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Pentru demo, doar afișează un mesaj
-    toast.info("Înregistrarea nu este disponibilă în versiunea demo. Folosește contul admin.");
+    const { error } = await signUp(signupEmail, signupPassword, signupUsername);
+    
+    if (error) {
+      toast.error(error);
+    } else {
+      toast.success("Cont creat cu succes! Te poți autentifica acum.");
+    }
     
     setIsLoading(false);
   };
@@ -158,9 +163,9 @@ const AuthPage = () => {
           </Tabs>
 
           <div className="mt-6 text-sm text-center text-gray-600">
-            <p>Cont demo admin:</p>
-            <p>Email: <strong>admin@techminds.ro</strong></p>
-            <p>Parolă: <strong>admin123</strong></p>
+            <p>Conturi de test disponibile:</p>
+            <p>Email: <strong>student3@example.com</strong> / <strong>student4@example.com</strong></p>
+            <p>Parolă: <strong>student123</strong></p>
           </div>
         </div>
         

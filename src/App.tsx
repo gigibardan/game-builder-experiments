@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/sonner';
-import { AuthProvider } from '@/contexts/AuthContext'; // ← Adaugă import-ul
+import { AuthProvider } from '@/hooks/useAuth';
 import AuthPage from '@/pages/auth/AuthPage';
 import Home from '@/pages/Home';
 import Courses from '@/pages/Courses';
@@ -62,7 +63,7 @@ import GreenfootSession3 from '@/pages/greenfoot/Session3';
 
 function App() {
   return (
-    <AuthProvider> {/* ← Wrap totul în AuthProvider */}
+    <AuthProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<AuthPage />} />
