@@ -133,7 +133,7 @@ const Header = () => {
                 <Link to="/">
                   <Button variant="ghost" className={cn(
                     "text-sm text-white hover:bg-white/10 hover:text-white",
-                    isActive('/') ? "bg-white/20" : ""
+                    isActive('/') && !location.pathname.includes('admin') ? "bg-white/20" : ""
                   )}>
                     <Home className="mr-1 h-4 w-4" />
                     <span>Acasă</span>

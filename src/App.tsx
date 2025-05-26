@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/sonner';
@@ -64,7 +65,6 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<AuthPage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/contact" element={<Contact />} />
