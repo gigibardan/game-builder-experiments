@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { Profile, Course, Session, UserAccess } from '@/types/database';
@@ -105,14 +104,29 @@ export function useUserManagement() {
     }
   };
 
-  const updateUser = async (userId: string, updates: Partial<Profile>) => {
+  const updateUser = async (userId: string, updates: Partial<Profile> & { password?: string }) => {
     try {
-      const { error } = await supabase
-        .from('profiles')
-        .update(updates)
-        .eq('id', userId);
+      // Update profile data
+      const { password, ...profileUpdates } = updates;
+      
+      if (Object.keys(profileUpdates).length > 0) {
+        const { error: profileError } = await supabase
+          .from('profiles')
+          .update(profileUpdates)
+          .eq('id', userId);
 
-      if (error) throw error;
+        if (profileError) throw profileError;
+      }
+
+      // Update password if provided
+      if (password) {
+        const { error: passwordError } = await supabase.auth.admin.updateUserById(
+          userId,
+          { password }
+        );
+
+        if (passwordError) throw passwordError;
+      }
 
       await fetchUsers();
       toast.success('Utilizator actualizat cu succes!');
@@ -201,6 +215,31 @@ export function useUserManagement() {
     }));
   };
 
+  const getUsersWithoutAccess = () => {
+    return users.filter(user => {
+      const hasAccess = userAccess.some(access => access.user_id === user.id);
+      return !hasAccess && user.role === 'student';
+    });
+  };
+
+  const getStatistics = () => {
+    const totalUsers = users.length;
+    const totalStudents = users.filter(u => u.role === 'student').length;
+    const totalAdmins = users.filter(u => u.role === 'admin').length;
+    const usersWithoutAccess = getUsersWithoutAccess().length;
+    const totalCourses = courses.length;
+    const totalSessions = sessions.length;
+
+    return {
+      totalUsers,
+      totalStudents,
+      totalAdmins,
+      usersWithoutAccess,
+      totalCourses,
+      totalSessions
+    };
+  };
+
   useEffect(() => {
     const loadData = async () => {
       setLoading(true);
@@ -227,6 +266,8 @@ export function useUserManagement() {
     deleteUser,
     updateUserAccess,
     getUserAccess,
+    getUsersWithoutAccess,
+    getStatistics,
     refetch: () => Promise.all([fetchUsers(), fetchUserAccess()]),
   };
 }

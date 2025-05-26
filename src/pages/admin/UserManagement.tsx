@@ -11,7 +11,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Checkbox } from '@/components/ui/checkbox';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Search, UserPlus, Edit, Trash, Key } from "lucide-react";
+import { Search, UserPlus, Edit, Trash, Key, AlertTriangle } from "lucide-react";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Profile } from '@/types/database';
@@ -27,7 +27,8 @@ const UserManagement: React.FC = () => {
     updateUser, 
     deleteUser, 
     updateUserAccess, 
-    getUserAccess 
+    getUserAccess,
+    getUsersWithoutAccess
   } = useUserManagement();
   
   const [filteredUsers, setFilteredUsers] = useState<Profile[]>([]);
@@ -46,6 +47,8 @@ const UserManagement: React.FC = () => {
   
   const [selectedCourses, setSelectedCourses] = useState<{[key: string]: boolean}>({});
   const [selectedSessions, setSelectedSessions] = useState<{[key: string]: {[key: string]: boolean}}>({});
+
+  const usersWithoutAccess = getUsersWithoutAccess();
 
   React.useEffect(() => {
     const filtered = users.filter(user => 
@@ -110,14 +113,21 @@ const UserManagement: React.FC = () => {
     let result;
     if (currentUser) {
       // Update existing user
-      result = await updateUser(currentUser.id, {
+      const updateData: any = {
         username: formData.username,
         email: formData.email,
         role: formData.role
-      });
+      };
+      
+      // Add password if provided
+      if (formData.password) {
+        updateData.password = formData.password;
+      }
+      
+      result = await updateUser(currentUser.id, updateData);
     } else {
       // Create new user
-      result = await createUser(formData.email, formData.password, formData.username, formData.role);
+      result = await createUser(formData.email, formData.password, formData.username, undefined, undefined, formData.role);
     }
 
     if (result.success) {
@@ -203,6 +213,33 @@ const UserManagement: React.FC = () => {
               Adaugă Utilizator
             </Button>
           </div>
+
+          {/* Alert pentru utilizatori fără acces */}
+          {usersWithoutAccess.length > 0 && (
+            <Card className="mb-6 border-orange-200 bg-orange-50">
+              <CardHeader>
+                <CardTitle className="text-orange-700 flex items-center">
+                  <AlertTriangle className="mr-2 h-5 w-5" />
+                  Utilizatori fără acces la cursuri ({usersWithoutAccess.length})
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {usersWithoutAccess.map(user => (
+                    <Button
+                      key={user.id}
+                      variant="outline"
+                      size="sm"
+                      onClick={() => openEditDialog(user)}
+                      className="border-orange-300 text-orange-700 hover:bg-orange-100"
+                    >
+                      {user.username}
+                    </Button>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
           
           <Card className="mb-8">
             <CardHeader>
@@ -233,9 +270,17 @@ const UserManagement: React.FC = () => {
                   {filteredUsers.length > 0 ? (
                     filteredUsers.map(user => {
                       const userAccess = getUserAccess(user.id);
+                      const hasNoAccess = userAccess.length === 0 && user.role === 'student';
                       return (
-                        <TableRow key={user.id}>
-                          <TableCell className="font-medium">{user.username}</TableCell>
+                        <TableRow key={user.id} className={hasNoAccess ? 'bg-red-50' : ''}>
+                          <TableCell className="font-medium">
+                            <div className="flex items-center">
+                              {user.username}
+                              {hasNoAccess && (
+                                <AlertTriangle className="ml-2 h-4 w-4 text-red-500" />
+                              )}
+                            </div>
+                          </TableCell>
                           <TableCell>{user.email}</TableCell>
                           <TableCell>
                             <span className={`px-2 py-1 rounded-full text-xs ${
@@ -245,16 +290,20 @@ const UserManagement: React.FC = () => {
                             </span>
                           </TableCell>
                           <TableCell>
-                            <div className="flex flex-wrap gap-1">
-                              {userAccess.map(access => {
-                                const course = courses.find(c => c.id === access.courseId);
-                                return (
-                                  <span key={access.courseId} className="px-1.5 py-0.5 bg-gray-100 rounded text-xs">
-                                    {course?.name || access.courseId}
-                                  </span>
-                                );
-                              })}
-                            </div>
+                            {hasNoAccess ? (
+                              <span className="text-red-500 text-sm">Fără acces</span>
+                            ) : (
+                              <div className="flex flex-wrap gap-1">
+                                {userAccess.map(access => {
+                                  const course = courses.find(c => c.id === access.courseId);
+                                  return (
+                                    <span key={access.courseId} className="px-1.5 py-0.5 bg-gray-100 rounded text-xs">
+                                      {course?.name || access.courseId}
+                                    </span>
+                                  );
+                                })}
+                              </div>
+                            )}
                           </TableCell>
                           <TableCell>
                             <div className="flex gap-2">

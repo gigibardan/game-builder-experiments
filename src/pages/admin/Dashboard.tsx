@@ -1,59 +1,42 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Link } from 'react-router-dom';
-import { User, UserRole } from '@/types/auth';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Users, Shield, Book, Settings, BarChart3, UserPlus, FileText, Key } from 'lucide-react';
+import { Users, Shield, Book, Settings, BarChart3, UserPlus, FileText, Key, AlertTriangle } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
+import { useUserManagement } from '@/hooks/useUserManagement';
 import { toast } from 'sonner';
 
 const Dashboard: React.FC = () => {
   const { profile } = useAuth();
+  const { 
+    loading, 
+    getStatistics, 
+    getUsersWithoutAccess 
+  } = useUserManagement();
   
-  // Mock users data
-  const [users] = useState<User[]>([
-    {
-      id: '1',
-      username: 'john_doe',
-      email: 'john@example.com',
-      role: UserRole.USER,
-      courseAccess: [
-        { courseId: 'scratch', sessions: ['1', '2'] },
-        { courseId: 'appinventor', sessions: ['1'] }
-      ]
-    },
-    {
-      id: '2',
-      username: 'jane_smith',
-      email: 'jane@example.com',
-      role: UserRole.USER,
-      courseAccess: [
-        { courseId: 'scratch', sessions: ['1'] }
-      ]
-    },
-    {
-      id: '3',
-      username: 'admin_user',
-      email: 'admin@example.com',
-      role: UserRole.ADMIN,
-      courseAccess: []
-    }
-  ]);
-
-  // Mock courses data
-  const courses = [
-    { id: 'scratch', name: 'Scratch' },
-    { id: 'appinventor', name: 'App Inventor' },
-    { id: 'python', name: 'Python' },
-    { id: 'alice3', name: 'Alice 3' },
-  ];
+  const stats = getStatistics();
+  const usersWithoutAccess = getUsersWithoutAccess();
 
   const handleFeatureInDevelopment = () => {
     toast.info("Această funcționalitate este în curs de dezvoltare");
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <div className="flex-grow flex items-center justify-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-course-blue"></div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -81,6 +64,40 @@ const Dashboard: React.FC = () => {
               </Button>
             </div>
           </div>
+
+          {/* Alert pentru utilizatori fără acces */}
+          {usersWithoutAccess.length > 0 && (
+            <Card className="mb-6 border-orange-200 bg-orange-50">
+              <CardHeader>
+                <CardTitle className="text-orange-700 flex items-center">
+                  <AlertTriangle className="mr-2 h-5 w-5" />
+                  Atenție: Utilizatori fără acces la cursuri
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-orange-600 mb-3">
+                  {usersWithoutAccess.length} utilizator(i) nu au acces la niciun curs:
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {usersWithoutAccess.slice(0, 5).map(user => (
+                    <span key={user.id} className="px-2 py-1 bg-orange-100 text-orange-800 rounded text-sm">
+                      {user.username}
+                    </span>
+                  ))}
+                  {usersWithoutAccess.length > 5 && (
+                    <span className="px-2 py-1 bg-orange-100 text-orange-800 rounded text-sm">
+                      +{usersWithoutAccess.length - 5} mai mulți
+                    </span>
+                  )}
+                </div>
+                <Button asChild size="sm" className="bg-orange-600 hover:bg-orange-700">
+                  <Link to="/admin/users">
+                    Gestionează Accesul
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          )}
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
@@ -91,7 +108,7 @@ const Dashboard: React.FC = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold">{users.length}</div>
+                <div className="text-3xl font-bold">{stats.totalUsers}</div>
                 <p className="text-gray-600">Conturi active</p>
                 <Button asChild variant="ghost" className="w-full mt-4 text-blue-700 hover:bg-blue-100">
                   <Link to="/admin/users">
@@ -109,7 +126,7 @@ const Dashboard: React.FC = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold">{courses.length}</div>
+                <div className="text-3xl font-bold">{stats.totalCourses}</div>
                 <p className="text-gray-600">Cursuri disponibile</p>
                 <Button onClick={handleFeatureInDevelopment} variant="ghost" className="w-full mt-4 text-green-700 hover:bg-green-100">
                   Administrare Cursuri
@@ -137,13 +154,14 @@ const Dashboard: React.FC = () => {
               <CardHeader className="pb-2">
                 <CardTitle className="text-lg text-amber-700 flex items-center">
                   <Settings className="mr-2 h-5 w-5" />
-                  Setări
+                  Sesiuni
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-gray-600 mt-2">Configurarea platformei</div>
+                <div className="text-3xl font-bold">{stats.totalSessions}</div>
+                <p className="text-gray-600">Lecții disponibile</p>
                 <Button onClick={handleFeatureInDevelopment} variant="ghost" className="w-full mt-4 text-amber-700 hover:bg-amber-100">
-                  Setări Platformă
+                  Administrare Sesiuni
                 </Button>
               </CardContent>
             </Card>
@@ -170,19 +188,19 @@ const Dashboard: React.FC = () => {
                         <div className="grid grid-cols-2 gap-4">
                           <div className="bg-blue-50 p-4 rounded-lg">
                             <h3 className="text-sm font-medium text-blue-600">Total Studenți</h3>
-                            <div className="text-2xl font-bold">{users.filter(u => u.role === UserRole.USER).length}</div>
+                            <div className="text-2xl font-bold">{stats.totalStudents}</div>
                           </div>
                           <div className="bg-green-50 p-4 rounded-lg">
                             <h3 className="text-sm font-medium text-green-600">Total Administratori</h3>
-                            <div className="text-2xl font-bold">{users.filter(u => u.role === UserRole.ADMIN).length}</div>
+                            <div className="text-2xl font-bold">{stats.totalAdmins}</div>
                           </div>
                           <div className="bg-amber-50 p-4 rounded-lg">
                             <h3 className="text-sm font-medium text-amber-600">Cursuri Active</h3>
-                            <div className="text-2xl font-bold">{courses.length}</div>
+                            <div className="text-2xl font-bold">{stats.totalCourses}</div>
                           </div>
-                          <div className="bg-purple-50 p-4 rounded-lg">
-                            <h3 className="text-sm font-medium text-purple-600">Lecții Totale</h3>
-                            <div className="text-2xl font-bold">40</div>
+                          <div className="bg-red-50 p-4 rounded-lg">
+                            <h3 className="text-sm font-medium text-red-600">Utilizatori fără acces</h3>
+                            <div className="text-2xl font-bold">{stats.usersWithoutAccess}</div>
                           </div>
                         </div>
                         
@@ -197,12 +215,12 @@ const Dashboard: React.FC = () => {
                               </div>
                               <div className="text-right">
                                 <span className="text-xs font-semibold inline-block text-blue-600">
-                                  {Math.round((users.filter(u => u.role === UserRole.USER).length / users.length) * 100)}%
+                                  {stats.totalUsers > 0 ? Math.round((stats.totalStudents / stats.totalUsers) * 100) : 0}%
                                 </span>
                               </div>
                             </div>
                             <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
-                              <div style={{ width: `${(users.filter(u => u.role === UserRole.USER).length / users.length) * 100}%` }} 
+                              <div style={{ width: `${stats.totalUsers > 0 ? (stats.totalStudents / stats.totalUsers) * 100 : 0}%` }} 
                                 className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500">
                               </div>
                             </div>
@@ -215,12 +233,12 @@ const Dashboard: React.FC = () => {
                               </div>
                               <div className="text-right">
                                 <span className="text-xs font-semibold inline-block text-purple-600">
-                                  {Math.round((users.filter(u => u.role === UserRole.ADMIN).length / users.length) * 100)}%
+                                  {stats.totalUsers > 0 ? Math.round((stats.totalAdmins / stats.totalUsers) * 100) : 0}%
                                 </span>
                               </div>
                             </div>
                             <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-purple-200">
-                              <div style={{ width: `${(users.filter(u => u.role === UserRole.ADMIN).length / users.length) * 100}%` }} 
+                              <div style={{ width: `${stats.totalUsers > 0 ? (stats.totalAdmins / stats.totalUsers) * 100 : 0}%` }} 
                                 className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500">
                               </div>
                             </div>

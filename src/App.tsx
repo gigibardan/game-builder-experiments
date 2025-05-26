@@ -22,6 +22,7 @@ import ProtectedRoute from '@/components/ProtectedRoute';
 import CourseAccessGuard from '@/components/CourseAccessGuard';
 import Dashboard from '@/pages/admin/Dashboard';
 import UserManagement from '@/pages/admin/UserManagement';
+import StudentDashboard from '@/pages/student/StudentDashboard';
 import Session1Alegesanatos from '@/pages/scratch/Session1Alegesanatos';
 import Session2SpaceDodge from '@/pages/scratch/Session2SpaceDodge';
 import Session3MotoRacer from '@/pages/scratch/Session3MotoRacer';
@@ -71,6 +72,16 @@ function App() {
         <Route path="/courses" element={<Courses />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
+        
+        {/* Student Dashboard */}
+        <Route 
+          path="/dashboard" 
+          element={
+            <ProtectedRoute>
+              <StudentDashboard />
+            </ProtectedRoute>
+          } 
+        />
         
         {/* Course pages with access control */}
         <Route path="/courses/scratch" element={
