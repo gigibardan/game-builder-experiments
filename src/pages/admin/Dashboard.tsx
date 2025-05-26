@@ -8,7 +8,7 @@ import { User, UserRole } from '@/types/auth';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Users, Shield, Book, Settings, BarChart3, UserPlus, FileText, Key } from 'lucide-react';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
 
 const Dashboard: React.FC = () => {
