@@ -50,7 +50,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         .select(`
           course_id,
           session_id,
-          courses (slug),
+          courses!inner (slug),
           sessions (slug)
         `)
         .eq('user_id', userId);
@@ -59,9 +59,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       
       const accessData = data?.map(access => ({
         courseId: access.course_id,
-        courseSlug: access.courses?.slug,
+        courseSlug: (access.courses as any)?.slug,
         sessionId: access.session_id,
-        sessionSlug: access.sessions?.slug
+        sessionSlug: (access.sessions as any)?.slug
       })) || [];
       
       setUserAccess(accessData);
