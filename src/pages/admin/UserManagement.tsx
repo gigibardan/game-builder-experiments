@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useUsers } from '@/hooks/useUsers';
 import { useCourses } from '@/hooks/useCourses';
@@ -13,20 +12,21 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Checkbox } from '@/components/ui/checkbox';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Search, UserPlus, Edit, Trash, Key, AlertTriangle } from "lucide-react";
+import { Search, UserPlus, Edit, Trash, Key, AlertTriangle, RefreshCw } from "lucide-react";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Profile } from '@/types/database';
 
 const UserManagement: React.FC = () => {
   const { isAdmin } = useAuth();
-  const { users, loading: usersLoading, createUser, updateUser, deleteUser } = useUsers();
+  const { users, loading: usersLoading, createUser, updateUser, deleteUser, syncUsers } = useUsers();
   const { courses, sessions, loading: coursesLoading } = useCourses();
   const { updateUserAccess, getUserAccess, getUsersWithoutAccess, loading: accessLoading } = useUserAccess();
   
   const loading = usersLoading || coursesLoading || accessLoading;
   const [filteredUsers, setFilteredUsers] = useState<Profile[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isSyncing, setIsSyncing] = useState(false);
   
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
@@ -55,6 +55,12 @@ const UserManagement: React.FC = () => {
   if (!isAdmin) {
     return <div>Nu aveți permisiunea să accesați această pagină.</div>;
   }
+
+  const handleSyncUsers = async () => {
+    setIsSyncing(true);
+    await syncUsers();
+    setIsSyncing(false);
+  };
 
   const openCreateDialog = () => {
     setFormData({ username: '', email: '', password: '', role: 'student' });
@@ -202,10 +208,21 @@ const UserManagement: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-3xl font-bold">Gestionare Utilizatori</h1>
-            <Button onClick={openCreateDialog} className="bg-green-600 hover:bg-green-700">
-              <UserPlus className="mr-2 h-4 w-4" />
-              Adaugă Utilizator
-            </Button>
+            <div className="flex gap-2">
+              <Button 
+                onClick={handleSyncUsers} 
+                variant="outline"
+                disabled={isSyncing}
+                className="bg-blue-50 hover:bg-blue-100 border-blue-200"
+              >
+                <RefreshCw className={`mr-2 h-4 w-4 ${isSyncing ? 'animate-spin' : ''}`} />
+                {isSyncing ? 'Sincronizare...' : 'Sincronizează din Auth'}
+              </Button>
+              <Button onClick={openCreateDialog} className="bg-green-600 hover:bg-green-700">
+                <UserPlus className="mr-2 h-4 w-4" />
+                Adaugă Utilizator
+              </Button>
+            </div>
           </div>
 
           {/* Alert pentru utilizatori fără acces */}

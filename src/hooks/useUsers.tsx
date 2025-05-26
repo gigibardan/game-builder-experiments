@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Profile } from '@/types/database';
-import { fetchUsers, createUser, updateUser, deleteUser } from '@/services/userService';
+import { fetchUsers, createUser, updateUser, deleteUser, syncUsersFromAuth } from '@/services/userService';
 import { toast } from 'sonner';
 import { supabase } from '@/lib/supabase';
 
@@ -16,6 +16,23 @@ export function useUsers() {
     } catch (error) {
       console.error('Error fetching users:', error);
       toast.error('Eroare la încărcarea utilizatorilor');
+    }
+  };
+
+  const handleSyncUsers = async () => {
+    try {
+      const result = await syncUsersFromAuth();
+      if (result.synced > 0) {
+        toast.success(`${result.synced} utilizatori sincronizați cu succes!`);
+        await loadUsers(); // Reload users after sync
+      } else {
+        toast.info('Toți utilizatorii sunt deja sincronizați');
+      }
+      return result;
+    } catch (error: any) {
+      console.error('Error syncing users:', error);
+      toast.error('Eroare la sincronizarea utilizatorilor');
+      return { success: false, error: error.message };
     }
   };
 
@@ -97,6 +114,7 @@ export function useUsers() {
     createUser: handleCreateUser,
     updateUser: handleUpdateUser,
     deleteUser: handleDeleteUser,
+    syncUsers: handleSyncUsers,
     refetchUsers: loadUsers,
   };
 }
