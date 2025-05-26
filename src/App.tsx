@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from '@/components/ui/sonner';
 import ProtectedRoute from '@/components/ProtectedRoute';
@@ -52,67 +52,65 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router>
-        <div className="App">
-          <Routes>
-            {/* Public routes */}
-            <Route path="/" element={<Index />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/courses" element={<Courses />} />
-            <Route path="/curriculum" element={<Curriculum />} />
-            
-            {/* Auth routes */}
-            <Route path="/auth" element={<AuthPage />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/reset-password" element={<ResetPassword />} />
-            <Route path="/unauthorized" element={<Unauthorized />} />
-            
-            {/* Programming course routes */}
-            <Route path="/courses/scratch" element={<Scratch />} />
-            <Route path="/courses/appinventor" element={<AppInventor />} />
-            <Route path="/courses/construct3" element={<Construct3 />} />
-            <Route path="/courses/gdevelop" element={<GDevelop />} />
-            <Route path="/courses/alice3" element={<Alice3 />} />
-            <Route path="/courses/microbitarcade" element={<MicrobitArcade />} />
-            <Route path="/courses/minecraft-modding" element={<MinecraftModding />} />
-            <Route path="/courses/robloxlua" element={<RobloxLua />} />
-            <Route path="/courses/python" element={<Python />} />
-            <Route path="/courses/frontenddev" element={<FrontendDev />} />
-            <Route path="/courses/greenfoot" element={<Greenfoot />} />
-            <Route path="/courses/godot" element={<Godot />} />
-            
-            {/* Robotics course routes */}
-            <Route path="/courses/lego-spike-essentials" element={<LegoSpikeEssentials />} />
-            <Route path="/courses/lego-spike-prime" element={<LegoSpikePrime />} />
-            <Route path="/courses/microbit-explorers" element={<MicrobitExplorers />} />
-            
-            {/* Protected student routes */}
-            <Route path="/student/dashboard" element={
-              <ProtectedRoute requiredRole="student">
-                <StudentDashboard />
-              </ProtectedRoute>
-            } />
-            
-            {/* Protected admin routes */}
-            <Route path="/admin/dashboard" element={
-              <ProtectedRoute requiredRole="admin">
-                <AdminDashboard />
-              </ProtectedRoute>
-            } />
-            <Route path="/admin/users" element={
-              <ProtectedRoute requiredRole="admin">
-                <UserManagement />
-              </ProtectedRoute>
-            } />
-            
-            {/* Catch all route for 404 */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <Toaster />
-        </div>
-      </Router>
+      <div className="App">
+        <Routes>
+          {/* Public routes */}
+          <Route path="/" element={<Index />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/curriculum" element={<Curriculum />} />
+          
+          {/* Auth routes */}
+          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
+          
+          {/* Programming course routes */}
+          <Route path="/courses/scratch" element={<Scratch />} />
+          <Route path="/courses/appinventor" element={<AppInventor />} />
+          <Route path="/courses/construct3" element={<Construct3 />} />
+          <Route path="/courses/gdevelop" element={<GDevelop />} />
+          <Route path="/courses/alice3" element={<Alice3 />} />
+          <Route path="/courses/microbitarcade" element={<MicrobitArcade />} />
+          <Route path="/courses/minecraft-modding" element={<MinecraftModding />} />
+          <Route path="/courses/robloxlua" element={<RobloxLua />} />
+          <Route path="/courses/python" element={<Python />} />
+          <Route path="/courses/frontenddev" element={<FrontendDev />} />
+          <Route path="/courses/greenfoot" element={<Greenfoot />} />
+          <Route path="/courses/godot" element={<Godot />} />
+          
+          {/* Robotics course routes */}
+          <Route path="/courses/lego-spike-essentials" element={<LegoSpikeEssentials />} />
+          <Route path="/courses/lego-spike-prime" element={<LegoSpikePrime />} />
+          <Route path="/courses/microbit-explorers" element={<MicrobitExplorers />} />
+          
+          {/* Protected student routes */}
+          <Route path="/student/dashboard" element={
+            <ProtectedRoute requiredRole="student">
+              <StudentDashboard />
+            </ProtectedRoute>
+          } />
+          
+          {/* Protected admin routes */}
+          <Route path="/admin/dashboard" element={
+            <ProtectedRoute requiredRole="admin">
+              <AdminDashboard />
+            </ProtectedRoute>
+          } />
+          <Route path="/admin/users" element={
+            <ProtectedRoute requiredRole="admin">
+              <UserManagement />
+            </ProtectedRoute>
+          } />
+          
+          {/* Catch all route for 404 */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Toaster />
+      </div>
     </QueryClientProvider>
   );
 }
