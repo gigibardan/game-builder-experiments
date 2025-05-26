@@ -1,8 +1,9 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Code, Gamepad, Laptop, Rocket, Layout, Brush, Blocks, 
-  Box, Puzzle, Binary, Coffee, Globe, BadgeCheck 
+  Box, Puzzle, Binary, Coffee, Globe, BadgeCheck, Cog, Cpu, Zap 
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -164,6 +165,42 @@ const HomePage = () => {
     },
   ];
 
+  const roboticsCourses = [
+    {
+      title: "Primul pas în robotică",
+      subtitle: "LEGO SPIKE Essentials",
+      description: "Transformă învățarea roboticii într-o aventură plină de entuziasm pentru copiii cu vârste între 7 și 9 ani.",
+      icon: <Cog className="h-10 w-10" />,
+      color: "border-orange-400",
+      bgcolor: "bg-orange-400",
+      link: "/lego-spike-essentials",
+      age: "7-9 ani",
+      level: "Începător"
+    },
+    {
+      title: "Robotică avansată",
+      subtitle: "LEGO SPIKE Prime",
+      description: "O incursiune în lumea roboticii avansate, unde creativitatea și logica se îmbină armonios cu tehnologia.",
+      icon: <Cpu className="h-10 w-10" />,
+      color: "border-red-400",
+      bgcolor: "bg-red-400",
+      link: "/lego-spike-prime",
+      age: "9-12 ani",
+      level: "Intermediar"
+    },
+    {
+      title: "Exploratori ai Inovației",
+      subtitle: "micro:bit Explorers",
+      description: "O lume fascinantă a tehnologiei, unde programarea și electronica de bază se întâlnesc pentru a crea proiecte interactive.",
+      icon: <Zap className="h-10 w-10" />,
+      color: "border-blue-400",
+      bgcolor: "bg-blue-400",
+      link: "/microbit-explorers",
+      age: "9-12 ani",
+      level: "Intermediar"
+    }
+  ];
+
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-gray-100">
       <Header />
@@ -296,7 +333,7 @@ const HomePage = () => {
           </div>
         </section>
         
-        {/* Courses Section */}
+        {/* Programming Courses Section */}
         <section id="courses" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
@@ -306,7 +343,7 @@ const HomePage = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7 }}
                 className="text-3xl font-bold mb-4 text-gray-800">
-                Cursurile Noastre
+                Cursuri de Programare
               </motion.h2>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -325,6 +362,53 @@ const HomePage = () => {
               viewport={{ once: true }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {courses.map((course, index) => (
+                <motion.div key={index} variants={item}>
+                  <CourseCard 
+                    title={course.title}
+                    subtitle={course.subtitle}
+                    description={course.description}
+                    icon={course.icon}
+                    color={course.color}
+                    bgcolor={course.bgcolor}
+                    link={course.link}
+                    age={course.age}
+                    level={course.level}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Robotics Courses Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="text-3xl font-bold mb-4 text-gray-800">
+                Cursuri de Robotică
+              </motion.h2>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="text-xl text-gray-600 max-w-3xl mx-auto">
+                De la primul robot la creații complexe
+              </motion.p>
+            </div>
+            
+            <motion.div 
+              variants={container}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {roboticsCourses.map((course, index) => (
                 <motion.div key={index} variants={item}>
                   <CourseCard 
                     title={course.title}
