@@ -93,11 +93,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     let isMounted = true;
+    let authProcessing = false;
 
     const handleAuthStateChange = async (event: string, session: Session | null) => {
       console.log('Auth state changed:', event, session?.user?.id);
-      if (!isMounted) return;
+      if (!isMounted || authProcessing) return;
 
+      authProcessing = true;
       setSession(session);
       setUser(session?.user ?? null);
       
@@ -105,29 +107,48 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         try {
           console.log('User authenticated, fetching profile and access...');
           
-          // Fetch profile and access data
-          const [profileData, accessData] = await Promise.all([
-            fetchProfile(session.user.id),
-            fetchUserAccess(session.user.id)
-          ]);
+          // Start with loading = true, but set a maximum time limit
+          const timeoutId = setTimeout(() => {
+            console.warn('Auth loading timeout reached, forcing completion');
+            if (isMounted) {
+              setLoading(false);
+              authProcessing = false;
+            }
+          }, 15000); // 15 seconds max
           
-          console.log('Profile and access data loaded successfully', { profileData, accessData });
+          // Fetch profile and access data with individual error handling
+          const profilePromise = fetchProfile(session.user.id).catch(error => {
+            console.error('Profile fetch failed:', error);
+            return null;
+          });
+          
+          const accessPromise = fetchUserAccess(session.user.id).catch(error => {
+            console.error('Access fetch failed:', error);
+            return [];
+          });
+          
+          const [profileData, accessData] = await Promise.all([profilePromise, accessPromise]);
+          
+          clearTimeout(timeoutId);
+          console.log('Auth data loaded successfully', { profileData, accessData });
+          
         } catch (error) {
-          console.error('Error in auth state change handlers:', error);
+          console.error('Critical error in auth state change:', error);
         } finally {
-          // Ensure loading is set to false even if there are errors
           if (isMounted) {
-            console.log('Setting loading to false after fetching data');
+            console.log('Setting loading to false after user auth');
             setLoading(false);
+            authProcessing = false;
           }
         }
       } else {
-        console.log('No user session, clearing profile and access');
+        console.log('No user session, clearing data');
         setProfile(null);
         setUserAccess([]);
         if (isMounted) {
           console.log('Setting loading to false - no user');
           setLoading(false);
+          authProcessing = false;
         }
       }
     };
@@ -136,11 +157,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     console.log('Setting up auth state listener...');
     const { data: { subscription } } = supabase.auth.onAuthStateChange(handleAuthStateChange);
 
-    // Get initial session
+    // Get initial session with timeout protection
     const getInitialSession = async () => {
       try {
         console.log('Getting initial session...');
+        
+        // Set a timeout for the initial session check
+        const sessionTimeout = setTimeout(() => {
+          console.warn('Initial session timeout, forcing loading false');
+          if (isMounted) {
+            setLoading(false);
+          }
+        }, 10000);
+        
         const { data: { session }, error } = await supabase.auth.getSession();
+        clearTimeout(sessionTimeout);
         
         if (error) {
           console.error('Error getting initial session:', error);
@@ -152,7 +183,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         
         if (!isMounted) return;
         
-        console.log('Initial session:', session?.user?.id);
+        console.log('Initial session retrieved:', session?.user?.id || 'no session');
         await handleAuthStateChange('INITIAL_SESSION', session);
       } catch (error) {
         console.error('Unexpected error getting initial session:', error);
@@ -232,7 +263,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const signOut = async () => {
-    await supabase.auth.signOut();
+    console.log('Signing out user...');
+    setLoading(true);
+    try {
+      await supabase.auth.signOut();
+      console.log('Sign out successful');
+    } catch (error) {
+      console.error('Sign out error:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const value = {

@@ -29,44 +29,38 @@ const CourseAccessGuard: React.FC<CourseAccessGuardProps> = ({
       profile 
     });
     
-    // Safety timeout - daca loading-ul dureaza prea mult, forteaza verificarea
-    const timeout = setTimeout(() => {
-      console.log('CourseAccessGuard: Timeout reached, forcing access check');
-      if (loading) {
-        setIsCheckingAccess(false);
-      }
-    }, 10000); // 10 secunde timeout
-    
-    if (!loading) {
-      clearTimeout(timeout);
-      
-      if (!isAuthenticated) {
-        console.log('User not authenticated');
-        setIsCheckingAccess(false);
-        return;
-      }
-
-      console.log('Auth loaded, checking access...');
-      
-      // Admins have access to everything
-      if (isAdmin) {
-        console.log('Admin access granted');
-        setHasAccess(true);
-        setIsCheckingAccess(false);
-        return;
-      }
-
-      // Check access for regular users
-      const accessGranted = sessionSlug 
-        ? hasAccessToSession(courseSlug, sessionSlug)
-        : hasAccessToCourse(courseSlug);
-      
-      console.log('Access check result:', accessGranted);
-      setHasAccess(accessGranted);
-      setIsCheckingAccess(false);
+    // Don't check access until auth is fully loaded
+    if (loading) {
+      console.log('Auth still loading, waiting...');
+      setIsCheckingAccess(true);
+      return;
     }
 
-    return () => clearTimeout(timeout);
+    console.log('Auth loaded, checking access...');
+    
+    if (!isAuthenticated) {
+      console.log('User not authenticated');
+      setIsCheckingAccess(false);
+      setHasAccess(false);
+      return;
+    }
+
+    // Admins have access to everything
+    if (isAdmin) {
+      console.log('Admin access granted');
+      setHasAccess(true);
+      setIsCheckingAccess(false);
+      return;
+    }
+
+    // Check access for regular users
+    const accessGranted = sessionSlug 
+      ? hasAccessToSession(courseSlug, sessionSlug)
+      : hasAccessToCourse(courseSlug);
+    
+    console.log('Access check result:', accessGranted);
+    setHasAccess(accessGranted);
+    setIsCheckingAccess(false);
   }, [isAuthenticated, isAdmin, loading, courseSlug, sessionSlug, hasAccessToCourse, hasAccessToSession, profile]);
 
   // Show loading skeleton while authentication state loads or checking access
