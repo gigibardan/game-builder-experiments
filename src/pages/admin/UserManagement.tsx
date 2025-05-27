@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useUsers } from '@/hooks/useUsers';
 import { useCourses } from '@/hooks/useCourses';
@@ -163,7 +164,18 @@ const UserManagement: React.FC = () => {
   const handleCourseToggle = (courseId: string, checked: boolean) => {
     setSelectedCourses(prev => ({ ...prev, [courseId]: checked }));
     
-    if (!checked) {
+    if (checked) {
+      // Auto-select all sessions for this course
+      const courseSessions = sessions.filter(s => s.course_id === courseId);
+      setSelectedSessions(prev => ({
+        ...prev,
+        [courseId]: courseSessions.reduce((acc, session) => {
+          acc[session.id] = true;
+          return acc;
+        }, {} as {[key: string]: boolean})
+      }));
+    } else {
+      // Deselect all sessions for this course
       setSelectedSessions(prev => ({
         ...prev,
         [courseId]: Object.keys(prev[courseId] || {}).reduce((acc, sessionId) => {
@@ -185,6 +197,18 @@ const UserManagement: React.FC = () => {
 
     if (checked && !selectedCourses[courseId]) {
       setSelectedCourses(prev => ({ ...prev, [courseId]: true }));
+    }
+
+    // Check if all sessions are unchecked, then uncheck the course
+    if (!checked) {
+      const courseSessions = sessions.filter(s => s.course_id === courseId);
+      const allSessionsUnchecked = courseSessions.every(session => 
+        !selectedSessions[courseId]?.[session.id] || session.id === sessionId
+      );
+      
+      if (allSessionsUnchecked) {
+        setSelectedCourses(prev => ({ ...prev, [courseId]: false }));
+      }
     }
   };
 
@@ -413,6 +437,13 @@ const UserManagement: React.FC = () => {
               <div className="space-y-6">
                 {courses.map((course) => {
                   const courseSessions = sessions.filter(s => s.course_id === course.id);
+                  const allSessionsSelected = courseSessions.length > 0 && courseSessions.every(session => 
+                    selectedSessions[course.id]?.[session.id]
+                  );
+                  const someSessionsSelected = courseSessions.some(session => 
+                    selectedSessions[course.id]?.[session.id]
+                  );
+                  
                   return (
                     <div key={course.id} className="space-y-2 border-b pb-4">
                       <div className="flex items-center gap-2">
@@ -422,6 +453,11 @@ const UserManagement: React.FC = () => {
                             handleCourseToggle(course.id, checked === true)}
                         />
                         <Label className="font-semibold">{course.name}</Label>
+                        {courseSessions.length > 0 && (
+                          <span className="text-sm text-gray-500">
+                            ({courseSessions.filter(s => selectedSessions[course.id]?.[s.id]).length}/{courseSessions.length} lecții)
+                          </span>
+                        )}
                       </div>
                       
                       {selectedCourses[course.id] && courseSessions.length > 0 && (

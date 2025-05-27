@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from '@/components/ui/sonner';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import CourseAccessGuard from '@/components/CourseAccessGuard';
 import HomePage from '@/pages/HomePage';
 import Home from '@/pages/Home';
 import About from '@/pages/About';
@@ -134,92 +135,328 @@ function App() {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
           
-          {/* Programming course routes */}
-          <Route path="/courses/scratch" element={<Scratch />} />
-          <Route path="/courses/appinventor" element={<AppInventor />} />
-          <Route path="/courses/construct3" element={<Construct3 />} />
-          <Route path="/courses/gdevelop" element={<GDevelop />} />
-          <Route path="/courses/alice3" element={<Alice3 />} />
-          <Route path="/courses/microbitarcade" element={<MicrobitArcade />} />
-          <Route path="/courses/minecraft-modding" element={<MinecraftModding />} />
-          <Route path="/courses/robloxlua" element={<RobloxLua />} />
-          <Route path="/courses/python" element={<Python />} />
-          <Route path="/courses/frontenddev" element={<FrontendDev />} />
-          <Route path="/courses/greenfoot" element={<Greenfoot />} />
-          <Route path="/courses/godot" element={<Godot />} />
+          {/* Programming course routes with access control */}
+          <Route path="/courses/scratch" element={
+            <CourseAccessGuard courseSlug="scratch">
+              <Scratch />
+            </CourseAccessGuard>
+          } />
+          <Route path="/courses/appinventor" element={
+            <CourseAccessGuard courseSlug="appinventor">
+              <AppInventor />
+            </CourseAccessGuard>
+          } />
+          <Route path="/courses/construct3" element={
+            <CourseAccessGuard courseSlug="construct3">
+              <Construct3 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/courses/gdevelop" element={
+            <CourseAccessGuard courseSlug="gdevelop">
+              <GDevelop />
+            </CourseAccessGuard>
+          } />
+          <Route path="/courses/alice3" element={
+            <CourseAccessGuard courseSlug="alice3">
+              <Alice3 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/courses/microbitarcade" element={
+            <CourseAccessGuard courseSlug="microbitarcade">
+              <MicrobitArcade />
+            </CourseAccessGuard>
+          } />
+          <Route path="/courses/minecraft-modding" element={
+            <CourseAccessGuard courseSlug="minecraft-modding">
+              <MinecraftModding />
+            </CourseAccessGuard>
+          } />
+          <Route path="/courses/robloxlua" element={
+            <CourseAccessGuard courseSlug="robloxlua">
+              <RobloxLua />
+            </CourseAccessGuard>
+          } />
+          <Route path="/courses/python" element={
+            <CourseAccessGuard courseSlug="python">
+              <Python />
+            </CourseAccessGuard>
+          } />
+          <Route path="/courses/frontenddev" element={
+            <CourseAccessGuard courseSlug="frontenddev">
+              <FrontendDev />
+            </CourseAccessGuard>
+          } />
+          <Route path="/courses/greenfoot" element={
+            <CourseAccessGuard courseSlug="greenfoot">
+              <Greenfoot />
+            </CourseAccessGuard>
+          } />
+          <Route path="/courses/godot" element={
+            <CourseAccessGuard courseSlug="godot">
+              <Godot />
+            </CourseAccessGuard>
+          } />
           
-          {/* Robotics course routes */}
-          <Route path="/courses/lego-spike-essentials" element={<LegoSpikeEssentials />} />
-          <Route path="/courses/lego-spike-prime" element={<LegoSpikePrime />} />
-          <Route path="/courses/microbit-explorers" element={<MicrobitExplorers />} />
+          {/* Robotics course routes with access control */}
+          <Route path="/courses/lego-spike-essentials" element={
+            <CourseAccessGuard courseSlug="lego-spike-essentials">
+              <LegoSpikeEssentials />
+            </CourseAccessGuard>
+          } />
+          <Route path="/courses/lego-spike-prime" element={
+            <CourseAccessGuard courseSlug="lego-spike-prime">
+              <LegoSpikePrime />
+            </CourseAccessGuard>
+          } />
+          <Route path="/courses/microbit-explorers" element={
+            <CourseAccessGuard courseSlug="microbit-explorers">
+              <MicrobitExplorers />
+            </CourseAccessGuard>
+          } />
           
-          {/* Scratch lesson routes */}
-          <Route path="/scratch/session1alegesanatos" element={<Session1Alegesanatos />} />
-          <Route path="/scratch/session2spacedodge" element={<Session2SpaceDodge />} />
-          <Route path="/scratch/session3motoracer" element={<Session3MotoRacer />} />
-          <Route path="/scratch/session4cityrunner" element={<Session4CityRunner />} />
-          <Route path="/scratch/session5beachballbounce" element={<Session5BeachBallBounce />} />
-          <Route path="/scratch/session6stitchbeach" element={<Session6StitchBeach />} />
-          <Route path="/scratch/session7cakequest" element={<Session7cakequest />} />
-          <Route path="/scratch/session8wizardsquest" element={<Session8WizardsQuest />} />
-          <Route path="/scratch/session9robotfootball" element={<Session9RobotFootball />} />
-          <Route path="/scratch/session10flappyminecraftpart1" element={<Session10FlappyMinecraftPart1 />} />
-          <Route path="/scratch/session10flappyminecraftpart2" element={<Session10FlappyMinecraftPart2 />} />
-          <Route path="/scratch/session11eggdropper" element={<Session11EggDropper />} />
+          {/* Scratch lesson routes with access control */}
+          <Route path="/scratch/session1alegesanatos" element={
+            <CourseAccessGuard courseSlug="scratch" sessionSlug="session1alegesanatos">
+              <Session1Alegesanatos />
+            </CourseAccessGuard>
+          } />
+          <Route path="/scratch/session2spacedodge" element={
+            <CourseAccessGuard courseSlug="scratch" sessionSlug="session2spacedodge">
+              <Session2SpaceDodge />
+            </CourseAccessGuard>
+          } />
+          <Route path="/scratch/session3motoracer" element={
+            <CourseAccessGuard courseSlug="scratch" sessionSlug="session3motoracer">
+              <Session3MotoRacer />
+            </CourseAccessGuard>
+          } />
+          <Route path="/scratch/session4cityrunner" element={
+            <CourseAccessGuard courseSlug="scratch" sessionSlug="session4cityrunner">
+              <Session4CityRunner />
+            </CourseAccessGuard>
+          } />
+          <Route path="/scratch/session5beachballbounce" element={
+            <CourseAccessGuard courseSlug="scratch" sessionSlug="session5beachballbounce">
+              <Session5BeachBallBounce />
+            </CourseAccessGuard>
+          } />
+          <Route path="/scratch/session6stitchbeach" element={
+            <CourseAccessGuard courseSlug="scratch" sessionSlug="session6stitchbeach">
+              <Session6StitchBeach />
+            </CourseAccessGuard>
+          } />
+          <Route path="/scratch/session7cakequest" element={
+            <CourseAccessGuard courseSlug="scratch" sessionSlug="session7cakequest">
+              <Session7cakequest />
+            </CourseAccessGuard>
+          } />
+          <Route path="/scratch/session8wizardsquest" element={
+            <CourseAccessGuard courseSlug="scratch" sessionSlug="session8wizardsquest">
+              <Session8WizardsQuest />
+            </CourseAccessGuard>
+          } />
+          <Route path="/scratch/session9robotfootball" element={
+            <CourseAccessGuard courseSlug="scratch" sessionSlug="session9robotfootball">
+              <Session9RobotFootball />
+            </CourseAccessGuard>
+          } />
+          <Route path="/scratch/session10flappyminecraftpart1" element={
+            <CourseAccessGuard courseSlug="scratch" sessionSlug="session10flappyminecraftpart1">
+              <Session10FlappyMinecraftPart1 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/scratch/session10flappyminecraftpart2" element={
+            <CourseAccessGuard courseSlug="scratch" sessionSlug="session10flappyminecraftpart2">
+              <Session10FlappyMinecraftPart2 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/scratch/session11eggdropper" element={
+            <CourseAccessGuard courseSlug="scratch" sessionSlug="session11eggdropper">
+              <Session11EggDropper />
+            </CourseAccessGuard>
+          } />
           
-          {/* AppInventor lesson routes */}
-          <Route path="/appinventor/session1" element={<AppInventorSession1 />} />
-          <Route path="/appinventor/session2" element={<AppInventorSession2 />} />
-          <Route path="/appinventor/session3" element={<AppInventorSession3 />} />
-          <Route path="/appinventor/session4" element={<AppInventorSession4 />} />
-          <Route path="/appinventor/session5" element={<AppInventorSession5 />} />
-          <Route path="/appinventor/session6" element={<AppInventorSession6 />} />
-          <Route path="/appinventor/session7" element={<AppInventorSession7 />} />
-          <Route path="/appinventor/session8" element={<AppInventorSession8 />} />
-          <Route path="/appinventor/session9" element={<AppInventorSession9 />} />
+          {/* AppInventor lesson routes with access control */}
+          <Route path="/appinventor/session1" element={
+            <CourseAccessGuard courseSlug="appinventor" sessionSlug="session1">
+              <AppInventorSession1 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/appinventor/session2" element={
+            <CourseAccessGuard courseSlug="appinventor" sessionSlug="session2">
+              <AppInventorSession2 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/appinventor/session3" element={
+            <CourseAccessGuard courseSlug="appinventor" sessionSlug="session3">
+              <AppInventorSession3 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/appinventor/session4" element={
+            <CourseAccessGuard courseSlug="appinventor" sessionSlug="session4">
+              <AppInventorSession4 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/appinventor/session5" element={
+            <CourseAccessGuard courseSlug="appinventor" sessionSlug="session5">
+              <AppInventorSession5 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/appinventor/session6" element={
+            <CourseAccessGuard courseSlug="appinventor" sessionSlug="session6">
+              <AppInventorSession6 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/appinventor/session7" element={
+            <CourseAccessGuard courseSlug="appinventor" sessionSlug="session7">
+              <AppInventorSession7 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/appinventor/session8" element={
+            <CourseAccessGuard courseSlug="appinventor" sessionSlug="session8">
+              <AppInventorSession8 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/appinventor/session9" element={
+            <CourseAccessGuard courseSlug="appinventor" sessionSlug="session9">
+              <AppInventorSession9 />
+            </CourseAccessGuard>
+          } />
           
-          {/* Construct3 lesson routes */}
-          <Route path="/construct3/session1" element={<Construct3Session1 />} />
+          {/* Construct3 lesson routes with access control */}
+          <Route path="/construct3/session1" element={
+            <CourseAccessGuard courseSlug="construct3" sessionSlug="session1">
+              <Construct3Session1 />
+            </CourseAccessGuard>
+          } />
           
-          {/* GDevelop lesson routes */}
-          <Route path="/gdevelop/session1" element={<GDevelopSession1 />} />
+          {/* GDevelop lesson routes with access control */}
+          <Route path="/gdevelop/session1" element={
+            <CourseAccessGuard courseSlug="gdevelop" sessionSlug="session1">
+              <GDevelopSession1 />
+            </CourseAccessGuard>
+          } />
           
-          {/* Alice3 lesson routes */}
-          <Route path="/alice3/session1" element={<Alice3Session1 />} />
-          <Route path="/alice3/session1adventure" element={<Alice3Session1Adventure />} />
-          <Route path="/alice3/session2spacegame" element={<Alice3Session2SpaceGame />} />
-          <Route path="/alice3/session3virtualpet" element={<Alice3Session3VirtualPet />} />
-          <Route path="/alice3/session4geometry" element={<Alice3Session4Geometry />} />
+          {/* Alice3 lesson routes with access control */}
+          <Route path="/alice3/session1" element={
+            <CourseAccessGuard courseSlug="alice3" sessionSlug="session1">
+              <Alice3Session1 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/alice3/session1adventure" element={
+            <CourseAccessGuard courseSlug="alice3" sessionSlug="session1adventure">
+              <Alice3Session1Adventure />
+            </CourseAccessGuard>
+          } />
+          <Route path="/alice3/session2spacegame" element={
+            <CourseAccessGuard courseSlug="alice3" sessionSlug="session2spacegame">
+              <Alice3Session2SpaceGame />
+            </CourseAccessGuard>
+          } />
+          <Route path="/alice3/session3virtualpet" element={
+            <CourseAccessGuard courseSlug="alice3" sessionSlug="session3virtualpet">
+              <Alice3Session3VirtualPet />
+            </CourseAccessGuard>
+          } />
+          <Route path="/alice3/session4geometry" element={
+            <CourseAccessGuard courseSlug="alice3" sessionSlug="session4geometry">
+              <Alice3Session4Geometry />
+            </CourseAccessGuard>
+          } />
           
-          {/* MicrobitArcade lesson routes */}
-          <Route path="/microbitarcade/session1" element={<MicrobitArcadeSession1 />} />
+          {/* MicrobitArcade lesson routes with access control */}
+          <Route path="/microbitarcade/session1" element={
+            <CourseAccessGuard courseSlug="microbitarcade" sessionSlug="session1">
+              <MicrobitArcadeSession1 />
+            </CourseAccessGuard>
+          } />
           
-          {/* MinecraftModding lesson routes */}
-          <Route path="/minecraftmodding/session1" element={<MinecraftModdingSession1 />} />
-          <Route path="/minecraftmodding/crystalrealm" element={<MinecraftModdingCrystalRealm />} />
-          <Route path="/minecraftmodding/rubyarmor" element={<MinecraftModdingRubyArmor />} />
+          {/* MinecraftModding lesson routes with access control */}
+          <Route path="/minecraftmodding/session1" element={
+            <CourseAccessGuard courseSlug="minecraft-modding" sessionSlug="session1">
+              <MinecraftModdingSession1 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/minecraftmodding/crystalrealm" element={
+            <CourseAccessGuard courseSlug="minecraft-modding" sessionSlug="crystalrealm">
+              <MinecraftModdingCrystalRealm />
+            </CourseAccessGuard>
+          } />
+          <Route path="/minecraftmodding/rubyarmor" element={
+            <CourseAccessGuard courseSlug="minecraft-modding" sessionSlug="rubyarmor">
+              <MinecraftModdingRubyArmor />
+            </CourseAccessGuard>
+          } />
           
-          {/* RobloxLua lesson routes */}
-          <Route path="/robloxlua/session1" element={<RobloxLuaSession1 />} />
+          {/* RobloxLua lesson routes with access control */}
+          <Route path="/robloxlua/session1" element={
+            <CourseAccessGuard courseSlug="robloxlua" sessionSlug="session1">
+              <RobloxLuaSession1 />
+            </CourseAccessGuard>
+          } />
           
-          {/* Python lesson routes */}
-          <Route path="/python/session1" element={<PythonSession1 />} />
+          {/* Python lesson routes with access control */}
+          <Route path="/python/session1" element={
+            <CourseAccessGuard courseSlug="python" sessionSlug="session1">
+              <PythonSession1 />
+            </CourseAccessGuard>
+          } />
           
-          {/* FrontendDev lesson routes */}
-          <Route path="/frontenddev/session1" element={<FrontendDevSession1 />} />
+          {/* FrontendDev lesson routes with access control */}
+          <Route path="/frontenddev/session1" element={
+            <CourseAccessGuard courseSlug="frontenddev" sessionSlug="session1">
+              <FrontendDevSession1 />
+            </CourseAccessGuard>
+          } />
           
-          {/* Greenfoot lesson routes */}
-          <Route path="/greenfoot/session1" element={<GreenfootSession1 />} />
-          <Route path="/greenfoot/session2" element={<GreenfootSession2 />} />
-          <Route path="/greenfoot/session3" element={<GreenfootSession3 />} />
+          {/* Greenfoot lesson routes with access control */}
+          <Route path="/greenfoot/session1" element={
+            <CourseAccessGuard courseSlug="greenfoot" sessionSlug="session1">
+              <GreenfootSession1 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/greenfoot/session2" element={
+            <CourseAccessGuard courseSlug="greenfoot" sessionSlug="session2">
+              <GreenfootSession2 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/greenfoot/session3" element={
+            <CourseAccessGuard courseSlug="greenfoot" sessionSlug="session3">
+              <GreenfootSession3 />
+            </CourseAccessGuard>
+          } />
           
-          {/* Godot lesson routes */}
-          <Route path="/godot/session1" element={<GodotSession1 />} />
-          <Route path="/godot/session2" element={<GodotSession2 />} />
-          <Route path="/godot/session3" element={<GodotSession3 />} />
-          <Route path="/godot/session4" element={<GodotSession4 />} />
-          <Route path="/godot/session5" element={<GodotSession5 />} />
-          <Route path="/godot/simplegame" element={<GodotSimpleGame />} />
+          {/* Godot lesson routes with access control */}
+          <Route path="/godot/session1" element={
+            <CourseAccessGuard courseSlug="godot" sessionSlug="session1">
+              <GodotSession1 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/godot/session2" element={
+            <CourseAccessGuard courseSlug="godot" sessionSlug="session2">
+              <GodotSession2 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/godot/session3" element={
+            <CourseAccessGuard courseSlug="godot" sessionSlug="session3">
+              <GodotSession3 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/godot/session4" element={
+            <CourseAccessGuard courseSlug="godot" sessionSlug="session4">
+              <GodotSession4 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/godot/session5" element={
+            <CourseAccessGuard courseSlug="godot" sessionSlug="session5">
+              <GodotSession5 />
+            </CourseAccessGuard>
+          } />
+          <Route path="/godot/simplegame" element={
+            <CourseAccessGuard courseSlug="godot" sessionSlug="simplegame">
+              <GodotSimpleGame />
+            </CourseAccessGuard>
+          } />
           
           {/* Protected student routes */}
           <Route path="/student/dashboard" element={

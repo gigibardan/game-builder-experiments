@@ -14,7 +14,7 @@ const CourseAccessGuard: React.FC<CourseAccessGuardProps> = ({
   courseSlug,
   sessionSlug,
 }) => {
-  const { isAuthenticated, hasAccessToCourse, hasAccessToSession, loading } = useAuth();
+  const { isAuthenticated, hasAccessToCourse, hasAccessToSession, loading, isAdmin } = useAuth();
 
   if (loading) {
     return (
@@ -28,6 +28,12 @@ const CourseAccessGuard: React.FC<CourseAccessGuardProps> = ({
     return <Navigate to="/auth" replace />;
   }
 
+  // Admins have access to everything
+  if (isAdmin) {
+    return <>{children}</>;
+  }
+
+  // Check access for regular users
   const hasAccess = sessionSlug 
     ? hasAccessToSession(courseSlug, sessionSlug)
     : hasAccessToCourse(courseSlug);
