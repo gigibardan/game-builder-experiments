@@ -30,6 +30,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const fetchProfile = async (userId: string) => {
     try {
       console.log('Fetching profile for user:', userId);
+      
       const { data, error } = await supabase
         .from('profiles')
         .select('*')
@@ -55,6 +56,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const fetchUserAccess = async (userId: string) => {
     try {
       console.log('Fetching user access for user:', userId);
+      
       const { data, error } = await supabase
         .from('user_access')
         .select(`
@@ -93,44 +95,47 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     let isMounted = true;
-    let authProcessing = false;
 
     const handleAuthStateChange = async (event: string, session: Session | null) => {
       console.log('Auth state changed:', event, session?.user?.id);
-      if (!isMounted || authProcessing) return;
+      if (!isMounted) return;
 
-      authProcessing = true;
       setSession(session);
       setUser(session?.user ?? null);
       
       if (session?.user) {
+        console.log('User authenticated, fetching profile and access...');
+        
         try {
-          console.log('User authenticated, fetching profile and access...');
+          // Fetch profile and access in parallel with individual timeouts
+          const profilePromise = Promise.race([
+            fetchProfile(session.user.id),
+            new Promise((_, reject) => 
+              setTimeout(() => reject(new Error('Profile fetch timeout')), 5000)
+            )
+          ]);
           
-          // Start with loading = true, but set a maximum time limit
-          const timeoutId = setTimeout(() => {
-            console.warn('Auth loading timeout reached, forcing completion');
-            if (isMounted) {
-              setLoading(false);
-              authProcessing = false;
-            }
-          }, 15000); // 15 seconds max
+          const accessPromise = Promise.race([
+            fetchUserAccess(session.user.id),
+            new Promise((_, reject) => 
+              setTimeout(() => reject(new Error('Access fetch timeout')), 5000)
+            )
+          ]);
           
-          // Fetch profile and access data with individual error handling
-          const profilePromise = fetchProfile(session.user.id).catch(error => {
-            console.error('Profile fetch failed:', error);
-            return null;
-          });
+          const [profileResult, accessResult] = await Promise.allSettled([
+            profilePromise,
+            accessPromise
+          ]);
           
-          const accessPromise = fetchUserAccess(session.user.id).catch(error => {
-            console.error('Access fetch failed:', error);
-            return [];
-          });
+          if (profileResult.status === 'rejected') {
+            console.error('Profile fetch failed:', profileResult.reason);
+          }
           
-          const [profileData, accessData] = await Promise.all([profilePromise, accessPromise]);
+          if (accessResult.status === 'rejected') {
+            console.error('Access fetch failed:', accessResult.reason);
+          }
           
-          clearTimeout(timeoutId);
-          console.log('Auth data loaded successfully', { profileData, accessData });
+          console.log('Auth data loading completed');
           
         } catch (error) {
           console.error('Critical error in auth state change:', error);
@@ -138,7 +143,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           if (isMounted) {
             console.log('Setting loading to false after user auth');
             setLoading(false);
-            authProcessing = false;
           }
         }
       } else {
@@ -148,7 +152,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (isMounted) {
           console.log('Setting loading to false - no user');
           setLoading(false);
-          authProcessing = false;
         }
       }
     };
@@ -157,21 +160,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     console.log('Setting up auth state listener...');
     const { data: { subscription } } = supabase.auth.onAuthStateChange(handleAuthStateChange);
 
-    // Get initial session with timeout protection
+    // Get initial session
     const getInitialSession = async () => {
       try {
         console.log('Getting initial session...');
-        
-        // Set a timeout for the initial session check
-        const sessionTimeout = setTimeout(() => {
-          console.warn('Initial session timeout, forcing loading false');
-          if (isMounted) {
-            setLoading(false);
-          }
-        }, 10000);
-        
         const { data: { session }, error } = await supabase.auth.getSession();
-        clearTimeout(sessionTimeout);
         
         if (error) {
           console.error('Error getting initial session:', error);
@@ -263,13 +256,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const signOut = async () => {
-    console.log('Signing out user...');
-    setLoading(true);
+    console.log('Starting sign out process...');
     try {
-      await supabase.auth.signOut();
-      console.log('Sign out successful');
+      // Clear state immediately
+      setLoading(true);
+      setUser(null);
+      setProfile(null);
+      setSession(null);
+      setUserAccess([]);
+      
+      // Then sign out from Supabase
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        console.error('Sign out error:', error);
+      } else {
+        console.log('Sign out successful');
+      }
     } catch (error) {
-      console.error('Sign out error:', error);
+      console.error('Unexpected sign out error:', error);
     } finally {
       setLoading(false);
     }
