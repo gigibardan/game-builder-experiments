@@ -29,7 +29,23 @@ const CourseAccessGuard: React.FC<CourseAccessGuardProps> = ({
       profile 
     });
     
-    if (!loading && isAuthenticated) {
+    // Safety timeout - daca loading-ul dureaza prea mult, forteaza verificarea
+    const timeout = setTimeout(() => {
+      console.log('CourseAccessGuard: Timeout reached, forcing access check');
+      if (loading) {
+        setIsCheckingAccess(false);
+      }
+    }, 10000); // 10 secunde timeout
+    
+    if (!loading) {
+      clearTimeout(timeout);
+      
+      if (!isAuthenticated) {
+        console.log('User not authenticated');
+        setIsCheckingAccess(false);
+        return;
+      }
+
       console.log('Auth loaded, checking access...');
       
       // Admins have access to everything
@@ -48,10 +64,9 @@ const CourseAccessGuard: React.FC<CourseAccessGuardProps> = ({
       console.log('Access check result:', accessGranted);
       setHasAccess(accessGranted);
       setIsCheckingAccess(false);
-    } else if (!loading && !isAuthenticated) {
-      console.log('User not authenticated');
-      setIsCheckingAccess(false);
     }
+
+    return () => clearTimeout(timeout);
   }, [isAuthenticated, isAdmin, loading, courseSlug, sessionSlug, hasAccessToCourse, hasAccessToSession, profile]);
 
   // Show loading skeleton while authentication state loads or checking access

@@ -38,13 +38,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       
       if (error) {
         console.error('Error fetching profile:', error);
-        throw error;
+        setProfile(null);
+        return null;
       }
+      
       console.log('Profile fetched successfully:', data);
       setProfile(data);
       return data;
     } catch (error) {
-      console.error('Error fetching profile:', error);
+      console.error('Unexpected error fetching profile:', error);
       setProfile(null);
       return null;
     }
@@ -65,7 +67,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       
       if (error) {
         console.error('Error fetching user access:', error);
-        throw error;
+        setUserAccess([]);
+        return [];
       }
       
       console.log('Raw user access data:', data);
@@ -82,7 +85,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUserAccess(accessData);
       return accessData;
     } catch (error) {
-      console.error('Error fetching user access:', error);
+      console.error('Unexpected error fetching user access:', error);
       setUserAccess([]);
       return [];
     }
@@ -101,23 +104,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (session?.user) {
         try {
           console.log('User authenticated, fetching profile and access...');
-          await Promise.all([
+          
+          // Fetch profile and access data
+          const [profileData, accessData] = await Promise.all([
             fetchProfile(session.user.id),
             fetchUserAccess(session.user.id)
           ]);
-          console.log('Profile and access data loaded successfully');
+          
+          console.log('Profile and access data loaded successfully', { profileData, accessData });
         } catch (error) {
           console.error('Error in auth state change handlers:', error);
+        } finally {
+          // Ensure loading is set to false even if there are errors
+          if (isMounted) {
+            console.log('Setting loading to false after fetching data');
+            setLoading(false);
+          }
         }
       } else {
         console.log('No user session, clearing profile and access');
         setProfile(null);
         setUserAccess([]);
-      }
-      
-      if (isMounted) {
-        console.log('Setting loading to false');
-        setLoading(false);
+        if (isMounted) {
+          console.log('Setting loading to false - no user');
+          setLoading(false);
+        }
       }
     };
 
@@ -133,6 +144,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         
         if (error) {
           console.error('Error getting initial session:', error);
+          if (isMounted) {
+            setLoading(false);
+          }
+          return;
         }
         
         if (!isMounted) return;
@@ -140,7 +155,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.log('Initial session:', session?.user?.id);
         await handleAuthStateChange('INITIAL_SESSION', session);
       } catch (error) {
-        console.error('Error getting initial session:', error);
+        console.error('Unexpected error getting initial session:', error);
         if (isMounted) {
           setLoading(false);
         }
