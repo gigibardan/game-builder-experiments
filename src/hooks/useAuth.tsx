@@ -29,13 +29,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const fetchProfile = async (userId: string) => {
     try {
+      console.log('Fetching profile for user:', userId);
       const { data, error } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', userId)
         .single();
       
-      if (error) throw error;
+      if (error) {
+        console.error('Error fetching profile:', error);
+        throw error;
+      }
+      console.log('Profile fetched successfully:', data);
       setProfile(data);
     } catch (error) {
       console.error('Error fetching profile:', error);
@@ -45,6 +50,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const fetchUserAccess = async (userId: string) => {
     try {
+      console.log('Fetching user access for user:', userId);
       const { data, error } = await supabase
         .from('user_access')
         .select(`
@@ -55,15 +61,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         `)
         .eq('user_id', userId);
       
-      if (error) throw error;
+      if (error) {
+        console.error('Error fetching user access:', error);
+        throw error;
+      }
+      
+      console.log('Raw user access data:', data);
       
       const accessData = data?.map(access => ({
+        course_id: access.course_id,
         courseId: access.course_id,
         courseSlug: (access.courses as any)?.slug,
         sessionId: access.session_id,
         sessionSlug: (access.sessions as any)?.slug
       })) || [];
       
+      console.log('Processed access data:', accessData);
       setUserAccess(accessData);
     } catch (error) {
       console.error('Error fetching user access:', error);
@@ -72,51 +85,96 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+
     // Set up auth state listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
+        console.log('Auth state changed:', event, session?.user?.id);
+        if (!isMounted) return;
+
         setSession(session);
         setUser(session?.user ?? null);
         
         if (session?.user) {
-          await fetchProfile(session.user.id);
-          await fetchUserAccess(session.user.id);
+          try {
+            await fetchProfile(session.user.id);
+            await fetchUserAccess(session.user.id);
+          } catch (error) {
+            console.error('Error in auth state change handlers:', error);
+          }
         } else {
           setProfile(null);
           setUserAccess([]);
         }
         
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     );
 
     // Get initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      
-      if (session?.user) {
-        fetchProfile(session.user.id);
-        fetchUserAccess(session.user.id);
-      } else {
-        setLoading(false);
+    const getInitialSession = async () => {
+      try {
+        console.log('Getting initial session...');
+        const { data: { session } } = await supabase.auth.getSession();
+        
+        if (!isMounted) return;
+        
+        console.log('Initial session:', session?.user?.id);
+        setSession(session);
+        setUser(session?.user ?? null);
+        
+        if (session?.user) {
+          try {
+            await fetchProfile(session.user.id);
+            await fetchUserAccess(session.user.id);
+          } catch (error) {
+            console.error('Error in initial session handlers:', error);
+          }
+        }
+      } catch (error) {
+        console.error('Error getting initial session:', error);
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
       }
-    });
+    };
 
-    return () => subscription.unsubscribe();
+    getInitialSession();
+
+    return () => {
+      isMounted = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   const hasAccessToCourse = (courseSlug: string) => {
-    if (profile?.role === 'admin') return true;
-    return userAccess.some(access => access.courseSlug === courseSlug);
+    if (profile?.role === 'admin') {
+      console.log('Admin access granted for course:', courseSlug);
+      return true;
+    }
+    
+    const hasAccess = userAccess.some(access => access.courseSlug === courseSlug);
+    console.log('Course access check:', courseSlug, hasAccess, userAccess);
+    return hasAccess;
   };
 
   const hasAccessToSession = (courseSlug: string, sessionSlug: string) => {
-    if (profile?.role === 'admin') return true;
-    return userAccess.some(access => 
+    if (profile?.role === 'admin') {
+      console.log('Admin access granted for session:', courseSlug, sessionSlug);
+      return true;
+    }
+    
+    const hasAccess = userAccess.some(access => 
       access.courseSlug === courseSlug && 
       (access.sessionSlug === sessionSlug || !access.sessionId) // Access to whole course or specific session
     );
+    console.log('Session access check:', courseSlug, sessionSlug, hasAccess, userAccess);
+    return hasAccess;
   };
 
   const signIn = async (email: string, password: string) => {
@@ -182,3 +240,4 @@ export function useAuth() {
   }
   return context;
 }
+
