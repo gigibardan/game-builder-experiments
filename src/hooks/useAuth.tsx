@@ -42,9 +42,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
       console.log('Profile fetched successfully:', data);
       setProfile(data);
+      return data;
     } catch (error) {
       console.error('Error fetching profile:', error);
       setProfile(null);
+      return null;
     }
   };
 
@@ -78,66 +80,67 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       
       console.log('Processed access data:', accessData);
       setUserAccess(accessData);
+      return accessData;
     } catch (error) {
       console.error('Error fetching user access:', error);
       setUserAccess([]);
+      return [];
     }
   };
 
   useEffect(() => {
     let isMounted = true;
-    setLoading(true);
+
+    const handleAuthStateChange = async (event: string, session: Session | null) => {
+      console.log('Auth state changed:', event, session?.user?.id);
+      if (!isMounted) return;
+
+      setSession(session);
+      setUser(session?.user ?? null);
+      
+      if (session?.user) {
+        try {
+          console.log('User authenticated, fetching profile and access...');
+          await Promise.all([
+            fetchProfile(session.user.id),
+            fetchUserAccess(session.user.id)
+          ]);
+          console.log('Profile and access data loaded successfully');
+        } catch (error) {
+          console.error('Error in auth state change handlers:', error);
+        }
+      } else {
+        console.log('No user session, clearing profile and access');
+        setProfile(null);
+        setUserAccess([]);
+      }
+      
+      if (isMounted) {
+        console.log('Setting loading to false');
+        setLoading(false);
+      }
+    };
 
     // Set up auth state listener
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        console.log('Auth state changed:', event, session?.user?.id);
-        if (!isMounted) return;
-
-        setSession(session);
-        setUser(session?.user ?? null);
-        
-        if (session?.user) {
-          try {
-            await fetchProfile(session.user.id);
-            await fetchUserAccess(session.user.id);
-          } catch (error) {
-            console.error('Error in auth state change handlers:', error);
-          }
-        } else {
-          setProfile(null);
-          setUserAccess([]);
-        }
-        
-        if (isMounted) {
-          setLoading(false);
-        }
-      }
-    );
+    console.log('Setting up auth state listener...');
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(handleAuthStateChange);
 
     // Get initial session
     const getInitialSession = async () => {
       try {
         console.log('Getting initial session...');
-        const { data: { session } } = await supabase.auth.getSession();
+        const { data: { session }, error } = await supabase.auth.getSession();
+        
+        if (error) {
+          console.error('Error getting initial session:', error);
+        }
         
         if (!isMounted) return;
         
         console.log('Initial session:', session?.user?.id);
-        setSession(session);
-        setUser(session?.user ?? null);
-        
-        if (session?.user) {
-          try {
-            await fetchProfile(session.user.id);
-            await fetchUserAccess(session.user.id);
-          } catch (error) {
-            console.error('Error in initial session handlers:', error);
-          }
-        }
+        await handleAuthStateChange('INITIAL_SESSION', session);
       } catch (error) {
         console.error('Error getting initial session:', error);
-      } finally {
         if (isMounted) {
           setLoading(false);
         }
@@ -147,6 +150,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     getInitialSession();
 
     return () => {
+      console.log('Cleaning up auth provider...');
       isMounted = false;
       subscription.unsubscribe();
     };
@@ -240,4 +244,3 @@ export function useAuth() {
   }
   return context;
 }
-

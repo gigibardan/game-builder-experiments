@@ -29,7 +29,9 @@ const CourseAccessGuard: React.FC<CourseAccessGuardProps> = ({
       profile 
     });
     
-    const checkAccess = () => {
+    if (!loading && isAuthenticated) {
+      console.log('Auth loaded, checking access...');
+      
       // Admins have access to everything
       if (isAdmin) {
         console.log('Admin access granted');
@@ -46,16 +48,15 @@ const CourseAccessGuard: React.FC<CourseAccessGuardProps> = ({
       console.log('Access check result:', accessGranted);
       setHasAccess(accessGranted);
       setIsCheckingAccess(false);
-    };
-
-    if (!loading) {
-      checkAccess();
+    } else if (!loading && !isAuthenticated) {
+      console.log('User not authenticated');
+      setIsCheckingAccess(false);
     }
   }, [isAuthenticated, isAdmin, loading, courseSlug, sessionSlug, hasAccessToCourse, hasAccessToSession, profile]);
 
-  // Show loading skeleton while authentication state loads
+  // Show loading skeleton while authentication state loads or checking access
   if (loading || isCheckingAccess) {
-    console.log('Showing loading state');
+    console.log('Showing loading state', { loading, isCheckingAccess });
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="w-full max-w-md space-y-4">
