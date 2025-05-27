@@ -27,9 +27,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [userAccess, setUserAccess] = useState<{courseId: string, courseSlug?: string, sessionId?: string, sessionSlug?: string}[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchProfile = async (userId: string) => {
+  const fetchProfile = async (userId: string, retryCount = 0) => {
     try {
-      console.log('Fetching profile for user:', userId);
+      console.log(`Fetching profile for user: ${userId} (attempt ${retryCount + 1})`);
       
       const { data, error } = await supabase
         .from('profiles')
@@ -39,6 +39,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       
       if (error) {
         console.error('Error fetching profile:', error);
+        
+        // Retry up to 2 times on error
+        if (retryCount < 2) {
+          console.log(`Retrying profile fetch in 1 second...`);
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          return fetchProfile(userId, retryCount + 1);
+        }
+        
         setProfile(null);
         return null;
       }
@@ -48,14 +56,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return data;
     } catch (error) {
       console.error('Unexpected error fetching profile:', error);
+      
+      // Retry on unexpected errors too
+      if (retryCount < 2) {
+        console.log(`Retrying profile fetch after unexpected error...`);
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        return fetchProfile(userId, retryCount + 1);
+      }
+      
       setProfile(null);
       return null;
     }
   };
 
-  const fetchUserAccess = async (userId: string) => {
+  const fetchUserAccess = async (userId: string, retryCount = 0) => {
     try {
-      console.log('Fetching user access for user:', userId);
+      console.log(`Fetching user access for user: ${userId} (attempt ${retryCount + 1})`);
       
       const { data, error } = await supabase
         .from('user_access')
@@ -69,6 +85,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       
       if (error) {
         console.error('Error fetching user access:', error);
+        
+        // Retry up to 2 times on error
+        if (retryCount < 2) {
+          console.log(`Retrying access fetch in 1 second...`);
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          return fetchUserAccess(userId, retryCount + 1);
+        }
+        
         setUserAccess([]);
         return [];
       }
@@ -88,6 +112,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return accessData;
     } catch (error) {
       console.error('Unexpected error fetching user access:', error);
+      
+      // Retry on unexpected errors too
+      if (retryCount < 2) {
+        console.log(`Retrying access fetch after unexpected error...`);
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        return fetchUserAccess(userId, retryCount + 1);
+      }
+      
       setUserAccess([]);
       return [];
     }
@@ -107,35 +139,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.log('User authenticated, fetching profile and access...');
         
         try {
-          // Fetch profile and access in parallel with individual timeouts
-          const profilePromise = Promise.race([
+          // Fetch profile and access data with retries, no timeouts
+          const [profileResult, accessResult] = await Promise.all([
             fetchProfile(session.user.id),
-            new Promise((_, reject) => 
-              setTimeout(() => reject(new Error('Profile fetch timeout')), 5000)
-            )
+            fetchUserAccess(session.user.id)
           ]);
           
-          const accessPromise = Promise.race([
-            fetchUserAccess(session.user.id),
-            new Promise((_, reject) => 
-              setTimeout(() => reject(new Error('Access fetch timeout')), 5000)
-            )
-          ]);
-          
-          const [profileResult, accessResult] = await Promise.allSettled([
-            profilePromise,
-            accessPromise
-          ]);
-          
-          if (profileResult.status === 'rejected') {
-            console.error('Profile fetch failed:', profileResult.reason);
-          }
-          
-          if (accessResult.status === 'rejected') {
-            console.error('Access fetch failed:', accessResult.reason);
-          }
-          
-          console.log('Auth data loading completed');
+          console.log('Auth data loading completed', { 
+            profile: profileResult, 
+            access: accessResult 
+          });
           
         } catch (error) {
           console.error('Critical error in auth state change:', error);
@@ -258,23 +271,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const signOut = async () => {
     console.log('Starting sign out process...');
     try {
-      // Clear state immediately
-      setLoading(true);
-      setUser(null);
-      setProfile(null);
-      setSession(null);
-      setUserAccess([]);
-      
-      // Then sign out from Supabase
+      // Sign out from Supabase first
       const { error } = await supabase.auth.signOut();
       if (error) {
         console.error('Sign out error:', error);
       } else {
         console.log('Sign out successful');
       }
+      
+      // Clear state after sign out
+      setUser(null);
+      setProfile(null);
+      setSession(null);
+      setUserAccess([]);
+      setLoading(false);
     } catch (error) {
       console.error('Unexpected sign out error:', error);
-    } finally {
+      // Force clear state even on error
+      setUser(null);
+      setProfile(null);
+      setSession(null);
+      setUserAccess([]);
       setLoading(false);
     }
   };
