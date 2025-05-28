@@ -16,8 +16,8 @@ const CourseAccessGuard: React.FC<CourseAccessGuardProps> = ({
   sessionSlug,
 }) => {
   const { isAuthenticated, hasAccessToCourse, hasAccessToSession, loading, isAdmin, profile } = useAuth();
-  const [isCheckingAccess, setIsCheckingAccess] = useState(true);
   const [hasAccess, setHasAccess] = useState(false);
+  const [accessChecked, setAccessChecked] = useState(false);
 
   useEffect(() => {
     console.log('CourseAccessGuard: Auth state', { 
@@ -32,7 +32,7 @@ const CourseAccessGuard: React.FC<CourseAccessGuardProps> = ({
     // Don't check access until auth is fully loaded
     if (loading) {
       console.log('Auth still loading, waiting...');
-      setIsCheckingAccess(true);
+      setAccessChecked(false);
       return;
     }
 
@@ -40,8 +40,8 @@ const CourseAccessGuard: React.FC<CourseAccessGuardProps> = ({
     
     if (!isAuthenticated) {
       console.log('User not authenticated');
-      setIsCheckingAccess(false);
       setHasAccess(false);
+      setAccessChecked(true);
       return;
     }
 
@@ -49,7 +49,7 @@ const CourseAccessGuard: React.FC<CourseAccessGuardProps> = ({
     if (isAdmin) {
       console.log('Admin access granted');
       setHasAccess(true);
-      setIsCheckingAccess(false);
+      setAccessChecked(true);
       return;
     }
 
@@ -60,12 +60,12 @@ const CourseAccessGuard: React.FC<CourseAccessGuardProps> = ({
     
     console.log('Access check result:', accessGranted);
     setHasAccess(accessGranted);
-    setIsCheckingAccess(false);
+    setAccessChecked(true);
   }, [isAuthenticated, isAdmin, loading, courseSlug, sessionSlug, hasAccessToCourse, hasAccessToSession, profile]);
 
   // Show loading skeleton while authentication state loads or checking access
-  if (loading || isCheckingAccess) {
-    console.log('Showing loading state', { loading, isCheckingAccess });
+  if (loading || !accessChecked) {
+    console.log('Showing loading state', { loading, accessChecked });
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="w-full max-w-md space-y-4">
