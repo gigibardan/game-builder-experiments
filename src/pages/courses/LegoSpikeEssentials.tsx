@@ -11,15 +11,15 @@ import SessionCard from '@/components/SessionCard';
 
 const LegoSpikeEssentials = () => {
   const sessions = [
-    {
+        {
       number: 1,
-      title: "Primul Meu Robot",
-      description: "Construiește primul tău robot folosind LEGO SPIKE Essentials și învață concepte de bază despre robotică și programare.",
-      link: "/lego-spike-essentials/primul-meu-robot",
-      duration: "60 min",
+      title: "Caruselul Clasic",
+      description: "Construiește și programează un carusel cu viteză variabilă.",
+      link: "/legoessentials/session1classiccarusel",
+      duration: "90 min",
       level: "Începător",
-      ageGroup: "7-9 ani",
-      highlights: ["Construcție robot", "Programare de bază", "Mișcare simplă"],
+      ageGroup: "7-14 ani",
+      highlights: ["Construcție", "Mișcare", "Viteză variabilă"],
       color: "orange"
     },
     {
