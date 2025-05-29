@@ -12,111 +12,130 @@ const Session3CableCar = () => {
       subtitle="Lecția 3 • LEGO SPIKE Essentials"
       courseId="lego-spike-essentials"
       sessionId="3"
-      heroColor="bg-yellow-600"
+      heroColor="bg-yellow-500"
       sidebarItems={[
         { id: 'intro', title: 'Povestea lecției', isActive: true },
         { id: 'learn', title: 'Ce vei învăța' },
-        { id: 'start', title: 'Construcția telecabinei' },
-        { id: 'step1', title: 'Programare: LED verde + pauză' },
-        { id: 'step2', title: 'Motor dus + LED roșu' },
-        { id: 'step3', title: 'Pauză și întoarcere' },
-        { id: 'step4', title: 'Buclă completă' },
-        { id: 'creativ', title: 'Activitate creativă' },
-        { id: 'bonus', title: 'Provocare bonus' },
-        { id: 'conclusion', title: 'Recapitulare și observații' },
+        { id: 'build', title: 'Construiește telecabina' },
+        { id: 'logic', title: 'Programare logică' },
+        { id: 'engineer', title: 'Provocare de inginer LEGO' },
+        { id: 'test', title: 'Testare și ajustare' },
+        { id: 'bonus', title: 'Activitate bonus' },
+        { id: 'conclusion', title: 'Recapitulare și ce urmează' },
       ]}
       resources={[
-        { title: 'Model oficial LEGO Cable Car', url: 'https://spike.legoeducation.com/essential/models/blt123456789' }
+        { title: 'Lecția oficială LEGO', url: 'https://spike.legoeducation.com/essential/models/blt0000000000000001' },
+        { title: 'Plan lecție PDF', url: 'https://techminds.ro/pdf/cablecar-plan.pdf' },
       ]}
     >
 
       <section id="intro">
         <h2 className="text-2xl font-bold mb-4">Povestea lecției</h2>
-        <p>Țineți minte roata cu semafoare? Astăzi, pasagerii LEGO pornesc într-o nouă aventură – o <strong>telecabină</strong> care îi duce spre cabana din vârf!</p>
-        <p>Elevii vor construi un mecanism care simulează o telecabină pe sfoară și vor învăța cum să controleze logic mișcarea și semnalele vizuale.</p>
+        <p>Țineți minte roata cu semafoare? Acum ne mutăm în munți, unde pasagerii LEGO trebuie să ajungă la o cabană cu ajutorul unei telecabine!</p>
+        <p>Trebuie să programăm telecabina să oprească pentru pasageri, să semnalizeze vizual și să pornească înapoi.</p>
+        <ul className="list-disc ml-6 mt-2 text-gray-700">
+          <li><strong>Verde</strong> – stația este liberă</li>
+          <li><strong>Roșu</strong> – telecabina este în mișcare</li>
+        </ul>
+        <p className="mt-2">Tu vei construi sistemul și vei controla motorul, LED-ul și logica de mișcare.</p>
+
+        <div className="flex gap-4 mt-6">
+          <ImageModal src="/assets/images/robotica/cablecar1.png" alt="Telecabina așteaptă în stație" />
+          <ImageModal src="/assets/images/robotica/cablecar2.png" alt="LED verde activ" />
+          <ImageModal src="/assets/images/robotica/cablecar3.png" alt="LED roșu și plecare" />
+          <ImageModal src="/assets/images/robotica/cablecar4.png" alt="Întoarcere telecabină" />
+        </div>
       </section>
 
       <section id="learn" className="mt-10">
         <h2 className="text-xl font-bold mb-3 flex items-center">
-          <Star className="h-5 w-5 mr-2 text-yellow-600" /> Ce vei învăța
+          <Star className="h-5 w-5 mr-2 text-yellow-500" /> Ce vei învăța
         </h2>
         <ul className="list-disc ml-6 space-y-1 text-gray-700">
-          <li>Controlul direcției de rotație a motorului (dus/întors)</li>
-          <li>Folosirea LED-ului colorat pentru semnalizare</li>
-          <li>Folosirea pauzelor între acțiuni</li>
-          <li>Crearea unei secvențe automate cu sens logic</li>
-          <li>Testarea și ajustarea prototipurilor inginerești</li>
+          <li>Să construiești o telecabină pe sfoară</li>
+          <li>Să controlezi motorul în ambele direcții</li>
+          <li>Să folosești LED-ul color ca semnal</li>
+          <li>Să creezi o secvență logică: urcare + plecare + întoarcere</li>
+          <li>Să recapitulezi semnalele din lecțiile anterioare</li>
         </ul>
       </section>
 
-      <section id="start" className="mt-10">
-        <h2 className="text-xl font-bold mb-3">Construcția telecabinei</h2>
-        <p>Folosește setul LEGO SPIKE Essentials și o axă sau sfoară întinsă. Creează o telecabină simplă care se poate deplasa între două „stații”.</p>
-        <p>Elevii pot urma un model oficial sau își pot imagina propriul design, cu scopul de a simula o mișcare de tip dus-întors.</p>
+      <section id="build" className="mt-10">
+        <h2 className="text-xl font-bold mb-3">Construiește telecabina</h2>
+        <p>Deschide lecția oficială LEGO (sau creează un model propriu) și construiește un sistem simplu cu o cutie mobilă pe o axă/sfoară.</p>
+        <div className="mt-4">
+          <ImageModal src="/assets/images/robotica/cablecar1.png" alt="Construcția telecabinei" />
+          <div className="mt-4">
+            <Button asChild className="bg-yellow-500 hover:bg-yellow-600">
+              <a href="https://spike.legoeducation.com/essential/models/blt0000000000000001" target="_blank">
+                <Play className="h-4 w-4 mr-2" />
+                Deschide lecția oficială LEGO
+              </a>
+            </Button>
+          </div>
+        </div>
       </section>
 
-      <section id="step1" className="mt-10">
-        <h2 className="text-xl font-bold mb-3">1. LED verde + pauză</h2>
-        <p>La începutul programului, LED-ul se aprinde verde pentru a indica stație liberă. Telecabina așteaptă 3 secunde pentru urcare.</p>
-      </section>
-
-      <section id="step2" className="mt-10">
-        <h2 className="text-xl font-bold mb-3">2. LED roșu + plecare</h2>
-        <p>LED-ul se schimbă în roșu, iar motorul pornește 2 ture într-o direcție – simulând plecarea spre cabană. Pasagerii trebuie să stea jos!</p>
-      </section>
-
-      <section id="step3" className="mt-10">
-        <h2 className="text-xl font-bold mb-3">3. Pauză și întoarcere</h2>
-        <p>După sosirea la cabană, telecabina face o pauză de 2 secunde. Apoi motorul inversează direcția și se întoarce la stația de plecare.</p>
-      </section>
-
-      <section id="step4" className="mt-10">
-        <h2 className="text-xl font-bold mb-3">4. Buclă completă</h2>
-        <p>Toate etapele de mai sus sunt introduse într-o buclă infinită:</p>
+      <section id="logic" className="mt-10">
+        <h2 className="text-xl font-bold mb-3">Programare logică</h2>
+        <p>Secvența recomandată pentru telecabină este următoarea:</p>
         <ul className="list-disc ml-6 mt-2 text-gray-700">
-          <li>LED verde + pauză 3s</li>
-          <li>LED roșu + motor dus</li>
-          <li>Pauză 2s</li>
-          <li>LED verde + pauză 3s</li>
-          <li>LED roșu + motor întors</li>
+          <li>LED verde → așteaptă 3 secunde (pasagerii urcă)</li>
+          <li>LED roșu → motor pornește înainte (dus)</li>
+          <li>Pauză → LED verde → iar pauză</li>
+          <li>Motor merge înapoi (întors)</li>
         </ul>
+        <ImageModal src="/assets/images/robotica/cablecar5.png" alt="Secvență programare Cable Car" className="mt-4" />
       </section>
 
-      <section id="creativ" className="mt-10 bg-yellow-50 p-6 rounded-lg border border-yellow-200">
-        <h3 className="text-lg font-bold mb-2 flex items-center"><Sparkles className="h-4 w-4 mr-2" /> Activitate creativă</h3>
-        <p className="mb-2">Decorează stațiile cu LEGO și inventează o poveste:</p>
+      <section id="engineer" className="mt-10 bg-yellow-50 border border-yellow-100 p-6 rounded-lg">
+        <h3 className="text-lg font-bold mb-2 flex items-center"><Sparkles className="h-4 w-4 mr-2" /> Provocare de inginer LEGO</h3>
+        <p className="mb-2">Cum poți face modelul mai bun?</p>
         <ul className="list-disc ml-6 space-y-1 text-gray-700">
-          <li>Unde merge telecabina?</li>
-          <li>Cine urcă și de ce?</li>
-          <li>Ce se întâmplă în cabană?</li>
+          <li>Adaugă decorațiuni pentru stații: gări, copaci, semne</li>
+          <li>Testează viteză mai mică sau mai mare</li>
+          <li>Verifică stabilitatea cablului și roților</li>
+          <li>Construiește o telecabină cu două locuri</li>
         </ul>
       </section>
 
-      <section id="bonus" className="mt-10 bg-gray-50 p-6 rounded-lg border border-gray-200">
-        <h3 className="text-lg font-bold mb-2 flex items-center"><Lightbulb className="h-4 w-4 mr-2" /> Provocare bonus</h3>
-        <ul className="list-disc ml-6 text-gray-700 space-y-2">
-          <li>Înlocuiește LED-ul roșu cu o <strong>animație pe display</strong> (ex: un „X” sau o săgeată)</li>
-          <li>Simulează un mod VIP: telecabina pleacă doar când <strong>apasă un buton</strong> pe hub</li>
+      <section id="test" className="mt-10">
+        <h2 className="text-xl font-bold mb-3">Testare și ajustare</h2>
+        <p>Rulează programul complet și observă:</p>
+        <ul className="list-disc ml-6 mt-2 text-gray-700">
+          <li>Funcționează LED-urile logic?</li>
+          <li>Motorul schimbă corect direcția?</li>
+          <li>Telecabina e stabilă?</li>
+        </ul>
+        <ImageModal src="/assets/images/robotica/cablecar6.png" alt="Testare și ajustare cablu" className="mt-4" />
+      </section>
+
+      <section id="bonus" className="mt-10 bg-orange-50 border-l-4 border-orange-400 p-6 text-sm rounded-lg">
+        <h3 className="text-lg font-bold mb-2 flex items-center"><PlugZap className="h-4 w-4 mr-2" /> Activitate bonus</h3>
+        <ul className="list-disc ml-6 space-y-1 text-gray-700">
+          <li>Înlocuiește LED roșu cu o animație (ex: X roșu pe display)</li>
+          <li>Adaugă un buton: cabina pleacă doar dacă apăsăm</li>
+          <li>Simulează urcarea unui VIP cu semnal special</li>
         </ul>
       </section>
 
       <section id="conclusion" className="mt-10 bg-yellow-50 p-6 rounded-lg border border-yellow-200">
-        <h2 className="text-xl font-bold mb-3">Recapitulare și observații</h2>
-        <p className="mb-4 font-medium">Ai construit și programat o telecabină completă – cu semnalizare, logică și mișcare direcționată!</p>
+        <h2 className="text-xl font-bold mb-3">Recapitulare și ce urmează</h2>
+        <p className="mb-4 font-medium">Ai programat o telecabină funcțională, cu semnale și direcție controlată!</p>
         <ul className="list-disc ml-6 text-gray-700 mb-4">
-          <li>Ai folosit LED-urile ca semnale vizuale clare</li>
-          <li>Ai înțeles direcția motorului și cum o controlezi</li>
-          <li>Ai aplicat conceptele din lecția trecută într-un context nou</li>
+          <li>Ai revizuit sensul de rotație și semnalizarea LED</li>
+          <li>Ai aplicat cunoștințele din lecțiile anterioare</li>
+          <li>Ai testat și îmbunătățit un model funcțional</li>
         </ul>
         <div className="mt-4">
           <h3 className="font-semibold mb-2 flex items-center">
             <Forward className="h-4 w-4 mr-2" /> Ce urmează?
           </h3>
           <p className="mb-4">
-            În lecția următoare vom construi un „Snack Stand” – un sistem automatizat care livrează gustări pe baza biletelor colorate!
+            În lecția următoare vom construi <strong>„Snack Stand”</strong> – un sistem automat de livrare gustări cu bilete colorate!
           </p>
           <Button asChild variant="secondary">
-            <Link to="/courses/lego-spike-essentials">Înapoi la meniu</Link>
+            <Link to="/lego-spike-essentials/snackstand">Înapoi la meniu</Link>
           </Button>
         </div>
       </section>
