@@ -165,7 +165,7 @@ const Session2FerrisWheel = () => {
             În lecția următoare ne ocupăm de <strong>„Snack Stand”</strong> – un stand automat care livrează gustări pe baza biletelor colorate!
           </p>
           <Button asChild variant="secondary">
-            <Link to="/lego-spike-essentials/snackstand">Înapoi la meniu</Link>
+            <Link to="/courses/lego-spike-essentials">Înapoi la meniu</Link>
           </Button>
         </div>
       </section>

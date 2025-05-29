@@ -9,6 +9,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SessionCard from '@/components/SessionCard';
 
+
+
 const LegoSpikeEssentials = () => {
   const sessions = [
         {
@@ -20,7 +22,8 @@ const LegoSpikeEssentials = () => {
       level: "Începător",
       ageGroup: "7-9 ani",
       highlights: ["Construcție", "Mișcare", "Viteză variabilă"],
-      color: "orange"
+      color: "orange",
+      imageSrc: "/assets/images/robotica/clasiccarusel1.png"
     },
     {
       number: 2,
@@ -31,7 +34,8 @@ const LegoSpikeEssentials = () => {
       level: "Începător",
       ageGroup: "7-9 ani",
       highlights: ["Semnale LED", "Control motor", "Automatizare"],
-      color: "orange"
+      color: "orange",
+      imageSrc: "/assets/images/robotica/ferriswheel1.png"
     },
     {
       number: 3,
@@ -42,6 +46,18 @@ const LegoSpikeEssentials = () => {
       level: "Începător",
       ageGroup: "7-9 ani",
       highlights: ["Mișcare dus-întors", "LED-uri semnalizare", "Pauze programate"],
+      color: "orange",
+      imageSrc: "/assets/images/robotica/cablecar5.png"
+    },
+    {
+      number: 4,
+      title: "Twirling Teacups",
+      description: "Construiește și programează un carusel cu cești care se învârt.",
+      link: "/legoessentials/session4twirlingteacups",
+      duration: "90 min",
+      level: "Începător",
+      ageGroup: "7-9 ani",
+      highlights: ["Mișcare circulară", "Control viteză", "Programare secvențe"],
       color: "orange"
     }
   ];

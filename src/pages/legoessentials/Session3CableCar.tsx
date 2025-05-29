@@ -40,8 +40,8 @@ const Session3CableCar = () => {
         <p className="mt-2">Tu vei construi sistemul și vei controla motorul, LED-ul și logica de mișcare.</p>
 
         <div className="flex gap-4 mt-6">
-          <ImageModal src="/assets/images/robotica/cablecar1.png" alt="Telecabina așteaptă în stație" />
-          <ImageModal src="/assets/images/robotica/cablecar2.png" alt="LED verde activ" />
+          <ImageModal src="/assets/images/robotica/cablecar2.png" alt="Telecabina așteaptă în stație" />
+          <ImageModal src="/assets/images/robotica/cablecar1.png" alt="LED verde activ" />
           <ImageModal src="/assets/images/robotica/cablecar3.png" alt="LED roșu și plecare" />
           <ImageModal src="/assets/images/robotica/cablecar4.png" alt="Întoarcere telecabină" />
         </div>
@@ -64,10 +64,10 @@ const Session3CableCar = () => {
         <h2 className="text-xl font-bold mb-3">Construiește telecabina</h2>
         <p>Deschide lecția oficială LEGO (sau creează un model propriu) și construiește un sistem simplu cu o cutie mobilă pe o axă/sfoară.</p>
         <div className="mt-4">
-          <ImageModal src="/assets/images/robotica/cablecar1.png" alt="Construcția telecabinei" />
+          <ImageModal src="/assets/images/robotica/cablecar5.png" alt="Construcția telecabinei" />
           <div className="mt-4">
             <Button asChild className="bg-yellow-500 hover:bg-yellow-600">
-              <a href="https://spike.legoeducation.com/essential/models/blt0000000000000001" target="_blank">
+              <a href="https://spike.legoeducation.com/essential/models/blt204d046dc10d23c4" target="_blank">
                 <Play className="h-4 w-4 mr-2" />
                 Deschide lecția oficială LEGO
               </a>
@@ -85,7 +85,7 @@ const Session3CableCar = () => {
           <li>Pauză → LED verde → iar pauză</li>
           <li>Motor merge înapoi (întors)</li>
         </ul>
-        <ImageModal src="/assets/images/robotica/cablecar5.png" alt="Secvență programare Cable Car" className="mt-4" />
+        <ImageModal src="/assets/images/robotica/cablecar6.png" alt="Secvență programare Cable Car" className="mt-4" />
       </section>
 
       <section id="engineer" className="mt-10 bg-yellow-50 border border-yellow-100 p-6 rounded-lg">
@@ -107,7 +107,7 @@ const Session3CableCar = () => {
           <li>Motorul schimbă corect direcția?</li>
           <li>Telecabina e stabilă?</li>
         </ul>
-        <ImageModal src="/assets/images/robotica/cablecar6.png" alt="Testare și ajustare cablu" className="mt-4" />
+        <ImageModal src="/assets/images/robotica/cablecar7.png" alt="Testare și ajustare cablu" className="mt-4" />
       </section>
 
       <section id="bonus" className="mt-10 bg-orange-50 border-l-4 border-orange-400 p-6 text-sm rounded-lg">
@@ -127,17 +127,12 @@ const Session3CableCar = () => {
           <li>Ai aplicat cunoștințele din lecțiile anterioare</li>
           <li>Ai testat și îmbunătățit un model funcțional</li>
         </ul>
-        <div className="mt-4">
-          <h3 className="font-semibold mb-2 flex items-center">
-            <Forward className="h-4 w-4 mr-2" /> Ce urmează?
-          </h3>
-          <p className="mb-4">
-            În lecția următoare vom construi <strong>„Snack Stand”</strong> – un sistem automat de livrare gustări cu bilete colorate!
-          </p>
-          <Button asChild variant="secondary">
-            <Link to="/lego-spike-essentials/snackstand">Înapoi la meniu</Link>
-          </Button>
-        </div>
+        <p className="mb-4">
+      În lecția următoare vom construi <strong>„Twirling Teacups”</strong> – un carusel cu cești rotitoare unde vei învăța să controlezi <strong>două motoare simultan</strong> pentru o mișcare complexă și spectaculoasă!
+    </p>
+    <Button asChild variant="secondary">
+            <Link to="/courses/lego-spike-essentials">Înapoi la meniu</Link>
+    </Button>
       </section>
 
     </LessonLayout>
