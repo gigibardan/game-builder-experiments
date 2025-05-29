@@ -18,30 +18,30 @@ const LegoSpikeEssentials = () => {
       link: "/legoessentials/session1classiccarusel",
       duration: "90 min",
       level: "Începător",
-      ageGroup: "7-14 ani",
+      ageGroup: "7-9 ani",
       highlights: ["Construcție", "Mișcare", "Viteză variabilă"],
       color: "orange"
     },
     {
       number: 2,
-      title: "Roboțelul care Dansează",
-      description: "Programează un robot să execute mișcări de dans simple și învață despre secvențe și bucle în programare.",
-      link: "/lego-spike-essentials/robotelul-care-danseaza",
-      duration: "60 min",
+      title: "Roata Panoramică",
+      description: "Programează o roată panoramică cu semnale de siguranță.",
+      link: "/legoessentials/session2ferriswheel",
+      duration: "90 min",
       level: "Începător",
       ageGroup: "7-9 ani",
-      highlights: ["Programare dans", "Secvențe", "Bucle simple"],
+      highlights: ["Semnale LED", "Control motor", "Automatizare"],
       color: "orange"
     },
     {
       number: 3,
-      title: "Senzori și Mișcare",
-      description: "Descoperă cum robotul poate vedea și reacționa la mediul înconjurător folosind senzori.",
-      link: "/lego-spike-essentials/senzori-si-miscare",
-      duration: "60 min",
+      title: "Telecabina Aventurașilor",
+      description: "Construiește o telecabină care se deplasează între două stații.",
+      link: "/legoessentials/session3cablecar",
+      duration: "90 min",
       level: "Începător",
       ageGroup: "7-9 ani",
-      highlights: ["Senzori de culoare", "Detectare obstacole", "Reacții automate"],
+      highlights: ["Mișcare dus-întors", "LED-uri semnalizare", "Pauze programate"],
       color: "orange"
     }
   ];

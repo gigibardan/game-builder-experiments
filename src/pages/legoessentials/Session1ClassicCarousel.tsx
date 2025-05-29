@@ -24,7 +24,8 @@ const Session1ClassicCarousel = () => {
         { id: 'conclusion', title: 'Recapitulare și pasul următor' },
       ]}
       resources={[
-        { title: 'Lecția oficială LEGO', url: 'https://spike.legoeducation.com/essential/models/bltf68215f21ac17e87' }
+        { title: 'Lecția oficială LEGO', url: 'https://spike.legoeducation.com/essential/models/bltf68215f21ac17e87' },
+        { title: 'Lecția LEGO PDF', url: 'https://assets.education.lego.com/v3/assets/blt293eea581807678a/blt27cf3aba3ebccf38/5f572f6c4b239959f43aa72a/U2L2.pdf?locale=en-us'}
       ]}
     >
       <section id="intro">
@@ -141,6 +142,35 @@ const Session1ClassicCarousel = () => {
         <p className="mt-2">Acest program rotește caruselul timp de 2 ture, se oprește 2 secunde, apoi repetă comportamentul. Este o simulare realistă a pauzelor dintre curse.</p>
       </section>
 
+      <section id="codscris" className="mt-12">
+        <h2 className="text-2xl font-bold mb-4">4. Versiunea cu cod scris (blocuri avansate)</h2>
+        <p className="mb-4">
+          Pentru elevii mai avansați sau cei curioși să exploreze comportamente ciclice și simetrice, această versiune adaugă o rotație alternativă în sens invers, simulând o mișcare de tip „du-te-vino”.
+        </p>
+
+        <div className="mb-6">
+          <ImageModal
+            src="/assets/images/robotica/classiccarusel7.png"
+            alt="Cod scris cu mișcare alternativă"
+            className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+          />
+        </div>
+
+        <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <h4 className="font-bold mb-2">Cum funcționează:</h4>
+          <ul className="list-disc ml-5 space-y-2 text-sm text-gray-700">
+            <li>Se setează viteza motorului A la 75% de la începutul programului.</li>
+            <li>Într-o buclă infinită, motorul se rotește 2 ture înainte, așteaptă 2 secunde, apoi 2 ture înapoi.</li>
+            <li>Acest ciclu continuu creează o mișcare oscilatorie, excelentă pentru a exersa simetria și temporizarea.</li>
+          </ul>
+        </div>
+
+        <div className="mt-4 text-sm text-orange-700">
+          <strong>Provocare bonus:</strong> Modifică valorile de viteză și durată pentru a crea un carusel „dansator” cu ritm personalizat!
+        </div>
+      </section>
+
+
       <section id="conclusion" className="mt-10 bg-orange-50 p-6 rounded-lg border border-orange-200">
         <h2 className="text-xl font-bold mb-3">Recapitulare și pasul următor</h2>
         <p className="mb-4 font-medium">Ai învățat cum să construiești și să programezi un carusel LEGO complet funcțional. Bravo! Iată câteva idei pentru a continua:</p>
@@ -157,7 +187,7 @@ const Session1ClassicCarousel = () => {
             În lecția următoare vom construi <strong>„Ferris Wheel”</strong> – o roată panoramică ce introduce componente avansate LEGO precum <strong>display-ul color</strong> și <strong>animații programate</strong>.
           </p>
           <Button asChild variant="secondary">
-            <Link to="/lego-spike-essentials/snackstand">Înapoi la meniu</Link>
+            <Link to="/courses/lego-spike-essentials">Înapoi la meniu</Link>
           </Button>
         </div>
       </section>
