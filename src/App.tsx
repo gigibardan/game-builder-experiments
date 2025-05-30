@@ -86,7 +86,8 @@ import MinecraftModdingCrystalRealm from '@/pages/minecraftmodding/CrystalRealm'
 import MinecraftModdingRubyArmor from '@/pages/minecraftmodding/RubyArmor';
 
 // RobloxLua lesson pages
-import RobloxLuaSession1 from '@/pages/robloxlua/Session1';
+import RobloxLuaSession1 from '@/pages/robloxlua/Session1Introducere';
+
 
 // Python lesson pages
 import PythonSession1 from '@/pages/python/Session1';
@@ -394,7 +395,7 @@ function App() {
           } />
           
           {/* RobloxLua lesson routes with access control */}
-          <Route path="/robloxlua/session1" element={
+          <Route path="/robloxlua/session1introducere" element={
             <CourseAccessGuard courseSlug="robloxlua" sessionSlug="session1">
               <RobloxLuaSession1 />
             </CourseAccessGuard>
@@ -481,6 +482,7 @@ function App() {
               <LegoSpikeEssentialsSession3 />
             </CourseAccessGuard>
           } />
+
 
 
           

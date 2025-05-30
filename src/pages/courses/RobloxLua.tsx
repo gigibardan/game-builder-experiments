@@ -1,51 +1,111 @@
-
 import React from 'react';
 import { Layout, Code, Joystick, Server, ArrowRight, Star, Layers, Cpu, Box } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Link } from 'react-router-dom';
+// React Router link removed - using regular links instead
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import SessionCard from '@/components/SessionCard';
 
+
 const RobloxLua = () => {
-  // Array cu lectiile disponibile fictive
+  // Array cu lectiile reale de Roblox
   const sessions = [
     {
       id: 1,
-      title: "Introducere în Roblox Studio",
-      description: "Descoperă mediul de dezvoltare Roblox Studio și creează primul tău spațiu de joc.",
+      title: "Roblox Studio – Introducere",
+      description: "Instalează și configurează Roblox Studio, învață elementele de bază ale platformei de dezvoltare.",
       duration: "90 minute",
       level: "Începător",
       ageGroup: "10-15 ani",
-      link: "/robloxlua/session1",
-      highlights: ["Interfața Roblox Studio", "Spații de lucru", "Construcție de bază", "Publicare"],
-      imageSrc: "/assets/images/roblox/intro-roblox.png",
+      link: "/robloxlua/session1introducere",
+      highlights: ["Instalare Roblox Studio", "Interfața de lucru", "Elementele de bază", "Configurare inițială"],
+      imageSrc: "/assets/images/roblox/roblox_l1_preview.png",
       color: "red"
     },
     {
       id: 2,
-      title: "Obiecte și Proprietăți",
-      description: "Învață să manipulezi obiecte 3D și să le setezi proprietățile pentru a crea medii interactive.",
+      title: "Quiz Game",
+      description: "Creează un joc de tip quiz interactive cu întrebări de cultură generală și sistem de punctaj.",
       duration: "90 minute",
       level: "Începător",
       ageGroup: "10-15 ani",
-      link: "/robloxlua/session2",
-      highlights: ["Construcție avansată", "Proprietăți fizice", "Materiale și culori", "Grupuri și modele"],
-      imageSrc: "/assets/images/roblox/objects-roblox.png",
+      link: "/robloxlua/quiz-game-l2",
+      highlights: ["Interfață quiz", "Sistem întrebări", "Punctaj și feedback", "Logică de joc"],
+      imageSrc: "/assets/images/roblox/quiz-game-l2-preview.png",
       color: "orange"
     },
     {
       id: 3,
-      title: "Scriptare de bază în Lua",
-      description: "Primii pași în programare cu Lua pentru a adăuga interactivitate jocurilor tale Roblox.",
-      duration: "120 minute",
+      title: "Scripts for Beginners ",
+      description: "Ghidează-te pas cu pas în crearea scripturilor de bază și înțelegerea fundamentelor Lua.",
+      duration: "90 minute",
+      level: "Începător",
+      ageGroup: "11-15 ani",
+      link: "/robloxlua/scripts-for-beginners-l3",
+      highlights: ["Sintaxa Lua", "Variabile și funcții", "Evenimente de bază", "Debugging"],
+      imageSrc: "/assets/images/roblox/scripts_beginners_l3_preview.png",
+      color: "red"
+    },
+    {
+      id: 4,
+      title: "Obby Creator",
+      description: "Construiește un Obby simplu și învață mecanici de platformă, checkpoints și provocări.",
+      duration: "90 minute",
       level: "Începător-Intermediar",
       ageGroup: "11-15 ani",
-      link: "/robloxlua/session3",
-      highlights: ["Sintaxa Lua", "Variabile și funcții", "Evenimente", "Scriptare obiecte"],
-      imageSrc: "/assets/images/roblox/lua-coding.png",
+      link: "/robloxlua/obby-l4",
+      highlights: ["Design platforme", "Sisteme checkpoint", "Mecanici de salt", "Provocări progresive"],
+      imageSrc: "/assets/images/roblox/obby-l4.png",
+      color: "orange"
+    },
+    {
+      id: 5,
+      title: "NPC Creator & Talking NPC ",
+      description: "Adaugă NPC-uri interactive care pot vorbi cu jucătorii și oferă quest-uri sau informații.",
+      duration: "90 minute",
+      level: "Intermediar",
+      ageGroup: "12-15 ani",
+      link: "/robloxlua/npc-creator-talking-npc-l5",
+      highlights: ["Crearea NPC-urilor", "Sisteme de dialog", "AI comportament", "Interacțiuni complexe"],
+      imageSrc: "/assets/images/roblox/npc-creator-talking-npc-l5.png",
       color: "red"
+    },
+    {
+      id: 6,
+      title: "Animations ",
+      description: "Crează și controlează animații de personaje în Roblox, de la animații simple la secvențe complexe.",
+      duration: "120 minute",
+      level: "Intermediar",
+      ageGroup: "12-15 ani",
+      link: "/robloxlua/animations-l6-l7",
+      highlights: ["Animation Editor", "Keyframes", "Controlul animațiilor", "Sincronizare cu scripturi"],
+      imageSrc: "/assets/images/roblox/animations_l6_l7_preview.png",
+      color: "orange"
+    },
+    {
+      id: 7,
+      title: "Tutorial Shop Roblox ",
+      description: "Implementarea unui magazin complet cu achiziții de skin-uri, articole și sistem de monedă virtuală.",
+      duration: "120 minute",
+      level: "Avansat",
+      ageGroup: "13-15 ani",
+      link: "/robloxlua/tutorial-shop-roblox-l8-l9",
+      highlights: ["Sisteme de cumpărături", "GUI complexe", "Baze de date", "Monetizare"],
+      imageSrc: "/assets/images/roblox/tutorial_shop_roblox_l8_l9_preview.png",
+      color: "red"
+    },
+    {
+      id: 8,
+      title: "Personal Projects – pregătire și prezentare",
+      description: "Dezvoltă și prezintă propriile proiecte Roblox, de la conceptualizare la publicarea finală.",
+      duration: "90 minute",
+      level: "Toate nivelurile",
+      ageGroup: "10-15 ani",
+      link: "/robloxlua/personal-projects",
+      highlights: ["Planning proiect", "Dezvoltare independentă", "Testare și feedback", "Publicare și promovare"],
+      imageSrc: "/assets/images/roblox/personal_projects_preview.png",
+      color: "orange"
     }
   ];
 
@@ -359,37 +419,6 @@ const RobloxLua = () => {
                     />
                   </motion.div>
                 ))}
-              </motion.div>
-              
-              {/* Coming Soon Message */}
-              <motion.div 
-                variants={itemVariants}
-                className="mt-10 max-w-3xl mx-auto"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <div className="bg-gradient-to-r from-red-100 to-orange-100 rounded-xl p-8 border-2 border-dashed border-red-300 text-center shadow-md">
-                  <div className="bg-red-200 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto">
-                    <Layout className="h-8 w-8 text-red-700" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2 text-red-800">Curs în dezvoltare</h3>
-                  <p className="text-red-700 mb-5 text-lg">
-                    Suntem în proces de creare a unor lecții captivante pentru Roblox Studio și Lua.
-                    Curând vei putea explora mai multe proiecte și tehnici avansate!
-                  </p>
-                  <p className="text-red-600 mb-3">
-                    Lecțiile existente sunt demonstrative și vor fi înlocuite cu conținut oficial în curând.
-                  </p>
-                  <div className="mt-4">
-                    <Button asChild className="bg-red-600 hover:bg-red-700 text-white">
-                      <a href="https://developer.roblox.com/en-us/learn" target="_blank" rel="noopener noreferrer" className="flex items-center">
-                        <span>Explorează resurse oficiale</span>
-                        <ArrowRight className="ml-2 h-5 w-5" />
-                      </a>
-                    </Button>
-                  </div>
-                </div>
               </motion.div>
             </div>
           </div>
