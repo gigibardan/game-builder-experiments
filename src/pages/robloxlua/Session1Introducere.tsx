@@ -388,7 +388,7 @@ const RobloxLesson1 = () => {
           </InfoBox>
 
           <ImageModal 
-            src="../../assets/images/RobloxL1.4.png" 
+            src="/assets/images/roblox/RobloxL1.4.png" 
             alt="Exemplu de teren finalizat" 
             caption="Exemplu de teren complet, cu texturi și detalii aplicate"
           />
