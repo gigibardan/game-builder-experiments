@@ -30,7 +30,7 @@ const RobloxLua = () => {
       duration: "90 minute",
       level: "Începător",
       ageGroup: "10-15 ani",
-      link: "/robloxlua/quiz-game-l2",
+      link: "/robloxlua/session2quizgame",
       highlights: ["Interfață quiz", "Sistem întrebări", "Punctaj și feedback", "Logică de joc"],
       imageSrc: "/assets/images/roblox/quiz-game-l2-preview.png",
       color: "orange"
@@ -42,7 +42,7 @@ const RobloxLua = () => {
       duration: "90 minute",
       level: "Începător",
       ageGroup: "11-15 ani",
-      link: "/robloxlua/scripts-for-beginners-l3",
+      link: "/robloxlua/session3constructiisctripturiincepatori",
       highlights: ["Sintaxa Lua", "Variabile și funcții", "Evenimente de bază", "Debugging"],
       imageSrc: "/assets/images/roblox/scripts_beginners_l3_preview.png",
       color: "red"
@@ -54,7 +54,7 @@ const RobloxLua = () => {
       duration: "90 minute",
       level: "Începător-Intermediar",
       ageGroup: "11-15 ani",
-      link: "/robloxlua/obby-l4",
+      link: "/robloxlua/session4obby",
       highlights: ["Design platforme", "Sisteme checkpoint", "Mecanici de salt", "Provocări progresive"],
       imageSrc: "/assets/images/roblox/obby-l4.png",
       color: "orange"
@@ -66,7 +66,7 @@ const RobloxLua = () => {
       duration: "90 minute",
       level: "Intermediar",
       ageGroup: "12-15 ani",
-      link: "/robloxlua/npc-creator-talking-npc-l5",
+      link: "/robloxlua/session5npccreator",
       highlights: ["Crearea NPC-urilor", "Sisteme de dialog", "AI comportament", "Interacțiuni complexe"],
       imageSrc: "/assets/images/roblox/npc-creator-talking-npc-l5.png",
       color: "red"
@@ -78,7 +78,7 @@ const RobloxLua = () => {
       duration: "120 minute",
       level: "Intermediar",
       ageGroup: "12-15 ani",
-      link: "/robloxlua/animations-l6-l7",
+      link: "/robloxlua/session6createanimations",
       highlights: ["Animation Editor", "Keyframes", "Controlul animațiilor", "Sincronizare cu scripturi"],
       imageSrc: "/assets/images/roblox/animations_l6_l7_preview.png",
       color: "orange"
@@ -90,7 +90,7 @@ const RobloxLua = () => {
       duration: "120 minute",
       level: "Avansat",
       ageGroup: "13-15 ani",
-      link: "/robloxlua/tutorial-shop-roblox-l8-l9",
+      link: "/robloxlua/session7shop",
       highlights: ["Sisteme de cumpărături", "GUI complexe", "Baze de date", "Monetizare"],
       imageSrc: "/assets/images/roblox/tutorial_shop_roblox_l8_l9_preview.png",
       color: "red"

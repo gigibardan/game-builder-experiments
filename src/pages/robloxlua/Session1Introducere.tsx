@@ -431,7 +431,7 @@ const RobloxLesson1 = () => {
       }}
       nextLesson={{
         title: "Lecția 2 - Obiecte și Părți",
-        path: "/content/roblox/roblox-l2"
+        path: "/robloxlua/session2quizgame"
       }}
       sidebarItems={sidebarItems}
       resources={resources}

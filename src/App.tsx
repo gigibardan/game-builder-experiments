@@ -87,7 +87,12 @@ import MinecraftModdingRubyArmor from '@/pages/minecraftmodding/RubyArmor';
 
 // RobloxLua lesson pages
 import RobloxLuaSession1 from '@/pages/robloxlua/Session1Introducere';
-
+import RobloxLesson2 from './pages/robloxlua/Session2QuizGame';
+import RobloxLesson3 from './pages/robloxlua/Session3ConstructiiScripturiIncepatori';
+import RobloxLesson4 from './pages/robloxlua/Session4Obby';
+import RobloxLesson5 from './pages/robloxlua/Session5NPCCreator';
+import RobloxLesson6 from './pages/robloxlua/Session6CreateAnimations';
+import RobloxLesson7 from './pages/robloxlua/Session7Shop';
 
 // Python lesson pages
 import PythonSession1 from '@/pages/python/Session1';
@@ -400,7 +405,43 @@ function App() {
               <RobloxLuaSession1 />
             </CourseAccessGuard>
           } />
+
+          <Route path="/robloxlua/session2quizgame" element={
+            <CourseAccessGuard courseSlug="robloxlua" sessionSlug="session2">
+              <RobloxLesson2/>
+            </CourseAccessGuard>
+          } />
           
+          <Route path="/robloxlua/session3constructiisctripturiincepatori" element={
+            <CourseAccessGuard courseSlug="robloxlua" sessionSlug="session3">
+              <RobloxLesson3/>
+            </CourseAccessGuard>
+          } />
+
+          <Route path="/robloxlua/session4obby" element={
+            <CourseAccessGuard courseSlug="robloxlua" sessionSlug="session4">
+              <RobloxLesson4/>
+            </CourseAccessGuard>
+          } />
+
+          <Route path="/robloxlua/session5npccreator" element={
+            <CourseAccessGuard courseSlug="robloxlua" sessionSlug="session5">
+              <RobloxLesson5/>
+            </CourseAccessGuard>
+          } />
+
+          <Route path="/robloxlua/session6createanimations" element={
+            <CourseAccessGuard courseSlug="robloxlua" sessionSlug="session6">
+              <RobloxLesson6/>
+            </CourseAccessGuard>
+          } />
+
+          <Route path="/robloxlua/session7shop" element={
+            <CourseAccessGuard courseSlug="robloxlua" sessionSlug="session7">
+              <RobloxLesson7/>
+            </CourseAccessGuard>
+          } />
+
           {/* Python lesson routes with access control */}
           <Route path="/python/session1" element={
             <CourseAccessGuard courseSlug="python" sessionSlug="session1">
