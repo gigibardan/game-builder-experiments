@@ -112,6 +112,8 @@ import GodotSimpleGame from '@/pages/godot/SimpleGame';
 import LegoSpikeEssentialsSession1 from '@/pages/legoessentials/Session1ClassicCarousel';
 import LegoSpikeEssentialsSession2 from '@/pages/legoessentials/Session2FerrisWheel';
 import LegoSpikeEssentialsSession3 from '@/pages/legoessentials/Session3CableCar';
+import LegoSpikeEssentialsSession4TwirlingTeacups from '@/pages/legoessentials/Session4TwirlingTeacups';
+import LegoSpikeEssentialsSession5SnackStand from '@/pages/legoessentials/Session5SnackStand';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -483,9 +485,18 @@ function App() {
             </CourseAccessGuard>
           } />
 
+          <Route path="/legoessentials/session4twirlingteacups" element={
+            <CourseAccessGuard courseSlug="lego-spike-essentials" sessionSlug="session4twirlingteacups">
+              <LegoSpikeEssentialsSession4TwirlingTeacups />
+            </CourseAccessGuard>
+          } />
 
+          <Route path="/legoessentials/session5snackstand" element={
+            <CourseAccessGuard courseSlug="lego-spike-essentials" sessionSlug="session5snackstand">
+              <LegoSpikeEssentialsSession5SnackStand />
+            </CourseAccessGuard>
+          } />
 
-          
           {/* Protected student routes */}
           <Route path="/student/dashboard" element={
             <ProtectedRoute requiredRole="student">

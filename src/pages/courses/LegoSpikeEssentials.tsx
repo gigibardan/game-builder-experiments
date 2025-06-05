@@ -58,7 +58,20 @@ const LegoSpikeEssentials = () => {
       level: "Începător",
       ageGroup: "7-9 ani",
       highlights: ["Mișcare circulară", "Control viteză", "Programare secvențe"],
-      color: "orange"
+      color: "orange",
+      imageSrc: "/assets/images/robotica/teacups1.webp"
+    },
+    {
+      number: 5,
+      title: "Snack Stand Delivery",
+      description: "Programează un robot care livrează alimente pe baza culorii.",
+      link: "/legoessentials/session5snackstand",
+      duration: "90 min",
+      level: "Începător",
+      ageGroup: "7-9 ani",
+      highlights: ["Senzor culoare", "Mișcare controlată", "Provocare creativă"],
+      color: "orange",
+      imageSrc: "/assets/images/robotica/snackstand1.webp"
     }
   ];
 
