@@ -12,10 +12,10 @@ import MinecraftModding from './pages/courses/MinecraftModding';
 import AppInventor from './pages/courses/AppInventor';
 
 // AppInventor sessions
-import Session10 from './pages/appinventor/Session10';
-import Session11 from './pages/appinventor/Session11';
-import Session12 from './pages/appinventor/Session12';
-import Session13 from './pages/appinventor/Session13';
+import Session10 as AppInventorSession10 from './pages/appinventor/Session10';
+import Session11 as AppInventorSession11 from './pages/appinventor/Session11';
+import Session12 as AppInventorSession12 from './pages/appinventor/Session12';
+import Session13 as AppInventorSession13 from './pages/appinventor/Session13';
 import Session14 from './pages/appinventor/Session14';
 
 // Scratch sessions - lecții complete existente
@@ -34,10 +34,10 @@ import Session6 from './pages/scratch/Session6';
 import Session7 from './pages/scratch/Session7';
 import Session8 from './pages/scratch/Session8';
 import Session9 from './pages/scratch/Session9';
-import Session10 from './pages/scratch/Session10';
-import Session11 from './pages/scratch/Session11';
-import Session12 from './pages/scratch/Session12';
-import Session13 from './pages/scratch/Session13';
+import Session10 as ScratchSession10 from './pages/scratch/Session10';
+import Session11 as ScratchSession11 from './pages/scratch/Session11';
+import Session12 as ScratchSession12 from './pages/scratch/Session12';
+import Session13 as ScratchSession13 from './pages/scratch/Session13';
 
 function App() {
   return (
@@ -56,10 +56,10 @@ function App() {
           <Route path="/courses/appinventor" element={<AppInventor />} />
           
           {/* AppInventor sessions */}
-          <Route path="/appinventor/session10" element={<Session10 />} />
-          <Route path="/appinventor/session11" element={<Session11 />} />
-          <Route path="/appinventor/session12" element={<Session12 />} />
-          <Route path="/appinventor/session13" element={<Session13 />} />
+          <Route path="/appinventor/session10" element={<AppInventorSession10 />} />
+          <Route path="/appinventor/session11" element={<AppInventorSession11 />} />
+          <Route path="/appinventor/session12" element={<AppInventorSession12 />} />
+          <Route path="/appinventor/session13" element={<AppInventorSession13 />} />
           <Route path="/appinventor/session14" element={<Session14 />} />
           
           {/* Scratch sessions - lecții complete */}
@@ -78,10 +78,10 @@ function App() {
           <Route path="/scratch/session7" element={<Session7 />} />
           <Route path="/scratch/session8" element={<Session8 />} />
           <Route path="/scratch/session9" element={<Session9 />} />
-          <Route path="/scratch/session10" element={<Session10 />} />
-          <Route path="/scratch/session11" element={<Session11 />} />
-          <Route path="/scratch/session12" element={<Session12 />} />
-          <Route path="/scratch/session13" element={<Session13 />} />
+          <Route path="/scratch/session10" element={<ScratchSession10 />} />
+          <Route path="/scratch/session11" element={<ScratchSession11 />} />
+          <Route path="/scratch/session12" element={<ScratchSession12 />} />
+          <Route path="/scratch/session13" element={<ScratchSession13 />} />
         </Routes>
       </div>
     </Router>
