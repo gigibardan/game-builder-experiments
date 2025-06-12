@@ -10,6 +10,7 @@ import LegoSpikeEssentials from './pages/courses/LegoSpikeEssentials';
 import CourseScratch from './pages/courses/Scratch';
 import MinecraftModding from './pages/courses/MinecraftModding';
 import AppInventor from './pages/courses/AppInventor';
+import Alice3 from './pages/courses/Alice3';
 
 // AppInventor sessions
 import AppInventorSession10 from './pages/appinventor/Session10';
@@ -54,6 +55,7 @@ function App() {
           <Route path="/courses/scratch" element={<CourseScratch />} />
           <Route path="/courses/minecraft-modding" element={<MinecraftModding />} />
           <Route path="/courses/appinventor" element={<AppInventor />} />
+          <Route path="/courses/alice3" element={<Alice3 />} />
           
           {/* AppInventor sessions */}
           <Route path="/appinventor/session10" element={<AppInventorSession10 />} />
