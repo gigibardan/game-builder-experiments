@@ -9,7 +9,7 @@ const Session5 = () => {
   ];
 
   const resources = [
-    { title: 'Documentație Greenfoot', url: 'https://greenfoot.org' },
+    { title: 'Documentația Greenfoot', url: 'https://greenfoot.org' },
   ];
 
   const sections = [
@@ -18,7 +18,7 @@ const Session5 = () => {
       title: 'Sesiunea 5 - În curs de dezvoltare',
       content: (
         <>
-          <InfoBox type="info">
+          <InfoBox variant="info">
             <p className="mb-4">
               Această sesiune este în curs de dezvoltare. Conținutul va fi disponibil în curând.
             </p>

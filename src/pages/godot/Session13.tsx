@@ -9,7 +9,7 @@ const Session13 = () => {
   ];
 
   const resources = [
-    { title: 'Documentație Godot', url: 'https://docs.godotengine.org' },
+    { title: 'Documentația Godot', url: 'https://docs.godotengine.org' },
   ];
 
   const sections = [
@@ -18,7 +18,7 @@ const Session13 = () => {
       title: 'Sesiunea 13 - În curs de dezvoltare',
       content: (
         <>
-          <InfoBox type="info">
+          <InfoBox variant="info">
             <p className="mb-4">
               Această sesiune este în curs de dezvoltare. Conținutul va fi disponibil în curând.
             </p>

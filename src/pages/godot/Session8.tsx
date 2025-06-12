@@ -18,7 +18,7 @@ const Session8 = () => {
       title: 'Sesiunea 8 - În curs de dezvoltare',
       content: (
         <>
-          <InfoBox type="info">
+          <InfoBox variant="info">
             <p className="mb-4">
               Această sesiune este în curs de dezvoltare. Conținutul va fi disponibil în curând.
             </p>

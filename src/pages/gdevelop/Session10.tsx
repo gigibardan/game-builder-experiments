@@ -9,7 +9,7 @@ const Session10 = () => {
   ];
 
   const resources = [
-    { title: 'Documentație GDevelop', url: 'https://gdevelop.io' },
+    { title: 'Documentația GDevelop', url: 'https://gdevelop.io' },
   ];
 
   const sections = [
@@ -18,7 +18,7 @@ const Session10 = () => {
       title: 'Sesiunea 10 - În curs de dezvoltare',
       content: (
         <>
-          <InfoBox type="info">
+          <InfoBox variant="info">
             <p className="mb-4">
               Această sesiune este în curs de dezvoltare. Conținutul va fi disponibil în curând.
             </p>
