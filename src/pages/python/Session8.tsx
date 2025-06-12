@@ -1,7 +1,7 @@
 
 import React from 'react';
 import LessonLayout from '@/components/LessonLayout';
-import { InfoBox } in '@/components/LessonComponents';
+import { InfoBox } from '@/components/LessonComponents';
 
 const Session8 = () => {
   return (
