@@ -8,12 +8,11 @@ import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SessionCard from '@/components/SessionCard';
-
-
+import SessionCardInDevelopment from '@/components/SessionCardInDevelopment';
 
 const LegoSpikeEssentials = () => {
   const sessions = [
-        {
+    {
       number: 1,
       title: "Caruselul Clasic",
       description: "Construiește și programează un carusel cu viteză variabilă.",
@@ -75,6 +74,13 @@ const LegoSpikeEssentials = () => {
     }
   ];
 
+  // Sessions in development (6-14)
+  const developmentSessions = Array.from({ length: 9 }, (_, i) => ({
+    number: i + 6,
+    title: `Session ${i + 6}`,
+    description: "Conținut în dezvoltare - Lecție nouă în curând disponibilă."
+  }));
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -102,7 +108,7 @@ const LegoSpikeEssentials = () => {
                 </Badge>
                 <Badge variant="secondary" className="bg-white/20 text-white border-white/30 px-4 py-2">
                   <Clock className="mr-1 h-4 w-4" />
-                  12 săptămâni
+                  14 săptămâni
                 </Badge>
                 <Badge variant="secondary" className="bg-white/20 text-white border-white/30 px-4 py-2">
                   <Award className="mr-1 h-4 w-4" />
@@ -205,6 +211,13 @@ const LegoSpikeEssentials = () => {
                   <SessionCard
                     key={index}
                     {...session}
+                  />
+                ))}
+                {developmentSessions.map((session, index) => (
+                  <SessionCardInDevelopment
+                    key={`dev-${index}`}
+                    {...session}
+                    color="orange"
                   />
                 ))}
               </div>
