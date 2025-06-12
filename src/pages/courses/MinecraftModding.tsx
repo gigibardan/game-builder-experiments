@@ -17,6 +17,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import SessionCard from '@/components/SessionCard';
+import MinecraftModdingSessions from '@/components/MinecraftModdingSessions';
 
 const MinecraftModding = () => {
   // Array cu lectiile disponibile 
@@ -309,55 +310,7 @@ const MinecraftModding = () => {
               </p>
             </div>
             
-            <div className="relative">
-              {/* Background pattern for the sessions section */}
-              <div className="absolute inset-0 bg-gradient-to-b from-green-50/50 to-white/30 -z-10"></div>
-              
-              <motion.div 
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
-              >
-                {sessions.map((session) => (
-                  <motion.div key={session.id} variants={itemVariants}>
-                    <SessionCard 
-                      title={session.title}
-                      description={session.description}
-                      link={session.link}
-                      number={session.id}
-                      duration={session.duration}
-                      level={session.level}
-                      ageGroup={session.ageGroup}
-                      highlights={session.highlights}
-                      color={session.color}
-                      imageSrc={session.imageSrc}
-                    />
-                  </motion.div>
-                ))}
-              </motion.div>
-              
-              {/* Coming Soon Card */}
-              <motion.div 
-                variants={itemVariants}
-                className="mt-10 max-w-md mx-auto"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <div className="bg-gradient-to-r from-green-100 to-lime-100 rounded-none p-6 border-4 border-dashed border-green-300 text-center shadow-md">
-                  <div className="bg-green-200 rounded-none w-16 h-16 flex items-center justify-center mb-4 mx-auto border-2 border-green-300">
-                    <Cog className="h-8 w-8 text-green-700" />
-                  </div>
-                  <h3 className="text-xl font-minecraft mb-2 text-green-800">Mai multe lecții în curând!</h3>
-                  <p className="text-green-700 mb-3">
-                    Echipa noastră lucrează la noi tutoriale captivante pentru Minecraft Modding.
-                    Revino curând pentru a descoperi mai multe proiecte interesante!
-                  </p>
-                </div>
-              </motion.div>
-            </div>
+            <MinecraftModdingSessions />
           </div>
         </section>
 
