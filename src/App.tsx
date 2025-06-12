@@ -71,22 +71,22 @@ function App() {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
           
-          {/* Course overview pages */}
+          {/* Course overview pages - Fixed routes to match URLs */}
           <Route path="/courses/scratch" element={<Scratch />} />
-          <Route path="/courses/roblox-lua" element={<RobloxLua />} />
+          <Route path="/courses/robloxlua" element={<RobloxLua />} />
           <Route path="/courses/minecraft-modding" element={<MinecraftModding />} />
           <Route path="/courses/python" element={<Python />} />
           <Route path="/courses/gdevelop" element={<GDevelop />} />
           <Route path="/courses/alice3" element={<Alice3 />} />
-          <Route path="/courses/app-inventor" element={<AppInventor />} />
+          <Route path="/courses/appinventor" element={<AppInventor />} />
           <Route path="/courses/construct3" element={<Construct3 />} />
           <Route path="/courses/godot" element={<Godot />} />
           <Route path="/courses/greenfoot" element={<Greenfoot />} />
-          <Route path="/courses/frontend-dev" element={<FrontendDev />} />
+          <Route path="/courses/frontenddev" element={<FrontendDev />} />
           <Route path="/courses/lego-spike-essentials" element={<LegoSpikeEssentials />} />
           <Route path="/courses/lego-spike-prime" element={<LegoSpikePrime />} />
           <Route path="/courses/microbit-explorers" element={<MicrobitExplorers />} />
-          <Route path="/courses/microbit-arcade" element={<MicrobitArcade />} />
+          <Route path="/courses/microbitarcade" element={<MicrobitArcade />} />
 
           {/* Admin routes */}
           <Route 
