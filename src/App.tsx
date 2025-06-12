@@ -30,7 +30,7 @@ import ScratchSession13 from "./pages/scratch/Session13";
 import ScratchSession14 from "./pages/scratch/Session14";
 
 // LEGO Spike Essentials imports
-import Session1ClassicCarusel from "./pages/legoessentials/Session1ClassicCarusel";
+import Session1ClassicCarousel from "./pages/legoessentials/Session1ClassicCarousel";
 import Session2FerrisWheel from "./pages/legoessentials/Session2FerrisWheel";
 import Session3CableCar from "./pages/legoessentials/Session3CableCar";
 import Session4TwirlingTeacups from "./pages/legoessentials/Session4TwirlingTeacups";
@@ -122,7 +122,7 @@ const App = () => (
           <Route path="/scratch/session14" element={<ScratchSession14 />} />
 
           {/* LEGO Spike Essentials routes */}
-          <Route path="/legoessentials/session1classiccarusel" element={<Session1ClassicCarusel />} />
+          <Route path="/legoessentials/session1classiccarusel" element={<Session1ClassicCarousel />} />
           <Route path="/legoessentials/session2ferriswheel" element={<Session2FerrisWheel />} />
           <Route path="/legoessentials/session3cablecar" element={<Session3CableCar />} />
           <Route path="/legoessentials/session4twirlingteacups" element={<Session4TwirlingTeacups />} />
