@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -149,8 +148,10 @@ const Dashboard: React.FC = () => {
               <CardContent>
                 <div className="text-3xl font-bold">{stats.totalCourses}</div>
                 <p className="text-gray-600">Cursuri disponibile</p>
-                <Button onClick={handleFeatureInDevelopment} variant="ghost" className="w-full mt-4 text-green-700 hover:bg-green-100">
-                  Administrare Cursuri
+                <Button asChild variant="ghost" className="w-full mt-4 text-green-700 hover:bg-green-100">
+                  <Link to="/admin/courses">
+                    Administrare Cursuri
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
@@ -181,8 +182,10 @@ const Dashboard: React.FC = () => {
               <CardContent>
                 <div className="text-3xl font-bold">{stats.totalSessions}</div>
                 <p className="text-gray-600">Lecții disponibile</p>
-                <Button onClick={handleFeatureInDevelopment} variant="ghost" className="w-full mt-4 text-amber-700 hover:bg-amber-100">
-                  Administrare Sesiuni
+                <Button asChild variant="ghost" className="w-full mt-4 text-amber-700 hover:bg-amber-700">
+                  <Link to="/admin/courses">
+                    Administrare Sesiuni
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
@@ -330,9 +333,11 @@ const Dashboard: React.FC = () => {
                     </Link>
                   </Button>
                   
-                  <Button variant="outline" className="w-full justify-start" onClick={handleFeatureInDevelopment}>
-                    <Book className="mr-2 h-4 w-4" />
-                    Adaugă Curs Nou
+                  <Button asChild variant="outline" className="w-full justify-start">
+                    <Link to="/admin/courses">
+                      <Book className="mr-2 h-4 w-4" />
+                      Administrare Cursuri
+                    </Link>
                   </Button>
                   
                   <Button variant="outline" className="w-full justify-start" onClick={handleFeatureInDevelopment}>

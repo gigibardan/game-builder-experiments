@@ -21,6 +21,7 @@ import Unauthorized from './pages/auth/Unauthorized';
 import Dashboard from './pages/admin/Dashboard';
 import UserManagement from './pages/admin/UserManagement';
 import ProjectStructure from './pages/admin/ProjectStructure';
+import CourseManagement from './pages/admin/CourseManagement';
 
 // Student pages
 import StudentDashboard from './pages/student/StudentDashboard';
@@ -102,6 +103,14 @@ function App() {
             element={
               <ProtectedRoute requiredRole="admin">
                 <UserManagement />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/admin/courses" 
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <CourseManagement />
               </ProtectedRoute>
             } 
           />
