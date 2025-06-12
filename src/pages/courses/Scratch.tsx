@@ -32,108 +32,84 @@ const Scratch = () => {
                 number={1}
                 title="Introducere în Scratch" 
                 description="Primii pași în programarea vizuală cu Scratch."
-                skills={['Sprite-uri', 'Mișcare', 'Evenimente']}
-                link="/scratch/session1"
-                isAvailable={false}
+                color="orange"
               />
               
               <SessionCardInDevelopment 
                 number={2}
                 title="Animații și Efecte" 
                 description="Creează animații și efecte vizuale captivante."
-                skills={['Costumuri', 'Efecte', 'Bucle']}
-                link="/scratch/session2"
-                isAvailable={false}
+                color="orange"
               />
               
               <SessionCardInDevelopment 
                 number={3}
                 title="Sunetele și Muzica" 
                 description="Adaugă sunete și muzică în proiectele tale."
-                skills={['Sunete', 'Muzică', 'Sincronizare']}
-                link="/scratch/session3"
-                isAvailable={false}
+                color="orange"
               />
               
               <SessionCardInDevelopment 
                 number={4}
                 title="City Runner" 
                 description="Creează un joc de tip runner prin oraș."
-                skills={['Coliziuni', 'Scor', 'Obstacole']}
-                link="/scratch/session4"
-                isAvailable={false}
+                color="orange"
               />
               
               <SessionCardInDevelopment 
                 number={5}
                 title="Platformer Game" 
                 description="Construiește un joc de tip platformer."
-                skills={['Fizică', 'Platforme', 'Power-ups']}
-                link="/scratch/session5"
-                isAvailable={false}
+                color="orange"
               />
               
               <SessionCardInDevelopment 
                 number={6}
                 title="Stitch Beach Adventure" 
                 description="O aventură pe plajă cu personajul Stitch."
-                skills={['Aventură', 'Poveste', 'Dialoguri']}
-                link="/scratch/session6"
-                isAvailable={false}
+                color="orange"
               />
               
               <SessionCardInDevelopment 
                 number={7}
                 title="Maze Game" 
                 description="Creează un joc de labirint interactiv."
-                skills={['Labirint', 'Algoritmi', 'Căutare']}
-                link="/scratch/session7"
-                isAvailable={false}
+                color="orange"
               />
               
               <SessionCardInDevelopment 
                 number={8}
                 title="Wizards Quest" 
                 description="O aventură magică cu vrăjitori și farmece."
-                skills={['Magie', 'Quest', 'Inventar']}
-                link="/scratch/session8"
-                isAvailable={false}
+                color="orange"
               />
               
               <SessionCardInDevelopment 
                 number={9}
                 title="Robot Football" 
                 description="Un joc de fotbal cu roboți."
-                skills={['Sport', 'AI', 'Multiplayer']}
-                link="/scratch/session9"
-                isAvailable={false}
+                color="orange"
               />
               
               <SessionCardInDevelopment 
                 number={10}
                 title="Space Shooter" 
                 description="Un joc de împușcături în spațiu."
-                skills={['Împușcături', 'Spațiu', 'Nave']}
-                link="/scratch/session10"
-                isAvailable={false}
+                color="orange"
               />
               
               <SessionCardInDevelopment 
                 number={11}
                 title="Puzzle Master" 
                 description="Creează un joc de puzzle-uri."
-                skills={['Puzzle', 'Logică', 'Niveluri']}
-                link="/scratch/session11"
-                isAvailable={false}
+                color="orange"
               />
               
               <SessionCardInDevelopment 
                 number={12}
                 title="Racing Game" 
                 description="Un joc de curse plin de adrenalină."
-                skills={['Curse', 'Viteză', 'Piste']}
-                link="/scratch/session12"
-                isAvailable={false}
+                color="orange"
               />
               
               <SessionCard 
