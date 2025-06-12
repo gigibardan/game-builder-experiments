@@ -1,7 +1,7 @@
-
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import CourseAccessGuard from '@/components/CourseAccessGuard';
 
 // Import pages
 import Home from '@/pages/Home';
@@ -192,303 +192,587 @@ const router = createBrowserRouter([
       </ProtectedRoute>
     ),
   },
-  // Course pages - Updated to match CourseCard links
+  // Course pages - Protected with CourseAccessGuard
   {
     path: "/courses/scratch",
-    element: <Scratch />,
+    element: (
+      <CourseAccessGuard courseSlug="scratch">
+        <Scratch />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/courses/appinventor",
-    element: <AppInventor />,
+    element: (
+      <CourseAccessGuard courseSlug="appinventor">
+        <AppInventor />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/courses/construct3",
-    element: <Construct3 />,
+    element: (
+      <CourseAccessGuard courseSlug="construct3">
+        <Construct3 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/courses/gdevelop",
-    element: <GDevelop />,
+    element: (
+      <CourseAccessGuard courseSlug="gdevelop">
+        <GDevelop />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/courses/alice3",
-    element: <Alice3 />,
+    element: (
+      <CourseAccessGuard courseSlug="alice3">
+        <Alice3 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/courses/microbit-arcade",
-    element: <MicrobitArcade />,
+    element: (
+      <CourseAccessGuard courseSlug="microbit-arcade">
+        <MicrobitArcade />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/courses/minecraft-modding",
-    element: <MinecraftModding />,
+    element: (
+      <CourseAccessGuard courseSlug="minecraft-modding">
+        <MinecraftModding />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/courses/roblox-lua",
-    element: <RobloxLua />,
+    element: (
+      <CourseAccessGuard courseSlug="roblox-lua">
+        <RobloxLua />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/courses/python",
-    element: <Python />,
+    element: (
+      <CourseAccessGuard courseSlug="python">
+        <Python />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/courses/greenfoot",
-    element: <Greenfoot />,
+    element: (
+      <CourseAccessGuard courseSlug="greenfoot">
+        <Greenfoot />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/courses/godot",
-    element: <Godot />,
+    element: (
+      <CourseAccessGuard courseSlug="godot">
+        <Godot />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/courses/frontend-dev",
-    element: <FrontendDev />,
+    element: (
+      <CourseAccessGuard courseSlug="frontend-dev">
+        <FrontendDev />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/courses/lego-spike-essentials",
-    element: <LegoSpikeEssentials />,
+    element: (
+      <CourseAccessGuard courseSlug="lego-spike-essentials">
+        <LegoSpikeEssentials />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/courses/lego-spike-prime",
-    element: <LegoSpikePrime />,
+    element: (
+      <CourseAccessGuard courseSlug="lego-spike-prime">
+        <LegoSpikePrime />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/courses/microbit-explorers",
-    element: <MicrobitExplorers />,
+    element: (
+      <CourseAccessGuard courseSlug="microbit-explorers">
+        <MicrobitExplorers />
+      </CourseAccessGuard>
+    ),
   },
   // Scratch sessions
   {
     path: "/scratch/session1alegesanatos",
-    element: <Session1Alegesanatos />,
+    element: (
+      <CourseAccessGuard courseSlug="scratch" sessionSlug="session1alegesanatos">
+        <Session1Alegesanatos />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/scratch/session2spacedodge",
-    element: <Session2SpaceDodge />,
+    element: (
+      <CourseAccessGuard courseSlug="scratch" sessionSlug="session2spacedodge">
+        <Session2SpaceDodge />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/scratch/session3motoracer",
-    element: <Session3MotoRacer />,
+    element: (
+      <CourseAccessGuard courseSlug="scratch" sessionSlug="session3motoracer">
+        <Session3MotoRacer />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/scratch/session4cityrunner",
-    element: <Session4CityRunner />,
+    element: (
+      <CourseAccessGuard courseSlug="scratch" sessionSlug="session4cityrunner">
+        <Session4CityRunner />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/scratch/session5beachballbounce",
-    element: <Session5BeachBallBounce />,
+    element: (
+      <CourseAccessGuard courseSlug="scratch" sessionSlug="session5beachballbounce">
+        <Session5BeachBallBounce />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/scratch/session6stitchbeach",
-    element: <Session6StitchBeach />,
+    element: (
+      <CourseAccessGuard courseSlug="scratch" sessionSlug="session6stitchbeach">
+        <Session6StitchBeach />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/scratch/session7cakequest",
-    element: <Session7cakequest />,
+    element: (
+      <CourseAccessGuard courseSlug="scratch" sessionSlug="session7cakequest">
+        <Session7cakequest />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/scratch/session8wizardsquest",
-    element: <Session8WizardsQuest />,
+    element: (
+      <CourseAccessGuard courseSlug="scratch" sessionSlug="session8wizardsquest">
+        <Session8WizardsQuest />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/scratch/session9robotfootball",
-    element: <Session9RobotFootball />,
+    element: (
+      <CourseAccessGuard courseSlug="scratch" sessionSlug="session9robotfootball">
+        <Session9RobotFootball />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/scratch/session10flappyminecraftpart1",
-    element: <Session10FlappyMinecraftPart1 />,
+    element: (
+      <CourseAccessGuard courseSlug="scratch" sessionSlug="session10flappyminecraftpart1">
+        <Session10FlappyMinecraftPart1 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/scratch/session10flappyminecraftpart2",
-    element: <Session10FlappyMinecraftPart2 />,
+    element: (
+      <CourseAccessGuard courseSlug="scratch" sessionSlug="session10flappyminecraftpart2">
+        <Session10FlappyMinecraftPart2 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/scratch/session11eggdropper",
-    element: <Session11EggDropper />,
+    element: (
+      <CourseAccessGuard courseSlug="scratch" sessionSlug="session11eggdropper">
+        <Session11EggDropper />
+      </CourseAccessGuard>
+    ),
   },
   // AppInventor sessions
   {
     path: "/appinventor/session1",
-    element: <AppInventorSession1 />,
+    element: (
+      <CourseAccessGuard courseSlug="appinventor" sessionSlug="session1">
+        <AppInventorSession1 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/appinventor/session2",
-    element: <AppInventorSession2 />,
+    element: (
+      <CourseAccessGuard courseSlug="appinventor" sessionSlug="session2">
+        <AppInventorSession2 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/appinventor/session3",
-    element: <AppInventorSession3 />,
+    element: (
+      <CourseAccessGuard courseSlug="appinventor" sessionSlug="session3">
+        <AppInventorSession3 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/appinventor/session4",
-    element: <AppInventorSession4 />,
+    element: (
+      <CourseAccessGuard courseSlug="appinventor" sessionSlug="session4">
+        <AppInventorSession4 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/appinventor/session5",
-    element: <AppInventorSession5 />,
+    element: (
+      <CourseAccessGuard courseSlug="appinventor" sessionSlug="session5">
+        <AppInventorSession5 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/appinventor/session6",
-    element: <AppInventorSession6 />,
+    element: (
+      <CourseAccessGuard courseSlug="appinventor" sessionSlug="session6">
+        <AppInventorSession6 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/appinventor/session7",
-    element: <AppInventorSession7 />,
+    element: (
+      <CourseAccessGuard courseSlug="appinventor" sessionSlug="session7">
+        <AppInventorSession7 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/appinventor/session8",
-    element: <AppInventorSession8 />,
+    element: (
+      <CourseAccessGuard courseSlug="appinventor" sessionSlug="session8">
+        <AppInventorSession8 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/appinventor/session9",
-    element: <AppInventorSession9 />,
+    element: (
+      <CourseAccessGuard courseSlug="appinventor" sessionSlug="session9">
+        <AppInventorSession9 />
+      </CourseAccessGuard>
+    ),
   },
   // Alice3 sessions
   {
     path: "/alice3/session1",
-    element: <Alice3Session1 />,
+    element: (
+      <CourseAccessGuard courseSlug="alice3" sessionSlug="session1">
+        <Alice3Session1 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/alice3/session1adventure",
-    element: <Alice3Session1Adventure />,
+    element: (
+      <CourseAccessGuard courseSlug="alice3" sessionSlug="session1adventure">
+        <Alice3Session1Adventure />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/alice3/session2spacegame",
-    element: <Alice3Session2SpaceGame />,
+    element: (
+      <CourseAccessGuard courseSlug="alice3" sessionSlug="session2spacegame">
+        <Alice3Session2SpaceGame />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/alice3/session3virtualpet",
-    element: <Alice3Session3VirtualPet />,
+    element: (
+      <CourseAccessGuard courseSlug="alice3" sessionSlug="session3virtualpet">
+        <Alice3Session3VirtualPet />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/alice3/session4geometry",
-    element: <Alice3Session4Geometry />,
+    element: (
+      <CourseAccessGuard courseSlug="alice3" sessionSlug="session4geometry">
+        <Alice3Session4Geometry />
+      </CourseAccessGuard>
+    ),
   },
   // Minecraft Modding sessions
   {
     path: "/minecraftmodding/session1",
-    element: <MinecraftSession1 />,
+    element: (
+      <CourseAccessGuard courseSlug="minecraft-modding" sessionSlug="session1">
+        <MinecraftSession1 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/minecraftmodding/crystalrealm",
-    element: <MinecraftCrystalRealm />,
+    element: (
+      <CourseAccessGuard courseSlug="minecraft-modding" sessionSlug="crystalrealm">
+        <MinecraftCrystalRealm />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/minecraftmodding/rubyarmor",
-    element: <MinecraftRubyArmor />,
+    element: (
+      <CourseAccessGuard courseSlug="minecraft-modding" sessionSlug="rubyarmor">
+        <MinecraftRubyArmor />
+      </CourseAccessGuard>
+    ),
   },
   // Roblox sessions
   {
     path: "/robloxlua/session1",
-    element: <RobloxSession1 />,
+    element: (
+      <CourseAccessGuard courseSlug="roblox-lua" sessionSlug="session1">
+        <RobloxSession1 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/robloxlua/session1introducere",
-    element: <RobloxSession1Introducere />,
+    element: (
+      <CourseAccessGuard courseSlug="roblox-lua" sessionSlug="session1introducere">
+        <RobloxSession1Introducere />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/robloxlua/session2quizgame",
-    element: <RobloxSession2QuizGame />,
+    element: (
+      <CourseAccessGuard courseSlug="roblox-lua" sessionSlug="session2quizgame">
+        <RobloxSession2QuizGame />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/robloxlua/session3constructiiscripturiincepatori",
-    element: <RobloxSession3ConstructiiScripturiIncepatori />,
+    element: (
+      <CourseAccessGuard courseSlug="roblox-lua" sessionSlug="session3constructiiscripturiincepatori">
+        <RobloxSession3ConstructiiScripturiIncepatori />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/robloxlua/session4obby",
-    element: <RobloxSession4Obby />,
+    element: (
+      <CourseAccessGuard courseSlug="roblox-lua" sessionSlug="session4obby">
+        <RobloxSession4Obby />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/robloxlua/session5npccreator",
-    element: <RobloxSession5NPCCreator />,
+    element: (
+      <CourseAccessGuard courseSlug="roblox-lua" sessionSlug="session5npccreator">
+        <RobloxSession5NPCCreator />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/robloxlua/session6createanimations",
-    element: <RobloxSession6CreateAnimations />,
+    element: (
+      <CourseAccessGuard courseSlug="roblox-lua" sessionSlug="session6createanimations">
+        <RobloxSession6CreateAnimations />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/robloxlua/session7shop",
-    element: <RobloxSession7Shop />,
+    element: (
+      <CourseAccessGuard courseSlug="roblox-lua" sessionSlug="session7shop">
+        <RobloxSession7Shop />
+      </CourseAccessGuard>
+    ),
   },
   // Python sessions
   {
     path: "/python/session1",
-    element: <PythonSession1 />,
+    element: (
+      <CourseAccessGuard courseSlug="python" sessionSlug="session1">
+        <PythonSession1 />
+      </CourseAccessGuard>
+    ),
   },
   // Greenfoot sessions
   {
     path: "/greenfoot/session1",
-    element: <GreenfootSession1 />,
+    element: (
+      <CourseAccessGuard courseSlug="greenfoot" sessionSlug="session1">
+        <GreenfootSession1 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/greenfoot/session2",
-    element: <GreenfootSession2 />,
+    element: (
+      <CourseAccessGuard courseSlug="greenfoot" sessionSlug="session2">
+        <GreenfootSession2 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/greenfoot/session3",
-    element: <GreenfootSession3 />,
+    element: (
+      <CourseAccessGuard courseSlug="greenfoot" sessionSlug="session3">
+        <GreenfootSession3 />
+      </CourseAccessGuard>
+    ),
   },
   // Godot sessions
   {
     path: "/godot/session1",
-    element: <GodotSession1 />,
+    element: (
+      <CourseAccessGuard courseSlug="godot" sessionSlug="session1">
+        <GodotSession1 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/godot/session2",
-    element: <GodotSession2 />,
+    element: (
+      <CourseAccessGuard courseSlug="godot" sessionSlug="session2">
+        <GodotSession2 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/godot/session3",
-    element: <GodotSession3 />,
+    element: (
+      <CourseAccessGuard courseSlug="godot" sessionSlug="session3">
+        <GodotSession3 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/godot/session4",
-    element: <GodotSession4 />,
+    element: (
+      <CourseAccessGuard courseSlug="godot" sessionSlug="session4">
+        <GodotSession4 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/godot/session5",
-    element: <GodotSession5 />,
+    element: (
+      <CourseAccessGuard courseSlug="godot" sessionSlug="session5">
+        <GodotSession5 />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/godot/simplegame",
-    element: <GodotSimpleGame />,
+    element: (
+      <CourseAccessGuard courseSlug="godot" sessionSlug="simplegame">
+        <GodotSimpleGame />
+      </CourseAccessGuard>
+    ),
   },
   // GDevelop sessions
   {
     path: "/gdevelop/session1",
-    element: <GDevelopSession1 />,
+    element: (
+      <CourseAccessGuard courseSlug="gdevelop" sessionSlug="session1">
+        <GDevelopSession1 />
+      </CourseAccessGuard>
+    ),
   },
   // Construct3 sessions
   {
     path: "/construct3/session1",
-    element: <Construct3Session1 />,
+    element: (
+      <CourseAccessGuard courseSlug="construct3" sessionSlug="session1">
+        <Construct3Session1 />
+      </CourseAccessGuard>
+    ),
   },
   // Frontend Dev sessions
   {
     path: "/frontenddev/session1",
-    element: <FrontendDevSession1 />,
+    element: (
+      <CourseAccessGuard courseSlug="frontend-dev" sessionSlug="session1">
+        <FrontendDevSession1 />
+      </CourseAccessGuard>
+    ),
   },
   // micro:bit Arcade sessions
   {
     path: "/microbitarcade/session1",
-    element: <MicrobitArcadeSession1 />,
+    element: (
+      <CourseAccessGuard courseSlug="microbit-arcade" sessionSlug="session1">
+        <MicrobitArcadeSession1 />
+      </CourseAccessGuard>
+    ),
   },
   // LEGO SPIKE Essentials sessions
   {
     path: "/legoessentials/session1classiccarusel",
-    element: <LegoEssentialsSession1ClassicCarousel />,
+    element: (
+      <CourseAccessGuard courseSlug="lego-spike-essentials" sessionSlug="session1classiccarusel">
+        <LegoEssentialsSession1ClassicCarousel />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/legoessentials/session2ferriswheel",
-    element: <LegoEssentialsSession2FerrisWheel />,
+    element: (
+      <CourseAccessGuard courseSlug="lego-spike-essentials" sessionSlug="session2ferriswheel">
+        <LegoEssentialsSession2FerrisWheel />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/legoessentials/session3cablecar",
-    element: <LegoEssentialsSession3CableCar />,
+    element: (
+      <CourseAccessGuard courseSlug="lego-spike-essentials" sessionSlug="session3cablecar">
+        <LegoEssentialsSession3CableCar />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/legoessentials/session4twirlingteacups",
-    element: <LegoEssentialsSession4TwirlingTeacups />,
+    element: (
+      <CourseAccessGuard courseSlug="lego-spike-essentials" sessionSlug="session4twirlingteacups">
+        <LegoEssentialsSession4TwirlingTeacups />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "/legoessentials/session5snackstand",
-    element: <LegoEssentialsSession5SnackStand />,
+    element: (
+      <CourseAccessGuard courseSlug="lego-spike-essentials" sessionSlug="session5snackstand">
+        <LegoEssentialsSession5SnackStand />
+      </CourseAccessGuard>
+    ),
   },
   {
     path: "*",
