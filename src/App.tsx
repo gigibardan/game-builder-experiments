@@ -260,331 +260,328 @@ const App = () => {
             {/* Protected session routes with access guards */}
             {/* Scratch sessions */}
             <Route path="/scratch/session1-alegesanatos" element={
-              <CourseAccessGuard courseId="scratch" sessionId="session1-alegesanatos">
+              <CourseAccessGuard courseSlug="scratch" sessionSlug="session1-alegesanatos">
                 <Session1Alegesanatos />
               </CourseAccessGuard>
             } />
             <Route path="/scratch/session2-spacedodge" element={
-              <CourseAccessGuard courseId="scratch" sessionId="session2-spacedodge">
+              <CourseAccessGuard courseSlug="scratch" sessionSlug="session2-spacedodge">
                 <Session2SpaceDodge />
               </CourseAccessGuard>
             } />
             <Route path="/scratch/session3-motoracer" element={
-              <CourseAccessGuard courseId="scratch" sessionId="session3-motoracer">
+              <CourseAccessGuard courseSlug="scratch" sessionSlug="session3-motoracer">
                 <Session3MotoRacer />
               </CourseAccessGuard>
             } />
             <Route path="/scratch/session4-cityrunner" element={
-              <CourseAccessGuard courseId="scratch" sessionId="session4-cityrunner">
+              <CourseAccessGuard courseSlug="scratch" sessionSlug="session4-cityrunner">
                 <Session4CityRunner />
               </CourseAccessGuard>
             } />
             <Route path="/scratch/session5-beachballbounce" element={
-              <CourseAccessGuard courseId="scratch" sessionId="session5-beachballbounce">
+              <CourseAccessGuard courseSlug="scratch" sessionSlug="session5-beachballbounce">
                 <Session5BeachBallBounce />
               </CourseAccessGuard>
             } />
             <Route path="/scratch/session6-stitchbeach" element={
-              <CourseAccessGuard courseId="scratch" sessionId="session6-stitchbeach">
+              <CourseAccessGuard courseSlug="scratch" sessionSlug="session6-stitchbeach">
                 <Session6StitchBeach />
               </CourseAccessGuard>
             } />
             <Route path="/scratch/session7-cakequest" element={
-              <CourseAccessGuard courseId="scratch" sessionId="session7-cakequest">
+              <CourseAccessGuard courseSlug="scratch" sessionSlug="session7-cakequest">
                 <Session7cakequest />
               </CourseAccessGuard>
             } />
             <Route path="/scratch/session8-wizardsquest" element={
-              <CourseAccessGuard courseId="scratch" sessionId="session8-wizardsquest">
+              <CourseAccessGuard courseSlug="scratch" sessionSlug="session8-wizardsquest">
                 <Session8WizardsQuest />
               </CourseAccessGuard>
             } />
             <Route path="/scratch/session9-robotfootball" element={
-              <CourseAccessGuard courseId="scratch" sessionId="session9-robotfootball">
+              <CourseAccessGuard courseSlug="scratch" sessionSlug="session9-robotfootball">
                 <Session9RobotFootball />
               </CourseAccessGuard>
             } />
             <Route path="/scratch/session10-flappyminecraft-part1" element={
-              <CourseAccessGuard courseId="scratch" sessionId="session10-flappyminecraft-part1">
+              <CourseAccessGuard courseSlug="scratch" sessionSlug="session10-flappyminecraft-part1">
                 <Session10FlappyMinecraftPart1 />
               </CourseAccessGuard>
             } />
             <Route path="/scratch/session10-flappyminecraft-part2" element={
-              <CourseAccessGuard courseId="scratch" sessionId="session10-flappyminecraft-part2">
+              <CourseAccessGuard courseSlug="scratch" sessionSlug="session10-flappyminecraft-part2">
                 <Session10FlappyMinecraftPart2 />
               </CourseAccessGuard>
             } />
             <Route path="/scratch/session11-eggdropper" element={
-              <CourseAccessGuard courseId="scratch" sessionId="session11-eggdropper">
+              <CourseAccessGuard courseSlug="scratch" sessionSlug="session11-eggdropper">
                 <Session11EggDropper />
               </CourseAccessGuard>
             } />
 
-            {/* Continue with all other session routes... */}
             {/* App Inventor sessions */}
             <Route path="/appinventor/session1" element={
-              <CourseAccessGuard courseId="appinventor" sessionId="session1">
+              <CourseAccessGuard courseSlug="appinventor" sessionSlug="session1">
                 <AppInventorSession1 />
               </CourseAccessGuard>
             } />
             <Route path="/appinventor/session2" element={
-              <CourseAccessGuard courseId="appinventor" sessionId="session2">
+              <CourseAccessGuard courseSlug="appinventor" sessionSlug="session2">
                 <AppInventorSession2 />
               </CourseAccessGuard>
             } />
             <Route path="/appinventor/session3" element={
-              <CourseAccessGuard courseId="appinventor" sessionId="session3">
+              <CourseAccessGuard courseSlug="appinventor" sessionSlug="session3">
                 <AppInventorSession3 />
               </CourseAccessGuard>
             } />
             <Route path="/appinventor/session4" element={
-              <CourseAccessGuard courseId="appinventor" sessionId="session4">
+              <CourseAccessGuard courseSlug="appinventor" sessionSlug="session4">
                 <AppInventorSession4 />
               </CourseAccessGuard>
             } />
             <Route path="/appinventor/session5" element={
-              <CourseAccessGuard courseId="appinventor" sessionId="session5">
+              <CourseAccessGuard courseSlug="appinventor" sessionSlug="session5">
                 <AppInventorSession5 />
               </CourseAccessGuard>
             } />
             <Route path="/appinventor/session6" element={
-              <CourseAccessGuard courseId="appinventor" sessionId="session6">
+              <CourseAccessGuard courseSlug="appinventor" sessionSlug="session6">
                 <AppInventorSession6 />
               </CourseAccessGuard>
             } />
             <Route path="/appinventor/session7" element={
-              <CourseAccessGuard courseId="appinventor" sessionId="session7">
+              <CourseAccessGuard courseSlug="appinventor" sessionSlug="session7">
                 <AppInventorSession7 />
               </CourseAccessGuard>
             } />
             <Route path="/appinventor/session8" element={
-              <CourseAccessGuard courseId="appinventor" sessionId="session8">
+              <CourseAccessGuard courseSlug="appinventor" sessionSlug="session8">
                 <AppInventorSession8 />
               </CourseAccessGuard>
             } />
             <Route path="/appinventor/session9" element={
-              <CourseAccessGuard courseId="appinventor" sessionId="session9">
+              <CourseAccessGuard courseSlug="appinventor" sessionSlug="session9">
                 <AppInventorSession9 />
               </CourseAccessGuard>
             } />
 
             {/* Python sessions */}
             <Route path="/python/session1" element={
-              <CourseAccessGuard courseId="python" sessionId="session1">
+              <CourseAccessGuard courseSlug="python" sessionSlug="session1">
                 <PythonSession1 />
               </CourseAccessGuard>
             } />
             <Route path="/python/session2" element={
-              <CourseAccessGuard courseId="python" sessionId="session2">
+              <CourseAccessGuard courseSlug="python" sessionSlug="session2">
                 <PythonSession2 />
               </CourseAccessGuard>
             } />
             <Route path="/python/session3" element={
-              <CourseAccessGuard courseId="python" sessionId="session3">
+              <CourseAccessGuard courseSlug="python" sessionSlug="session3">
                 <PythonSession3 />
               </CourseAccessGuard>
             } />
             <Route path="/python/session4" element={
-              <CourseAccessGuard courseId="python" sessionId="session4">
+              <CourseAccessGuard courseSlug="python" sessionSlug="session4">
                 <PythonSession4 />
               </CourseAccessGuard>
             } />
             <Route path="/python/session5" element={
-              <CourseAccessGuard courseId="python" sessionId="session5">
+              <CourseAccessGuard courseSlug="python" sessionSlug="session5">
                 <PythonSession5 />
               </CourseAccessGuard>
             } />
             <Route path="/python/session6" element={
-              <CourseAccessGuard courseId="python" sessionId="session6">
+              <CourseAccessGuard courseSlug="python" sessionSlug="session6">
                 <PythonSession6 />
               </CourseAccessGuard>
             } />
             <Route path="/python/session7" element={
-              <CourseAccessGuard courseId="python" sessionId="session7">
+              <CourseAccessGuard courseSlug="python" sessionSlug="session7">
                 <PythonSession7 />
               </CourseAccessGuard>
             } />
             <Route path="/python/session8" element={
-              <CourseAccessGuard courseId="python" sessionId="session8">
+              <CourseAccessGuard courseSlug="python" sessionSlug="session8">
                 <PythonSession8 />
               </CourseAccessGuard>
             } />
             <Route path="/python/session9" element={
-              <CourseAccessGuard courseId="python" sessionId="session9">
+              <CourseAccessGuard courseSlug="python" sessionSlug="session9">
                 <PythonSession9 />
               </CourseAccessGuard>
             } />
             <Route path="/python/session10" element={
-              <CourseAccessGuard courseId="python" sessionId="session10">
+              <CourseAccessGuard courseSlug="python" sessionSlug="session10">
                 <PythonSession10 />
               </CourseAccessGuard>
             } />
             <Route path="/python/session11" element={
-              <CourseAccessGuard courseId="python" sessionId="session11">
+              <CourseAccessGuard courseSlug="python" sessionSlug="session11">
                 <PythonSession11 />
               </CourseAccessGuard>
             } />
             <Route path="/python/session12" element={
-              <CourseAccessGuard courseId="python" sessionId="session12">
+              <CourseAccessGuard courseSlug="python" sessionSlug="session12">
                 <PythonSession12 />
               </CourseAccessGuard>
             } />
             <Route path="/python/session13" element={
-              <CourseAccessGuard courseId="python" sessionId="session13">
+              <CourseAccessGuard courseSlug="python" sessionSlug="session13">
                 <PythonSession13 />
               </CourseAccessGuard>
             } />
             <Route path="/python/session14" element={
-              <CourseAccessGuard courseId="python" sessionId="session14">
+              <CourseAccessGuard courseSlug="python" sessionSlug="session14">
                 <PythonSession14 />
               </CourseAccessGuard>
             } />
 
             {/* Minecraft Modding sessions */}
             <Route path="/minecraftmodding/session1" element={
-              <CourseAccessGuard courseId="minecraftmodding" sessionId="session1">
+              <CourseAccessGuard courseSlug="minecraftmodding" sessionSlug="session1">
                 <MinecraftModdingSession1 />
               </CourseAccessGuard>
             } />
             <Route path="/minecraftmodding/ruby-armor" element={
-              <CourseAccessGuard courseId="minecraftmodding" sessionId="ruby-armor">
+              <CourseAccessGuard courseSlug="minecraftmodding" sessionSlug="ruby-armor">
                 <RubyArmor />
               </CourseAccessGuard>
             } />
             <Route path="/minecraftmodding/crystal-realm" element={
-              <CourseAccessGuard courseId="minecraftmodding" sessionId="crystal-realm">
+              <CourseAccessGuard courseSlug="minecraftmodding" sessionSlug="crystal-realm">
                 <CrystalRealm />
               </CourseAccessGuard>
             } />
             <Route path="/minecraftmodding/session4" element={
-              <CourseAccessGuard courseId="minecraftmodding" sessionId="session4">
+              <CourseAccessGuard courseSlug="minecraftmodding" sessionSlug="session4">
                 <MinecraftModdingSession4 />
               </CourseAccessGuard>
             } />
             <Route path="/minecraftmodding/session5" element={
-              <CourseAccessGuard courseId="minecraftmodding" sessionId="session5">
+              <CourseAccessGuard courseSlug="minecraftmodding" sessionSlug="session5">
                 <MinecraftModdingSession5 />
               </CourseAccessGuard>
             } />
             <Route path="/minecraftmodding/session6" element={
-              <CourseAccessGuard courseId="minecraftmodding" sessionId="session6">
+              <CourseAccessGuard courseSlug="minecraftmodding" sessionSlug="session6">
                 <MinecraftModdingSession6 />
               </CourseAccessGuard>
             } />
             <Route path="/minecraftmodding/session7" element={
-              <CourseAccessGuard courseId="minecraftmodding" sessionId="session7">
+              <CourseAccessGuard courseSlug="minecraftmodding" sessionSlug="session7">
                 <MinecraftModdingSession7 />
               </CourseAccessGuard>
             } />
             <Route path="/minecraftmodding/session8" element={
-              <CourseAccessGuard courseId="minecraftmodding" sessionId="session8">
+              <CourseAccessGuard courseSlug="minecraftmodding" sessionSlug="session8">
                 <MinecraftModdingSession8 />
               </CourseAccessGuard>
             } />
             <Route path="/minecraftmodding/session9" element={
-              <CourseAccessGuard courseId="minecraftmodding" sessionId="session9">
+              <CourseAccessGuard courseSlug="minecraftmodding" sessionSlug="session9">
                 <MinecraftModdingSession9 />
               </CourseAccessGuard>
             } />
             <Route path="/minecraftmodding/session10" element={
-              <CourseAccessGuard courseId="minecraftmodding" sessionId="session10">
+              <CourseAccessGuard courseSlug="minecraftmodding" sessionSlug="session10">
                 <MinecraftModdingSession10 />
               </CourseAccessGuard>
             } />
             <Route path="/minecraftmodding/session11" element={
-              <CourseAccessGuard courseId="minecraftmodding" sessionId="session11">
+              <CourseAccessGuard courseSlug="minecraftmodding" sessionSlug="session11">
                 <MinecraftModdingSession11 />
               </CourseAccessGuard>
             } />
             <Route path="/minecraftmodding/session12" element={
-              <CourseAccessGuard courseId="minecraftmodding" sessionId="session12">
+              <CourseAccessGuard courseSlug="minecraftmodding" sessionSlug="session12">
                 <MinecraftModdingSession12 />
               </CourseAccessGuard>
             } />
             <Route path="/minecraftmodding/session13" element={
-              <CourseAccessGuard courseId="minecraftmodding" sessionId="session13">
+              <CourseAccessGuard courseSlug="minecraftmodding" sessionSlug="session13">
                 <MinecraftModdingSession13 />
               </CourseAccessGuard>
             } />
             <Route path="/minecraftmodding/session14" element={
-              <CourseAccessGuard courseId="minecraftmodding" sessionId="session14">
+              <CourseAccessGuard courseSlug="minecraftmodding" sessionSlug="session14">
                 <MinecraftModdingSession14 />
               </CourseAccessGuard>
             } />
 
             {/* Frontend Dev sessions */}
             <Route path="/frontenddev/session1" element={
-              <CourseAccessGuard courseId="frontenddev" sessionId="session1">
+              <CourseAccessGuard courseSlug="frontenddev" sessionSlug="session1">
                 <FrontendDevSession1 />
               </CourseAccessGuard>
             } />
             <Route path="/frontenddev/session2" element={
-              <CourseAccessGuard courseId="frontenddev" sessionId="session2">
+              <CourseAccessGuard courseSlug="frontenddev" sessionSlug="session2">
                 <FrontendDevSession2 />
               </CourseAccessGuard>
             } />
             <Route path="/frontenddev/session3" element={
-              <CourseAccessGuard courseId="frontenddev" sessionId="session3">
+              <CourseAccessGuard courseSlug="frontenddev" sessionSlug="session3">
                 <FrontendDevSession3 />
               </CourseAccessGuard>
             } />
             <Route path="/frontenddev/session4" element={
-              <CourseAccessGuard courseId="frontenddev" sessionId="session4">
+              <CourseAccessGuard courseSlug="frontenddev" sessionSlug="session4">
                 <FrontendDevSession4 />
               </CourseAccessGuard>
             } />
             <Route path="/frontenddev/session5" element={
-              <CourseAccessGuard courseId="frontenddev" sessionId="session5">
+              <CourseAccessGuard courseSlug="frontenddev" sessionSlug="session5">
                 <FrontendDevSession5 />
               </CourseAccessGuard>
             } />
             <Route path="/frontenddev/session6" element={
-              <CourseAccessGuard courseId="frontenddev" sessionId="session6">
+              <CourseAccessGuard courseSlug="frontenddev" sessionSlug="session6">
                 <FrontendDevSession6 />
               </CourseAccessGuard>
             } />
             <Route path="/frontenddev/session7" element={
-              <CourseAccessGuard courseId="frontenddev" sessionId="session7">
+              <CourseAccessGuard courseSlug="frontenddev" sessionSlug="session7">
                 <FrontendDevSession7 />
               </CourseAccessGuard>
             } />
             <Route path="/frontenddev/session8" element={
-              <CourseAccessGuard courseId="frontenddev" sessionId="session8">
+              <CourseAccessGuard courseSlug="frontenddev" sessionSlug="session8">
                 <FrontendDevSession8 />
               </CourseAccessGuard>
             } />
             <Route path="/frontenddev/session9" element={
-              <CourseAccessGuard courseId="frontenddev" sessionId="session9">
+              <CourseAccessGuard courseSlug="frontenddev" sessionSlug="session9">
                 <FrontendDevSession9 />
               </CourseAccessGuard>
             } />
             <Route path="/frontenddev/session10" element={
-              <CourseAccessGuard courseId="frontenddev" sessionId="session10">
+              <CourseAccessGuard courseSlug="frontenddev" sessionSlug="session10">
                 <FrontendDevSession10 />
               </CourseAccessGuard>
             } />
             <Route path="/frontenddev/session11" element={
-              <CourseAccessGuard courseId="frontenddev" sessionId="session11">
+              <CourseAccessGuard courseSlug="frontenddev" sessionSlug="session11">
                 <FrontendDevSession11 />
               </CourseAccessGuard>
             } />
             <Route path="/frontenddev/session12" element={
-              <CourseAccessGuard courseId="frontenddev" sessionId="session12">
+              <CourseAccessGuard courseSlug="frontenddev" sessionSlug="session12">
                 <FrontendDevSession12 />
               </CourseAccessGuard>
             } />
             <Route path="/frontenddev/session13" element={
-              <CourseAccessGuard courseId="frontenddev" sessionId="session13">
+              <CourseAccessGuard courseSlug="frontenddev" sessionSlug="session13">
                 <FrontendDevSession13 />
               </CourseAccessGuard>
             } />
             <Route path="/frontenddev/session14" element={
-              <CourseAccessGuard courseId="frontenddev" sessionId="session14">
+              <CourseAccessGuard courseSlug="frontenddev" sessionSlug="session14">
                 <FrontendDevSession14 />
               </CourseAccessGuard>
             } />
-
-            {/* Add other session routes as needed */}
 
             {/* 404 route */}
             <Route path="*" element={<NotFound />} />
