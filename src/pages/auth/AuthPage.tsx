@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -18,9 +19,7 @@ const AuthPage = () => {
   const from = location.state?.from?.pathname || '/';
 
   React.useEffect(() => {
-    console.log('AuthPage: isAuthenticated changed:', isAuthenticated, 'from:', from);
     if (isAuthenticated) {
-      console.log('User is authenticated, redirecting to:', from);
       navigate(from, { replace: true });
     }
   }, [isAuthenticated, navigate, from]);
@@ -43,16 +42,13 @@ const AuthPage = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    console.log('Starting login process...');
     const result = await signIn(loginForm.email, loginForm.password);
     
     if (result.error) {
-      console.log('Login error:', result.error);
       toast.error(result.error);
     } else {
-      console.log('Login successful, navigating to:', from);
       toast.success('Autentificare reușită!');
-      // Don't navigate here - let the useEffect handle it
+      navigate(from, { replace: true });
     }
     
     setIsLoading(false);
