@@ -239,6 +239,14 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "/courses/microbitarcade",
+    element: (
+      <CourseAccessGuard courseSlug="microbit-arcade">
+        <MicrobitArcade />
+      </CourseAccessGuard>
+    ),
+  },
+  {
     path: "/courses/microbit-arcade",
     element: (
       <CourseAccessGuard courseSlug="microbit-arcade">
@@ -251,6 +259,14 @@ const router = createBrowserRouter([
     element: (
       <CourseAccessGuard courseSlug="minecraft-modding">
         <MinecraftModding />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/courses/robloxlua",
+    element: (
+      <CourseAccessGuard courseSlug="roblox-lua">
+        <RobloxLua />
       </CourseAccessGuard>
     ),
   },
@@ -283,6 +299,14 @@ const router = createBrowserRouter([
     element: (
       <CourseAccessGuard courseSlug="godot">
         <Godot />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/courses/frontenddev",
+    element: (
+      <CourseAccessGuard courseSlug="frontend-dev">
+        <FrontendDev />
       </CourseAccessGuard>
     ),
   },
