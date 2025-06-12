@@ -4,11 +4,10 @@ import Home from './pages/Home';
 import Courses from './pages/Courses';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import CourseLego from './pages/courses/Lego';
+
+// Course pages care există
+import LegoSpikeEssentials from './pages/courses/LegoSpikeEssentials';
 import CourseScratch from './pages/courses/Scratch';
-import CourseRoblox from './pages/courses/Roblox';
-import CourseMinecraft from './pages/courses/Minecraft';
-import CourseUnity from './pages/courses/Unity';
 
 // Scratch sessions - lecții complete existente
 import Session1Alegesanatos from './pages/scratch/Session1Alegesanatos';
@@ -42,11 +41,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           
           {/* Course pages */}
-          <Route path="/courses/lego-spike-essentials" element={<CourseLego />} />
+          <Route path="/courses/lego-spike-essentials" element={<LegoSpikeEssentials />} />
           <Route path="/courses/scratch" element={<CourseScratch />} />
-          <Route path="/courses/roblox" element={<CourseRoblox />} />
-          <Route path="/courses/minecraft" element={<CourseMinecraft />} />
-          <Route path="/courses/unity" element={<CourseUnity />} />
           
           {/* Scratch sessions - lecții complete */}
           <Route path="/scratch/session1alegesanatos" element={<Session1Alegesanatos />} />
