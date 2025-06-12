@@ -28,25 +28,32 @@ const Scratch = () => {
         <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <SessionCardInDevelopment 
+              
+              {/* Sesiunea 1 - Lecție completă Alege Sănătos */}
+              <SessionCard 
                 number={1}
-                title="Introducere în Scratch" 
-                description="Primii pași în programarea vizuală cu Scratch."
-                color="orange"
+                title="Alege Sănătos" 
+                description="Învață bazele Scratch cu un joc despre alimentația sănătoasă."
+                skills={['Controlul personajelor', 'Detectarea coliziunilor', 'Sistem de punctaj']}
+                link="/scratch/session1alegesanatos"
+                isAvailable={true}
               />
               
               <SessionCardInDevelopment 
                 number={2}
-                title="Animații și Efecte" 
-                description="Creează animații și efecte vizuale captivante."
+                title="Space Dodge" 
+                description="Creează un joc de evitare a obstacolelor în spațiu."
                 color="orange"
               />
               
-              <SessionCardInDevelopment 
+              {/* Sesiunea 3 - Lecție completă Moto Racer */}
+              <SessionCard 
                 number={3}
-                title="Sunetele și Muzica" 
-                description="Adaugă sunete și muzică în proiectele tale."
-                color="orange"
+                title="Moto Racer" 
+                description="Construiește un joc de curse pe motocicletă cu obstacole."
+                skills={['Generarea obstacolelor', 'Controlul avansatat', 'Punctaj și stele']}
+                link="/scratch/session3motoracer"
+                isAvailable={true}
               />
               
               <SessionCardInDevelopment 
@@ -56,11 +63,14 @@ const Scratch = () => {
                 color="orange"
               />
               
-              <SessionCardInDevelopment 
+              {/* Sesiunea 5 - Lecție completă Beach Ball Bounce */}
+              <SessionCard 
                 number={5}
-                title="Platformer Game" 
-                description="Construiește un joc de tip platformer."
-                color="orange"
+                title="Beach Ball Bounce" 
+                description="Un joc pe plajă cu colectarea obiectelor în apă."
+                skills={['Clone și obiecte', 'Mișcare în apă', 'Sisteme multiple']}
+                link="/scratch/session5beachballbounce"
+                isAvailable={true}
               />
               
               <SessionCardInDevelopment 
@@ -70,11 +80,14 @@ const Scratch = () => {
                 color="orange"
               />
               
-              <SessionCardInDevelopment 
+              {/* Sesiunea 7 - Lecție completă The Cake Quest */}
+              <SessionCard 
                 number={7}
-                title="Maze Game" 
-                description="Creează un joc de labirint interactiv."
-                color="orange"
+                title="The Cake Quest" 
+                description="Traversează strada pentru a ajunge la tort, evitând mașinile."
+                skills={['Traversarea străzii', 'Clone multiple', 'Condiții complexe']}
+                link="/scratch/session7cakequest"
+                isAvailable={true}
               />
               
               <SessionCardInDevelopment 
@@ -112,22 +125,18 @@ const Scratch = () => {
                 color="orange"
               />
               
-              <SessionCard 
+              <SessionCardInDevelopment 
                 number={13}
                 title="Proiect Avansat" 
                 description="Combină toate conceptele învățate într-un proiect complex."
-                skills={['Integrare', 'Complexitate', 'Creativitate']}
-                link="/scratch/session13"
-                isAvailable={true}
+                color="orange"
               />
               
-              <SessionCard 
+              <SessionCardInDevelopment 
                 number={14}
                 title="Proiect Final" 
                 description="Creează propriul tău joc unic și personalizat."
-                skills={['Proiect personal', 'Prezentare', 'Portfolio']}
-                link="/scratch/session14"
-                isAvailable={true}
+                color="orange"
               />
             </div>
           </div>
@@ -141,7 +150,7 @@ const Scratch = () => {
               Începe cu prima sesiune și descoperă lumea programării vizuale!
             </p>
             <Button asChild className="bg-orange-500 hover:bg-orange-600">
-              <Link to="/scratch/session1" className="flex items-center">
+              <Link to="/scratch/session1alegesanatos" className="flex items-center">
                 <span>Începe Sesiunea 1</span>
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
