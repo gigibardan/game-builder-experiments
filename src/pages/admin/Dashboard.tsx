@@ -71,8 +71,8 @@ const Dashboard: React.FC = () => {
               <p className="text-gray-500">Bine ai venit, {profile?.username}! Administrează platforma TechMinds Academy</p>
             </div>
             
-            <div className="mt-4 md:mt-0">
-              <Button asChild variant="outline" className="mr-2">
+            <div className="mt-4 md:mt-0 flex gap-2">
+              <Button asChild variant="outline">
                 <Link to="/">
                   Înapoi la site
                 </Link>
@@ -80,7 +80,7 @@ const Dashboard: React.FC = () => {
               <Button asChild>
                 <Link to="/admin/users">
                   <UserPlus className="mr-2 h-4 w-4" />
-                  Adaugă Utilizator
+                  Gestionează Utilizatori
                 </Link>
               </Button>
             </div>
@@ -326,7 +326,7 @@ const Dashboard: React.FC = () => {
                   <Button asChild className="w-full justify-start">
                     <Link to="/admin/users">
                       <UserPlus className="mr-2 h-4 w-4" />
-                      Adaugă Utilizator Nou
+                      Gestionează Utilizatori
                     </Link>
                   </Button>
                   
@@ -348,7 +348,7 @@ const Dashboard: React.FC = () => {
                   <Button asChild variant="outline" className="w-full justify-start">
                     <Link to="/admin/structure">
                       <Database className="mr-2 h-4 w-4" />
-                      Structura Proiectului
+                      Structura Platformei
                     </Link>
                   </Button>
                 </CardContent>
