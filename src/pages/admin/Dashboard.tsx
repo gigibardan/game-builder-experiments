@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -5,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Users, Shield, Book, Settings, BarChart3, UserPlus, FileText, Key, AlertTriangle } from 'lucide-react';
+import { Users, Shield, Book, Settings, BarChart3, UserPlus, FileText, Key, AlertTriangle, Database } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { useUsers } from '@/hooks/useUsers';
 import { useCourses } from '@/hooks/useCourses';
@@ -342,6 +343,13 @@ const Dashboard: React.FC = () => {
                   <Button variant="outline" className="w-full justify-start" onClick={handleFeatureInDevelopment}>
                     <Settings className="mr-2 h-4 w-4" />
                     Configurare Platformă
+                  </Button>
+                  
+                  <Button asChild variant="outline" className="w-full justify-start">
+                    <Link to="/admin/structure">
+                      <Database className="mr-2 h-4 w-4" />
+                      Structura Proiectului
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
