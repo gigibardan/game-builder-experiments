@@ -12,10 +12,10 @@ import MinecraftModding from './pages/courses/MinecraftModding';
 import AppInventor from './pages/courses/AppInventor';
 
 // AppInventor sessions
-import Session10 as AppInventorSession10 from './pages/appinventor/Session10';
-import Session11 as AppInventorSession11 from './pages/appinventor/Session11';
-import Session12 as AppInventorSession12 from './pages/appinventor/Session12';
-import Session13 as AppInventorSession13 from './pages/appinventor/Session13';
+import AppInventorSession10 from './pages/appinventor/Session10';
+import AppInventorSession11 from './pages/appinventor/Session11';
+import AppInventorSession12 from './pages/appinventor/Session12';
+import AppInventorSession13 from './pages/appinventor/Session13';
 import Session14 from './pages/appinventor/Session14';
 
 // Scratch sessions - lecții complete existente
@@ -34,10 +34,10 @@ import Session6 from './pages/scratch/Session6';
 import Session7 from './pages/scratch/Session7';
 import Session8 from './pages/scratch/Session8';
 import Session9 from './pages/scratch/Session9';
-import Session10 as ScratchSession10 from './pages/scratch/Session10';
-import Session11 as ScratchSession11 from './pages/scratch/Session11';
-import Session12 as ScratchSession12 from './pages/scratch/Session12';
-import Session13 as ScratchSession13 from './pages/scratch/Session13';
+import ScratchSession10 from './pages/scratch/Session10';
+import ScratchSession11 from './pages/scratch/Session11';
+import ScratchSession12 from './pages/scratch/Session12';
+import ScratchSession13 from './pages/scratch/Session13';
 
 function App() {
   return (
