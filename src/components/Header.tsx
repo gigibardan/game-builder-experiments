@@ -176,7 +176,7 @@ const Header = () => {
                     <Book className="mr-1 h-4 w-4" />
                     <span>Cursuri</span>
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
+                  <NavigationMenuContent className="left-auto right-0">
                     <div className="grid grid-cols-3 p-3 w-[700px] max-w-[90vw] bg-white text-gray-800">
                       {/* Cursuri de Programare - Prima coloană */}
                       <div className="p-3">
