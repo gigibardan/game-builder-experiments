@@ -7,7 +7,7 @@ const Session7 = () => {
   return (
     <LessonLayout 
       courseId="frontenddev"
-      lessonId="session7"
+      sessionId="session7"
       title="Framework-uri CSS"
       description="Folosirea Bootstrap și Tailwind CSS"
       duration="90 min"

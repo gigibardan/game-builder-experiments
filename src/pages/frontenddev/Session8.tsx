@@ -7,9 +7,9 @@ const Session8 = () => {
   return (
     <LessonLayout 
       courseId="frontenddev"
-      lessonId="session8"
+      sessionId="session8"
       title="JavaScript avansat și ES6"
-      description="Concepte avansate și sintaxa modernă"
+      description="Concepte avansate și sintaxa modernă JavaScript"
       duration="120 min"
       level="Avansat"
     >

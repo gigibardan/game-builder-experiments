@@ -7,7 +7,7 @@ const Session12 = () => {
   return (
     <LessonLayout 
       courseId="python"
-      lessonId="session12"
+      sessionId="session12"
       title="Aplicații web cu Flask"
       description="Crearea aplicațiilor web simple"
       duration="90 min"

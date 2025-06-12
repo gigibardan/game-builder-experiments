@@ -7,7 +7,7 @@ const Session6 = () => {
   return (
     <LessonLayout 
       courseId="frontenddev"
-      lessonId="session6"
+      sessionId="session6"
       title="Responsive design"
       description="Crearea site-urilor adaptabile pentru toate dispozitivele"
       duration="90 min"

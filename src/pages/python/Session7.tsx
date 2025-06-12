@@ -7,7 +7,7 @@ const Session7 = () => {
   return (
     <LessonLayout 
       courseId="python"
-      lessonId="session7"
+      sessionId="session7"
       title="Manipularea fișierelor"
       description="Citirea și scrierea datelor în fișiere"
       duration="90 min"

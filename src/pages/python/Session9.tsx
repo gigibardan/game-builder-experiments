@@ -7,7 +7,7 @@ const Session9 = () => {
   return (
     <LessonLayout 
       courseId="python"
-      lessonId="session9"
+      sessionId="session9"
       title="Web scraping cu Python"
       description="Extragerea datelor de pe site-uri web"
       duration="120 min"

@@ -7,7 +7,7 @@ const Session8 = () => {
   return (
     <LessonLayout 
       courseId="python"
-      lessonId="session8"
+      sessionId="session8"
       title="Biblioteci externe și pip"
       description="Utilizarea bibliotecilor Python populare"
       duration="120 min"

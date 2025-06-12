@@ -7,9 +7,9 @@ const Session3 = () => {
   return (
     <LessonLayout 
       courseId="frontenddev"
-      lessonId="session3"
+      sessionId="session3"
       title="CSS și stilizarea avansată"
-      description="Învață să stilizezi site-urile web cu CSS"
+      description="Învață să stilizezi site-urile web cu CSS avansat"
       duration="90 min"
       level="Începător"
     >

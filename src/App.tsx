@@ -1,14 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './AuthContext';
-import Login from './pages/Login';
-import Register from './pages/Register';
 import Home from './pages/Home';
 import Courses from './pages/Courses';
 import Contact from './pages/Contact';
-import Profile from './pages/Profile';
-import AdminDashboard from './pages/AdminDashboard';
-import EditCourse from './pages/EditCourse';
 import Greenfoot from './pages/courses/Greenfoot';
 import GDevelop from './pages/courses/GDevelop';
 import Godot from './pages/courses/Godot';
@@ -58,11 +53,8 @@ import GodotSession12 from './pages/godot/Session12';
 import GodotSession13 from './pages/godot/Session13';
 import GodotSession14 from './pages/godot/Session14';
 import MinecraftModdingSession1 from './pages/minecraftmodding/Session1';
-import MinecraftModdingSession2 from './pages/minecraftmodding/Session2';
-import MinecraftModdingSession3 from './pages/minecraftmodding/Session3';
 import CrystalRealm from './pages/minecraftmodding/CrystalRealm';
 import RubyArmor from './pages/minecraftmodding/RubyArmor';
-
 import Session4MinecraftModding from '@/pages/minecraftmodding/Session4';
 import Session5MinecraftModding from '@/pages/minecraftmodding/Session5';
 import Session6MinecraftModding from '@/pages/minecraftmodding/Session6';
@@ -74,7 +66,6 @@ import Session11MinecraftModding from '@/pages/minecraftmodding/Session11';
 import Session12MinecraftModding from '@/pages/minecraftmodding/Session12';
 import Session13MinecraftModding from '@/pages/minecraftmodding/Session13';
 import Session14MinecraftModding from '@/pages/minecraftmodding/Session14';
-
 import Session3FrontendDev from '@/pages/frontenddev/Session3';
 import Session4FrontendDev from '@/pages/frontenddev/Session4';
 import Session5FrontendDev from '@/pages/frontenddev/Session5';
@@ -87,7 +78,6 @@ import Session11FrontendDev from '@/pages/frontenddev/Session11';
 import Session12FrontendDev from '@/pages/frontenddev/Session12';
 import Session13FrontendDev from '@/pages/frontenddev/Session13';
 import Session14FrontendDev from '@/pages/frontenddev/Session14';
-
 import Session3Python from '@/pages/python/Session3';
 import Session4Python from '@/pages/python/Session4';
 import Session5Python from '@/pages/python/Session5';
@@ -101,196 +91,114 @@ import Session12Python from '@/pages/python/Session12';
 import Session13Python from '@/pages/python/Session13';
 import Session14Python from '@/pages/python/Session14';
 
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { user, loading } = useAuth();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    if (!loading) {
-      setIsAuthenticated(!!user);
-    }
-  }, [user, loading]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  return isAuthenticated ? <>{children}</> : <Navigate to="/login" />;
-};
-
-const AdminRoute = ({ children }: { children: React.ReactNode }) => {
-  const { user, loading } = useAuth();
-   const [isAdmin, setIsAdmin] = useState(false);
-
-    useEffect(() => {
-        if (!loading && user) {
-            setIsAdmin(user.role === 'admin');
-        }
-    }, [user, loading]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  return isAdmin ? <>{children}</> : <Navigate to="/" />;
-};
-
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-          <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
-          <Route path="/edit-course/:courseId" element={<AdminRoute><EditCourse /></AdminRoute>} />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/contact" element={<Contact />} />
 
-          {/* Greenfoot Routes */}
-          <Route path="/greenfoot" element={<Greenfoot />} />
-          <Route path="/greenfoot/session1" element={<ProtectedRoute><GreenfootSession1 /></ProtectedRoute>} />
-          <Route path="/greenfoot/session2" element={<ProtectedRoute><GreenfootSession2 /></ProtectedRoute>} />
-          <Route path="/greenfoot/session3" element={<ProtectedRoute><GreenfootSession3 /></ProtectedRoute>} />
-          <Route path="/greenfoot/session4" element={<ProtectedRoute><GreenfootSession4 /></ProtectedRoute>} />
-          <Route path="/greenfoot/session5" element={<ProtectedRoute><GreenfootSession5 /></ProtectedRoute>} />
-          <Route path="/greenfoot/session6" element={<ProtectedRoute><GreenfootSession6 /></ProtectedRoute>} />
-          <Route path="/greenfoot/session7" element={<ProtectedRoute><GreenfootSession7 /></ProtectedRoute>} />
-          <Route path="/greenfoot/session8" element={<ProtectedRoute><GreenfootSession8 /></ProtectedRoute>} />
-          <Route path="/greenfoot/session9" element={<ProtectedRoute><GreenfootSession9 /></ProtectedRoute>} />
-          <Route path="/greenfoot/session10" element={<ProtectedRoute><GreenfootSession10 /></ProtectedRoute>} />
-          <Route path="/greenfoot/session11" element={<ProtectedRoute><GreenfootSession11 /></ProtectedRoute>} />
-          <Route path="/greenfoot/session12" element={<ProtectedRoute><GreenfootSession12 /></ProtectedRoute>} />
-          <Route path="/greenfoot/session13" element={<ProtectedRoute><GreenfootSession13 /></ProtectedRoute>} />
-          <Route path="/greenfoot/session14" element={<ProtectedRoute><GreenfootSession14 /></ProtectedRoute>} />
+        {/* Greenfoot Routes */}
+        <Route path="/greenfoot" element={<Greenfoot />} />
+        <Route path="/greenfoot/session1" element={<GreenfootSession1 />} />
+        <Route path="/greenfoot/session2" element={<GreenfootSession2 />} />
+        <Route path="/greenfoot/session3" element={<GreenfootSession3 />} />
+        <Route path="/greenfoot/session4" element={<GreenfootSession4 />} />
+        <Route path="/greenfoot/session5" element={<GreenfootSession5 />} />
+        <Route path="/greenfoot/session6" element={<GreenfootSession6 />} />
+        <Route path="/greenfoot/session7" element={<GreenfootSession7 />} />
+        <Route path="/greenfoot/session8" element={<GreenfootSession8 />} />
+        <Route path="/greenfoot/session9" element={<GreenfootSession9 />} />
+        <Route path="/greenfoot/session10" element={<GreenfootSession10 />} />
+        <Route path="/greenfoot/session11" element={<GreenfootSession11 />} />
+        <Route path="/greenfoot/session12" element={<GreenfootSession12 />} />
+        <Route path="/greenfoot/session13" element={<GreenfootSession13 />} />
+        <Route path="/greenfoot/session14" element={<GreenfootSession14 />} />
 
-          {/* GDevelop Routes */}
-          <Route path="/gdevelop" element={<GDevelop />} />
-          <Route path="/gdevelop/session1" element={<ProtectedRoute><GDevelopSession1 /></ProtectedRoute>} />
-          <Route path="/gdevelop/session2" element={<ProtectedRoute><GDevelopSession2 /></ProtectedRoute>} />
-          <Route path="/gdevelop/session3" element={<ProtectedRoute><GDevelopSession3 /></ProtectedRoute>} />
-          <Route path="/gdevelop/session4" element={<ProtectedRoute><GDevelopSession4 /></ProtectedRoute>} />
-          <Route path="/gdevelop/session5" element={<ProtectedRoute><GDevelopSession5 /></ProtectedRoute>} />
-          <Route path="/gdevelop/session6" element={<ProtectedRoute><GDevelopSession6 /></ProtectedRoute>} />
-          <Route path="/gdevelop/session7" element={<ProtectedRoute><GDevelopSession7 /></ProtectedRoute>} />
-          <Route path="/gdevelop/session8" element={<ProtectedRoute><GDevelopSession8 /></ProtectedRoute>} />
-          <Route path="/gdevelop/session9" element={<ProtectedRoute><GDevelopSession9 /></ProtectedRoute>} />
-          <Route path="/gdevelop/session10" element={<ProtectedRoute><GDevelopSession10 /></ProtectedRoute>} />
-          <Route path="/gdevelop/session11" element={<ProtectedRoute><GDevelopSession11 /></ProtectedRoute>} />
-          <Route path="/gdevelop/session12" element={<ProtectedRoute><GDevelopSession12 /></ProtectedRoute>} />
-          <Route path="/gdevelop/session13" element={<ProtectedRoute><GDevelopSession13 /></ProtectedRoute>} />
-          <Route path="/gdevelop/session14" element={<ProtectedRoute><GDevelopSession14 /></ProtectedRoute>} />
+        {/* GDevelop Routes */}
+        <Route path="/gdevelop" element={<GDevelop />} />
+        <Route path="/gdevelop/session1" element={<GDevelopSession1 />} />
+        <Route path="/gdevelop/session2" element={<GDevelopSession2 />} />
+        <Route path="/gdevelop/session3" element={<GDevelopSession3 />} />
+        <Route path="/gdevelop/session4" element={<GDevelopSession4 />} />
+        <Route path="/gdevelop/session5" element={<GDevelopSession5 />} />
+        <Route path="/gdevelop/session6" element={<GDevelopSession6 />} />
+        <Route path="/gdevelop/session7" element={<GDevelopSession7 />} />
+        <Route path="/gdevelop/session8" element={<GDevelopSession8 />} />
+        <Route path="/gdevelop/session9" element={<GDevelopSession9 />} />
+        <Route path="/gdevelop/session10" element={<GDevelopSession10 />} />
+        <Route path="/gdevelop/session11" element={<GDevelopSession11 />} />
+        <Route path="/gdevelop/session12" element={<GDevelopSession12 />} />
+        <Route path="/gdevelop/session13" element={<GDevelopSession13 />} />
+        <Route path="/gdevelop/session14" element={<GDevelopSession14 />} />
 
-          {/* Godot Routes */}
-          <Route path="/godot" element={<Godot />} />
-          <Route path="/godot/session1" element={<ProtectedRoute><GodotSession1 /></ProtectedRoute>} />
-          <Route path="/godot/session2" element={<ProtectedRoute><GodotSession2 /></ProtectedRoute>} />
-          <Route path="/godot/session3" element={<ProtectedRoute><GodotSession3 /></ProtectedRoute>} />
-          <Route path="/godot/session4" element={<ProtectedRoute><GodotSession4 /></ProtectedRoute>} />
-          <Route path="/godot/session5" element={<ProtectedRoute><GodotSession5 /></ProtectedRoute>} />
-          <Route path="/godot/session6" element={<ProtectedRoute><GodotSession6 /></ProtectedRoute>} />
-          <Route path="/godot/session7" element={<ProtectedRoute><GodotSession7 /></ProtectedRoute>} />
-          <Route path="/godot/session8" element={<ProtectedRoute><GodotSession8 /></ProtectedRoute>} />
-          <Route path="/godot/session9" element={<ProtectedRoute><GodotSession9 /></ProtectedRoute>} />
-          <Route path="/godot/session10" element={<ProtectedRoute><GodotSession10 /></ProtectedRoute>} />
-          <Route path="/godot/session11" element={<ProtectedRoute><GodotSession11 /></ProtectedRoute>} />
-          <Route path="/godot/session12" element={<ProtectedRoute><GodotSession12 /></ProtectedRoute>} />
-          <Route path="/godot/session13" element={<ProtectedRoute><GodotSession13 /></ProtectedRoute>} />
-          <Route path="/godot/session14" element={<ProtectedRoute><GodotSession14 /></ProtectedRoute>} />
+        {/* Godot Routes */}
+        <Route path="/godot" element={<Godot />} />
+        <Route path="/godot/session1" element={<GodotSession1 />} />
+        <Route path="/godot/session2" element={<GodotSession2 />} />
+        <Route path="/godot/session3" element={<GodotSession3 />} />
+        <Route path="/godot/session4" element={<GodotSession4 />} />
+        <Route path="/godot/session5" element={<GodotSession5 />} />
+        <Route path="/godot/session6" element={<GodotSession6 />} />
+        <Route path="/godot/session7" element={<GodotSession7 />} />
+        <Route path="/godot/session8" element={<GodotSession8 />} />
+        <Route path="/godot/session9" element={<GodotSession9 />} />
+        <Route path="/godot/session10" element={<GodotSession10 />} />
+        <Route path="/godot/session11" element={<GodotSession11 />} />
+        <Route path="/godot/session12" element={<GodotSession12 />} />
+        <Route path="/godot/session13" element={<GodotSession13 />} />
+        <Route path="/godot/session14" element={<GodotSession14 />} />
 
-          {/* Minecraft Modding Routes */}
-          <Route path="/minecraftmodding" element={<MinecraftModding />} />
-          <Route path="/minecraftmodding/session1" element={<ProtectedRoute><MinecraftModdingSession1 /></ProtectedRoute>} />
-          <Route path="/minecraftmodding/session2" element={<ProtectedRoute><MinecraftModdingSession2 /></ProtectedRoute>} />
-          <Route path="/minecraftmodding/session3" element={<ProtectedRoute><MinecraftModdingSession3 /></ProtectedRoute>} />
-          <Route path="/minecraftmodding/crystal-realm" element={<ProtectedRoute><CrystalRealm /></ProtectedRoute>} />
-          <Route path="/minecraftmodding/ruby-armor" element={<ProtectedRoute><RubyArmor /></ProtectedRoute>} />
-            <Route path="/minecraftmodding/session4" element={<ProtectedRoute><Session4MinecraftModding /></ProtectedRoute>} />
-            <Route path="/minecraftmodding/session5" element={<ProtectedRoute><Session5MinecraftModding /></ProtectedRoute>} />
-            <Route path="/minecraftmodding/session6" element={<ProtectedRoute><Session6MinecraftModding /></ProtectedRoute>} />
-            <Route path="/minecraftmodding/session7" element={<ProtectedRoute><Session7MinecraftModding /></ProtectedRoute>} />
-            <Route path="/minecraftmodding/session8" element={<ProtectedRoute><Session8MinecraftModding /></ProtectedRoute>} />
-            <Route path="/minecraftmodding/session9" element={<ProtectedRoute><Session9MinecraftModding /></ProtectedRoute>} />
-            <Route path="/minecraftmodding/session10" element={<ProtectedRoute><Session10MinecraftModding /></ProtectedRoute>} />
-            <Route path="/minecraftmodding/session11" element={<ProtectedRoute><Session11MinecraftModding /></ProtectedRoute>} />
-            <Route path="/minecraftmodding/session12" element={<ProtectedRoute><Session12MinecraftModding /></ProtectedRoute>} />
-            <Route path="/minecraftmodding/session13" element={<ProtectedRoute><Session13MinecraftModding /></ProtectedRoute>} />
-            <Route path="/minecraftmodding/session14" element={<ProtectedRoute><Session14MinecraftModding /></ProtectedRoute>} />
+        {/* Minecraft Modding Routes */}
+        <Route path="/minecraftmodding" element={<MinecraftModding />} />
+        <Route path="/minecraftmodding/session1" element={<MinecraftModdingSession1 />} />
+        <Route path="/minecraftmodding/crystal-realm" element={<CrystalRealm />} />
+        <Route path="/minecraftmodding/ruby-armor" element={<RubyArmor />} />
+        <Route path="/minecraftmodding/session4" element={<Session4MinecraftModding />} />
+        <Route path="/minecraftmodding/session5" element={<Session5MinecraftModding />} />
+        <Route path="/minecraftmodding/session6" element={<Session6MinecraftModding />} />
+        <Route path="/minecraftmodding/session7" element={<Session7MinecraftModding />} />
+        <Route path="/minecraftmodding/session8" element={<Session8MinecraftModding />} />
+        <Route path="/minecraftmodding/session9" element={<Session9MinecraftModding />} />
+        <Route path="/minecraftmodding/session10" element={<Session10MinecraftModding />} />
+        <Route path="/minecraftmodding/session11" element={<Session11MinecraftModding />} />
+        <Route path="/minecraftmodding/session12" element={<Session12MinecraftModding />} />
+        <Route path="/minecraftmodding/session13" element={<Session13MinecraftModding />} />
+        <Route path="/minecraftmodding/session14" element={<Session14MinecraftModding />} />
 
-            {/* Frontend Development Routes */}
-            <Route path="/frontenddev" element={<FrontendDev />} />
-            <Route path="/frontenddev/session3" element={<ProtectedRoute><Session3FrontendDev /></ProtectedRoute>} />
-            <Route path="/frontenddev/session4" element={<ProtectedRoute><Session4FrontendDev /></ProtectedRoute>} />
-            <Route path="/frontenddev/session5" element={<ProtectedRoute><Session5FrontendDev /></ProtectedRoute>} />
-            <Route path="/frontenddev/session6" element={<ProtectedRoute><Session6FrontendDev /></ProtectedRoute>} />
-            <Route path="/frontenddev/session7" element={<ProtectedRoute><Session7FrontendDev /></ProtectedRoute>} />
-            <Route path="/frontenddev/session8" element={<ProtectedRoute><Session8FrontendDev /></ProtectedRoute>} />
-            <Route path="/frontenddev/session9" element={<ProtectedRoute><Session9FrontendDev /></ProtectedRoute>} />
-            <Route path="/frontenddev/session10" element={<ProtectedRoute><Session10FrontendDev /></ProtectedRoute>} />
-            <Route path="/frontenddev/session11" element={<ProtectedRoute><Session11FrontendDev /></ProtectedRoute>} />
-            <Route path="/frontenddev/session12" element={<ProtectedRoute><Session12FrontendDev /></ProtectedRoute>} />
-            <Route path="/frontenddev/session13" element={<ProtectedRoute><Session13FrontendDev /></ProtectedRoute>} />
-            <Route path="/frontenddev/session14" element={<ProtectedRoute><Session14FrontendDev /></ProtectedRoute>} />
+        {/* Frontend Development Routes */}
+        <Route path="/frontenddev" element={<FrontendDev />} />
+        <Route path="/frontenddev/session3" element={<Session3FrontendDev />} />
+        <Route path="/frontenddev/session4" element={<Session4FrontendDev />} />
+        <Route path="/frontenddev/session5" element={<Session5FrontendDev />} />
+        <Route path="/frontenddev/session6" element={<Session6FrontendDev />} />
+        <Route path="/frontenddev/session7" element={<Session7FrontendDev />} />
+        <Route path="/frontenddev/session8" element={<Session8FrontendDev />} />
+        <Route path="/frontenddev/session9" element={<Session9FrontendDev />} />
+        <Route path="/frontenddev/session10" element={<Session10FrontendDev />} />
+        <Route path="/frontenddev/session11" element={<Session11FrontendDev />} />
+        <Route path="/frontenddev/session12" element={<Session12FrontendDev />} />
+        <Route path="/frontenddev/session13" element={<Session13FrontendDev />} />
+        <Route path="/frontenddev/session14" element={<Session14FrontendDev />} />
 
-            {/* Python Routes */}
-            <Route path="/python" element={<Python />} />
-            <Route path="/python/session3" element={<ProtectedRoute><Session3Python /></ProtectedRoute>} />
-            <Route path="/python/session4" element={<ProtectedRoute><Session4Python /></ProtectedRoute>} />
-            <Route path="/python/session5" element={<ProtectedRoute><Session5Python /></ProtectedRoute>} />
-            <Route path="/python/session6" element={<ProtectedRoute><Session6Python /></ProtectedRoute>} />
-            <Route path="/python/session7" element={<ProtectedRoute><Session7Python /></ProtectedRoute>} />
-            <Route path="/python/session8" element={<ProtectedRoute><Session8Python /></ProtectedRoute>} />
-            <Route path="/python/session9" element={<ProtectedRoute><Session9Python /></ProtectedRoute>} />
-            <Route path="/python/session10" element={<ProtectedRoute><Session10Python /></ProtectedRoute>} />
-            <Route path="/python/session11" element={<ProtectedRoute><Session11Python /></ProtectedRoute>} />
-            <Route path="/python/session12" element={<ProtectedRoute><Session12Python /></ProtectedRoute>} />
-            <Route path="/python/session13" element={<ProtectedRoute><Session13Python /></ProtectedRoute>} />
-            <Route path="/python/session14" element={<ProtectedRoute><Session14Python /></ProtectedRoute>} />
-        </Routes>
-      </Router>
-    </AuthProvider>
+        {/* Python Routes */}
+        <Route path="/python" element={<Python />} />
+        <Route path="/python/session3" element={<Session3Python />} />
+        <Route path="/python/session4" element={<Session4Python />} />
+        <Route path="/python/session5" element={<Session5Python />} />
+        <Route path="/python/session6" element={<Session6Python />} />
+        <Route path="/python/session7" element={<Session7Python />} />
+        <Route path="/python/session8" element={<Session8Python />} />
+        <Route path="/python/session9" element={<Session9Python />} />
+        <Route path="/python/session10" element={<Session10Python />} />
+        <Route path="/python/session11" element={<Session11Python />} />
+        <Route path="/python/session12" element={<Session12Python />} />
+        <Route path="/python/session13" element={<Session13Python />} />
+        <Route path="/python/session14" element={<Session14Python />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
-
-// Add imports at the top
-import Session4MinecraftModding from '@/pages/minecraftmodding/Session4';
-import Session5MinecraftModding from '@/pages/minecraftmodding/Session5';
-import Session6MinecraftModding from '@/pages/minecraftmodding/Session6';
-import Session7MinecraftModding from '@/pages/minecraftmodding/Session7';
-import Session8MinecraftModding from '@/pages/minecraftmodding/Session8';
-import Session9MinecraftModding from '@/pages/minecraftmodding/Session9';
-import Session10MinecraftModding from '@/pages/minecraftmodding/Session10';
-import Session11MinecraftModding from '@/pages/minecraftmodding/Session11';
-import Session12MinecraftModding from '@/pages/minecraftmodding/Session12';
-import Session13MinecraftModding from '@/pages/minecraftmodding/Session13';
-import Session14MinecraftModding from '@/pages/minecraftmodding/Session14';
-
-import Session3FrontendDev from '@/pages/frontenddev/Session3';
-import Session4FrontendDev from '@/pages/frontenddev/Session4';
-import Session5FrontendDev from '@/pages/frontenddev/Session5';
-import Session6FrontendDev from '@/pages/frontenddev/Session6';
-import Session7FrontendDev from '@/pages/frontenddev/Session7';
-import Session8FrontendDev from '@/pages/frontenddev/Session8';
-import Session9FrontendDev from '@/pages/frontenddev/Session9';
-import Session10FrontendDev from '@/pages/frontenddev/Session10';
-import Session11FrontendDev from '@/pages/frontenddev/Session11';
-import Session12FrontendDev from '@/pages/frontenddev/Session12';
-import Session13FrontendDev from '@/pages/frontenddev/Session13';
-import Session14FrontendDev from '@/pages/frontenddev/Session14';
-
-import Session3Python from '@/pages/python/Session3';
-import Session4Python from '@/pages/python/Session4';
-import Session5Python from '@/pages/python/Session5';
-import Session6Python from '@/pages/python/Session6';
-import Session7Python from '@/pages/python/Session7';
-import Session8Python from '@/pages/python/Session8';
-import Session9Python from '@/pages/python/Session9';
-import Session10Python from '@/pages/python/Session10';
-import Session11Python from '@/pages/python/Session11';
-import Session12Python from '@/pages/python/Session12';
-import Session13Python from '@/pages/python/Session13';
-import Session14Python from '@/pages/python/Session14';
