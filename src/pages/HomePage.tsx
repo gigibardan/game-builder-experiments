@@ -38,7 +38,7 @@ const HomePage = () => {
       icon: <Puzzle className="h-10 w-10" />,
       color: "border-yellow-400",
       bgcolor: "bg-yellow-400",
-      link: "/scratch",
+      link: "/courses/scratch",
       age: "8-12 ani",
       level: "Începător"
     },
@@ -49,7 +49,7 @@ const HomePage = () => {
       icon: <Laptop className="h-10 w-10" />,
       color: "border-course-purple",
       bgcolor: "bg-course-purple",
-      link: "/appinventor",
+      link: "/courses/appinventor",
       age: "10-14 ani",
       level: "Începător-Intermediar"
     },
@@ -60,7 +60,7 @@ const HomePage = () => {
       icon: <Gamepad className="h-10 w-10" />,
       color: "border-blue-500",
       bgcolor: "bg-blue-500",
-      link: "/construct3",
+      link: "/courses/construct3",
       age: "10-15 ani",
       level: "Începător-Intermediar"
     },
@@ -71,7 +71,7 @@ const HomePage = () => {
       icon: <Rocket className="h-10 w-10" />,
       color: "border-indigo-600",
       bgcolor: "bg-indigo-600",
-      link: "/gdevelop",
+      link: "/courses/gdevelop",
       age: "11-15 ani",
       level: "Intermediar"
     },
@@ -82,7 +82,7 @@ const HomePage = () => {
       icon: <Box className="h-10 w-10" />,
       color: "border-pink-500",
       bgcolor: "bg-pink-500",
-      link: "/alice3",
+      link: "/courses/alice3",
       age: "12-16 ani",
       level: "Intermediar"
     },
@@ -93,7 +93,7 @@ const HomePage = () => {
       icon: <Blocks className="h-10 w-10" />,
       color: "border-red-500",
       bgcolor: "bg-red-500",
-      link: "/microbit-arcade",
+      link: "/courses/microbit-arcade",
       age: "11-15 ani",
       level: "Intermediar"
     },
@@ -104,7 +104,7 @@ const HomePage = () => {
       icon: <Brush className="h-10 w-10" />,
       color: "border-green-600",
       bgcolor: "bg-green-600",
-      link: "/minecraft-modding",
+      link: "/courses/minecraft-modding",
       age: "12-16 ani",
       level: "Intermediar-Avansat"
     },
@@ -115,7 +115,7 @@ const HomePage = () => {
       icon: <Layout className="h-10 w-10" />,
       color: "border-red-600",
       bgcolor: "bg-red-600",
-      link: "/roblox-lua",
+      link: "/courses/roblox-lua",
       age: "12-17 ani",
       level: "Intermediar-Avansat"
     },
@@ -126,7 +126,7 @@ const HomePage = () => {
       icon: <Code className="h-10 w-10" />,
       color: "border-blue-600",
       bgcolor: "bg-blue-600",
-      link: "/python",
+      link: "/courses/python",
       age: "13-18 ani",
       level: "Intermediar-Avansat"
     },
@@ -137,7 +137,7 @@ const HomePage = () => {
       icon: <Coffee className="h-10 w-10" />,
       color: "border-orange-600",
       bgcolor: "bg-orange-600",
-      link: "/greenfoot",
+      link: "/courses/greenfoot",
       age: "14-18 ani",
       level: "Intermediar-Avansat"
     },
@@ -148,7 +148,7 @@ const HomePage = () => {
       icon: <Gamepad className="h-10 w-10" />,
       color: "border-indigo-700",
       bgcolor: "bg-indigo-700",
-      link: "/godot",
+      link: "/courses/godot",
       age: "14-18 ani",
       level: "Avansat"
     },
@@ -159,7 +159,7 @@ const HomePage = () => {
       icon: <Globe className="h-10 w-10" />,
       color: "border-cyan-600",
       bgcolor: "bg-cyan-600",
-      link: "/frontend-dev",
+      link: "/courses/frontend-dev",
       age: "13-18 ani",
       level: "Intermediar-Avansat"
     },

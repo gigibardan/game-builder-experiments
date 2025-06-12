@@ -8,6 +8,8 @@ import Contact from './pages/Contact';
 // Course pages care există
 import LegoSpikeEssentials from './pages/courses/LegoSpikeEssentials';
 import CourseScratch from './pages/courses/Scratch';
+import MinecraftModding from './pages/courses/MinecraftModding';
+import AppInventor from './pages/courses/AppInventor';
 
 // Scratch sessions - lecții complete existente
 import Session1Alegesanatos from './pages/scratch/Session1Alegesanatos';
@@ -43,6 +45,8 @@ function App() {
           {/* Course pages */}
           <Route path="/courses/lego-spike-essentials" element={<LegoSpikeEssentials />} />
           <Route path="/courses/scratch" element={<CourseScratch />} />
+          <Route path="/courses/minecraft-modding" element={<MinecraftModding />} />
+          <Route path="/courses/appinventor" element={<AppInventor />} />
           
           {/* Scratch sessions - lecții complete */}
           <Route path="/scratch/session1alegesanatos" element={<Session1Alegesanatos />} />
