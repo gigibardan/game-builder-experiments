@@ -104,10 +104,31 @@ import GodotSession3 from '@/pages/godot/Session3';
 import GodotSession4 from '@/pages/godot/Session4';
 import GodotSession5 from '@/pages/godot/Session5';
 import GodotSimpleGame from '@/pages/godot/SimpleGame';
+import GodotSession6 from '@/pages/godot/Session6';
+import GodotSession7 from '@/pages/godot/Session7';
+import GodotSession8 from '@/pages/godot/Session8';
+import GodotSession9 from '@/pages/godot/Session9';
+import GodotSession10 from '@/pages/godot/Session10';
+import GodotSession11 from '@/pages/godot/Session11';
+import GodotSession12 from '@/pages/godot/Session12';
+import GodotSession13 from '@/pages/godot/Session13';
+import GodotSession14 from '@/pages/godot/Session14';
 
 // Session pages - GDevelop
 import GDevelopSession1 from '@/pages/gdevelop/Session1';
 import GDevelopSession2 from '@/pages/gdevelop/Session2';
+import GDevelopSession3 from '@/pages/gdevelop/Session3';
+import GDevelopSession4 from '@/pages/gdevelop/Session4';
+import GDevelopSession5 from '@/pages/gdevelop/Session5';
+import GDevelopSession6 from '@/pages/gdevelop/Session6';
+import GDevelopSession7 from '@/pages/gdevelop/Session7';
+import GDevelopSession8 from '@/pages/gdevelop/Session8';
+import GDevelopSession9 from '@/pages/gdevelop/Session9';
+import GDevelopSession10 from '@/pages/gdevelop/Session10';
+import GDevelopSession11 from '@/pages/gdevelop/Session11';
+import GDevelopSession12 from '@/pages/gdevelop/Session12';
+import GDevelopSession13 from '@/pages/gdevelop/Session13';
+import GDevelopSession14 from '@/pages/gdevelop/Session14';
 
 // Session pages - Construct3
 import Construct3Session1 from '@/pages/construct3/Session1';
@@ -734,6 +755,78 @@ const router = createBrowserRouter([
       </CourseAccessGuard>
     ),
   },
+  {
+    path: "/godot/session6",
+    element: (
+      <CourseAccessGuard courseSlug="godot" sessionSlug="session6">
+        <GodotSession6 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/godot/session7",
+    element: (
+      <CourseAccessGuard courseSlug="godot" sessionSlug="session7">
+        <GodotSession7 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/godot/session8",
+    element: (
+      <CourseAccessGuard courseSlug="godot" sessionSlug="session8">
+        <GodotSession8 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/godot/session9",
+    element: (
+      <CourseAccessGuard courseSlug="godot" sessionSlug="session9">
+        <GodotSession9 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/godot/session10",
+    element: (
+      <CourseAccessGuard courseSlug="godot" sessionSlug="session10">
+        <GodotSession10 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/godot/session11",
+    element: (
+      <CourseAccessGuard courseSlug="godot" sessionSlug="session11">
+        <GodotSession11 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/godot/session12",
+    element: (
+      <CourseAccessGuard courseSlug="godot" sessionSlug="session12">
+        <GodotSession12 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/godot/session13",
+    element: (
+      <CourseAccessGuard courseSlug="godot" sessionSlug="session13">
+        <GodotSession13 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/godot/session14",
+    element: (
+      <CourseAccessGuard courseSlug="godot" sessionSlug="session14">
+        <GodotSession14 />
+      </CourseAccessGuard>
+    ),
+  },
   // GDevelop sessions
   {
     path: "/gdevelop/session1",
@@ -748,6 +841,102 @@ const router = createBrowserRouter([
     element: (
       <CourseAccessGuard courseSlug="gdevelop" sessionSlug="session2">
         <GDevelopSession2 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/gdevelop/session3",
+    element: (
+      <CourseAccessGuard courseSlug="gdevelop" sessionSlug="session3">
+        <GDevelopSession3 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/gdevelop/session4",
+    element: (
+      <CourseAccessGuard courseSlug="gdevelop" sessionSlug="session4">
+        <GDevelopSession4 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/gdevelop/session5",
+    element: (
+      <CourseAccessGuard courseSlug="gdevelop" sessionSlug="session5">
+        <GDevelopSession5 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/gdevelop/session6",
+    element: (
+      <CourseAccessGuard courseSlug="gdevelop" sessionSlug="session6">
+        <GDevelopSession6 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/gdevelop/session7",
+    element: (
+      <CourseAccessGuard courseSlug="gdevelop" sessionSlug="session7">
+        <GDevelopSession7 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/gdevelop/session8",
+    element: (
+      <CourseAccessGuard courseSlug="gdevelop" sessionSlug="session8">
+        <GDevelopSession8 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/gdevelop/session9",
+    element: (
+      <CourseAccessGuard courseSlug="gdevelop" sessionSlug="session9">
+        <GDevelopSession9 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/gdevelop/session10",
+    element: (
+      <CourseAccessGuard courseSlug="gdevelop" sessionSlug="session10">
+        <GDevelopSession10 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/gdevelop/session11",
+    element: (
+      <CourseAccessGuard courseSlug="gdevelop" sessionSlug="session11">
+        <GDevelopSession11 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/gdevelop/session12",
+    element: (
+      <CourseAccessGuard courseSlug="gdevelop" sessionSlug="session12">
+        <GDevelopSession12 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/gdevelop/session13",
+    element: (
+      <CourseAccessGuard courseSlug="gdevelop" sessionSlug="session13">
+        <GDevelopSession13 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/gdevelop/session14",
+    element: (
+      <CourseAccessGuard courseSlug="gdevelop" sessionSlug="session14">
+        <GDevelopSession14 />
       </CourseAccessGuard>
     ),
   },
