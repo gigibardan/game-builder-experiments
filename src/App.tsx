@@ -11,6 +11,13 @@ import CourseScratch from './pages/courses/Scratch';
 import MinecraftModding from './pages/courses/MinecraftModding';
 import AppInventor from './pages/courses/AppInventor';
 
+// AppInventor sessions
+import Session10 from './pages/appinventor/Session10';
+import Session11 from './pages/appinventor/Session11';
+import Session12 from './pages/appinventor/Session12';
+import Session13 from './pages/appinventor/Session13';
+import Session14 from './pages/appinventor/Session14';
+
 // Scratch sessions - lecții complete existente
 import Session1Alegesanatos from './pages/scratch/Session1Alegesanatos';
 import Session3MotoRacer from './pages/scratch/Session3MotoRacer';
@@ -47,6 +54,13 @@ function App() {
           <Route path="/courses/scratch" element={<CourseScratch />} />
           <Route path="/courses/minecraft-modding" element={<MinecraftModding />} />
           <Route path="/courses/appinventor" element={<AppInventor />} />
+          
+          {/* AppInventor sessions */}
+          <Route path="/appinventor/session10" element={<Session10 />} />
+          <Route path="/appinventor/session11" element={<Session11 />} />
+          <Route path="/appinventor/session12" element={<Session12 />} />
+          <Route path="/appinventor/session13" element={<Session13 />} />
+          <Route path="/appinventor/session14" element={<Session14 />} />
           
           {/* Scratch sessions - lecții complete */}
           <Route path="/scratch/session1alegesanatos" element={<Session1Alegesanatos />} />
