@@ -192,65 +192,65 @@ const router = createBrowserRouter([
       </ProtectedRoute>
     ),
   },
-  // Course pages
+  // Course pages - Updated to match CourseCard links
   {
-    path: "/scratch",
+    path: "/courses/scratch",
     element: <Scratch />,
   },
   {
-    path: "/appinventor",
+    path: "/courses/appinventor",
     element: <AppInventor />,
   },
   {
-    path: "/construct3",
+    path: "/courses/construct3",
     element: <Construct3 />,
   },
   {
-    path: "/gdevelop",
+    path: "/courses/gdevelop",
     element: <GDevelop />,
   },
   {
-    path: "/alice3",
+    path: "/courses/alice3",
     element: <Alice3 />,
   },
   {
-    path: "/microbit-arcade",
+    path: "/courses/microbit-arcade",
     element: <MicrobitArcade />,
   },
   {
-    path: "/minecraft-modding",
+    path: "/courses/minecraft-modding",
     element: <MinecraftModding />,
   },
   {
-    path: "/roblox-lua",
+    path: "/courses/roblox-lua",
     element: <RobloxLua />,
   },
   {
-    path: "/python",
+    path: "/courses/python",
     element: <Python />,
   },
   {
-    path: "/greenfoot",
+    path: "/courses/greenfoot",
     element: <Greenfoot />,
   },
   {
-    path: "/godot",
+    path: "/courses/godot",
     element: <Godot />,
   },
   {
-    path: "/frontend-dev",
+    path: "/courses/frontend-dev",
     element: <FrontendDev />,
   },
   {
-    path: "/lego-spike-essentials",
+    path: "/courses/lego-spike-essentials",
     element: <LegoSpikeEssentials />,
   },
   {
-    path: "/lego-spike-prime",
+    path: "/courses/lego-spike-prime",
     element: <LegoSpikePrime />,
   },
   {
-    path: "/microbit-explorers",
+    path: "/courses/microbit-explorers",
     element: <MicrobitExplorers />,
   },
   // Scratch sessions
