@@ -21,19 +21,11 @@ import Courses from "./pages/Courses";
 import LegoSpikeEssentials from "./pages/courses/LegoSpikeEssentials";
 import Python from "./pages/courses/Python";
 
-// Scratch imports
-import ScratchSession1 from "./pages/scratch/Session1";
-import ScratchSession2 from "./pages/scratch/Session2";
-import ScratchSession3 from "./pages/scratch/Session3";
-import ScratchSession4 from "./pages/scratch/Session4";
-import ScratchSession5 from "./pages/scratch/Session5";
-import ScratchSession6 from "./pages/scratch/Session6";
-import ScratchSession7 from "./pages/scratch/Session7";
-import ScratchSession8 from "./pages/scratch/Session8";
-import ScratchSession9 from "./pages/scratch/Session9";
-import ScratchSession10 from "./pages/scratch/Session10";
-import ScratchSession11 from "./pages/scratch/Session11";
-import ScratchSession12 from "./pages/scratch/Session12";
+// Scratch imports - using existing file names
+import ScratchSession4 from "./pages/scratch/Session4CityRunner";
+import ScratchSession6 from "./pages/scratch/Session6StitchBeach";
+import ScratchSession8 from "./pages/scratch/Session8WizardsQuest";
+import ScratchSession9 from "./pages/scratch/Session9RobotFootball";
 import ScratchSession13 from "./pages/scratch/Session13";
 import ScratchSession14 from "./pages/scratch/Session14";
 
@@ -121,19 +113,11 @@ const App = () => (
             </ProtectedRoute>
           } />
 
-          {/* Scratch course routes */}
-          <Route path="/scratch/session1" element={<ScratchSession1 />} />
-          <Route path="/scratch/session2" element={<ScratchSession2 />} />
-          <Route path="/scratch/session3" element={<ScratchSession3 />} />
-          <Route path="/scratch/session4" element={<ScratchSession4 />} />
-          <Route path="/scratch/session5" element={<ScratchSession5 />} />
-          <Route path="/scratch/session6" element={<ScratchSession6 />} />
-          <Route path="/scratch/session7" element={<ScratchSession7 />} />
-          <Route path="/scratch/session8" element={<ScratchSession8 />} />
-          <Route path="/scratch/session9" element={<ScratchSession9 />} />
-          <Route path="/scratch/session10" element={<ScratchSession10 />} />
-          <Route path="/scratch/session11" element={<ScratchSession11 />} />
-          <Route path="/scratch/session12" element={<ScratchSession12 />} />
+          {/* Scratch course routes - only existing ones */}
+          <Route path="/scratch/session4cityrunner" element={<ScratchSession4 />} />
+          <Route path="/scratch/session6stitchbeach" element={<ScratchSession6 />} />
+          <Route path="/scratch/session8wizardsquest" element={<ScratchSession8 />} />
+          <Route path="/scratch/session9robotfootball" element={<ScratchSession9 />} />
           <Route path="/scratch/session13" element={<ScratchSession13 />} />
           <Route path="/scratch/session14" element={<ScratchSession14 />} />
 
