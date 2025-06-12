@@ -9,7 +9,6 @@ const Session8 = () => {
       courseId="frontenddev"
       sessionId="session8"
       title="JavaScript avansat și ES6"
-      description="Concepte avansate și sintaxa modernă JavaScript"
       duration="120 min"
       level="Avansat"
     >

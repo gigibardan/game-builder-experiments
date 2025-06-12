@@ -7,10 +7,9 @@ const Session10 = () => {
   return (
     <LessonLayout 
       courseId="python"
-      lessonId="session10"
-      title="Analiza datelor cu pandas"
-      description="Procesarea și analiza seturilor de date"
-      duration="90 min"
+      sessionId="session10"
+      title="Biblioteci populare (NumPy, Pandas)"
+      duration="120 min"
       level="Avansat"
     >
       <div className="space-y-6">

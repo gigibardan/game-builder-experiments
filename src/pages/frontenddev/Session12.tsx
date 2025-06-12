@@ -9,7 +9,6 @@ const Session12 = () => {
       courseId="frontenddev"
       sessionId="session12"
       title="Optimizare și performanță"
-      description="Tehnici de optimizare pentru site-uri rapide"
       duration="90 min"
       level="Expert"
     >

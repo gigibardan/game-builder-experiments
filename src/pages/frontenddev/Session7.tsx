@@ -9,7 +9,6 @@ const Session7 = () => {
       courseId="frontenddev"
       sessionId="session7"
       title="Framework-uri CSS"
-      description="Folosirea Bootstrap și Tailwind CSS"
       duration="90 min"
       level="Intermediar"
     >

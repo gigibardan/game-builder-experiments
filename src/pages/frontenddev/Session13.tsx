@@ -8,8 +8,7 @@ const Session13 = () => {
     <LessonLayout 
       courseId="frontenddev"
       sessionId="session13"
-      title="Deploy și hosting"
-      description="Publicarea site-urilor web pe internet"
+      title="Deployment și hosting"
       duration="90 min"
       level="Expert"
     >

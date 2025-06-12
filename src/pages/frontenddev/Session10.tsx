@@ -9,7 +9,6 @@ const Session10 = () => {
       courseId="frontenddev"
       sessionId="session10"
       title="Git și workflow-ul dezvoltatorului"
-      description="Controlul versiunilor și colaborarea"
       duration="90 min"
       level="Avansat"
     >

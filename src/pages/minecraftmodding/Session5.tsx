@@ -7,10 +7,9 @@ const Session5 = () => {
   return (
     <LessonLayout 
       courseId="minecraftmodding"
-      lessonId="session5"
-      title="Blocuri funcționale"
-      description="Blocuri cu funcționalități speciale și GUI-uri"
-      duration="90 min"
+      sessionId="session5"
+      title="Structuri și generare de lume"
+      duration="120 min"
       level="Intermediar"
     >
       <div className="space-y-6">

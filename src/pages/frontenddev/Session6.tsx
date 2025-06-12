@@ -9,7 +9,6 @@ const Session6 = () => {
       courseId="frontenddev"
       sessionId="session6"
       title="Responsive design"
-      description="Crearea site-urilor adaptabile pentru toate dispozitivele"
       duration="90 min"
       level="Intermediar"
     >

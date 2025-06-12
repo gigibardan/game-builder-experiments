@@ -9,7 +9,6 @@ const Session3 = () => {
       courseId="frontenddev"
       sessionId="session3"
       title="CSS și stilizarea avansată"
-      description="Învață să stilizezi site-urile web cu CSS avansat"
       duration="90 min"
       level="Începător"
     >

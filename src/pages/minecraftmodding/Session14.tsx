@@ -7,9 +7,8 @@ const Session14 = () => {
   return (
     <LessonLayout 
       courseId="minecraftmodding"
-      lessonId="session14"
-      title="Mega-proiect și showcase"
-      description="Mod complet de anvergură pentru portfolio"
+      sessionId="session14"
+      title="Proiect final și showcase"
       duration="180 min"
       level="Expert"
     >

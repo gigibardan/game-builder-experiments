@@ -7,11 +7,10 @@ const Session4 = () => {
   return (
     <LessonLayout 
       courseId="python"
-      lessonId="session4"
+      sessionId="session4"
       title="Funcții și module"
-      description="Organizarea codului în funcții reutilizabile"
       duration="90 min"
-      level="Începător"
+      level="Intermediar"
     >
       <div className="space-y-6">
         <InfoBox variant="info">

@@ -8,9 +8,8 @@ const Session9 = () => {
     <LessonLayout 
       courseId="frontenddev"
       sessionId="session9"
-      title="Introducere în React"
-      description="Primii pași în dezvoltarea cu React"
-      duration="120 min"
+      title="APIs și fetch"
+      duration="90 min"
       level="Avansat"
     >
       <div className="space-y-6">

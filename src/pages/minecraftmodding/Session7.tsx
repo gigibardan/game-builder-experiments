@@ -7,11 +7,10 @@ const Session7 = () => {
   return (
     <LessonLayout 
       courseId="minecraftmodding"
-      lessonId="session7"
-      title="Rețete și crafting personalizat"
-      description="Sisteme de crafting și rețete custom"
+      sessionId="session7"
+      title="GUI și interfețe"
       duration="90 min"
-      level="Intermediar"
+      level="Avansat"
     >
       <div className="space-y-6">
         <InfoBox variant="info">

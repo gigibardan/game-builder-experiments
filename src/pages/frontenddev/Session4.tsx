@@ -9,7 +9,6 @@ const Session4 = () => {
       courseId="frontenddev"
       sessionId="session4"
       title="JavaScript fundamentals"
-      description="Începe să programezi cu JavaScript"
       duration="90 min"
       level="Începător"
     >

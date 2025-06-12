@@ -7,10 +7,9 @@ const Session6 = () => {
   return (
     <LessonLayout 
       courseId="python"
-      lessonId="session6"
-      title="Programare orientată pe obiecte"
-      description="Clase, obiecte și moștenirea în Python"
-      duration="90 min"
+      sessionId="session6"
+      title="Programarea orientată pe obiecte"
+      duration="120 min"
       level="Intermediar"
     >
       <div className="space-y-6">

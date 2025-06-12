@@ -7,10 +7,9 @@ const Session11 = () => {
   return (
     <LessonLayout 
       courseId="python"
-      lessonId="session11"
-      title="Machine Learning cu scikit-learn"
-      description="Introducere în învățarea automată"
-      duration="90 min"
+      sessionId="session11"
+      title="Machine Learning cu Python"
+      duration="150 min"
       level="Expert"
     >
       <div className="space-y-6">
