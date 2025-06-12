@@ -7,184 +7,184 @@ const GreenfootSessions = () => {
     {
       number: 1,
       title: "Introducere în Greenfoot",
-      description: "Primii pași în dezvoltarea de jocuri cu Greenfoot și învățarea conceptelor Java.",
+      description: "Primii pași în dezvoltarea de jocuri cu Greenfoot și înțelegerea conceptelor de bază ale programării orientate pe obiecte.",
       link: "/greenfoot/session1",
       isAvailable: true,
       duration: "90 min",
       level: "Începător",
       ageGroup: "12-18 ani",
-      highlights: ["Interfața Greenfoot", "Clase și obiecte", "Primul joc"],
-      color: "amber",
-      imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
+      highlights: ["Interfața Greenfoot", "Actori și lumi", "Primul proiect"],
+      color: "orange",
+      imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475"
     },
     {
       number: 2,
-      title: "Programare orientată pe obiecte",
-      description: "Înțelegerea conceptelor OOP prin dezvoltarea de jocuri în Greenfoot.",
+      title: "Concepte de bază în Java",
+      description: "Învățarea conceptelor fundamentale de programare în Java prin intermediul Greenfoot.",
       link: "/greenfoot/session2",
       isAvailable: true,
       duration: "90 min",
       level: "Începător",
       ageGroup: "12-18 ani",
-      highlights: ["OOP concepts", "Inheritance", "Methods"],
-      color: "amber",
-      imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475"
+      highlights: ["Variabile", "Metode", "Clase și obiecte"],
+      color: "orange",
+      imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
     },
     {
       number: 3,
-      title: "Interacțiuni și coliziuni",
-      description: "Implementarea interacțiunilor între obiecte și detectarea coliziunilor.",
+      title: "Controlul personajelor",
+      description: "Implementarea controlului personajelor și gestionarea input-ului de la utilizator.",
       link: "/greenfoot/session3",
       isAvailable: true,
       duration: "90 min",
       level: "Începător",
       ageGroup: "12-18 ani",
-      highlights: ["Object interactions", "Collision detection", "Game logic"],
-      color: "amber",
-      imageSrc: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+      highlights: ["Input handling", "Mișcare personaje", "Collision detection"],
+      color: "orange",
+      imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475"
     },
     {
       number: 4,
-      title: "Animații și mișcare",
-      description: "Crearea animațiilor și implementarea diferitelor tipuri de mișcare.",
+      title: "Fizică și coliziuni",
+      description: "Aplicarea principiilor fizicii și gestionarea coliziunilor în jocurile Greenfoot.",
       link: "/greenfoot/session4",
       isAvailable: false,
       duration: "90 min",
       level: "Intermediar",
       ageGroup: "12-18 ani",
-      highlights: ["Animations", "Movement patterns", "Sprite handling"],
-      color: "amber",
-      imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
+      highlights: ["Physics simulation", "Collision systems", "Game mechanics"],
+      color: "orange",
+      imageSrc: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
     },
     {
       number: 5,
-      title: "Control utilizator și input",
-      description: "Implementarea controlului utilizator și gestionarea input-ului de la tastatură.",
+      title: "Animații și efecte",
+      description: "Crearea animațiilor și efectelor vizuale pentru personaje și obiecte.",
       link: "/greenfoot/session5",
       isAvailable: false,
       duration: "90 min",
       level: "Intermediar",
       ageGroup: "12-18 ani",
-      highlights: ["User input", "Keyboard controls", "Mouse events"],
-      color: "amber",
-      imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
+      highlights: ["Sprite animation", "Visual effects", "Smooth movement"],
+      color: "orange",
+      imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
     },
     {
       number: 6,
-      title: "Scoruri și progresie",
-      description: "Implementarea sistemelor de scoruri și progresie în jocuri.",
+      title: "Sisteme de punctaj",
+      description: "Implementarea sistemelor de punctaj și interfețelor utilizator.",
       link: "/greenfoot/session6",
       isAvailable: false,
       duration: "90 min",
       level: "Intermediar",
       ageGroup: "12-18 ani",
-      highlights: ["Scoring systems", "Game progression", "Data management"],
-      color: "amber",
-      imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475"
+      highlights: ["Scoring systems", "UI elements", "Game state"],
+      color: "orange",
+      imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
     },
     {
       number: 7,
-      title: "Joc platformer",
-      description: "Crearea unui joc platformer complet cu nivele și obstacole.",
+      title: "Audio și sunet",
+      description: "Adăugarea sunetelor și muzicii în jocurile Greenfoot.",
       link: "/greenfoot/session7",
       isAvailable: false,
-      duration: "120 min",
+      duration: "90 min",
       level: "Intermediar",
       ageGroup: "12-18 ani",
-      highlights: ["Platformer game", "Level design", "Physics"],
-      color: "amber",
-      imageSrc: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+      highlights: ["Sound effects", "Background music", "Audio management"],
+      color: "orange",
+      imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475"
     },
     {
       number: 8,
-      title: "Joc de tip shooter",
-      description: "Dezvoltarea unui joc shooter cu proiectile și inamici.",
+      title: "Joc complet 2D",
+      description: "Crearea unui joc 2D complet aplicând toate conceptele învățate.",
       link: "/greenfoot/session8",
       isAvailable: false,
       duration: "120 min",
       level: "Avansat",
       ageGroup: "14-18 ani",
-      highlights: ["Shooter mechanics", "Projectiles", "Enemy AI"],
-      color: "amber",
-      imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
+      highlights: ["Complete game", "Game loop", "Level design"],
+      color: "orange",
+      imageSrc: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
     },
     {
       number: 9,
-      title: "Inteligență artificială",
-      description: "Implementarea AI-ului pentru inamici și NPC-uri în jocuri.",
+      title: "Algoritmi avansați",
+      description: "Implementarea algoritmilor avansați pentru inteligența artificială și pathfinding.",
       link: "/greenfoot/session9",
       isAvailable: false,
       duration: "120 min",
       level: "Avansat",
       ageGroup: "14-18 ani",
-      highlights: ["AI programming", "Pathfinding", "Behavior trees"],
-      color: "amber",
-      imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
+      highlights: ["AI algorithms", "Pathfinding", "Game intelligence"],
+      color: "orange",
+      imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
     },
     {
       number: 10,
-      title: "Sunet și muzică",
-      description: "Adăugarea efectelor sonore și muzicii în jocurile Greenfoot.",
+      title: "Optimizare și performanță",
+      description: "Tehnici de optimizare pentru îmbunătățirea performanței jocurilor.",
       link: "/greenfoot/session10",
       isAvailable: false,
       duration: "90 min",
       level: "Avansat",
       ageGroup: "14-18 ani",
-      highlights: ["Sound effects", "Background music", "Audio management"],
-      color: "amber",
-      imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475"
+      highlights: ["Performance optimization", "Memory management", "Efficient coding"],
+      color: "orange",
+      imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
     },
     {
       number: 11,
-      title: "Optimizare și debugging",
-      description: "Tehnici de optimizare și debugging pentru jocurile Greenfoot.",
+      title: "Jocuri multiplayer",
+      description: "Implementarea funcționalităților multiplayer în Greenfoot.",
       link: "/greenfoot/session11",
-      isAvailable: false,
-      duration: "90 min",
-      level: "Avansat",
-      ageGroup: "14-18 ani",
-      highlights: ["Code optimization", "Debugging", "Performance"],
-      color: "amber",
-      imageSrc: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
-    },
-    {
-      number: 12,
-      title: "Jocuri complexe",
-      description: "Crearea jocurilor complexe cu multiple nivele și funcționalități.",
-      link: "/greenfoot/session12",
-      isAvailable: false,
-      duration: "150 min",
-      level: "Expert",
-      ageGroup: "15-18 ani",
-      highlights: ["Complex games", "Multiple levels", "Advanced features"],
-      color: "amber",
-      imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
-    },
-    {
-      number: 13,
-      title: "Extensii și biblioteci",
-      description: "Utilizarea extensiilor și bibliotecilor externe în Greenfoot.",
-      link: "/greenfoot/session13",
       isAvailable: false,
       duration: "120 min",
       level: "Expert",
       ageGroup: "15-18 ani",
-      highlights: ["Extensions", "Libraries", "External tools"],
-      color: "amber",
-      imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
+      highlights: ["Multiplayer systems", "Network programming", "Synchronized gameplay"],
+      color: "orange",
+      imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475"
+    },
+    {
+      number: 12,
+      title: "Testare și debugging",
+      description: "Tehnici de testare și debugging pentru jocurile Greenfoot.",
+      link: "/greenfoot/session12",
+      isAvailable: false,
+      duration: "90 min",
+      level: "Expert",
+      ageGroup: "15-18 ani",
+      highlights: ["Testing strategies", "Debugging tools", "Quality assurance"],
+      color: "orange",
+      imageSrc: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+    },
+    {
+      number: 13,
+      title: "Publicarea jocurilor",
+      description: "Exportarea și distribuirea jocurilor create în Greenfoot.",
+      link: "/greenfoot/session13",
+      isAvailable: false,
+      duration: "90 min",
+      level: "Expert",
+      ageGroup: "15-18 ani",
+      highlights: ["Game export", "Distribution", "Publishing platforms"],
+      color: "orange",
+      imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
     },
     {
       number: 14,
       title: "Proiect final și portfolio",
-      description: "Dezvoltarea unui proiect final complex pentru portfolio personal.",
+      description: "Crearea unui proiect final complet pentru portfolio personal.",
       link: "/greenfoot/session14",
       isAvailable: false,
       duration: "180 min",
       level: "Expert",
       ageGroup: "15-18 ani",
-      highlights: ["Final project", "Portfolio", "Professional development"],
-      color: "amber",
-      imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475"
+      highlights: ["Final project", "Portfolio", "Game showcase"],
+      color: "orange",
+      imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
     }
   ];
 
@@ -194,7 +194,7 @@ const GreenfootSessions = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Sesiunile cursului</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Explorează toate sesiunile cursului de Greenfoot, învață Java prin dezvoltarea jocurilor.
+            Învață programare orientată pe obiecte prin crearea jocurilor captivante în Java cu Greenfoot.
           </p>
         </div>
         
