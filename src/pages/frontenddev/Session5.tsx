@@ -9,8 +9,10 @@ const Session5 = () => {
       courseId="frontenddev"
       sessionId="session5"
       title="DOM manipulation"
-      duration="90 min"
-      level="Intermediar"
+      subtitle="Interacțiunea cu elementele paginii web prin JavaScript."
+      heroColor="bg-gradient-to-r from-cyan-500 to-blue-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

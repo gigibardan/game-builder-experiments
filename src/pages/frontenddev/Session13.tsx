@@ -9,8 +9,10 @@ const Session13 = () => {
       courseId="frontenddev"
       sessionId="session13"
       title="Deployment și hosting"
-      duration="90 min"
-      level="Expert"
+      subtitle="Publicarea site-urilor web pe internet."
+      heroColor="bg-gradient-to-r from-cyan-500 to-blue-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

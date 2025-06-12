@@ -9,8 +9,10 @@ const Session4 = () => {
       courseId="minecraftmodding"
       sessionId="session4"
       title="Proceduri și comenzi"
-      duration="90 min"
-      level="Intermediar"
+      subtitle="Învață să creezi funcționalități complexe în MCreator."
+      heroColor="bg-gradient-to-r from-green-500 to-emerald-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

@@ -9,8 +9,10 @@ const Session8 = () => {
       courseId="frontenddev"
       sessionId="session8"
       title="JavaScript avansat și ES6"
-      duration="120 min"
-      level="Avansat"
+      subtitle="Concepte avansate și sintaxa modernă JavaScript."
+      heroColor="bg-gradient-to-r from-cyan-500 to-blue-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

@@ -9,8 +9,10 @@ const Session3 = () => {
       courseId="frontenddev"
       sessionId="session3"
       title="CSS și stilizarea avansată"
-      duration="90 min"
-      level="Începător"
+      subtitle="Învață să stilizezi site-urile web cu CSS avansat."
+      heroColor="bg-gradient-to-r from-cyan-500 to-blue-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

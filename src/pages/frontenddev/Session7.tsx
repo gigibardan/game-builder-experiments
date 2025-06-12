@@ -9,8 +9,10 @@ const Session7 = () => {
       courseId="frontenddev"
       sessionId="session7"
       title="Framework-uri CSS"
-      duration="90 min"
-      level="Intermediar"
+      subtitle="Folosirea Bootstrap și Tailwind CSS pentru dezvoltare rapidă."
+      heroColor="bg-gradient-to-r from-cyan-500 to-blue-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

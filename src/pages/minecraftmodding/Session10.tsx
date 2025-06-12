@@ -9,8 +9,10 @@ const Session10 = () => {
       courseId="minecraftmodding"
       sessionId="session10"
       title="Evenimente și triggere"
-      duration="90 min"
-      level="Expert"
+      subtitle="Implementează logică complexă bazată pe evenimente."
+      heroColor="bg-gradient-to-r from-green-500 to-emerald-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

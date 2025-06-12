@@ -9,8 +9,10 @@ const Session14 = () => {
       courseId="python"
       sessionId="session14"
       title="Proiect final și deployment"
-      duration="180 min"
-      level="Expert"
+      subtitle="Aplicație completă Python pentru portfolio."
+      heroColor="bg-gradient-to-r from-blue-500 to-indigo-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

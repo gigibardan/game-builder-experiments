@@ -9,8 +9,10 @@ const Session11 = () => {
       courseId="minecraftmodding"
       sessionId="session11"
       title="Optimizare și performanță"
-      duration="90 min"
-      level="Expert"
+      subtitle="Tehnici pentru mod-uri eficiente și performante."
+      heroColor="bg-gradient-to-r from-green-500 to-emerald-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

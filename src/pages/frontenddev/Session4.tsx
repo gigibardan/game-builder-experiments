@@ -9,8 +9,10 @@ const Session4 = () => {
       courseId="frontenddev"
       sessionId="session4"
       title="JavaScript fundamentals"
-      duration="90 min"
-      level="Începător"
+      subtitle="Începe să programezi cu JavaScript și adaugă interactivitate."
+      heroColor="bg-gradient-to-r from-cyan-500 to-blue-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

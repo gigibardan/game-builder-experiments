@@ -9,8 +9,10 @@ const Session9 = () => {
       courseId="frontenddev"
       sessionId="session9"
       title="APIs și fetch"
-      duration="90 min"
-      level="Avansat"
+      subtitle="Comunicarea cu servicii web și integrarea API-urilor."
+      heroColor="bg-gradient-to-r from-cyan-500 to-blue-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

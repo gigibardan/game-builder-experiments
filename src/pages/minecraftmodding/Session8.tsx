@@ -9,8 +9,10 @@ const Session8 = () => {
       courseId="minecraftmodding"
       sessionId="session8"
       title="Redstone și automatizare"
-      duration="90 min"
-      level="Avansat"
+      subtitle="Integrează mod-ul tău cu sistemul redstone."
+      heroColor="bg-gradient-to-r from-green-500 to-emerald-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

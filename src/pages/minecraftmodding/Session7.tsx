@@ -9,8 +9,10 @@ const Session7 = () => {
       courseId="minecraftmodding"
       sessionId="session7"
       title="GUI și interfețe"
-      duration="90 min"
-      level="Avansat"
+      subtitle="Creează interfețe grafice pentru blocurile tale."
+      heroColor="bg-gradient-to-r from-green-500 to-emerald-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

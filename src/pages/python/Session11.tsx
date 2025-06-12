@@ -9,8 +9,10 @@ const Session11 = () => {
       courseId="python"
       sessionId="session11"
       title="Machine Learning cu Python"
-      duration="150 min"
-      level="Expert"
+      subtitle="Introducere în inteligența artificială și machine learning."
+      heroColor="bg-gradient-to-r from-blue-500 to-indigo-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

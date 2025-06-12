@@ -9,8 +9,10 @@ const Session10 = () => {
       courseId="frontenddev"
       sessionId="session10"
       title="Git și workflow-ul dezvoltatorului"
-      duration="90 min"
-      level="Avansat"
+      subtitle="Controlul versiunilor și colaborarea în echipă."
+      heroColor="bg-gradient-to-r from-cyan-500 to-blue-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">
