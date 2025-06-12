@@ -9,9 +9,10 @@ const Session13 = () => {
       courseId="python"
       sessionId="session13"
       title="Testing și debugging"
-      description="Testarea și depanarea codului Python"
-      duration="90 min"
-      level="Expert"
+      subtitle="Testarea și depanarea codului Python."
+      heroColor="bg-gradient-to-r from-blue-500 to-indigo-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

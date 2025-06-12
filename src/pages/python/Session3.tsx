@@ -9,9 +9,10 @@ const Session3 = () => {
       courseId="python"
       sessionId="session3"
       title="Structuri de control"
-      description="If, else, loop-uri și logica programării"
-      duration="90 min"
-      level="Începător"
+      subtitle="If, else, loop-uri și logica programării."
+      heroColor="bg-gradient-to-r from-blue-500 to-indigo-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

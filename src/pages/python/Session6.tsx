@@ -9,8 +9,10 @@ const Session6 = () => {
       courseId="python"
       sessionId="session6"
       title="Programarea orientată pe obiecte"
-      duration="120 min"
-      level="Intermediar"
+      subtitle="Concepte OOP în Python."
+      heroColor="bg-gradient-to-r from-blue-500 to-indigo-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

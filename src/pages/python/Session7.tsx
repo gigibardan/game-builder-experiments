@@ -9,9 +9,10 @@ const Session7 = () => {
       courseId="python"
       sessionId="session7"
       title="Manipularea fișierelor"
-      description="Citirea și scrierea datelor în fișiere"
-      duration="90 min"
-      level="Intermediar"
+      subtitle="Citirea și scrierea datelor în fișiere."
+      heroColor="bg-gradient-to-r from-blue-500 to-indigo-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

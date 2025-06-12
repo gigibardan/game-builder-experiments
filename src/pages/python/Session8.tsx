@@ -9,9 +9,10 @@ const Session8 = () => {
       courseId="python"
       sessionId="session8"
       title="Biblioteci externe și pip"
-      description="Utilizarea bibliotecilor Python populare"
-      duration="120 min"
-      level="Avansat"
+      subtitle="Utilizarea bibliotecilor Python populare."
+      heroColor="bg-gradient-to-r from-blue-500 to-indigo-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

@@ -9,9 +9,10 @@ const Session9 = () => {
       courseId="python"
       sessionId="session9"
       title="Web scraping cu Python"
-      description="Extragerea datelor de pe site-uri web"
-      duration="120 min"
-      level="Avansat"
+      subtitle="Extragerea datelor de pe site-uri web."
+      heroColor="bg-gradient-to-r from-blue-500 to-indigo-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

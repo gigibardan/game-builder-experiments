@@ -9,9 +9,10 @@ const Session12 = () => {
       courseId="python"
       sessionId="session12"
       title="Aplicații web cu Flask"
-      description="Crearea aplicațiilor web simple"
-      duration="90 min"
-      level="Expert"
+      subtitle="Crearea aplicațiilor web simple."
+      heroColor="bg-gradient-to-r from-blue-500 to-indigo-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

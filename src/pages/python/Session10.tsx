@@ -9,8 +9,10 @@ const Session10 = () => {
       courseId="python"
       sessionId="session10"
       title="Biblioteci populare (NumPy, Pandas)"
-      duration="120 min"
-      level="Avansat"
+      subtitle="Lucrul cu date și calcule numerice."
+      heroColor="bg-gradient-to-r from-blue-500 to-indigo-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">

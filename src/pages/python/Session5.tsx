@@ -9,9 +9,10 @@ const Session5 = () => {
       courseId="python"
       sessionId="session5"
       title="Liste și dicționare"
-      description="Structuri de date fundamentale în Python"
-      duration="90 min"
-      level="Intermediar"
+      subtitle="Structuri de date fundamentale în Python."
+      heroColor="bg-gradient-to-r from-blue-500 to-indigo-600"
+      sidebarItems={[]}
+      resources={[]}
     >
       <div className="space-y-6">
         <InfoBox variant="info">
