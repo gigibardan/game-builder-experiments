@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -41,21 +42,10 @@ import LegoSpikePrime from './pages/courses/LegoSpikePrime';
 import MicrobitExplorers from './pages/courses/MicrobitExplorers';
 import MicrobitArcade from './pages/courses/MicrobitArcade';
 
-// Course session pages
-import ScratchSession1 from './pages/courses/scratch/Session1';
-import ScratchSession2 from './pages/courses/scratch/Session2';
-import ScratchSession3 from './pages/courses/scratch/Session3';
-import ScratchSession4 from './pages/courses/scratch/Session4';
-import ScratchSession5 from './pages/courses/scratch/Session5';
-import ScratchSession6 from './pages/courses/scratch/Session6';
-import ScratchSession7 from './pages/courses/scratch/Session7';
-import ScratchSession8 from './pages/courses/scratch/Session8';
-import ScratchSession9 from './pages/courses/scratch/Session9';
-import ScratchSession10 from './pages/courses/scratch/Session10';
-import ScratchSession11 from './pages/courses/scratch/Session11';
-import ScratchSession12 from './pages/courses/scratch/Session12';
-import ScratchSession13 from './pages/courses/scratch/Session13';
-import ScratchSession14 from './pages/courses/scratch/Session14';
+// Course session pages (using the correct existing paths)
+import Session3MotoRacer from './pages/scratch/Session3MotoRacer';
+import Session8WizardsQuest from './pages/scratch/Session8WizardsQuest';
+import Session9RobotFootball from './pages/scratch/Session9RobotFootball';
 
 // Components
 import ProtectedRoute from './components/ProtectedRoute';
@@ -65,7 +55,7 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClient client={queryClient}>
+    <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Toaster />
         <Routes>
@@ -134,116 +124,28 @@ function App() {
             } 
           />
 
-          {/* Scratch course sessions */}
+          {/* Scratch course sessions - only the ones that exist */}
           <Route 
-            path="/courses/scratch/session1" 
+            path="/scratch/session3motoracer" 
             element={
-              <CourseAccessGuard course="scratch">
-                <ScratchSession1 />
+              <CourseAccessGuard courseSlug="scratch">
+                <Session3MotoRacer />
               </CourseAccessGuard>
             } 
           />
           <Route 
-            path="/courses/scratch/session2" 
+            path="/scratch/session8wizardsquest" 
             element={
-              <CourseAccessGuard course="scratch">
-                <ScratchSession2 />
+              <CourseAccessGuard courseSlug="scratch">
+                <Session8WizardsQuest />
               </CourseAccessGuard>
             } 
           />
           <Route 
-            path="/courses/scratch/session3" 
+            path="/scratch/session9robotfootball" 
             element={
-              <CourseAccessGuard course="scratch">
-                <ScratchSession3 />
-              </CourseAccessGuard>
-            } 
-          />
-          <Route 
-            path="/courses/scratch/session4" 
-            element={
-              <CourseAccessGuard course="scratch">
-                <ScratchSession4 />
-              </CourseAccessGuard>
-            } 
-          />
-          <Route 
-            path="/courses/scratch/session5" 
-            element={
-              <CourseAccessGuard course="scratch">
-                <ScratchSession5 />
-              </CourseAccessGuard>
-            } 
-          />
-          <Route 
-            path="/courses/scratch/session6" 
-            element={
-              <CourseAccessGuard course="scratch">
-                <ScratchSession6 />
-              </CourseAccessGuard>
-            } 
-          />
-          <Route 
-            path="/courses/scratch/session7" 
-            element={
-              <CourseAccessGuard course="scratch">
-                <ScratchSession7 />
-              </CourseAccessGuard>
-            } 
-          />
-          <Route 
-            path="/courses/scratch/session8" 
-            element={
-              <CourseAccessGuard course="scratch">
-                <ScratchSession8 />
-              </CourseAccessGuard>
-            } 
-          />
-          <Route 
-            path="/courses/scratch/session9" 
-            element={
-              <CourseAccessGuard course="scratch">
-                <ScratchSession9 />
-              </CourseAccessGuard>
-            } 
-          />
-          <Route 
-            path="/courses/scratch/session10" 
-            element={
-              <CourseAccessGuard course="scratch">
-                <ScratchSession10 />
-              </CourseAccessGuard>
-            } 
-          />
-          <Route 
-            path="/courses/scratch/session11" 
-            element={
-              <CourseAccessGuard course="scratch">
-                <ScratchSession11 />
-              </CourseAccessGuard>
-            } 
-          />
-          <Route 
-            path="/courses/scratch/session12" 
-            element={
-              <CourseAccessGuard course="scratch">
-                <ScratchSession12 />
-              </CourseAccessGuard>
-            } 
-          />
-          <Route 
-            path="/courses/scratch/session13" 
-            element={
-              <CourseAccessGuard course="scratch">
-                <ScratchSession13 />
-              </CourseAccessGuard>
-            } 
-          />
-          <Route 
-            path="/courses/scratch/session14" 
-            element={
-              <CourseAccessGuard course="scratch">
-                <ScratchSession14 />
+              <CourseAccessGuard courseSlug="scratch">
+                <Session9RobotFootball />
               </CourseAccessGuard>
             } 
           />
@@ -252,7 +154,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </QueryClient>
+    </QueryClientProvider>
   );
 }
 
