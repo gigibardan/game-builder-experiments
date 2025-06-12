@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -178,57 +177,87 @@ const Header = () => {
                     <span>Cursuri</span>
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="grid grid-cols-2 p-4 w-[800px] max-w-[95vw] bg-white text-gray-800">
-                      <div className="p-4">
-                        <h2 className="text-lg font-bold mb-4 text-course-purple border-b-2 border-course-purple pb-2">
+                    <div className="grid grid-cols-3 p-3 w-[700px] max-w-[90vw] bg-white text-gray-800">
+                      {/* Cursuri de Programare - Prima coloană */}
+                      <div className="p-3">
+                        <h2 className="text-base font-bold mb-3 text-course-purple border-b border-course-purple pb-1">
                           Programare
                         </h2>
-                        {programmingCourses.map((category, idx) => (
-                          <div key={idx} className="mb-4">
-                            <h3 className="text-sm font-medium mb-2 text-gray-500 border-b pb-1">{category.category}</h3>
-                            <div className="grid grid-cols-1 gap-2 mb-2">
-                              {category.items.map((item, i) => (
-                                <NavigationMenuLink asChild key={i}>
-                                  <Link
-                                    to={item.path}
-                                    onClick={closeMenu}
-                                    className="block select-none space-y-1 rounded-md p-3 no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                                  >
-                                    <div className="flex items-center">
-                                      {item.icon}
-                                      <span className="text-sm font-medium">{item.title}</span>
-                                    </div>
-                                    <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
-                                      {item.description}
-                                    </p>
-                                  </Link>
-                                </NavigationMenuLink>
-                              ))}
+                        <div className="space-y-3">
+                          {programmingCourses.map((category, idx) => (
+                            <div key={idx}>
+                              <h3 className="text-xs font-medium mb-1 text-gray-500">{category.category}</h3>
+                              <div className="space-y-1">
+                                {category.items.slice(0, idx === 2 ? 3 : category.items.length).map((item, i) => (
+                                  <NavigationMenuLink asChild key={i}>
+                                    <Link
+                                      to={item.path}
+                                      onClick={closeMenu}
+                                      className="block select-none rounded-md p-2 no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                    >
+                                      <div className="flex items-center mb-1">
+                                        {item.icon}
+                                        <span className="text-xs font-medium">{item.title}</span>
+                                      </div>
+                                      <p className="text-xs leading-tight text-muted-foreground">
+                                        {item.description}
+                                      </p>
+                                    </Link>
+                                  </NavigationMenuLink>
+                                ))}
+                              </div>
                             </div>
-                          </div>
-                        ))}
+                          ))}
+                        </div>
                       </div>
                       
-                      <div className="p-4 border-l">
-                        <h2 className="text-lg font-bold mb-4 text-orange-600 border-b-2 border-orange-600 pb-2">
+                      {/* Restul cursurilor de programare - A doua coloană */}
+                      <div className="p-3 border-l">
+                        <h2 className="text-base font-bold mb-3 text-course-purple border-b border-course-purple pb-1">
+                          Programare (cont.)
+                        </h2>
+                        <div className="space-y-1">
+                          {programmingCourses[2].items.slice(3).map((item, i) => (
+                            <NavigationMenuLink asChild key={i}>
+                              <Link
+                                to={item.path}
+                                onClick={closeMenu}
+                                className="block select-none rounded-md p-2 no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              >
+                                <div className="flex items-center mb-1">
+                                  {item.icon}
+                                  <span className="text-xs font-medium">{item.title}</span>
+                                </div>
+                                <p className="text-xs leading-tight text-muted-foreground">
+                                  {item.description}
+                                </p>
+                              </Link>
+                            </NavigationMenuLink>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      {/* Robotică - A treia coloană */}
+                      <div className="p-3 border-l">
+                        <h2 className="text-base font-bold mb-3 text-orange-600 border-b border-orange-600 pb-1">
                           Robotică
                         </h2>
                         {roboticsCourses.map((category, idx) => (
-                          <div key={idx} className="mb-4">
-                            <h3 className="text-sm font-medium mb-2 text-gray-500 border-b pb-1">{category.category}</h3>
-                            <div className="grid grid-cols-1 gap-2 mb-2">
+                          <div key={idx}>
+                            <h3 className="text-xs font-medium mb-1 text-gray-500">{category.category}</h3>
+                            <div className="space-y-1">
                               {category.items.map((item, i) => (
                                 <NavigationMenuLink asChild key={i}>
                                   <Link
                                     to={item.path}
                                     onClick={closeMenu}
-                                    className="block select-none space-y-1 rounded-md p-3 no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                    className="block select-none rounded-md p-2 no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                                   >
-                                    <div className="flex items-center">
+                                    <div className="flex items-center mb-1">
                                       {item.icon}
-                                      <span className="text-sm font-medium">{item.title}</span>
+                                      <span className="text-xs font-medium">{item.title}</span>
                                     </div>
-                                    <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
+                                    <p className="text-xs leading-tight text-muted-foreground">
                                       {item.description}
                                     </p>
                                   </Link>
@@ -237,18 +266,19 @@ const Header = () => {
                             </div>
                           </div>
                         ))}
-                      </div>
-                      
-                      <div className="text-center col-span-2 mt-2 pt-2 border-t">
-                        <NavigationMenuLink asChild>
-                          <Link
-                            to="/#courses"
-                            onClick={closeMenu}
-                            className="text-sm font-medium text-course-purple hover:text-course-purple/80"
-                          >
-                            Vezi toate cursurile
-                          </Link>
-                        </NavigationMenuLink>
+                        
+                        {/* Link către toate cursurile */}
+                        <div className="mt-4 pt-3 border-t">
+                          <NavigationMenuLink asChild>
+                            <Link
+                              to="/#courses"
+                              onClick={closeMenu}
+                              className="text-xs font-medium text-course-purple hover:text-course-purple/80 block text-center"
+                            >
+                              Vezi toate cursurile
+                            </Link>
+                          </NavigationMenuLink>
+                        </div>
                       </div>
                     </div>
                   </NavigationMenuContent>
