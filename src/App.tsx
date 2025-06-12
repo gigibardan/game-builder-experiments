@@ -90,6 +90,7 @@ import RobloxSession7Shop from '@/pages/robloxlua/Session7Shop';
 
 // Session pages - Python
 import PythonSession1 from '@/pages/python/Session1';
+import PythonSession2 from '@/pages/python/Session2';
 
 // Session pages - Greenfoot
 import GreenfootSession1 from '@/pages/greenfoot/Session1';
@@ -106,15 +107,19 @@ import GodotSimpleGame from '@/pages/godot/SimpleGame';
 
 // Session pages - GDevelop
 import GDevelopSession1 from '@/pages/gdevelop/Session1';
+import GDevelopSession2 from '@/pages/gdevelop/Session2';
 
 // Session pages - Construct3
 import Construct3Session1 from '@/pages/construct3/Session1';
+import Construct3Session2 from '@/pages/construct3/Session2';
 
 // Session pages - Frontend Dev
 import FrontendDevSession1 from '@/pages/frontenddev/Session1';
+import FrontendDevSession2 from '@/pages/frontenddev/Session2';
 
 // Session pages - micro:bit Arcade
 import MicrobitArcadeSession1 from '@/pages/microbitarcade/Session1';
+import MicrobitArcadeSession2 from '@/pages/microbitarcade/Session2';
 
 // Session pages - LEGO SPIKE Essentials
 import LegoEssentialsSession1ClassicCarousel from '@/pages/legoessentials/Session1ClassicCarousel';
@@ -623,6 +628,14 @@ const router = createBrowserRouter([
       </CourseAccessGuard>
     ),
   },
+  {
+    path: "/python/session2",
+    element: (
+      <CourseAccessGuard courseSlug="python" sessionSlug="session2">
+        <PythonSession2 />
+      </CourseAccessGuard>
+    ),
+  },
   // Greenfoot sessions
   {
     path: "/greenfoot/session1",
@@ -706,12 +719,28 @@ const router = createBrowserRouter([
       </CourseAccessGuard>
     ),
   },
+  {
+    path: "/gdevelop/session2",
+    element: (
+      <CourseAccessGuard courseSlug="gdevelop" sessionSlug="session2">
+        <GDevelopSession2 />
+      </CourseAccessGuard>
+    ),
+  },
   // Construct3 sessions
   {
     path: "/construct3/session1",
     element: (
       <CourseAccessGuard courseSlug="construct3" sessionSlug="session1">
         <Construct3Session1 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/construct3/session2",
+    element: (
+      <CourseAccessGuard courseSlug="construct3" sessionSlug="session2">
+        <Construct3Session2 />
       </CourseAccessGuard>
     ),
   },
@@ -724,12 +753,28 @@ const router = createBrowserRouter([
       </CourseAccessGuard>
     ),
   },
+  {
+    path: "/frontenddev/session2",
+    element: (
+      <CourseAccessGuard courseSlug="frontend-dev" sessionSlug="session2">
+        <FrontendDevSession2 />
+      </CourseAccessGuard>
+    ),
+  },
   // micro:bit Arcade sessions
   {
     path: "/microbitarcade/session1",
     element: (
       <CourseAccessGuard courseSlug="microbit-arcade" sessionSlug="session1">
         <MicrobitArcadeSession1 />
+      </CourseAccessGuard>
+    ),
+  },
+  {
+    path: "/microbitarcade/session2",
+    element: (
+      <CourseAccessGuard courseSlug="microbit-arcade" sessionSlug="session2">
+        <MicrobitArcadeSession2 />
       </CourseAccessGuard>
     ),
   },
