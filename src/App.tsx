@@ -121,7 +121,7 @@ const App = () => (
         <Route path="/scratch/session14" element={<ScratchSession14 />} />
 
         {/* LEGO Spike Essentials routes */}
-        <Route path="/legoessentials/session1classiccarusel" element={<Session1ClassicCarousel />} />
+        <Route path="/legoessentials/session1classiccarousel" element={<Session1ClassicCarousel />} />
         <Route path="/legoessentials/session2ferriswheel" element={<Session2FerrisWheel />} />
         <Route path="/legoessentials/session3cablecar" element={<Session3CableCar />} />
         <Route path="/legoessentials/session4twirlingteacups" element={<Session4TwirlingTeacups />} />
