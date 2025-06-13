@@ -43,10 +43,26 @@ import LegoSpikePrime from './pages/courses/LegoSpikePrime';
 import MicrobitExplorers from './pages/courses/MicrobitExplorers';
 import MicrobitArcade from './pages/courses/MicrobitArcade';
 
-// Course session pages (using the correct existing paths)
+// Course session pages - Scratch
 import Session3MotoRacer from './pages/scratch/Session3MotoRacer';
 import Session8WizardsQuest from './pages/scratch/Session8WizardsQuest';
 import Session9RobotFootball from './pages/scratch/Session9RobotFootball';
+import Session1Alegesanatos from './pages/scratch/Session1Alegesanatos';
+import Session2SpaceDodge from './pages/scratch/Session2SpaceDodge';
+import Session4CityRunner from './pages/scratch/Session4CityRunner';
+import Session5BeachBallBounce from './pages/scratch/Session5BeachBallBounce';
+import Session6StitchBeach from './pages/scratch/Session6StitchBeach';
+import Session7cakequest from './pages/scratch/Session7cakequest';
+import Session10FlappyMinecraftPart1 from './pages/scratch/Session10FlappyMinecraftPart1';
+import Session10FlappyMinecraftPart2 from './pages/scratch/Session10FlappyMinecraftPart2';
+import Session11EggDropper from './pages/scratch/Session11EggDropper';
+
+// Frontend Development sessions
+import Session1FrontendDev from './pages/frontenddev/Session1';
+import Session2FrontendDev from './pages/frontenddev/Session2';
+
+// Alice3 sessions
+import Session1Alice from './pages/alice3/Session1';
 
 // Components
 import ProtectedRoute from './components/ProtectedRoute';
@@ -72,7 +88,7 @@ function App() {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
           
-          {/* Course overview pages - Fixed routes to match URLs */}
+          {/* Course overview pages */}
           <Route path="/courses/scratch" element={<Scratch />} />
           <Route path="/courses/robloxlua" element={<RobloxLua />} />
           <Route path="/courses/minecraft-modding" element={<MinecraftModding />} />
@@ -133,12 +149,60 @@ function App() {
             } 
           />
 
-          {/* Scratch course sessions - only the ones that exist */}
+          {/* Scratch course sessions */}
+          <Route 
+            path="/scratch/session1alegesanatos" 
+            element={
+              <CourseAccessGuard courseSlug="scratch">
+                <Session1Alegesanatos />
+              </CourseAccessGuard>
+            } 
+          />
+          <Route 
+            path="/scratch/session2spacedodge" 
+            element={
+              <CourseAccessGuard courseSlug="scratch">
+                <Session2SpaceDodge />
+              </CourseAccessGuard>
+            } 
+          />
           <Route 
             path="/scratch/session3motoracer" 
             element={
               <CourseAccessGuard courseSlug="scratch">
                 <Session3MotoRacer />
+              </CourseAccessGuard>
+            } 
+          />
+          <Route 
+            path="/scratch/session4cityrunner" 
+            element={
+              <CourseAccessGuard courseSlug="scratch">
+                <Session4CityRunner />
+              </CourseAccessGuard>
+            } 
+          />
+          <Route 
+            path="/scratch/session5beachball" 
+            element={
+              <CourseAccessGuard courseSlug="scratch">
+                <Session5BeachBallBounce />
+              </CourseAccessGuard>
+            } 
+          />
+          <Route 
+            path="/scratch/session6stitchbeach" 
+            element={
+              <CourseAccessGuard courseSlug="scratch">
+                <Session6StitchBeach />
+              </CourseAccessGuard>
+            } 
+          />
+          <Route 
+            path="/scratch/session7cakequest" 
+            element={
+              <CourseAccessGuard courseSlug="scratch">
+                <Session7cakequest />
               </CourseAccessGuard>
             } 
           />
@@ -155,6 +219,58 @@ function App() {
             element={
               <CourseAccessGuard courseSlug="scratch">
                 <Session9RobotFootball />
+              </CourseAccessGuard>
+            } 
+          />
+          <Route 
+            path="/scratch/session10flappyminecraftpart1" 
+            element={
+              <CourseAccessGuard courseSlug="scratch">
+                <Session10FlappyMinecraftPart1 />
+              </CourseAccessGuard>
+            } 
+          />
+          <Route 
+            path="/scratch/session10flappyminecraftpart2" 
+            element={
+              <CourseAccessGuard courseSlug="scratch">
+                <Session10FlappyMinecraftPart2 />
+              </CourseAccessGuard>
+            } 
+          />
+          <Route 
+            path="/scratch/session11eggdropper" 
+            element={
+              <CourseAccessGuard courseSlug="scratch">
+                <Session11EggDropper />
+              </CourseAccessGuard>
+            } 
+          />
+
+          {/* Frontend Development sessions */}
+          <Route 
+            path="/frontenddev/session1" 
+            element={
+              <CourseAccessGuard courseSlug="frontenddev">
+                <Session1FrontendDev />
+              </CourseAccessGuard>
+            } 
+          />
+          <Route 
+            path="/frontenddev/session2" 
+            element={
+              <CourseAccessGuard courseSlug="frontenddev">
+                <Session2FrontendDev />
+              </CourseAccessGuard>
+            } 
+          />
+
+          {/* Alice3 sessions */}
+          <Route 
+            path="/alice3/session1" 
+            element={
+              <CourseAccessGuard courseSlug="alice3">
+                <Session1Alice />
               </CourseAccessGuard>
             } 
           />
