@@ -65,6 +65,14 @@ export const RobloxMinecraftSessionRoutes = () => (
       } 
     />
     <Route 
+      path="/robloxlua/session3constructiisctripturiincepatori"
+      element={
+        <CourseAccessGuard courseSlug="robloxlua">
+          <Session3ConstructiiScripturiRoblox />
+        </CourseAccessGuard>
+      } 
+    />
+    <Route 
       path="/robloxlua/session4obby" 
       element={
         <CourseAccessGuard courseSlug="robloxlua">
@@ -96,10 +104,26 @@ export const RobloxMinecraftSessionRoutes = () => (
         </CourseAccessGuard>
       } 
     />
+    <Route 
+      path="/robloxlua/personal-projects" 
+      element={
+        <CourseAccessGuard courseSlug="robloxlua">
+          <Session7ShopRoblox />
+        </CourseAccessGuard>
+      } 
+    />
 
     {/* MinecraftModding sessions */}
     <Route 
       path="/minecraft-modding/session1" 
+      element={
+        <CourseAccessGuard courseSlug="minecraft-modding">
+          <Session1MinecraftModding />
+        </CourseAccessGuard>
+      } 
+    />
+    <Route 
+      path="/minecraftmodding/session1" 
       element={
         <CourseAccessGuard courseSlug="minecraft-modding">
           <Session1MinecraftModding />
@@ -203,10 +227,42 @@ export const RobloxMinecraftSessionRoutes = () => (
       } 
     />
     <Route 
+      path="/minecraft-modding/crystal-realm" 
+      element={
+        <CourseAccessGuard courseSlug="minecraft-modding">
+          <CrystalRealmMinecraft />
+        </CourseAccessGuard>
+      } 
+    />
+    <Route 
       path="/minecraft-modding/rubyarmor" 
       element={
         <CourseAccessGuard courseSlug="minecraft-modding">
           <RubyArmorMinecraft />
+        </CourseAccessGuard>
+      } 
+    />
+    <Route 
+      path="/minecraft-modding/ruby-armor" 
+      element={
+        <CourseAccessGuard courseSlug="minecraft-modding">
+          <RubyArmorMinecraft />
+        </CourseAccessGuard>
+      } 
+    />
+    <Route 
+      path="/minecraftmodding/ruby-armor" 
+      element={
+        <CourseAccessGuard courseSlug="minecraft-modding">
+          <RubyArmorMinecraft />
+        </CourseAccessGuard>
+      } 
+    />
+    <Route 
+      path="/minecraftmodding/crystal-realm" 
+      element={
+        <CourseAccessGuard courseSlug="minecraft-modding">
+          <CrystalRealmMinecraft />
         </CourseAccessGuard>
       } 
     />
