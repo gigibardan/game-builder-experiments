@@ -20,12 +20,12 @@ function App() {
       <BrowserRouter>
         <Toaster />
         <Routes>
-          <PublicRoutes />
-          <AuthRoutes />
-          <AdminRoutes />
-          <StudentRoutes />
-          <CourseOverviewRoutes />
-          <CourseSessionRoutes />
+          {PublicRoutes()}
+          {AuthRoutes()}
+          {AdminRoutes()}
+          {StudentRoutes()}
+          {CourseOverviewRoutes()}
+          {CourseSessionRoutes()}
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
