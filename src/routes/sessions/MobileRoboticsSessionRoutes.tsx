@@ -160,7 +160,23 @@ export const MobileRoboticsSessionRoutes = () => (
       } 
     />
     <Route 
+      path="/legoessentials/session1classiccarusel" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session1ClassicCarousel />
+        </CourseAccessGuard>
+      } 
+    />
+    <Route 
       path="/lego-spike-essentials/session2ferriswheel" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session2FerrisWheel />
+        </CourseAccessGuard>
+      } 
+    />
+    <Route 
+      path="/legoessentials/session2ferriswheel" 
       element={
         <CourseAccessGuard courseSlug="lego-spike-essentials">
           <Session2FerrisWheel />
@@ -176,7 +192,23 @@ export const MobileRoboticsSessionRoutes = () => (
       } 
     />
     <Route 
+      path="/legoessentials/session3cablecar" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session3CableCar />
+        </CourseAccessGuard>
+      } 
+    />
+    <Route 
       path="/lego-spike-essentials/session4twirlingteacups" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session4TwirlingTeacups />
+        </CourseAccessGuard>
+      } 
+    />
+    <Route 
+      path="/legoessentials/session4twirlingteacups" 
       element={
         <CourseAccessGuard courseSlug="lego-spike-essentials">
           <Session4TwirlingTeacups />
@@ -188,6 +220,66 @@ export const MobileRoboticsSessionRoutes = () => (
       element={
         <CourseAccessGuard courseSlug="lego-spike-essentials">
           <Session5SnackStand />
+        </CourseAccessGuard>
+      } 
+    />
+    <Route 
+      path="/legoessentials/session5snackstand" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session5SnackStand />
+        </CourseAccessGuard>
+      } 
+    />
+
+    {/* LEGO SPIKE Prime sessions */}
+    <Route 
+      path="/lego-spike-prime/robot-navigator" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-prime">
+          <Session1ClassicCarousel />
+        </CourseAccessGuard>
+      } 
+    />
+    <Route 
+      path="/lego-spike-prime/bratul-robotic" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-prime">
+          <Session2FerrisWheel />
+        </CourseAccessGuard>
+      } 
+    />
+    <Route 
+      path="/lego-spike-prime/robot-de-competitie" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-prime">
+          <Session3CableCar />
+        </CourseAccessGuard>
+      } 
+    />
+
+    {/* micro:bit Explorers sessions */}
+    <Route 
+      path="/microbit-explorers/primul-program-microbit" 
+      element={
+        <CourseAccessGuard courseSlug="microbit-explorers">
+          <Session1MicrobitArcade />
+        </CourseAccessGuard>
+      } 
+    />
+    <Route 
+      path="/microbit-explorers/jocuri-cu-leduri" 
+      element={
+        <CourseAccessGuard courseSlug="microbit-explorers">
+          <Session2MicrobitArcade />
+        </CourseAccessGuard>
+      } 
+    />
+    <Route 
+      path="/microbit-explorers/senzori-inteligenti" 
+      element={
+        <CourseAccessGuard courseSlug="microbit-explorers">
+          <Session1MicrobitArcade />
         </CourseAccessGuard>
       } 
     />
