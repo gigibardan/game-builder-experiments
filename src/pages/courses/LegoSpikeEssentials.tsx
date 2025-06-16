@@ -72,7 +72,55 @@ const LegoSpikeEssentials = () => {
       highlights: ["Senzor culoare", "Mișcare controlată", "Provocare creativă"],
       color: "orange",
       imageSrc: "/assets/images/robotica/snackstand1.webp"
-    }
+    },
+    {
+      number: 6,
+      title: "Hovering Helicopter",
+      description: "Elicopterul care plutește." ,
+      link: "/legoessentials/session6hoveringhelicopter",
+      duration: "90 min",
+      level: "Începător",
+      ageGroup: "7-9 ani",
+      highlights: ["Zbor stabil", "Control înălțime", "Provocare creativă"],
+      color: "orange",
+      imageSrc: "/assets/images/robotica/helicopter.webp"
+    },
+    {
+      number: 7,
+      title: "Taxi, Taxi!",
+      description: "Construiește un taxi care transportă pasageri.",
+      link: "/legoessentials/session7taxi",
+      duration: "90 min",
+      level: "Începător",
+      ageGroup: "7-9 ani",
+      highlights: ["Mișcare controlată", "Testare", "Programare secvențe"],
+      color: "orange",
+      imageSrc: "/assets/images/robotica/taxi.webp"
+    },
+    {
+      number: 8,
+      title: "Pinball Challenge",
+      description: "Construiește un joc de tip pinball cu ciocănel automat.",
+      link: "/legoessentials/session8pinball",
+      duration: "90 min",
+      level: "Începător",
+      ageGroup: "7-9 ani",
+      highlights: ["Mecanism de respingere", "Programare mișcare", "Provocare creativă"],
+      color: "orange",
+      imageSrc: "/assets/images/robotica/pinball2.png"
+    },
+    {
+      number: 9,
+      title: "Big Little Helper",
+      description: "Construiește un robot care ajută la activitățile de zi cu zi.",
+      link: "/legoessentials/session9biglittlehelper",
+      duration: "90 min",
+      level: "Începător",
+      ageGroup: "7-9 ani",
+      highlights: ["Programare automată", "Senzori de proximitate", "Provocare creativă"],
+      color: "orange",
+      imageSrc: "/assets/images/robotica/littlebighelper2.png"
+    },
   ];
 
   return (

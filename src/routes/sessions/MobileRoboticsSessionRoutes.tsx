@@ -27,10 +27,16 @@ import Session2FerrisWheel from '@/pages/legoessentials/Session2FerrisWheel';
 import Session3CableCar from '@/pages/legoessentials/Session3CableCar';
 import Session4TwirlingTeacups from '@/pages/legoessentials/Session4TwirlingTeacups';
 import Session5SnackStand from '@/pages/legoessentials/Session5SnackStand';
+import Session6HoveringHelicopter from '@/pages/legoessentials/Session6HoveringHelicopter';
+import Session7Taxi from '@/pages/legoessentials/Session7Taxi';
+import Session8Pinball from '@/pages/legoessentials/Session8Pinball';
+import Session9BigLittleHelper from '@/pages/legoessentials/Session9BigLittleHelper';
 
 // Microbit Arcade sessions
 import Session1MicrobitArcade from '@/pages/microbitarcade/Session1';
 import Session2MicrobitArcade from '@/pages/microbitarcade/Session2';
+import Session8 from '@/pages/frontenddev/Session8';
+import Session9 from '@/pages/frontenddev/Session9';
 
 export const MobileRoboticsSessionRoutes = () => (
   <>
@@ -231,6 +237,72 @@ export const MobileRoboticsSessionRoutes = () => (
         </CourseAccessGuard>
       } 
     />
+    <Route 
+      path="/lego-spike-essentials/session6hoveringhelicopter" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session6HoveringHelicopter />
+        </CourseAccessGuard>
+      }
+    />
+    <Route 
+      path="/legoessentials/session6hoveringhelicopter" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session6HoveringHelicopter />
+        </CourseAccessGuard>
+      } 
+    />
+    <Route 
+      path="/lego-spike-essentials/session7taxi" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session7Taxi />
+        </CourseAccessGuard>
+      }
+    />
+    <Route 
+      path="/legoessentials/session7taxi" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session7Taxi />
+        </CourseAccessGuard>
+      }
+    />
+    <Route 
+      path="/lego-spike-essentials/session8pinball" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session8Pinball />
+        </CourseAccessGuard>
+      }
+    />
+    <Route 
+      path="/legoessentials/session8pinball" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session8Pinball />
+        </CourseAccessGuard>
+      }
+    />
+    <Route 
+      path="/lego-spike-essentials/session9biglittlehelper" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session9BigLittleHelper />
+        </CourseAccessGuard>
+      }
+    />
+    <Route 
+      path="/legoessentials/session9biglittlehelper" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session9BigLittleHelper />
+        </CourseAccessGuard>
+      }
+    />
+
+
 
     {/* LEGO SPIKE Prime sessions */}
     <Route 
