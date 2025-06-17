@@ -324,7 +324,7 @@ const GDevelopLesson3 = () => {
             <br />
             Pentru a grupa evenimentele apăsăm <strong>Click dreapta</strong> pe un eveniment, apoi <strong>Add</strong> și în cele din urmă <strong>Event group</strong>.<br />
            <br />
-            De asemenea, pentru subsecțiunile <strong>Gun</strong> și <strong>Movement</strong> urmați pașii următori: <strong>Click dreapta pe Event group -> Add -> Sub Event</strong>
+            De asemenea, pentru subsecțiunile <strong>Gun</strong> și <strong>Movement</strong> urmați pașii următori: <strong>Click dreapta pe Event group {'->'} Add {'->'} Sub Event</strong>
           </InfoBox>
 
 
@@ -537,7 +537,7 @@ const GDevelopLesson3 = () => {
             <div className="border-l-4 border-blue-500 pl-4">
               <h5 className="font-medium text-blue-700">Spawn Logic:</h5>
               <ul className="list-disc list-inside ml-2 space-y-1 text-sm">
-                <li><strong>Timer:</strong> <code className="bg-blue-100 px-2 py-1 rounded">"Enemy Spawn" > 1 secunde</code></li>
+                <li><strong>Timer:</strong> <code className="bg-blue-100 px-2 py-1 rounded">"Enemy Spawn" {'>'} 1 secunde</code></li>
                 <li><strong>Condiție suplimentară:</strong> Alege un obiect random din <code className="bg-gray-100 px-1 py-0.5 rounded">SpawnObjects</code>: <code className="bg-blue-100 px-1 py-0.5 rounded">Pick a random SpawnObjects</code></li>
                 <li><strong>Acțiuni:</strong></li>
                 
@@ -555,7 +555,7 @@ const GDevelopLesson3 = () => {
               <h5 className="font-medium text-purple-700">Orientează inamicul în funcție de jucător:</h5>
               <div className="border-l-4 border-purple-500 pl-4">
                 <h5 className="font-medium text-purple-700">Pentru mișcare activă:</h5>
-                <p className="text-sm mb-2"><strong>Condiție:</strong> <code className="bg-blue-100 px-2 py-1 rounded">The X position of <strong>Enemy</strong> >= <strong>Player.X()</strong></code></p>
+                <p className="text-sm mb-2"><strong>Condiție:</strong> <code className="bg-blue-100 px-2 py-1 rounded">The X position of <strong>Enemy</strong> {'>='} <strong>Player.X()</strong></code></p>
                 <p className="text-sm"><strong>Acțiune:</strong><code className="bg-orange-100 px-2 py-1 rounded">Flip horizontally <strong>Enemy: <span className="text-green-600">yes</span></strong></code></p>
               </div>
               
@@ -691,7 +691,7 @@ const GDevelopLesson3 = () => {
               <h5 className="font-medium text-orange-700">Reset și Restart:</h5>
               <p className="text-sm mb-2">Bazat pe screenshot-ul tău, pare că sistemul folosește o logică de restart în loc de game over tradițional. Pentru un sistem complet de game over, adaugă:</p>
               <ul className="list-disc list-inside ml-2 space-y-1 text-sm">
-                <li>Verifică dacă <code className="bg-gray-100 px-1 py-0.5 rounded">Points > Best</code></li>
+                <li>Verifică dacă <code className="bg-gray-100 px-1 py-0.5 rounded">Points {'>'} Best</code></li>
                 <li>Dacă da, setează <code className="bg-gray-100 px-1 py-0.5 rounded">Best = Points</code></li>
                 <li>Actualizează textul pentru best score</li>  
                 <li>Resetează <code className="bg-gray-100 px-1 py-0.5 rounded">Points = 0</code></li>
