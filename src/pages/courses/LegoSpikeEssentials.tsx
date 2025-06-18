@@ -115,12 +115,48 @@ const LegoSpikeEssentials = () => {
       description: "Construiește un robot care ajută la activitățile de zi cu zi.",
       link: "/legoessentials/session9biglittlehelper",
       duration: "90 min",
-      level: "Începător",
+      level: "Intermediar",
       ageGroup: "7-9 ani",
       highlights: ["Programare automată", "Senzori de proximitate", "Provocare creativă"],
       color: "orange",
       imageSrc: "/assets/images/robotica/littlebighelper2.png"
     },
+    {
+      number: 10,
+      title: "Big Bus",
+      description: "Construiește un autobuz care circulă între stații.",
+      link: "/legoessentials/session10bigbus",
+      duration: "90 min",
+      level: "Intermediar",
+      ageGroup: "7-9 ani",
+      highlights: ["Mișcare controlată", "Senzor culoare", "Provocare creativă"],
+      color: "orange",
+      imageSrc: "/assets/images/robotica/bigbus1.webp"
+    },
+    {
+      number: 11,
+      title: "Robotul Care Merge",
+      description: "Construiește un robot care merge cu picioare articulate.",
+      link: "/legoessentials/session11robotpart1",
+      duration: "90 min",
+      level: "Avansat",
+      ageGroup: "7-9 ani",
+      highlights: ["Mișcare sincronizată", "Balans și echilibru", "Provocare creativă"],
+      color: "orange",
+      imageSrc: "/assets/images/robotica/WalkingRobotPart1.png"
+    },
+    {
+      number: 12,
+      title: "Robotul Care Merge - Partea 2",
+      description: "Finalizează robotul cu cap și corp.",
+      link: "/legoessentials/session12robotpart2",
+      duration: "90 min",
+      level: "Avansat",
+      ageGroup: "7-9 ani",
+      highlights: ["Personalizare", "Testare echilibru", "Provocare creativă"],
+      color: "orange",
+      imageSrc: "/assets/images/robotica/WalkingRobotPart2.png"
+    }
   ];
 
   return (

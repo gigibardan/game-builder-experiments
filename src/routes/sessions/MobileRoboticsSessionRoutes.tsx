@@ -31,6 +31,9 @@ import Session6HoveringHelicopter from '@/pages/legoessentials/Session6HoveringH
 import Session7Taxi from '@/pages/legoessentials/Session7Taxi';
 import Session8Pinball from '@/pages/legoessentials/Session8Pinball';
 import Session9BigLittleHelper from '@/pages/legoessentials/Session9BigLittleHelper';
+import Session10BigBus from '@/pages/legoessentials/Session10BigBus';
+import Session11RobotPart1 from '@/pages/legoessentials/Session11RobotPart1';
+import Session12RobotPart2 from '@/pages/legoessentials/Session12RobotPart2';
 
 // Microbit Arcade sessions
 import Session1MicrobitArcade from '@/pages/microbitarcade/Session1';
@@ -301,8 +304,54 @@ export const MobileRoboticsSessionRoutes = () => (
         </CourseAccessGuard>
       }
     />
-
-
+    <Route 
+      path="/lego-spike-essentials/session10bigbus" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session10BigBus />
+        </CourseAccessGuard>
+      }
+    />
+    <Route 
+      path="/legoessentials/session10bigbus" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session10BigBus />
+        </CourseAccessGuard>
+      }
+    />
+    <Route 
+      path="/lego-spike-essentials/session11robotpart1" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session11RobotPart1 />
+        </CourseAccessGuard>
+      }
+    />
+    <Route 
+      path="/legoessentials/session11robotpart1" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session11RobotPart1 />
+        </CourseAccessGuard>
+      }
+    />
+    <Route 
+      path="/lego-spike-essentials/session12robotpart2" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session12RobotPart2 />
+        </CourseAccessGuard>
+      }
+    />
+    <Route 
+      path="/legoessentials/session12robotpart2" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session12RobotPart2 />
+        </CourseAccessGuard>
+      }
+    />
 
     {/* LEGO SPIKE Prime sessions */}
     <Route 
