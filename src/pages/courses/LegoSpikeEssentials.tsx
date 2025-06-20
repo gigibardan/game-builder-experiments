@@ -79,7 +79,7 @@ const LegoSpikeEssentials = () => {
       description: "Elicopterul care plutește." ,
       link: "/legoessentials/session6hoveringhelicopter",
       duration: "90 min",
-      level: "Începător",
+      level: "Începător", 
       ageGroup: "7-9 ani",
       highlights: ["Zbor stabil", "Control înălțime", "Provocare creativă"],
       color: "orange",
