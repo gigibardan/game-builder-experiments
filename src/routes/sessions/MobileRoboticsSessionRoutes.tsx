@@ -34,6 +34,7 @@ import Session9BigLittleHelper from '@/pages/legoessentials/Session9BigLittleHel
 import Session10BigBus from '@/pages/legoessentials/Session10BigBus';
 import Session11RobotPart1 from '@/pages/legoessentials/Session11RobotPart1';
 import Session12RobotPart2 from '@/pages/legoessentials/Session12RobotPart2';
+import Session13Racheta from '@/pages/legoessentials/Session13Racheta';
 
 // Microbit Arcade sessions
 import Session1MicrobitArcade from '@/pages/microbitarcade/Session1';
@@ -349,6 +350,22 @@ export const MobileRoboticsSessionRoutes = () => (
       element={
         <CourseAccessGuard courseSlug="lego-spike-essentials">
           <Session12RobotPart2 />
+        </CourseAccessGuard>
+      }
+    />
+    <Route 
+      path="/lego-spike-essentials/session13racheta" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session13Racheta />
+        </CourseAccessGuard>
+      }
+    />
+    <Route 
+      path="/legoessentials/session13racheta" 
+      element={
+        <CourseAccessGuard courseSlug="lego-spike-essentials">
+          <Session13Racheta />
         </CourseAccessGuard>
       }
     />

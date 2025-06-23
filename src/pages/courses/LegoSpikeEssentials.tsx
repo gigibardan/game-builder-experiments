@@ -156,6 +156,19 @@ const LegoSpikeEssentials = () => {
       highlights: ["Personalizare", "Testare echilibru", "Provocare creativă"],
       color: "orange",
       imageSrc: "/assets/images/robotica/WalkingRobotPart2.png"
+    },
+    {
+      number: 13,
+      title: "Lansatorul de Rachete",
+      description: "Simulează o lansare reală cu numărătoare inversă.",
+      link: "/legoessentials/session13racheta",
+      duration: "90 min",
+      level: "Creativ",
+      ageGroup: "6-9 ani",
+      highlights: ["Numărătoare inversă", "Extensie afișaj", "Mișcare motor precisă"],
+      color: "sky",
+      imageSrc: "/assets/images/robotica/Racheta.png",
+      isAlternative: true
     }
   ];
 
@@ -285,13 +298,23 @@ const LegoSpikeEssentials = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {sessions.map((session, index) => (
-                  <SessionCard
-                    key={index}
-                    {...session}
-                  />
-                ))}
-              </div>
+  {sessions.map((session, index) => {
+    const isFirstAlternative = session.isAlternative && !sessions.slice(0, index).some(s => s.isAlternative);
+
+    return (
+      <React.Fragment key={index}>
+        {isFirstAlternative && (
+          <div className="col-span-full">
+            <div className="border-t-4 border-blue-500 my-8"></div>
+            <h2 className="text-3xl font-bold text-center text-blue-700 mb-4">Lecții Alternative</h2>
+          </div>
+        )}
+        <SessionCard {...session} />
+      </React.Fragment>
+    );
+  })}
+</div>
+
             </div>
           </div>
         </section>
