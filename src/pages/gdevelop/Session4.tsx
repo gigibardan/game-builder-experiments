@@ -54,13 +54,13 @@ const GDevelopRoadRider = () => {
         <section id="intro">
           <h2 className="text-2xl font-bold mb-4">🚗 Povestea jocului Road Rider</h2>
           <p className="mb-4">
-            Într-o dimineață însorită, Alex își pornește mașina roșie favorită pentru o aventură pe cea mai aglomerată 
-            autostradă din oraș. Drumul este plin de provocări - mașini care vin din față cu viteză mare, alte vehicule 
+            Într-o dimineață însorită, Alex își pornește mașina roșie favorită pentru o aventură pe cea mai aglomerată
+            autostradă din oraș. Drumul este plin de provocări - mașini care vin din față cu viteză mare, alte vehicule
             care merg mai încet și pe care trebuie să le depășești, și copaci care trec fulgerător pe margine.
           </p>
           <p className="mb-6">
-            Misiunea ta este să îl ajuți pe Alex să navigheze prin acest trafic intens! Folosește-ți reflexele rapide 
-            pentru a schimba benzile și a evita coliziunile. Cu cât rezişti mai mult timp pe drum, cu atât scorul tău 
+            Misiunea ta este să îl ajuți pe Alex să navigheze prin acest trafic intens! Folosește-ți reflexele rapide
+            pentru a schimba benzile și a evita coliziunile. Cu cât rezişti mai mult timp pe drum, cu atât scorul tău
             va fi mai mare. Dar atenție - o singură greșeală și... BOOM! 💥
           </p>
 
@@ -99,18 +99,13 @@ const GDevelopRoadRider = () => {
             </div>
 
             <div className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
-              <ImageModal 
-                src="/assets/images/gdevelop/RoadRider/Imagine-din-joc.png" 
-                alt="Previzualizare joc Road Rider" 
+              <ImageModal
+                src="/assets/images/gdevelop/RoadRider/Imagine-din-joc.png"
+                alt="Previzualizare joc Road Rider"
                 className="w-full"
               />
               <div className="p-4 flex flex-col items-center">
-                <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
-                  <a href="#testare" className="flex items-center justify-center">
-                    <Play className="h-4 w-4 mr-2" />
-                    <span>Vezi jocul final</span>
-                  </a>
-                </Button>
+               
               </div>
             </div>
           </div>
@@ -121,20 +116,28 @@ const GDevelopRoadRider = () => {
               Să începem aventura!
             </h2>
             <p className="mb-4">
-              În acest tutorial, vei învăța să creezi un joc complet de curse auto cu mecanici avansate. 
-              Vom construi totul pas cu pas, de la configurarea personajelor până la implementarea 
+              În acest tutorial, vei învăța să creezi un joc complet de curse auto cu mecanici avansate.
+              Vom construi totul pas cu pas, de la configurarea personajelor până la implementarea
               sistemului complex de trafic și efectele vizuale.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-blue-500 hover:bg-blue-600">
-                <span>Descarcă assets-urile</span>
-                <ArrowRight className="h-5 w-5 ml-2" />
+              <Button asChild size="lg" className="bg-blue-500 hover:bg-blue-600">
+                <a href="\assets\images\gdevelop\RoadRider\Road-Rider-Assets.zip" download className="flex items-center">
+                  <span>Descarcă assets-urile</span>
+                  <ArrowRight className="h-5 w-5 ml-2" />
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-blue-600 text-blue-600">
+                <a href="\assets\proiecte finale\Gdevelop\Road-Rider.json" download className="flex items-center">
+                  <span>Descarcă proiectul final</span>
+                  <ArrowRight className="h-5 w-5 ml-2" />
+                </a>
               </Button>
             </div>
             <div className="mt-4 text-sm flex items-start">
               <Lightbulb className="h-4 w-4 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
               <p>
-                <strong>Important:</strong> Pentru acest tutorial vei avea nevoie de assets-urile grafice. 
+                <strong>Important:</strong> Pentru acest tutorial vei avea nevoie de assets-urile grafice.
                 Descarcă arhiva de mai sus și extrage-o în folderul proiectului tău GDevelop.
               </p>
             </div>
@@ -144,7 +147,7 @@ const GDevelopRoadRider = () => {
         <section id="setup-proiect">
           <h2 className="text-2xl font-bold mb-4">🛠️ Setup-ul proiectului</h2>
           <p className="mb-4">
-            Să începem prin a crea un proiect nou în GDevelop și să configurăm structura de bază 
+            Să începem prin a crea un proiect nou în GDevelop și să configurăm structura de bază
             pentru jocul nostru Road Rider.
           </p>
 
@@ -168,7 +171,7 @@ const GDevelopRoadRider = () => {
           </StepItem>
 
           <InfoBox title="Organizarea assets-urilor" icon="info" variant="primary">
-            Asigură-te că toate imaginile sunt în folderul proiectului pentru a putea fi accesate ușor 
+            Asigură-te că toate imaginile sunt în folderul proiectului pentru a putea fi accesate ușor
             când vei adăuga obiectele în scenă.
           </InfoBox>
         </section>
@@ -176,14 +179,14 @@ const GDevelopRoadRider = () => {
         <section id="personaje">
           <h2 className="text-2xl font-bold mb-4">🎮 Personajele jocului</h2>
           <p className="mb-4">
-            Să vedem toate obiectele de care avem nevoie pentru jocul nostru. Fiecare are un rol specific 
+            Să vedem toate obiectele de care avem nevoie pentru jocul nostru. Fiecare are un rol specific
             în crearea experienței complete de joc.
           </p>
 
           <div className="mb-6">
-            <ImageModal 
-              src="/assets/images/gdevelop/RoadRider/sceneObjscts-personajele.png" 
-              alt="Lista personajelor din joc" 
+            <ImageModal
+              src="/assets/images/gdevelop/RoadRider/sceneObjscts-personajele.png"
+              alt="Lista personajelor din joc"
               caption="Lista completă a obiectelor din jocul Road Rider"
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -293,7 +296,7 @@ const GDevelopRoadRider = () => {
         <section id="configurarea-player">
           <h2 className="text-2xl font-bold mb-4">🚗 Configurarea Player-ului</h2>
           <p className="mb-4">
-            Să începem cu configurarea mașinii jucătorului. Aceasta va fi mașina roșie pe care o controlezi 
+            Să începem cu configurarea mașinii jucătorului. Aceasta va fi mașina roșie pe care o controlezi
             pentru a evita traficul.
           </p>
 
@@ -310,9 +313,9 @@ const GDevelopRoadRider = () => {
           </StepItem>
 
           <div className="mb-6">
-            <ImageModal 
-              src="/assets/images/gdevelop/RoadRider/behavior-cars.png" 
-              alt="Configurarea comportamentului TopDownMovement" 
+            <ImageModal
+              src="/assets/images/gdevelop/RoadRider/behavior-cars.png"
+              alt="Configurarea comportamentului TopDownMovement"
               caption="Adăugarea comportamentului TopDownMovement pentru Player"
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -343,7 +346,7 @@ const GDevelopRoadRider = () => {
         <section id="configurarea-masini">
           <h2 className="text-2xl font-bold mb-4">🚙 Configurarea mașinilor de trafic</h2>
           <p className="mb-4">
-            Acum să adăugăm cele 4 tipuri de mașini care vor forma traficul pe autostradă. 
+            Acum să adăugăm cele 4 tipuri de mașini care vor forma traficul pe autostradă.
             Fiecare va avea același comportament de bază, dar viteze diferite.
           </p>
 
@@ -373,7 +376,7 @@ const GDevelopRoadRider = () => {
           </StepItem>
 
           <InfoBox title="De ce același comportament?" icon="info" variant="info">
-            Toate mașinile au același comportament de bază, dar vitezele lor vor fi controlate prin cod. 
+            Toate mașinile au același comportament de bază, dar vitezele lor vor fi controlate prin cod.
             Vom folosi forțe pentru a le mișca cu viteze diferite pe axa Y.
           </InfoBox>
 
@@ -429,7 +432,7 @@ const GDevelopRoadRider = () => {
           </StepItem>
 
           <InfoBox title="Rolul copacilor" icon="star" variant="secondary">
-            Copacii nu sunt doar decorativi! Prin mișcarea lor de sus în jos, ei creează iluzia de viteză 
+            Copacii nu sunt doar decorativi! Prin mișcarea lor de sus în jos, ei creează iluzia de viteză
             și ajută jucătorul să simtă că se deplasează rapid pe autostradă.
           </InfoBox>
         </section>
@@ -446,9 +449,9 @@ const GDevelopRoadRider = () => {
 
           <StepItem number={2} title="Configurează aspectul textului">
             <div className="mb-4">
-              <ImageModal 
-                src="/assets/images/gdevelop/RoadRider/scor-text.png" 
-                alt="Configurarea obiectului text pentru scor" 
+              <ImageModal
+                src="/assets/images/gdevelop/RoadRider/scor-text.png"
+                alt="Configurarea obiectului text pentru scor"
                 caption="Setările pentru obiectul text care afișează scorul"
                 className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
               />
@@ -470,7 +473,7 @@ const GDevelopRoadRider = () => {
           </StepItem>
 
           <InfoBox title="Design UI" icon="info" variant="primary">
-            Scorul trebuie să fie vizibil permanent dar să nu distragă atenția de la gameplay. 
+            Scorul trebuie să fie vizibil permanent dar să nu distragă atenția de la gameplay.
             O poziție în colțul din stânga sus sau dreapta sus este ideală.
           </InfoBox>
         </section>
@@ -478,7 +481,7 @@ const GDevelopRoadRider = () => {
         <section id="configurarea-explosie">
           <h2 className="text-2xl font-bold mb-4">💥 Configurarea exploziei</h2>
           <p className="mb-4">
-            Să creăm efectul spectacular de explozie care va apărea când mașina jucătorului 
+            Să creăm efectul spectacular de explozie care va apărea când mașina jucătorului
             lovește o altă mașină din trafic.
           </p>
 
@@ -488,9 +491,9 @@ const GDevelopRoadRider = () => {
 
           <StepItem number={2} title="Configurează animația exploziei">
             <div className="mb-4">
-              <ImageModal 
-                src="/assets/images/gdevelop/RoadRider/explosion.png" 
-                alt="Configurarea animației de explozie" 
+              <ImageModal
+                src="/assets/images/gdevelop/RoadRider/explosion.png"
+                alt="Configurarea animației de explozie"
                 caption="Cele 7 frame-uri ale animației de explozie"
                 className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
               />
@@ -512,7 +515,7 @@ const GDevelopRoadRider = () => {
           </StepItem>
 
           <InfoBox title="Animația exploziei" icon="star" variant="warning">
-            Explozia va fi creată automat la poziția coliziunii și va dispărea după ce 
+            Explozia va fi creată automat la poziția coliziunii și va dispărea după ce
             animația se termină. Acest efect adaugă impact vizual momentului pierderii.
           </InfoBox>
         </section>
@@ -520,7 +523,7 @@ const GDevelopRoadRider = () => {
         <section id="codul-jocului">
           <h2 className="text-2xl font-bold mb-4">🧠 Codul jocului - Logica principală</h2>
           <p className="mb-4">
-            Acum că avem toate obiectele configurate, să implementăm logica jocului pas cu pas. 
+            Acum că avem toate obiectele configurate, să implementăm logica jocului pas cu pas.
             Vom împărți codul în secțiuni logice pentru o înțelegere mai bună.
           </p>
 
@@ -547,7 +550,7 @@ const GDevelopRoadRider = () => {
           </div>
 
           <InfoBox title="Organizarea codului" icon="star" variant="secondary">
-            În GDevelop, vom organiza codul în <strong>Events</strong> (evenimente). Fiecare eveniment 
+            În GDevelop, vom organiza codul în <strong>Events</strong> (evenimente). Fiecare eveniment
             are condiții și acțiuni. Vom grupa evenimentele pe funcționalități pentru claritate.
           </InfoBox>
         </section>
@@ -559,9 +562,9 @@ const GDevelopRoadRider = () => {
           </p>
 
           <div className="mb-6">
-            <ImageModal 
-              src="/assets/images/gdevelop/RoadRider/part1.png" 
-              alt="Codul pentru timere și camera" 
+            <ImageModal
+              src="/assets/images/gdevelop/RoadRider/part1.png"
+              alt="Codul pentru timere și camera"
               caption="Configurarea inițială: timere, camera și controlul player-ului"
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -625,7 +628,7 @@ const GDevelopRoadRider = () => {
           </StepItem>
 
           <InfoBox title="De ce rotația?" icon="star" variant="warning">
-            Rotația ușoară a mașinii când se mișcă stânga/dreapta face controlul să pară mai natural, 
+            Rotația ușoară a mașinii când se mișcă stânga/dreapta face controlul să pară mai natural,
             ca și cum mașina chiar schimbă benzile pe o autostradă reală.
           </InfoBox>
         </section>
@@ -633,14 +636,14 @@ const GDevelopRoadRider = () => {
         <section id="sistemul-trafic">
           <h2 className="text-2xl font-bold mb-4">🚗 Partea 3: Sistemul de trafic</h2>
           <p className="mb-4">
-            Acum implementăm partea cea mai complexă - sistemul care generează mașinile de trafic 
+            Acum implementăm partea cea mai complexă - sistemul care generează mașinile de trafic
             în cele două grupe cu viteze diferite.
           </p>
 
           <div className="mb-6">
-            <ImageModal 
-              src="/assets/images/gdevelop/RoadRider/part2.png" 
-              alt="Codul pentru sistemul de trafic" 
+            <ImageModal
+              src="/assets/images/gdevelop/RoadRider/part2.png"
+              alt="Codul pentru sistemul de trafic"
               caption="Logica complexă de spawn pentru cele 4 tipuri de mașini"
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -661,7 +664,7 @@ const GDevelopRoadRider = () => {
 
           <StepItem number={2} title="Sub-evenimente pentru LeftGroup (CarLeft)">
             <p>Adaugă 2 sub-evenimente pentru spawn-ul mașinilor lente:</p>
-            
+
             <div className="mt-3 space-y-4">
               <div className="bg-gray-50 p-4 rounded-lg">
                 <h5 className="font-semibold mb-2">CarLeft = 1 → BlueCar</h5>
@@ -670,7 +673,7 @@ const GDevelopRoadRider = () => {
                   <li><strong>Acțiune:</strong> Create object BlueCar at position 405;-500 (layer: Base layer)</li>
                 </ul>
               </div>
-              
+
               <div className="bg-gray-50 p-4 rounded-lg">
                 <h5 className="font-semibold mb-2">CarLeft = 2 → GrayCar</h5>
                 <ul className="list-disc list-inside space-y-1 text-sm">
@@ -683,7 +686,7 @@ const GDevelopRoadRider = () => {
 
           <StepItem number={3} title="Sub-evenimente pentru RightGroup (CarRight)">
             <p>Adaugă 2 sub-evenimente pentru spawn-ul mașinilor rapide:</p>
-            
+
             <div className="mt-3 space-y-4">
               <div className="bg-pink-50 p-4 rounded-lg">
                 <h5 className="font-semibold mb-2">CarRight = 1 → GreenCar</h5>
@@ -692,7 +695,7 @@ const GDevelopRoadRider = () => {
                   <li><strong>Acțiune:</strong> Create object GreenCar at position 660;-500 (layer: Base layer)</li>
                 </ul>
               </div>
-              
+
               <div className="bg-pink-50 p-4 rounded-lg">
                 <h5 className="font-semibold mb-2">CarRight = 2 → PinkCar</h5>
                 <ul className="list-disc list-inside space-y-1 text-sm">
@@ -720,9 +723,9 @@ const GDevelopRoadRider = () => {
           </p>
 
           <div className="mb-6">
-            <ImageModal 
-              src="/assets/images/gdevelop/RoadRider/part3.png" 
-              alt="Codul pentru copacii decorativi" 
+            <ImageModal
+              src="/assets/images/gdevelop/RoadRider/part3.png"
+              alt="Codul pentru copacii decorativi"
               caption="Sistemul de spawn și mișcare pentru copacii decorativi"
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -771,9 +774,9 @@ const GDevelopRoadRider = () => {
           </p>
 
           <div className="mb-6">
-            <ImageModal 
-              src="/assets/images/gdevelop/RoadRider/part4.png" 
-              alt="Codul pentru limite și coliziuni" 
+            <ImageModal
+              src="/assets/images/gdevelop/RoadRider/part4.png"
+              alt="Codul pentru limite și coliziuni"
               caption="Limitele player-ului și detectarea coliziunilor pentru Game Over"
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -781,20 +784,20 @@ const GDevelopRoadRider = () => {
 
           <StepItem number={1} title="Limitele autostrazii">
             <p>Adaugă evenimente pentru a împiedica Player-ul să iasă de pe autostradă:</p>
-            
+
             <div className="mt-3 space-y-4">
               <div className="bg-red-50 p-4 rounded-lg">
                 <h5 className="font-semibold mb-2">Limita stângă</h5>
                 <ul className="list-disc list-inside space-y-1 text-sm">
-<li><strong>Condiție:</strong> The X position of Player &lt; 330</li>
+                  <li><strong>Condiție:</strong> The X position of Player &lt; 330</li>
                   <li><strong>Acțiune:</strong> Add to Player an instant force of 200 p/s on X axis and 0 p/s on Y axis</li>
                 </ul>
               </div>
-              
+
               <div className="bg-red-50 p-4 rounded-lg">
                 <h5 className="font-semibold mb-2">Limita dreaptă</h5>
                 <ul className="list-disc list-inside space-y-1 text-sm">
-<li><strong>Condiție:</strong> The X position of Player &gt; 870</li>
+                  <li><strong>Condiție:</strong> The X position of Player &gt; 870</li>
                   <li><strong>Acțiune:</strong> Add to Player an instant force of -200 p/s on X axis and 0 p/s on Y axis</li>
                 </ul>
               </div>
@@ -831,9 +834,9 @@ const GDevelopRoadRider = () => {
           </p>
 
           <div className="mb-6">
-            <ImageModal 
-              src="/assets/images/gdevelop/RoadRider/part5.png" 
-              alt="Codul pentru scor și curățenie" 
+            <ImageModal
+              src="/assets/images/gdevelop/RoadRider/part5.png"
+              alt="Codul pentru scor și curățenie"
               caption="Sistemul de punctaj și ștergerea obiectelor care ies din ecran"
               className="rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             />
@@ -892,15 +895,15 @@ const GDevelopRoadRider = () => {
         <section id="testare">
           <h2 className="text-2xl font-bold mb-4">🎮 Testarea și îmbunătățirile jocului</h2>
           <p className="mb-4">
-            Acum că ai implementat tot codul, să testezi jocul și să vezi cum funcționează! 
+            Acum că ai implementat tot codul, să testezi jocul și să vezi cum funcționează!
             Apasă butonul de Preview în GDevelop pentru a rula jocul.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             <div className="bg-white rounded-lg overflow-hidden shadow-md border border-gray-200">
-              <ImageModal 
-                src="/assets/images/gdevelop/RoadRider/Imagine-din-joc.png" 
-                alt="Jocul Road Rider finalizat" 
+              <ImageModal
+                src="/assets/images/gdevelop/RoadRider/Imagine-din-joc.png"
+                alt="Jocul Road Rider finalizat"
                 className="w-full"
               />
               <div className="p-4">
@@ -908,10 +911,7 @@ const GDevelopRoadRider = () => {
                 <p className="text-sm text-gray-600 mb-3">
                   Evită mașinile de trafic și acumulează cât mai multe puncte!
                 </p>
-                <Button className="w-full bg-green-600 hover:bg-green-700">
-                  <Play className="h-4 w-4 mr-2" />
-                  <span>Testează jocul</span>
-                </Button>
+                
               </div>
             </div>
 
@@ -948,7 +948,7 @@ const GDevelopRoadRider = () => {
 
           <Challenge title="🚀 Provocări pentru îmbunătățirea jocului" difficulty="medium">
             <p>După ce ai terminat jocul de bază, încearcă aceste îmbunătățiri pentru a-l face și mai captivant:</p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
               <div className="bg-white rounded-lg border p-4 flex items-start">
                 <div className="bg-purple-100 rounded-full w-10 h-10 flex items-center justify-center text-xl mr-3 shrink-0">
@@ -959,7 +959,7 @@ const GDevelopRoadRider = () => {
                   <p className="text-sm text-gray-600">Importă sunete pentru motor, frânare, explozie și muzică de fundal energizantă.</p>
                 </div>
               </div>
-              
+
               <div className="bg-white rounded-lg border p-4 flex items-start">
                 <div className="bg-blue-100 rounded-full w-10 h-10 flex items-center justify-center text-xl mr-3 shrink-0">
                   ⚡
@@ -969,7 +969,7 @@ const GDevelopRoadRider = () => {
                   <p className="text-sm text-gray-600">Fă ca viteza și frecvența mașinilor să crească pe măsură ce scorul se mărește.</p>
                 </div>
               </div>
-              
+
               <div className="bg-white rounded-lg border p-4 flex items-start">
                 <div className="bg-yellow-100 rounded-full w-10 h-10 flex items-center justify-center text-xl mr-3 shrink-0">
                   🏆
@@ -979,7 +979,7 @@ const GDevelopRoadRider = () => {
                   <p className="text-sm text-gray-600">Salvează cel mai bun scor și adaugă medalii pentru diferite realizări.</p>
                 </div>
               </div>
-              
+
               <div className="bg-white rounded-lg border p-4 flex items-start">
                 <div className="bg-green-100 rounded-full w-10 h-10 flex items-center justify-center text-xl mr-3 shrink-0">
                   🎁
@@ -999,7 +999,7 @@ const GDevelopRoadRider = () => {
                   <p className="text-sm text-gray-600">Creează moduri noapte/zi, vreme rea, sau benzi de circulație diferite.</p>
                 </div>
               </div>
-              
+
               <div className="bg-white rounded-lg border p-4 flex items-start">
                 <div className="bg-orange-100 rounded-full w-10 h-10 flex items-center justify-center text-xl mr-3 shrink-0">
                   🚗
@@ -1038,10 +1038,10 @@ const GDevelopRoadRider = () => {
         <section className="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg border border-green-200">
           <h2 className="text-2xl font-bold mb-3">🏁 Felicitări pentru finalizare!</h2>
           <p className="mb-4">
-            Ai creat cu succes jocul "Road Rider" - un infinite runner captivant cu mecanici complexe! 
+            Ai creat cu succes jocul "Road Rider" - un infinite runner captivant cu mecanici complexe!
             Acest proiect ți-a permis să înveți și să aplici concepte avansate de dezvoltare de jocuri în GDevelop:
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             <div className="bg-white p-4 rounded-lg">
               <h4 className="font-bold mb-2 flex items-center">
@@ -1054,7 +1054,7 @@ const GDevelopRoadRider = () => {
                 <li>• Sisteme de spawn aleatorii</li>
               </ul>
             </div>
-            
+
             <div className="bg-white p-4 rounded-lg">
               <h4 className="font-bold mb-2 flex items-center">
                 <Car className="h-5 w-5 text-green-600 mr-2" />
@@ -1066,7 +1066,7 @@ const GDevelopRoadRider = () => {
                 <li>• Sisteme de punctaj</li>
               </ul>
             </div>
-            
+
             <div className="bg-white p-4 rounded-lg">
               <h4 className="font-bold mb-2 flex items-center">
                 <Star className="h-5 w-5 text-purple-600 mr-2" />
@@ -1097,7 +1097,7 @@ const GDevelopRoadRider = () => {
                 <span>Continuă cu următoarea lecție</span>
               </a>
             </Button>
-            
+
             <Button asChild size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
               <a href="/courses/gdevelop" className="flex items-center">
                 <Trophy className="h-5 w-5 mr-2" />
@@ -1108,7 +1108,7 @@ const GDevelopRoadRider = () => {
 
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
-              🎊 Ești pe drumul cel bun pentru a deveni un developer de jocuri adevărat! 
+              🎊 Ești pe drumul cel bun pentru a deveni un developer de jocuri adevărat!
               Continuă să practici și să experimentezi!
             </p>
           </div>
