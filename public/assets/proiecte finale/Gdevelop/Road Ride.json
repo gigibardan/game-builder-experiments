@@ -1,0 +1,1907 @@
+{
+  "firstLayout": "",
+  "gdVersion": {
+    "build": 226,
+    "major": 5,
+    "minor": 5,
+    "revision": 0
+  },
+  "properties": {
+    "adaptGameResolutionAtRuntime": true,
+    "antialiasingMode": "MSAA",
+    "antialisingEnabledOnMobile": false,
+    "folderProject": false,
+    "orientation": "landscape",
+    "packageName": "com.example.gamename",
+    "pixelsRounding": false,
+    "projectUuid": "a51295c1-b5b6-40ac-8592-8fc33203ecf2",
+    "scaleMode": "linear",
+    "sizeOnStartupMode": "adaptWidth",
+    "templateSlug": "",
+    "version": "1.0.0",
+    "name": "Road Ride",
+    "description": "",
+    "author": "",
+    "windowWidth": 1280,
+    "windowHeight": 720,
+    "latestCompilationDirectory": "",
+    "maxFPS": 60,
+    "minFPS": 20,
+    "verticalSync": false,
+    "platformSpecificAssets": {},
+    "loadingScreen": {
+      "backgroundColor": 0,
+      "backgroundFadeInDuration": 0.2,
+      "backgroundImageResourceName": "",
+      "gdevelopLogoStyle": "light",
+      "logoAndProgressFadeInDuration": 0.2,
+      "logoAndProgressLogoFadeInDelay": 0,
+      "minDuration": 1.5,
+      "progressBarColor": 16777215,
+      "progressBarHeight": 20,
+      "progressBarMaxWidth": 200,
+      "progressBarMinWidth": 40,
+      "progressBarWidthPercent": 30,
+      "showGDevelopSplash": true,
+      "showProgressBar": true
+    },
+    "watermark": {
+      "placement": "bottom-left",
+      "showWatermark": true
+    },
+    "authorIds": [],
+    "authorUsernames": [],
+    "categories": [],
+    "playableDevices": [],
+    "extensionProperties": [],
+    "platforms": [
+      {
+        "name": "GDevelop JS platform"
+      }
+    ],
+    "currentPlatform": "GDevelop JS platform"
+  },
+  "resources": {
+    "resources": [
+      {
+        "file": "assets/blue-car.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\blue-car.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "assets/pink-car.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\pink-car.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "assets/green-car.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\green-car.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "assets/gray-car.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\gray-car.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "assets/car.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\car.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "assets/tree.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\tree.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Explosion_1.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Explosion_1.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Explosion_2.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Explosion_2.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Explosion_3.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Explosion_3.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Explosion_4.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Explosion_4.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Explosion_5.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Explosion_5.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Explosion_6.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Explosion_6.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Explosion_7.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Explosion_7.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "assets/highway.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\highway.png",
+        "smoothed": true,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Explosion 3.aac",
+        "kind": "audio",
+        "metadata": "",
+        "name": "97e28ff9efe9cca3975d186f4921af8c45a1d3dcdec61c1182de46c259ef6dea_Explosion 3.aac",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Western FPS 2D/Sound/97e28ff9efe9cca3975d186f4921af8c45a1d3dcdec61c1182de46c259ef6dea_Explosion 3.aac",
+          "name": "gdevelop-asset-store"
+        }
+      }
+    ],
+    "resourceFolders": []
+  },
+  "objects": [],
+  "objectsFolderStructure": {
+    "folderName": "__ROOT"
+  },
+  "objectsGroups": [],
+  "variables": [],
+  "layouts": [
+    {
+      "b": 33,
+      "disableInputWhenNotFocused": true,
+      "mangledName": "Game",
+      "name": "Game",
+      "r": 126,
+      "standardSortMethod": true,
+      "stopSoundsOnStartup": true,
+      "title": "",
+      "v": 211,
+      "uiSettings": {
+        "grid": false,
+        "gridType": "rectangular",
+        "gridWidth": 32,
+        "gridHeight": 32,
+        "gridOffsetX": 0,
+        "gridOffsetY": 0,
+        "gridColor": 10401023,
+        "gridAlpha": 0.8,
+        "snap": false,
+        "zoomFactor": 0.3553434558816986,
+        "windowMask": false
+      },
+      "objectsGroups": [
+        {
+          "name": "LeftGroup",
+          "objects": [
+            {
+              "name": "BlueCar"
+            },
+            {
+              "name": "GrayCar"
+            }
+          ]
+        },
+        {
+          "name": "RightGroup",
+          "objects": [
+            {
+              "name": "GreenCar"
+            },
+            {
+              "name": "PinkCar"
+            }
+          ]
+        },
+        {
+          "name": "Traffic",
+          "objects": [
+            {
+              "name": "BlueCar"
+            },
+            {
+              "name": "GreenCar"
+            },
+            {
+              "name": "PinkCar"
+            },
+            {
+              "name": "GrayCar"
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "name": "CarLeft",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "CarRight",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "scor2",
+          "type": "number",
+          "value": 0
+        }
+      ],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Player",
+          "persistentUuid": "b83de8d1-d8f0-45c5-bd94-9da7bb07ca20",
+          "width": 0,
+          "x": 534,
+          "y": 470,
+          "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 1,
+          "height": 721,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Highway",
+          "persistentUuid": "dcb6f4bf-aef9-49b5-a666-c910f9dd1000",
+          "width": 658,
+          "x": 269,
+          "y": 0,
+          "zOrder": 0,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "scor",
+          "persistentUuid": "e62f32b4-f05d-4d86-b51e-06a4b20c3ad6",
+          "width": 0,
+          "x": 20,
+          "y": 4,
+          "zOrder": 2,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
+      "objects": [
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "BlueCar",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [
+            {
+              "name": "TopDownMovement",
+              "type": "TopDownMovementBehavior::TopDownMovementBehavior",
+              "acceleration": 400,
+              "allowDiagonals": false,
+              "angleOffset": 0,
+              "angularMaxSpeed": 180,
+              "customIsometryAngle": 30,
+              "deceleration": 800,
+              "ignoreDefaultControls": true,
+              "maxSpeed": 200,
+              "movementAngleOffset": 0,
+              "rotateObject": true,
+              "viewpoint": "TopDown"
+            }
+          ],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\blue-car.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 39.5,
+                        "y": 80
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 80,
+                            "y": 0
+                          },
+                          {
+                            "x": 80,
+                            "y": 160
+                          },
+                          {
+                            "x": 0,
+                            "y": 160
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "PinkCar",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [
+            {
+              "name": "TopDownMovement",
+              "type": "TopDownMovementBehavior::TopDownMovementBehavior",
+              "acceleration": 400,
+              "allowDiagonals": false,
+              "angleOffset": 0,
+              "angularMaxSpeed": 180,
+              "customIsometryAngle": 30,
+              "deceleration": 800,
+              "ignoreDefaultControls": true,
+              "maxSpeed": 200,
+              "movementAngleOffset": 0,
+              "rotateObject": true,
+              "viewpoint": "TopDown"
+            }
+          ],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\pink-car.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 40,
+                        "y": 80.5
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 80,
+                            "y": 0
+                          },
+                          {
+                            "x": 80,
+                            "y": 160
+                          },
+                          {
+                            "x": 0,
+                            "y": 160
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "GreenCar",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [
+            {
+              "name": "TopDownMovement",
+              "type": "TopDownMovementBehavior::TopDownMovementBehavior",
+              "acceleration": 400,
+              "allowDiagonals": false,
+              "angleOffset": 0,
+              "angularMaxSpeed": 180,
+              "customIsometryAngle": 30,
+              "deceleration": 800,
+              "ignoreDefaultControls": true,
+              "maxSpeed": 200,
+              "movementAngleOffset": 0,
+              "rotateObject": true,
+              "viewpoint": "TopDown"
+            }
+          ],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\green-car.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 39.5,
+                        "y": 79.5
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 80,
+                            "y": 0
+                          },
+                          {
+                            "x": 80,
+                            "y": 160
+                          },
+                          {
+                            "x": 0,
+                            "y": 160
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "GrayCar",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [
+            {
+              "name": "TopDownMovement",
+              "type": "TopDownMovementBehavior::TopDownMovementBehavior",
+              "acceleration": 400,
+              "allowDiagonals": false,
+              "angleOffset": 0,
+              "angularMaxSpeed": 180,
+              "customIsometryAngle": 30,
+              "deceleration": 800,
+              "ignoreDefaultControls": true,
+              "maxSpeed": 200,
+              "movementAngleOffset": 0,
+              "rotateObject": true,
+              "viewpoint": "TopDown"
+            }
+          ],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\gray-car.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 39.5,
+                        "y": 79.5
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 80,
+                            "y": 0
+                          },
+                          {
+                            "x": 80,
+                            "y": 160
+                          },
+                          {
+                            "x": 0,
+                            "y": 160
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "Player",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [
+            {
+              "name": "TopDownMovement",
+              "type": "TopDownMovementBehavior::TopDownMovementBehavior",
+              "rotateObject": false,
+              "acceleration": 400,
+              "allowDiagonals": false,
+              "angleOffset": 0,
+              "angularMaxSpeed": 180,
+              "customIsometryAngle": 30,
+              "deceleration": 400,
+              "ignoreDefaultControls": true,
+              "maxSpeed": 200,
+              "movementAngleOffset": 0,
+              "viewpoint": "TopDown"
+            }
+          ],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\car.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 40,
+                        "y": 79.5
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 80,
+                            "y": 0
+                          },
+                          {
+                            "x": 80,
+                            "y": 159
+                          },
+                          {
+                            "x": 0,
+                            "y": 159
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "Tree",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [
+            {
+              "name": "TopDownMovement",
+              "type": "TopDownMovementBehavior::TopDownMovementBehavior",
+              "acceleration": 400,
+              "allowDiagonals": false,
+              "angleOffset": 0,
+              "angularMaxSpeed": 180,
+              "customIsometryAngle": 30,
+              "deceleration": 800,
+              "ignoreDefaultControls": true,
+              "maxSpeed": 200,
+              "movementAngleOffset": 0,
+              "rotateObject": false,
+              "viewpoint": "TopDown"
+            }
+          ],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\tree.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 150,
+                            "y": 0
+                          },
+                          {
+                            "x": 150,
+                            "y": 150
+                          },
+                          {
+                            "x": 0,
+                            "y": 150
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "Explosion",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.1,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\Explosion_1.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 64,
+                            "y": 73
+                          },
+                          {
+                            "x": 131,
+                            "y": 73
+                          },
+                          {
+                            "x": 131,
+                            "y": 140
+                          },
+                          {
+                            "x": 64,
+                            "y": 140
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\Explosion_2.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 64,
+                            "y": 73
+                          },
+                          {
+                            "x": 131,
+                            "y": 73
+                          },
+                          {
+                            "x": 131,
+                            "y": 140
+                          },
+                          {
+                            "x": 64,
+                            "y": 140
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\Explosion_3.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 64,
+                            "y": 73
+                          },
+                          {
+                            "x": 131,
+                            "y": 73
+                          },
+                          {
+                            "x": 131,
+                            "y": 140
+                          },
+                          {
+                            "x": 64,
+                            "y": 140
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\Explosion_4.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 64,
+                            "y": 73
+                          },
+                          {
+                            "x": 131,
+                            "y": 73
+                          },
+                          {
+                            "x": 131,
+                            "y": 140
+                          },
+                          {
+                            "x": 64,
+                            "y": 140
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\Explosion_5.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 64,
+                            "y": 73
+                          },
+                          {
+                            "x": 131,
+                            "y": 73
+                          },
+                          {
+                            "x": 131,
+                            "y": 140
+                          },
+                          {
+                            "x": 64,
+                            "y": 140
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\Explosion_6.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 64,
+                            "y": 73
+                          },
+                          {
+                            "x": 131,
+                            "y": 73
+                          },
+                          {
+                            "x": 131,
+                            "y": 140
+                          },
+                          {
+                            "x": 64,
+                            "y": 140
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\Explosion_7.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 64,
+                            "y": 73
+                          },
+                          {
+                            "x": 131,
+                            "y": 73
+                          },
+                          {
+                            "x": 131,
+                            "y": 140
+                          },
+                          {
+                            "x": 64,
+                            "y": 140
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "Highway",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\highway.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 535,
+                            "y": 0
+                          },
+                          {
+                            "x": 535,
+                            "y": 545
+                          },
+                          {
+                            "x": 0,
+                            "y": 545
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "assetStoreId": "",
+          "bold": false,
+          "italic": false,
+          "name": "scor",
+          "smoothed": true,
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "string": "Scor: 0",
+          "font": "",
+          "textAlignment": "left",
+          "characterSize": 40,
+          "color": {
+            "b": 10,
+            "g": 73,
+            "r": 44
+          },
+          "content": {
+            "bold": false,
+            "isOutlineEnabled": true,
+            "isShadowEnabled": false,
+            "italic": false,
+            "outlineColor": "25;43;6",
+            "outlineThickness": 5,
+            "shadowAngle": 90,
+            "shadowBlurRadius": 2,
+            "shadowColor": "0;0;0",
+            "shadowDistance": 4,
+            "shadowOpacity": 127,
+            "smoothed": true,
+            "underlined": false,
+            "text": "Scor: 0",
+            "font": "",
+            "textAlignment": "left",
+            "verticalTextAlignment": "top",
+            "characterSize": 40,
+            "color": "44;73;10"
+          }
+        }
+      ],
+      "objectsFolderStructure": {
+        "folderName": "__ROOT",
+        "children": [
+          {
+            "objectName": "BlueCar"
+          },
+          {
+            "objectName": "PinkCar"
+          },
+          {
+            "objectName": "GreenCar"
+          },
+          {
+            "objectName": "GrayCar"
+          },
+          {
+            "objectName": "Player"
+          },
+          {
+            "objectName": "scor"
+          },
+          {
+            "objectName": "Tree"
+          },
+          {
+            "objectName": "Explosion"
+          },
+          {
+            "objectName": "Highway"
+          }
+        ]
+      },
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "DepartScene"
+              },
+              "parameters": [
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "ResetTimer"
+              },
+              "parameters": [
+                "",
+                "\"TreeTimer\""
+              ]
+            },
+            {
+              "type": {
+                "value": "ResetTimer"
+              },
+              "parameters": [
+                "",
+                "\"TrafficTimer\""
+              ]
+            }
+          ]
+        },
+        {
+          "disabled": true,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": []
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "CentreCamera"
+              },
+              "parameters": [
+                "",
+                "Highway",
+                "",
+                "",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "KeyFromTextPressed"
+              },
+              "parameters": [
+                "",
+                "\"Left\""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "TopDownMovementBehavior::SimulateLeftKey"
+              },
+              "parameters": [
+                "Player",
+                "TopDownMovement"
+              ]
+            },
+            {
+              "type": {
+                "value": "RotateTowardAngle"
+              },
+              "parameters": [
+                "Player",
+                "-30",
+                "60",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "KeyFromTextPressed"
+              },
+              "parameters": [
+                "",
+                "\"Right\""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "RotateTowardAngle"
+              },
+              "parameters": [
+                "Player",
+                "30",
+                "60",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "TopDownMovementBehavior::SimulateRightKey"
+              },
+              "parameters": [
+                "Player",
+                "TopDownMovement"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": true,
+                "value": "KeyFromTextPressed"
+              },
+              "parameters": [
+                "",
+                "\"Right\""
+              ]
+            },
+            {
+              "type": {
+                "inverted": true,
+                "value": "KeyFromTextPressed"
+              },
+              "parameters": [
+                "",
+                "\"Left\""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "RotateTowardAngle"
+              },
+              "parameters": [
+                "Player",
+                "0",
+                "90",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CompareTimer"
+              },
+              "parameters": [
+                "",
+                "\"TrafficTimer\"",
+                ">=",
+                "3"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "CarLeft",
+                "=",
+                "RandomInRange(1, 2)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "CarRight",
+                "=",
+                "RandomInRange(1, 2)"
+              ]
+            },
+            {
+              "type": {
+                "value": "ResetTimer"
+              },
+              "parameters": [
+                "",
+                "\"TrafficTimer\""
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "CarLeft",
+                    "=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "BlueCar",
+                    "405",
+                    "-500",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "CarLeft",
+                    "=",
+                    "2"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "GrayCar",
+                    "535",
+                    "-500",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "CarRight",
+                    "=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "GreenCar",
+                    "660",
+                    "-500",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "CarRight",
+                    "=",
+                    "2"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "PinkCar",
+                    "795",
+                    "-500",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CompareTimer"
+              },
+              "parameters": [
+                "",
+                "\"TreeTimer\"",
+                ">=",
+                "1.5"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Create"
+              },
+              "parameters": [
+                "",
+                "Tree",
+                "65",
+                "-500",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Create"
+              },
+              "parameters": [
+                "",
+                "Tree",
+                "1055",
+                "-300",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ResetTimer"
+              },
+              "parameters": [
+                "",
+                "\"TreeTimer\""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "AddForceXY"
+              },
+              "parameters": [
+                "Tree",
+                "0",
+                "300",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "AddForceXY"
+              },
+              "parameters": [
+                "LeftGroup",
+                "0",
+                "150",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "AddForceXY"
+              },
+              "parameters": [
+                "RightGroup",
+                "0",
+                "400",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ChangePlan"
+              },
+              "parameters": [
+                "Traffic",
+                "=",
+                "2"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "PosX"
+              },
+              "parameters": [
+                "Player",
+                "<",
+                "310"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "AddForceXY"
+              },
+              "parameters": [
+                "Player",
+                "200",
+                "0",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "PosX"
+              },
+              "parameters": [
+                "Player",
+                ">",
+                "970"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "AddForceXY"
+              },
+              "parameters": [
+                "Player",
+                "-200",
+                "0",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "Player",
+                "Traffic",
+                "",
+                "",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Create"
+              },
+              "parameters": [
+                "",
+                "Explosion",
+                "Player.X()",
+                "Player.Y()",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Delete"
+              },
+              "parameters": [
+                "Player",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "PushScene"
+              },
+              "parameters": [
+                "",
+                "\"Game\""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Traffic",
+          "conditions": [
+            {
+              "type": {
+                "value": "PosY"
+              },
+              "parameters": [
+                "Traffic",
+                ">",
+                "700"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "scor2",
+                "+",
+                "10"
+              ]
+            },
+            {
+              "type": {
+                "value": "Delete"
+              },
+              "parameters": [
+                "Traffic",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+              },
+              "parameters": [
+                "scor",
+                "Text",
+                "=",
+                "\"Scor: \"+scor2"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Tree",
+          "conditions": [
+            {
+              "type": {
+                "value": "PosY"
+              },
+              "parameters": [
+                "Traffic",
+                ">",
+                "720"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Delete"
+              },
+              "parameters": [
+                "Tree",
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "layers": [
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [
+            {
+              "defaultSize": true,
+              "defaultViewport": true,
+              "height": 0,
+              "viewportBottom": 1,
+              "viewportLeft": 0,
+              "viewportRight": 1,
+              "viewportTop": 0,
+              "width": 0
+            }
+          ],
+          "effects": [
+            {
+              "effectType": "Scene3D::HemisphereLight",
+              "name": "3D Light",
+              "doubleParameters": {
+                "elevation": 45,
+                "intensity": 1,
+                "rotation": 0
+              },
+              "stringParameters": {
+                "groundColor": "64;64;64",
+                "skyColor": "255;255;255",
+                "top": "Y-"
+              },
+              "booleanParameters": {}
+            }
+          ]
+        }
+      ],
+      "behaviorsSharedData": [
+        {
+          "name": "Animation",
+          "type": "AnimatableCapability::AnimatableBehavior"
+        },
+        {
+          "name": "Effect",
+          "type": "EffectCapability::EffectBehavior"
+        },
+        {
+          "name": "Flippable",
+          "type": "FlippableCapability::FlippableBehavior"
+        },
+        {
+          "name": "Opacity",
+          "type": "OpacityCapability::OpacityBehavior"
+        },
+        {
+          "name": "Resizable",
+          "type": "ResizableCapability::ResizableBehavior"
+        },
+        {
+          "name": "Scale",
+          "type": "ScalableCapability::ScalableBehavior"
+        },
+        {
+          "name": "Text",
+          "type": "TextContainerCapability::TextContainerBehavior"
+        },
+        {
+          "name": "TopDownMovement",
+          "type": "TopDownMovementBehavior::TopDownMovementBehavior"
+        }
+      ]
+    }
+  ],
+  "externalEvents": [],
+  "eventsFunctionsExtensions": [],
+  "externalLayouts": []
+}
