@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { 
-  Laptop, 
-  Book, 
-  Home, 
-  Menu, 
-  X, 
-  Code, 
+import {
+  Laptop,
+  Book,
+  Home,
+  Menu,
+  X,
+  Code,
   Rocket,
   LayoutGrid,
   Box,
@@ -128,18 +128,18 @@ const Header = () => {
       <div className="container mx-auto py-2 px-4 flex flex-col sm:flex-row justify-between items-center">
         <div className="flex items-center justify-between w-full sm:w-auto">
           <Link to="/" className="flex items-center space-x-2" onClick={closeMenu}>
-            <img 
-              src="https://techminds-academy.ro/assets/images/logo-techminds-sigla.png" 
-              alt="TechMinds Academy Logo" 
-              className="h-10 w-auto" 
+            <img
+              src="https://techminds-academy.ro/assets/images/logo-techminds-sigla.png"
+              alt="TechMinds Academy Logo"
+              className="h-10 w-auto"
             />
           </Link>
-          
+
           <button onClick={toggleMenu} className="sm:hidden text-white">
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-        
+
         {/* Desktop Navigation */}
         <nav className="hidden sm:flex items-center space-x-1">
           <NavigationMenu>
@@ -155,7 +155,7 @@ const Header = () => {
                   </Button>
                 </Link>
               </NavigationMenuItem>
-              
+
               {isAuthenticated && !isAdmin && (
                 <NavigationMenuItem>
                   <Link to="/student/dashboard">
@@ -169,15 +169,15 @@ const Header = () => {
                   </Link>
                 </NavigationMenuItem>
               )}
-              
+
               {isAuthenticated && (
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm text-white hover:bg-white/10 hover:text-white bg-transparent">
                     <Book className="mr-1 h-4 w-4" />
                     <span>Cursuri</span>
                   </NavigationMenuTrigger>
-                <NavigationMenuContent className="left-auto right-0">
-  <div className="grid grid-cols-3 p-3 w-[500px] max-w-[80vw] bg-white text-gray-800">
+                  <NavigationMenuContent className="left-auto right-0">
+                    <div className="grid grid-cols-3 p-3 w-[500px] max-w-[80vw] bg-white text-gray-800">
                       {/* Cursuri de Programare - Prima coloană */}
                       <div className="p-3">
                         <h2 className="text-base font-bold mb-3 text-course-purple border-b border-course-purple pb-1">
@@ -210,7 +210,7 @@ const Header = () => {
                           ))}
                         </div>
                       </div>
-                      
+
                       {/* Restul cursurilor de programare - A doua coloană */}
                       <div className="p-3 border-l">
                         <h2 className="text-base font-bold mb-3 text-course-purple border-b border-course-purple pb-1">
@@ -236,7 +236,7 @@ const Header = () => {
                           ))}
                         </div>
                       </div>
-                      
+
                       {/* Robotică - A treia coloană */}
                       <div className="p-3 border-l">
                         <h2 className="text-base font-bold mb-3 text-orange-600 border-b border-orange-600 pb-1">
@@ -266,7 +266,7 @@ const Header = () => {
                             </div>
                           </div>
                         ))}
-                        
+
                         {/* Link către toate cursurile */}
                         <div className="mt-4 pt-3 border-t">
                           <NavigationMenuLink asChild>
@@ -284,7 +284,7 @@ const Header = () => {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
               )}
-              
+
               {isAdmin && (
                 <NavigationMenuItem>
                   <Link to="/admin/dashboard">
@@ -334,7 +334,7 @@ const Header = () => {
             </Button>
           )}
         </nav>
-        
+
         {/* Mobile Navigation - similar updates for mobile menu */}
         <nav className={`fixed inset-y-0 right-0 transform ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} sm:hidden w-80 bg-white shadow-xl transition-transform duration-300 ease-in-out z-50 flex flex-col h-full`}>
           <div className="p-6 overflow-y-auto">
@@ -344,7 +344,7 @@ const Header = () => {
                 <X size={24} />
               </button>
             </div>
-            
+
             {isAuthenticated ? (
               <>
                 <div className="flex items-center mb-6 pb-4 border-b">
@@ -356,7 +356,7 @@ const Header = () => {
                     <p className="text-sm text-gray-500">{user?.email}</p>
                   </div>
                 </div>
-                
+
                 <ul className="space-y-6">
                   <li>
                     <Link to="/" className="text-gray-800 hover:text-course-purple flex items-center" onClick={closeMenu}>
@@ -364,7 +364,7 @@ const Header = () => {
                       <span>Acasă</span>
                     </Link>
                   </li>
-                  
+
                   {!isAdmin && (
                     <li>
                       <Link to="/student/dashboard" className="text-gray-800 hover:text-course-purple flex items-center" onClick={closeMenu}>
@@ -373,7 +373,7 @@ const Header = () => {
                       </Link>
                     </li>
                   )}
-                  
+
                   {isAdmin && (
                     <li>
                       <Link to="/admin/dashboard" className="text-gray-800 hover:text-course-purple flex items-center" onClick={closeMenu}>
@@ -382,7 +382,7 @@ const Header = () => {
                       </Link>
                     </li>
                   )}
-                  
+
                   <li className="space-y-2">
                     <div className="font-medium text-course-purple border-b pb-1">Programare</div>
                     {programmingCourses.map((category, idx) => (
@@ -391,9 +391,9 @@ const Header = () => {
                         <ul className="pl-4 space-y-3 mt-2">
                           {category.items.map((item, i) => (
                             <li key={i}>
-                              <Link 
-                                to={item.path} 
-                                className="text-gray-800 hover:text-course-purple flex items-center py-1" 
+                              <Link
+                                to={item.path}
+                                className="text-gray-800 hover:text-course-purple flex items-center py-1"
                                 onClick={closeMenu}
                               >
                                 {item.icon}
@@ -405,7 +405,7 @@ const Header = () => {
                       </div>
                     ))}
                   </li>
-                  
+
                   <li className="space-y-2">
                     <div className="font-medium text-orange-600 border-b pb-1">Robotică</div>
                     {roboticsCourses.map((category, idx) => (
@@ -414,9 +414,9 @@ const Header = () => {
                         <ul className="pl-4 space-y-3 mt-2">
                           {category.items.map((item, i) => (
                             <li key={i}>
-                              <Link 
-                                to={item.path} 
-                                className="text-gray-800 hover:text-orange-600 flex items-center py-1" 
+                              <Link
+                                to={item.path}
+                                className="text-gray-800 hover:text-orange-600 flex items-center py-1"
                                 onClick={closeMenu}
                               >
                                 {item.icon}
@@ -428,15 +428,15 @@ const Header = () => {
                       </div>
                     ))}
                   </li>
-                  
+
                   <li>
                     <Link to="/#courses" className="text-course-purple font-medium block" onClick={closeMenu}>
                       Vezi toate cursurile
                     </Link>
                   </li>
-                  
+
                   <li className="pt-4 border-t">
-                    <button 
+                    <button
                       onClick={handleLogout}
                       className="text-red-600 hover:text-red-800 flex items-center"
                     >
@@ -449,8 +449,8 @@ const Header = () => {
             ) : (
               <div className="text-center mt-8">
                 <p className="text-gray-600 mb-4">Autentifică-te pentru a accesa cursurile</p>
-                <Button 
-                  asChild 
+                <Button
+                  asChild
                   className="w-full bg-course-blue hover:bg-course-blue/90 mb-3"
                   onClick={closeMenu}
                 >
@@ -460,10 +460,10 @@ const Header = () => {
             )}
           </div>
         </nav>
-        
+
         {/* Overlay */}
         {isMenuOpen && (
-          <div 
+          <div
             className="fixed inset-0 bg-black bg-opacity-50 z-40 sm:hidden"
             onClick={closeMenu}
           ></div>

@@ -32,7 +32,7 @@ const GDevelop = () => {
                 </p>
                 <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                   <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                    <span className="font-semibold">14 Sesiuni</span>
+                    <span className="font-semibold">12-14 Sesiuni</span>
                   </div>
                   <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
                     <span className="font-semibold">10-16 ani</span>
