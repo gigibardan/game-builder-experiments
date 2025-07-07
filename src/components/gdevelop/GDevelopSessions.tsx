@@ -43,19 +43,19 @@ const GDevelopSessions = () => {
       color: "purple",
       imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475"
     },
-    {
-      number: 4,
-      title: "Animații și mișcare",
-      description: "Crearea animațiilor și implementarea sistemelor de mișcare pentru personaje.",
-      link: "/gdevelop/session4",
-      isAvailable: false,
-      duration: "90 min",
-      level: "Intermediar",
-      ageGroup: "10-18 ani",
-      highlights: ["Sprite animations", "Movement systems", "Character control"],
-      color: "purple",
-      imageSrc: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
-    },
+   {
+  number: 4,
+  title: "Road Rider - Aventura pe Autostradă",
+  description: "Creează un joc de curse infinite runner cu sistem complex de trafic și efecte vizuale.",
+  link: "/gdevelop/session4",
+  isAvailable: true,
+  duration: "120 min",
+  level: "Intermediar",
+  ageGroup: "10-18 ani",
+  highlights: ["Infinite runner", "Sistem de trafic", "Controlul cu săgețile", "Efecte de explozie"],
+  color: "purple",
+  imageSrc: "/assets/images/gdevelop/RoadRider/Imagine-din-joc.png"
+},
     {
       number: 5,
       title: "Coliziuni și fizică",
