@@ -12,7 +12,7 @@ const GDevelopSessions = () => {
       isAvailable: true,
       duration: "90 min",
       level: "Începător",
-      ageGroup: "10-18 ani",
+      ageGroup: "10-16 ani",
       highlights: ["Interfața GDevelop", "Evenimente de bază", "Primul proiect"],
       color: "purple",
       imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475"
@@ -25,7 +25,7 @@ const GDevelopSessions = () => {
       isAvailable: true,
       duration: "90 min",
       level: "Începător",
-      ageGroup: "10-18 ani",
+      ageGroup: "10-16 ani",
       highlights: ["Sprite objects", "Scene management", "Object behaviors"],
       color: "purple",
       imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
@@ -38,36 +38,36 @@ const GDevelopSessions = () => {
       isAvailable: false,
       duration: "90 min",
       level: "Începător",
-      ageGroup: "10-18 ani",
+      ageGroup: "10-16 ani",
       highlights: ["Event system", "Actions", "Conditions"],
       color: "purple",
       imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475"
     },
-   {
-  number: 4,
-  title: "Road Rider - Aventura pe Autostradă",
-  description: "Creează un joc de curse infinite runner cu sistem complex de trafic și efecte vizuale.",
-  link: "/gdevelop/session4",
-  isAvailable: true,
-  duration: "120 min",
-  level: "Intermediar",
-  ageGroup: "10-18 ani",
-  highlights: ["Infinite runner", "Sistem de trafic", "Controlul cu săgețile", "Efecte de explozie"],
-  color: "purple",
-  imageSrc: "/assets/images/gdevelop/RoadRider/Imagine-din-joc.png"
-},
+    {
+      number: 4,
+      title: "Road Rider - Aventura pe Autostradă",
+      description: "Creează un joc de curse infinite runner cu sistem complex de trafic și efecte vizuale.",
+      link: "/gdevelop/session4",
+      isAvailable: true,
+      duration: "120 min",
+      level: "Intermediar",
+      ageGroup: "10-16 ani",
+      highlights: ["Infinite runner", "Sistem de trafic", "Controlul cu săgețile", "Efecte de explozie"],
+      color: "purple",
+      imageSrc: "/assets/images/gdevelop/RoadRider/Imagine-din-joc.png"
+    },
     {
       number: 5,
-      title: "Coliziuni și fizică",
-      description: "Gestionarea coliziunilor și aplicarea principiilor fizicii în jocuri.",
+      title: "Tanks Battle - Bătălia Supremă",
+      description: "Creează un joc de tip tower defense cu tancuri, AI pentru inamici și sistem complex de coliziuni.",
       link: "/gdevelop/session5",
-      isAvailable: false,
-      duration: "90 min",
+      isAvailable: true,
+      duration: "120 min",
       level: "Intermediar",
-      ageGroup: "10-18 ani",
-      highlights: ["Collision detection", "Physics engine", "Realistic movement"],
+      ageGroup: "10-16 ani",
+      highlights: ["Tower defense static", "AI urmărire inamici", "Extensii externe", "Explozii spectaculoase"],
       color: "purple",
-      imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
+      imageSrc: "/assets/images/gdevelop/TanksBattle/imagine-din-joc.png"
     },
     {
       number: 6,
@@ -77,7 +77,7 @@ const GDevelopSessions = () => {
       isAvailable: false,
       duration: "90 min",
       level: "Intermediar",
-      ageGroup: "10-18 ani",
+      ageGroup: "10-16 ani",
       highlights: ["UI design", "Menus", "HUD elements"],
       color: "purple",
       imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
@@ -90,7 +90,7 @@ const GDevelopSessions = () => {
       isAvailable: false,
       duration: "90 min",
       level: "Intermediar",
-      ageGroup: "10-18 ani",
+      ageGroup: "10-16 ani",
       highlights: ["Sound effects", "Background music", "Visual effects"],
       color: "purple",
       imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475"
@@ -103,7 +103,7 @@ const GDevelopSessions = () => {
       isAvailable: false,
       duration: "120 min",
       level: "Avansat",
-      ageGroup: "12-18 ani",
+      ageGroup: "12-16 ani",
       highlights: ["Complete platformer", "Level design", "Game mechanics"],
       color: "purple",
       imageSrc: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
@@ -116,7 +116,7 @@ const GDevelopSessions = () => {
       isAvailable: false,
       duration: "90 min",
       level: "Avansat",
-      ageGroup: "12-18 ani",
+      ageGroup: "12-16 ani",
       highlights: ["Variables", "Game logic", "Data management"],
       color: "purple",
       imageSrc: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
@@ -129,7 +129,7 @@ const GDevelopSessions = () => {
       isAvailable: false,
       duration: "120 min",
       level: "Avansat",
-      ageGroup: "12-18 ani",
+      ageGroup: "12-16 ani",
       highlights: ["Advanced behaviors", "AI systems", "Smart NPCs"],
       color: "purple",
       imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
@@ -142,7 +142,7 @@ const GDevelopSessions = () => {
       isAvailable: false,
       duration: "90 min",
       level: "Avansat",
-      ageGroup: "12-18 ani",
+      ageGroup: "12-16 ani",
       highlights: ["Performance optimization", "Memory management", "Efficient events"],
       color: "purple",
       imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475"
@@ -197,7 +197,7 @@ const GDevelopSessions = () => {
             Creează jocuri 2D captivante fără programare folosind sistemul visual de evenimente GDevelop.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {sessions.map((session) => (
             <SessionCard
