@@ -786,7 +786,7 @@ const GDevelopRoadRider = () => {
               <div className="bg-red-50 p-4 rounded-lg">
                 <h5 className="font-semibold mb-2">Limita stângă</h5>
                 <ul className="list-disc list-inside space-y-1 text-sm">
-                  <li><strong>Condiție:</strong> The X position of Player < 330</li>
+<li><strong>Condiție:</strong> The X position of Player &lt; 330</li>
                   <li><strong>Acțiune:</strong> Add to Player an instant force of 200 p/s on X axis and 0 p/s on Y axis</li>
                 </ul>
               </div>
@@ -794,7 +794,7 @@ const GDevelopRoadRider = () => {
               <div className="bg-red-50 p-4 rounded-lg">
                 <h5 className="font-semibold mb-2">Limita dreaptă</h5>
                 <ul className="list-disc list-inside space-y-1 text-sm">
-                  <li><strong>Condiție:</strong> The X position of Player > 870</li>
+<li><strong>Condiție:</strong> The X position of Player &gt; 870</li>
                   <li><strong>Acțiune:</strong> Add to Player an instant force of -200 p/s on X axis and 0 p/s on Y axis</li>
                 </ul>
               </div>
@@ -842,7 +842,7 @@ const GDevelopRoadRider = () => {
           <StepItem number={1} title="Curățarea obiectelor Traffic">
             <p>Adaugă un eveniment <strong>Repeat for each instance of Traffic</strong>:</p>
             <div className="mt-2 bg-blue-50 p-4 rounded-lg">
-              <p><strong>Condiție:</strong> The Y position of Traffic > 700</p>
+              <p><strong>Condiție:</strong> The Y position of Traffic {'>'} 700</p>
               <p><strong>Acțiuni:</strong></p>
               <ul className="list-disc list-inside ml-4 space-y-1">
                 <li>Change the variable scor2: add 10</li>
@@ -855,7 +855,7 @@ const GDevelopRoadRider = () => {
           <StepItem number={2} title="Curățarea copacilor">
             <p>Adaugă un eveniment <strong>Repeat for each instance of Tree</strong>:</p>
             <div className="mt-2 bg-green-50 p-4 rounded-lg">
-              <p><strong>Condiție:</strong> The Y position of Traffic > 720</p>
+              <p><strong>Condiție:</strong> The Y position of Traffic {'>'} 720</p>
               <p><strong>Acțiune:</strong> Delete Tree</p>
             </div>
           </StepItem>
@@ -864,7 +864,7 @@ const GDevelopRoadRider = () => {
             <ul className="list-disc list-inside space-y-1 text-sm">
               <li><strong>Performanță:</strong> Obiectele invizibile consumă resurse inutil</li>
               <li><strong>Punctaj:</strong> Fiecare mașină evitată cu succes adaugă 10 puncte</li>
-              <li><strong>Poziția Y > 700/720:</strong> Înseamnă că obiectul a ieșit din partea de jos a ecranului</li>
+              <li><strong>Poziția Y {'>'} 700/720:</strong> Înseamnă că obiectul a ieșit din partea de jos a ecranului</li>
               <li><strong>Actualizarea textului:</strong> Scorul se afișează în timp real</li>
             </ul>
           </InfoBox>
