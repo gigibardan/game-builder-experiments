@@ -35,7 +35,7 @@ const GDevelopSessions = () => {
       title: "Evenimente și acțiuni",
       description: "Înțelegerea sistemului de evenimente și implementarea acțiunilor în joc.",
       link: "/gdevelop/session3",
-      isAvailable: false,
+      isAvailable: true,
       duration: "90 min",
       level: "Începător",
       ageGroup: "10-16 ani",

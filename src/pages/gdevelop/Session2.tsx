@@ -657,6 +657,7 @@ const GDevelopLessonRomania = () => {
 
   return (
     <LessonLayout
+      sessionId='2'
       courseId="gdevelop"
       title="Joc de Aventură cu Obiecte Colorate"
       subtitle="Creează un joc simplu în GDevelop"
