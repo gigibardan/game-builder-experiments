@@ -71,16 +71,16 @@ const GDevelopSessions = () => {
     },
     {
       number: 6,
-      title: "Interface utilizator",
-      description: "Crearea interfețelor utilizator și a meniurilor pentru jocuri.",
+      title: "Geometry Monster - Aventura Mobilă",
+      description: "Primul tău joc mobil complet cu extensii avansate, particle systems și control touch optimizat.",
       link: "/gdevelop/session6",
-      isAvailable: false,
-      duration: "90 min",
-      level: "Intermediar",
-      ageGroup: "10-16 ani",
-      highlights: ["UI design", "Menus", "HUD elements"],
+      isAvailable: true,
+      duration: "150 min",
+      level: "Avansat",
+      ageGroup: "12-16 ani",
+      highlights: ["Joc mobil 640x960", "Extensii avansate", "Particle systems", "3 scene cu navigare", "Health system"],
       color: "purple",
-      imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
+      imageSrc: "/assets/images/gdevelop/GeometryMonster/geometry-monster-joc.png"
     },
     {
       number: 7,
