@@ -80,7 +80,7 @@ const GDevelopSessions = () => {
       ageGroup: "12-16 ani",
       highlights: ["Joc mobil 640x960", "Extensii avansate", "Particle systems", "3 scene cu navigare", "Health system"],
       color: "purple",
-      imageSrc: "/assets/images/gdevelop/GeometryMonster/geometry-monster-joc.png"
+      imageSrc: "/assets/images/gdevelop/GeometryMonster/previewgeometry.png"
     },
     {
       number: 7,
