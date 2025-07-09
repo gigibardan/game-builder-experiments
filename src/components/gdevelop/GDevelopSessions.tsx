@@ -6,8 +6,8 @@ const GDevelopSessions = () => {
   const sessions = [
     {
       number: 1,
-      title: "Introducere în GDevelop",
-      description: "Primii pași în dezvoltarea de jocuri cu GDevelop și înțelegerea sistemului de evenimente.",
+      title: "Shoter Game - Apără-te de inamici",
+      description: "Creează un shooter game în care te aperi de inamicii roboți care vin spre tine.",
       link: "/gdevelop/session1",
       isAvailable: true,
       duration: "90 min",
@@ -15,12 +15,12 @@ const GDevelopSessions = () => {
       ageGroup: "10-16 ani",
       highlights: ["Interfața GDevelop", "Evenimente de bază", "Primul proiect"],
       color: "purple",
-      imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475"
+      imageSrc: "/assets/images/gdevelop/preview-shoter.png"
     },
     {
       number: 2,
-      title: "Obiecte și scene",
-      description: "Lucrul cu obiecte, sprite-uri și managementul scenelor în GDevelop.",
+      title: "Drag and Drop - Trage obiectele colorate în forma lor",
+      description: "Creează un joc simplu, de bază, de tip Drag and Drop. Joacă și exersează!",
       link: "/gdevelop/session2",
       isAvailable: true,
       duration: "90 min",
@@ -28,20 +28,20 @@ const GDevelopSessions = () => {
       ageGroup: "10-16 ani",
       highlights: ["Sprite objects", "Scene management", "Object behaviors"],
       color: "purple",
-      imageSrc: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
+      imageSrc: "/assets/images/gdevelop/preview-dad.png"
     },
     {
       number: 3,
-      title: "Evenimente și acțiuni",
-      description: "Înțelegerea sistemului de evenimente și implementarea acțiunilor în joc.",
+      title: "Bumpy Platformer - Evadarea din Fabrica de Roboți",
+      description: "Creează un joc de tip platformer, simplu și distractiv!",
       link: "/gdevelop/session3",
-      isAvailable: false,
+      isAvailable: true,
       duration: "90 min",
       level: "Începător",
       ageGroup: "10-16 ani",
       highlights: ["Event system", "Actions", "Conditions"],
       color: "purple",
-      imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475"
+      imageSrc: "/assets/images/gdevelop/BumpyPlatformer/Preview.png"
     },
     {
       number: 4,
