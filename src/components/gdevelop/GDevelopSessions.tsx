@@ -84,16 +84,16 @@ const GDevelopSessions = () => {
     },
     {
       number: 7,
-      title: "Audio și efecte",
-      description: "Implementarea sunetelor, muzicii și efectelor vizuale în jocuri.",
+      title: "Kitty Runner - Aventura Infinită",
+      description: "Creează un endless runner complet cu scroll infinit, dificultate progresivă și mecanici complexe de platformer.",
       link: "/gdevelop/session7",
-      isAvailable: false,
-      duration: "90 min",
-      level: "Intermediar",
-      ageGroup: "10-16 ani",
-      highlights: ["Sound effects", "Background music", "Visual effects"],
-      color: "purple",
-      imageSrc: "https://images.unsplash.com/photo-1518770660439-4636190af475"
+      isAvailable: true,
+      duration: "180 min",
+      level: "Avansat",
+      ageGroup: "12-16 ani",
+      highlights: ["Endless runner mechanics", "TimeDelta() și frame-rate independence", "Spawn algorithms complexi", "Game states sistem", "Scroll infinit"],
+      color: "green",
+      imageSrc: "/assets/images/gdevelop/CatRun/imaginejoc.png"
     },
     {
       number: 8,
