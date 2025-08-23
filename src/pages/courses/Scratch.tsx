@@ -16,7 +16,7 @@ const Scratch = () => {
       ageGroup: "7-14 ani",
       link: "/scratch/session1alegesanatos",
       highlights: ["Controlarea personajelor", "Detectarea coliziunilor", "Folosirea variabilelor", "Condiții de victorie"],
-      imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratch-alegesanatos-preview.png",
+      imageSrc: "/assets/images/scratch/scratch-alegesanatos-preview1.png",
       color: "amber"
     },
     {
@@ -28,7 +28,7 @@ const Scratch = () => {
       ageGroup: "7-14 ani",
       link: "/scratch/session2spacedodge",
       highlights: ["Animarea personajelor", "Generarea de obstacole", "Sistem de scor", "Elemente de fundal"],
-      imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratchproiect5preview.png",
+      imageSrc: "/assets/images/scratch/scratchproiect5preview.png",
       color: "blue"
     },
     {
@@ -40,7 +40,7 @@ const Scratch = () => {
       ageGroup: "7-14 ani",
       link: "/scratch/session3motoracer",
       highlights: ["Controlul cu săgeți", "Generarea de obiecte aleatorii", "Utilizarea clonelor", "Detectarea coliziunilor"],
-      imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratchproiect2preview.png",
+      imageSrc: "/assets/images/scratch/scratchproiect2preview1.png",
       color: "green"
     },
     {
@@ -52,7 +52,7 @@ const Scratch = () => {
       ageGroup: "7-14 ani",
       link: "/scratch/session4cityrunner",
       highlights: ["Controlul cu săgeți", "Animarea personajelor", "Sisteme de recompense și penalizări", "Elemente de decor animate"],
-      imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratchproiect3preview.png",
+      imageSrc: "/assets/images/scratch/scratchproiect3preview1.png",
       color: "purple"
     },
     {
@@ -64,7 +64,7 @@ const Scratch = () => {
       ageGroup: "7-14 ani",
       link: "/scratch/session5beachballbounce",
       highlights: ["Control cu mouse", "Simularea fizicii", "Obiecte bonus și obstacole", "Gravitație și ricoșare"],
-      imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratchproiect4preview.png",
+      imageSrc: "/assets/images/scratch/scratchproiect4preview1.png",
       color: "cyan"
     },
     {
@@ -76,7 +76,7 @@ const Scratch = () => {
       ageGroup: "8-14 ani",
       link: "/scratch/session6stitchbeach",
       highlights: ["Animarea personajelor", "Detecția coliziunilor", "Sisteme de punctaj complexe", "Condiții de victorie și înfrângere"],
-      imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratchproiect7preview.png",
+      imageSrc: "/assets/images/scratch/scratchproiect7preview1.png",
       color: "indigo"
     },
     {
@@ -88,7 +88,7 @@ const Scratch = () => {
       ageGroup: "7-14 ani",
       link: "/scratch/session7cakequest",
       highlights: ["Controlul personajului", "Clonarea obiectelor", "Detecția coliziunilor", "Condiții de victorie și înfrângere"],
-      imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratchproiect8preview.png",
+      imageSrc: "/assets/images/scratch/scratchproiect8preview.png",
       color: "rose"
     },
     {
@@ -100,7 +100,7 @@ const Scratch = () => {
       ageGroup: "7-14 ani",
       link: "/scratch/session8wizardsquest",
       highlights: ["Detectarea coliziunilor folosind culori", "Algoritm de evitare a obstacolelor", "Mișcarea inamicilor autonomi", "Labirint interactiv"],
-      imageSrc: "https://elearning.techminds-academy.ro/assets/images/scratchproiect6preview.png",
+      imageSrc: "/assets/images/scratch/scratchproiect6preview1.png",
       color: "purple"
     },
     {
@@ -112,7 +112,7 @@ const Scratch = () => {
       ageGroup: "7-14 ani",
       link: "/scratch/session9robotfootball",
       highlights: ["Joc pentru doi jucători", "Coliziuni și ricoșări", "Sistem de scor", "Animații de countdown"],
-      imageSrc: "https://elearning.techminds-academy.ro/assets/images/robotfootballpreview.png",
+      imageSrc: "/assets/images/scratch/robotfootballpreview1.png",
       color: "emerald"
     },
     {
